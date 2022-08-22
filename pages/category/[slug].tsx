@@ -25,7 +25,7 @@ export default function Category({ categoryPosts, category }: Props) {
           <title>hunkim98&rsquo;s {category} Posts</title>
         </Head>
         <Container>
-          <Intro />
+          <Header />
           {categoryPosts.length > 0 && (
             <MoreStories category={category} posts={categoryPosts} />
           )}
