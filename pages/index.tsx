@@ -13,7 +13,6 @@ type Props = {
 };
 
 export default function Index({ allPosts }: Props) {
-  const morePosts = allPosts.slice(1);
   return (
     <>
       <Layout>
@@ -22,7 +21,7 @@ export default function Index({ allPosts }: Props) {
         </Head>
         <Container>
           <Intro />
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {allPosts.length > 0 && <MoreStories posts={allPosts} />}
         </Container>
       </Layout>
     </>
