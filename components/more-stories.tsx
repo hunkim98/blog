@@ -1,9 +1,10 @@
-import PostPreview from './post-preview'
-import type Post from '../interfaces/post'
+import React from "react";
+import PostPreview from "./post-preview";
+import type Post from "../interfaces/post";
 
 type Props = {
-  posts: Post[]
-}
+  posts: Post[];
+};
 
 const MoreStories = ({ posts }: Props) => {
   //this shows on home
@@ -26,7 +27,7 @@ const MoreStories = ({ posts }: Props) => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default MoreStories
+export default MoreStories;
