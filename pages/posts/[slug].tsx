@@ -9,7 +9,6 @@ import Layout from "../../components/layout";
 import { getPostBySlug, getAllPosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Head from "next/head";
-import { CMS_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
 import type PostType from "../../interfaces/post";
 
@@ -34,14 +33,23 @@ export default function Post({ post, morePosts, preview }: Props) {
           <>
             <article className="mb-32">
               <Head>
-                <title>{post.title} | hunkim&rsquo;s Blog</title>
+                <title>{post.title} | hunkim98&rsquo;s Blog</title>
               </Head>
               <PostHeader
                 title={post.title}
-                coverImage={post.coverImage}
                 date={post.date}
                 author={post.author}
               />
+              <div className="max-w-2xl mx-auto">
+                <div className="mb-6 text-lg">
+                  <div>
+                    Category:{" "}
+                    {post.categories.map((category) => {
+                      return <span>#{category}</span>;
+                    })}
+                  </div>
+                </div>
+              </div>
               <PostBody content={post.content} />
             </article>
           </>
@@ -64,10 +72,10 @@ export async function getStaticProps({ params }: Params) {
     "slug",
     "author",
     "content",
-    "ogImage",
-    "coverImage",
+    "keyword",
+    "categories",
   ]);
-  const content = await markdownToHtml(post.content || "");
+  const content = await markdownToHtml((post.content as string) || "");
 
   return {
     props: {

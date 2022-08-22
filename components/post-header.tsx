@@ -6,15 +6,15 @@ import type Author from "../interfaces/author";
 
 type Props = {
   title: string;
-  coverImage: string;
   date: string;
   author: Author;
 };
 
-const PostHeader = ({ title, coverImage, date, author }: Props) => {
+const PostHeader = ({ title, date, author }: Props) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
+      {/* Currently planning to create a random svg for each md */}
       {/* <div className="mb-8 md:mb-16 sm:mx-0">
         <CoverImage title={title} src={coverImage} />
       </div> */}

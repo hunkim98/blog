@@ -6,21 +6,13 @@ import type Author from "../interfaces/author";
 
 type Props = {
   title: string;
-  coverImage: string;
   date: string;
   excerpt: string;
   author: Author;
   slug: string;
 };
 
-const PostPreview = ({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}: Props) => {
+const PostPreview = ({ title, date, excerpt, author, slug }: Props) => {
   return (
     <div>
       {/* <div className="mb-5">
@@ -32,7 +24,7 @@ const PostPreview = ({
         </Link>
       </h3>
       <div className="text-lg mb-4">
-        <div>Written by {author.name}</div>
+        {/* <div>Written by {author.name}</div> */}
         <DateFormatter dateString={date} />
       </div>
 

@@ -9,6 +9,8 @@ type Props = {
 };
 
 const CoverImage = ({ title, src, slug }: Props) => {
+  // this will later change to create random svgs
+  // do not erase it yet
   const image = (
     <img
       src={src}
