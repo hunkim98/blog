@@ -23,8 +23,12 @@ export default function Index({ allPosts, categories }: Props) {
         </Head>
         <Container>
           <Intro />
-          {categories.map((category) => {
-            return <a href={`/category/${category}`}>#{category}</a>;
+          {categories.map((category, index) => {
+            return (
+              <a key={index} href={`/category/${category}`}>
+                #{category}
+              </a>
+            );
           })}
           {allPosts.length > 0 && <MoreStories posts={allPosts} />}
         </Container>

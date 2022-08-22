@@ -1,15 +1,11 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import PostType from "../../interfaces/post";
+import React from "react";
+
 import Layout from "../../components/layout";
 import Container from "../../components/container";
 import Header from "../../components/header";
-import PostTitle from "../../components/post-title";
 import Head from "next/head";
-import PostHeader from "../../components/post-header";
 import { getAllPosts, getPostBySlug, getPostSlugs } from "../../lib/api";
 import Post from "../../interfaces/post";
-import Intro from "../../components/intro";
 import MoreStories from "../../components/more-stories";
 
 type Props = {

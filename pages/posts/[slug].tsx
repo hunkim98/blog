@@ -44,8 +44,8 @@ export default function Post({ post, morePosts, preview }: Props) {
                 <div className="mb-6 text-lg">
                   <div>
                     Category:{" "}
-                    {post.categories.map((category) => {
-                      return <span>#{category}</span>;
+                    {post.categories.map((category, index) => {
+                      return <span key={index}>#{category}</span>;
                     })}
                   </div>
                 </div>
