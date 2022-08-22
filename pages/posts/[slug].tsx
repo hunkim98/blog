@@ -34,10 +34,7 @@ export default function Post({ post, morePosts, preview }: Props) {
           <>
             <article className="mb-32">
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
+                <title>{post.title} | hunkim&rsquo;s Blog</title>
               </Head>
               <PostHeader
                 title={post.title}
