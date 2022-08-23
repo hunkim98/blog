@@ -16,3 +16,11 @@
 .markdown h3 {
   @apply text-2xl mt-8 mb-4 leading-snug;
 }
+
+.markdown p code {
+  @apply px-1.5 py-1.5 rounded bg-[#2d2d2d] text-[85%];
+}
+
+.markdown code {
+  @apply px-0 py-0 text-[85%];
+}
