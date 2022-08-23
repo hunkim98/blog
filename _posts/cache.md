@@ -1,7 +1,7 @@
 ---
 title: '컴퓨터 구조 - Cache
 excerpt: '컴퓨터 구조의 핵심적인 내용인 Cache에 대해서 배운다.'
-date: '2022-08-23'
+date: '2022-08-23T04:44:22.282Z'
 author:
   name: Kim Dong Hun
 keyword: 'Cache'
