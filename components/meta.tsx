@@ -35,6 +35,10 @@ const Meta = () => {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta name="description" content={`hunkim98's Blog`} />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+      <meta
+        name="google-site-verification"
+        content="iB-j5WMC3SLeJYmGywDheB8NvlFbcrflbrGi4ebdNlk"
+      />
     </Head>
   );
 };
