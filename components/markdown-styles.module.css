@@ -6,7 +6,7 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
+  @apply my-8 leading-8;
 }
 
 .markdown h2 {
@@ -18,7 +18,7 @@
 }
 
 .markdown p code {
-  @apply px-1.5 py-1.5 rounded bg-[#2d2d2d] text-[85%];
+  @apply px-1.5 py-1.5 rounded bg-[#D9D9D9] text-[85%] text-[#f08d49];
 }
 
 .markdown code {

@@ -11,7 +11,7 @@ const Layout = ({ preview, children }: Props) => {
   return (
     <>
       <Meta />
-      <div className="min-h-screen text-white">
+      <div className="min-h-screen text-[#000000]">
         <main>{children}</main>
       </div>
       <Footer />
