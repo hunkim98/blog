@@ -5,7 +5,7 @@ date: '2022-08-24'
 author:
   name: Kim Dong Hun
 keyword: 'Raft'
-categories: ['distributed-systems'. 'Raft']
+categories: ['distributed-systems','Raft']
 ---
 
 `WIP - Writing in Progress`
