@@ -35,4 +35,3 @@ CRDT의 힘을 체감하기 위해서 조금 더 복잡한 사례를 가져오�
 
 참고)
 CRDT vs OT: https://channel.io/ko/blog/crdt_vs_ot
-![image](https://user-images.githubusercontent.com/57612141/188253620-59fffd3d-b273-498d-91e8-867408ec02ef.png)
