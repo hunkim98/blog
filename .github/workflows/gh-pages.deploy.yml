@@ -8,6 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      RUNTIME_ENV: prod
+      NEXT_PUBLIC_GOOGLE_ANALYTICS: G-N4047GMEZT
+
     strategy:
       matrix:
         node-version: [14.x]
