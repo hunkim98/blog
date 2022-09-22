@@ -37,7 +37,7 @@ const Meta = () => {
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
       <meta
         name="google-site-verification"
-        content="iB-j5WMC3SLeJYmGywDheB8NvlFbcrflbrGi4ebdNlk"
+        content="l9pNikVAOmXekB00LXYnclf9f_nyVIIjDvu4s2DdYtQ"
       />
     </Head>
   );
