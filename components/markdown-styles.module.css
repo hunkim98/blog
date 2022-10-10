@@ -6,19 +6,27 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-8 leading-8;
+  @apply my-10 leading-7 text-[#444444];
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-3xl mt-16 mb-4 leading-snug font-bold;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl mt-14 mb-4 leading-snug font-bold;
+}
+
+.markdown h4 {
+  @apply text-2xl mt-14 mb-4 leading-snug font-bold;
 }
 
 .markdown p code {
-  @apply px-1.5 py-1.5 rounded bg-[#D9D9D9] text-[85%] text-[#f08d49];
+  @apply px-1.5 py-1.5 rounded bg-[#D9D9D9] text-[85%] text-[#f06d49];
+}
+
+.markdown a {
+  @apply px-1.5 py-1.5 rounded text-[85%] text-[#d08d49];
 }
 
 .markdown code {

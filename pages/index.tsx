@@ -23,13 +23,15 @@ export default function Index({ allPosts, categories }: Props) {
         </Head>
         <Container>
           <Intro />
-          {categories.map((category, index) => {
-            return (
-              <a key={index} href={`/category/${category}`}>
-                #{category}
-              </a>
-            );
-          })}
+          <div className="mb-6">
+            {categories.map((category, index) => {
+              return (
+                <a className="pr-2" key={index} href={`/category/${category}`}>
+                  #{category}
+                </a>
+              );
+            })}
+          </div>
           {allPosts.length > 0 && <MoreStories posts={allPosts} />}
         </Container>
       </Layout>
@@ -46,14 +48,17 @@ export const getStaticProps = async () => {
     "excerpt",
     "keyword",
     "categories",
-  ]);
+    "WIP",
+  ]).filter((element) => !element.WIP);
   const categorySet = new Set();
-  allPosts.map((post) => {
-    const categories = post.categories as string[];
-    categories.map((category) => {
-      categorySet.add(category);
+  allPosts
+    .filter((element) => !element.WIP)
+    .map((post) => {
+      const categories = post.categories as string[];
+      categories.map((category) => {
+        categorySet.add(category);
+      });
     });
-  });
 
   return {
     props: { allPosts, categories: Array.from(categorySet) },

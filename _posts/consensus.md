@@ -1,11 +1,12 @@
 ---
-title: '분산시스템 - Consensus(Raft)'
-excerpt: ''
-date: '2022-08-24'
+title: "분산시스템 - Consensus(Raft)"
+excerpt: ""
+date: "2022-08-24"
 author:
   name: Kim Dong Hun
-keyword: 'Raft'
-categories: ['distributed-systems','Raft']
+keyword: "Raft"
+categories: ["distributed-systems", "Raft"]
+WIP: true
 ---
 
 `WIP - Writing in Progress`
@@ -16,4 +17,4 @@ categories: ['distributed-systems','Raft']
 
 ## 동시문서편집 = 분산시스템?
 
-사실, 분산시스템에 대한 용어는 많이 보긴 했지만 그 뜻을 잘 몰랐다. "분산되어 있는 시스템이면 그냥 나뉘어진 것인가"하고 넘어가는 경우가 많았다. 지나고 보니, 최근에 학교에서 배운 컴퓨터 구조 수업들이 분산시스템과 큰 관련이 있었다는 것을 알 수 있었다. 컴퓨터 구조 수업에서 배운 내용은 [Cache](https://hunkim98.vercel.app/posts/cache), [Pipeline](https://hunkim98.vercel.app/posts/pipeline)에 써놓았다. 정확히 말하자면, Pipeline 부분이 분산시스템과 긴밀한 연결관계를 가진다고 볼 수 있는데, 이는 분산시스템이 Pipeline처럼 하나의 일을 여러 개로 쪼개서 한다는 점에서 비슷하기 때문이다. 
+사실, 분산시스템에 대한 용어는 많이 보긴 했지만 그 뜻을 잘 몰랐다. "분산되어 있는 시스템이면 그냥 나뉘어진 것인가"하고 넘어가는 경우가 많았다. 지나고 보니, 최근에 학교에서 배운 컴퓨터 구조 수업들이 분산시스템과 큰 관련이 있었다는 것을 알 수 있었다. 컴퓨터 구조 수업에서 배운 내용은 [Cache](https://hunkim98.vercel.app/posts/cache), [Pipeline](https://hunkim98.vercel.app/posts/pipeline)에 써놓았다. 정확히 말하자면, Pipeline 부분이 분산시스템과 긴밀한 연결관계를 가진다고 볼 수 있는데, 이는 분산시스템이 Pipeline처럼 하나의 일을 여러 개로 쪼개서 한다는 점에서 비슷하기 때문이다.

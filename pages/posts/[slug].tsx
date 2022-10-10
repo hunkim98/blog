@@ -40,7 +40,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                 date={post.date}
                 author={post.author}
               />
-              <div className="max-w-4xl mx-auto">
+              <div className="max-w-3xl mx-auto">
                 <div className="mb-6 text-lg">
                   <div>
                     Category:{" "}
