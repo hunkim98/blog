@@ -1,5 +1,5 @@
 ---
-title: "Techstars Day1 - 1 hour is enough to build trust within members"
+title: "Techstars Day1 - Spare just 1 hour and you can build trust within members"
 excerpt: "No matter what kind of work the team members are doing, if the team has decided to embrace a new team member, everyone should take a leave for their work at least for 1 hour to openly talk with the newcomer and open themselves up to vulnerability. No excuses whatsoever. The newcomer is a priceless and thankful person to have decided to join the risky startup journey together with the team, and thus, the team should pay their utmost respect to the newcomer."
 date: "2023-01-19"
 author:
@@ -11,7 +11,7 @@ thumbnail: "https://user-images.githubusercontent.com/57612141/213598771-3930e18
 
 ---
 
-## 1 hour is enough to build trust within team members
+## Spare just 1 hour and you can build trust within members
 
 I am currently in Boston attending an event hosted by techstars. My brother started a startup with a colleauge in UC Berkely last year, and I came to the States to help him build his products with my software engineering skills. His startup was chosen as one of the twelve startups selected by Techstars for the evennt. Twelve companies doing their business in the crypto world gathered in Boston to get mentored by Techstars. 
 
