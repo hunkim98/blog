@@ -6,7 +6,7 @@ author:
   name: Kim Dong Hun
 keyword: "startup"
 categories: ["diary", "startup"]
-WIP: true
+WIP: false
 thumbnail: "https://user-images.githubusercontent.com/57612141/221394006-cb351e49-943b-483b-bd80-167610cbc10c.png"
 
 ---
