@@ -18,14 +18,14 @@ export default function Category({ categoryPosts, category }: Props) {
     <>
       <Layout>
         <Head>
-          <title>hunkim98&rsquo;s {category} Posts</title>
+          <title>Posts on {category}</title>
         </Head>
-        <Container>
+        <div className="container mx-auto px-5 max-w-5xl">
           <Header />
           {categoryPosts.length > 0 && (
             <MoreStories category={category} posts={categoryPosts} />
           )}
-        </Container>
+        </div>
       </Layout>
     </>
   );

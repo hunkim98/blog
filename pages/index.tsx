@@ -19,18 +19,24 @@ export default function Index({ allPosts, categories }: Props) {
     <>
       <Layout>
         <Head>
-          <title>hunkim&rsquo;s Blog</title>
+          <title>Hun&rsquo;s Blog</title>
         </Head>
         <Container>
-          <Intro />
-          <div className="mb-6">
-            {categories.map((category, index) => {
-              return (
-                <a className="pr-2" key={index} href={`/category/${category}`}>
-                  #{category}
-                </a>
-              );
-            })}
+          <div className="md:min-w-[300px]">
+            <Intro />
+            <div className="mb-6 flex flex-wrap">
+              {categories.map((category, index) => {
+                return (
+                  <a
+                    className="pr-2"
+                    key={index}
+                    href={`/category/${category}`}
+                  >
+                    #{category}
+                  </a>
+                );
+              })}
+            </div>
           </div>
           {allPosts.length > 0 && <MoreStories posts={allPosts} />}
         </Container>

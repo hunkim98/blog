@@ -25,7 +25,7 @@ export default function Post({ post, morePosts, preview }: Props) {
   }
   return (
     <Layout preview={preview}>
-      <Container>
+      <div className="container mx-auto px-5 max-w-5xl">
         <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -54,7 +54,7 @@ export default function Post({ post, morePosts, preview }: Props) {
             </article>
           </>
         )}
-      </Container>
+      </div>
     </Layout>
   );
 }
