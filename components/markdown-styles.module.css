@@ -6,7 +6,7 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-10 leading-7 text-[#444444];
+  @apply my-10 leading-relaxed text-[#444444];
 }
 
 .markdown h2 {
