@@ -23,17 +23,16 @@ The Great Gatsby의 첫페이지 내용은 Fitzegerald의 난해한 표현이 �
 
 나는 그래서 Nick이라는 화자가 서로 상반되는 말을 하든 말든 상반되는 말을 하는 것이 아니라는 것을 염두에 두고 첫페이지를 해석해보려고 했다. 이 첫페이지만큼은 Fitzergald가 나에게 자기 얘기를 하고 있다고 생각하면서 해석해보려고 했다. 첫페이지 문단은 아래와 같다.
 
-```
-In my younger and more vulnerable years my father gave me some advice that I’ve been turning over in my mind ever since.
+> In my younger and more vulnerable years my father gave me some advice that I’ve been turning over in my mind ever since.
 “Whenever you feel like criticizing any one,” he told me, “just remember that all the people in this world haven’t had the advantages that you’ve had.”
 He didn’t say any more, but we’ve always been unusually communicative in a reserved way, and I understood that he meant a great deal more than that. In consequence, I’m inclined to reserve all judgments, a habit that has opened up many curious natures to me and also made me the victim of not a few veteran bores. The abnormal mind is quick to detect and attach itself to this quality when it appears in a normal person, and so it came about that in college I was unjustly accused of being a politician, because I was privy to the secret griefs of wild, unknown men. Most of the confidences were unsought frequently I have feigned sleep, preoccupation, or a hostile levity when I realized by some unmistakable sign that an intimate revelation was quivering on the horizon; for the intimate revel- ations of young men, or at least the terms in which they express them, are usually plagiaristic and marred by obvious suppressions. Reserving judgments is a matter of infinite hope. I am still a little afraid of missing something if I forget that, as my father snobbishly suggested, and I snobbishly repeat, a sense of the fundamental decencies is parcelled out unequally at birth.
-```
+
 
 나는 문단을 이렇게 해석했다.
 
-```
-내 어리고 미성숙한 시절, 아버지께서는 내가 기억에 남는 조언을 하나 해주셨다. "너가 누군가를 비판하고 싶은 생각이 들 때, 그 사람이 너와 같은 혜택을 받고 자라온 것이 아니라는 것을 꼭 명심해라". 아버지는 그 말을 하고 나서는 첨언하시지 않으셨다. 아버지와 나 사이에서는 말이 많이 오가는 편이 아니었는데, 나는 그래도 그의 조언에 말로 표현하지 못할 무게가 있다는 것을 직감적으로 느꼈다. 그 조언에 영향을 받아 나는 누군가를 평가할 때 평가를 함부로 하지 않으려는 경향이 있다. 이 습관은 사실 내가 여러 특이한 사람들을 만나게 해주는 동시에 또 정말 지루한 사람도 많이 만나게 했다. 사회에서 비정상으로 분류되는 사람들은 이러한 관점을 지니는 평범한 사람을 빠르게 탐지하는 능력이 있는데, 이러한 부류의 사람들이 내게 접근하는 바람에 나는 대학 시절 '정치인'이라는 별명이 따라붙었다. 이들과 얘기하면서 나는 날것 그대로의 사람들 그리고 세상에 알려지지 않은 사람들의 비밀스러운 슬픈 속사정에 대해서 알게 되었다. 물론 대부분의 비밀스러운 얘기들은 내가 의도해서 들은 것이 아니다. 나는 상대방이 비밀스러운 무언가를 내게 곧 터트릴 것 같은 직감이 들 때이면 잠을 청하는 척하거나 어디에 몰입해이거나 냉담한 분위기를 유재해서라도 듣고 싶지 않은 티를 냈다. 젊은 사람들이 비밀스럽게 공유하는 속사정들은 적어도 그들이 그 내용을 전달할 때 쓰는 용어들을 놓고 봤을 때 실제 비밀이라기보다는 이미 떠벌려진 내용이거나 많이 필터링된 내용인 경우가 대다수이기 때문이다. 누군가에 대한 평가를 함부로 하지 않고 미루려는 것은 희망을 끝까지 놓치지 않는 것과 마찬가지이다. 나는 가끔 가다가 아버지가 내게 해주신 조언을 까먹어 무언가를 놓칠까봐 두렵지만, 아버지가 생각했듯이, 그리고 나 또한 반복해서 스스로에게 명심하는 사실은, 선한 행동에 대한 기준은 태어날 때 제각각 다르게 설정된다는 것이다.
-```
+
+> 내 어리고 미성숙한 시절, 아버지께서는 내가 기억에 남는 조언을 하나 해주셨다. "너가 누군가를 비판하고 싶은 생각이 들 때, 그 사람이 너와 같은 혜택을 받고 자라온 것이 아니라는 것을 꼭 명심해라". 아버지는 그 말을 하고 나서는 첨언하시지 않으셨다. 아버지와 나 사이에서는 말이 많이 오가는 편이 아니었는데, 나는 그래도 그의 조언에 말로 표현하지 못할 무게가 있다는 것을 직감적으로 느꼈다. 그 조언에 영향을 받아 나는 누군가를 평가할 때 평가를 함부로 하지 않으려는 경향이 있다. 이 습관은 사실 내가 여러 특이한 사람들을 만나게 해주는 동시에 또 정말 지루한 사람도 많이 만나게 했다. 사회에서 비정상으로 분류되는 사람들은 이러한 관점을 지니는 평범한 사람을 빠르게 탐지하는 능력이 있는데, 이러한 부류의 사람들이 내게 접근하는 바람에 나는 대학 시절 '정치인'이라는 별명이 따라붙었다. 이들과 얘기하면서 나는 날것 그대로의 사람들 그리고 세상에 알려지지 않은 사람들의 비밀스러운 슬픈 속사정에 대해서 알게 되었다. 물론 대부분의 비밀스러운 얘기들은 내가 의도해서 들은 것이 아니다. 나는 상대방이 비밀스러운 무언가를 내게 곧 터트릴 것 같은 직감이 들 때이면 잠을 청하는 척하거나 어디에 몰입해이거나 냉담한 분위기를 유재해서라도 듣고 싶지 않은 티를 냈다. 젊은 사람들이 비밀스럽게 공유하는 속사정들은 적어도 그들이 그 내용을 전달할 때 쓰는 용어들을 놓고 봤을 때 실제 비밀이라기보다는 이미 떠벌려진 내용이거나 많이 필터링된 내용인 경우가 대다수이기 때문이다. 누군가에 대한 평가를 함부로 하지 않고 미루려는 것은 희망을 끝까지 놓치지 않는 것과 마찬가지이다. 나는 가끔 가다가 아버지가 내게 해주신 조언을 까먹어 무언가를 놓칠까봐 두렵지만, 아버지가 생각했듯이, 그리고 나 또한 반복해서 스스로에게 명심하는 사실은, 선한 행동에 대한 기준은 태어날 때 제각각 다르게 설정된다는 것이다.
+
 
 이 문단에서 많은 사람들은 Nick이 아버지에게서 들은 조언을 따른다면서 실제로 하는 행동은 그와 상반된다며 그의 말이 일관되지 않음을 주장한다. 평가를 함부로 하지 않는다면서, 본인과 얘기하려고 접근하는 사람들을 특이한 사람이나 지루한 사람이라고 평가하지 않나. 또는, 희망을 끝까지 놓치지 않는다면서 결국에 누군가 접근해서 그에게 비밀스러운 얘기를 하려고 하면 잠을 청하는 척하는 등. 그의 말과 행동에는 일관성이 없다고 지적하면서 그가 의존할 수 없는 화자라는 것을 강조하는 첫 페이지라는 얘기를 한다. 그런데, 꼭 그렇게 보아야 할까? 사실 평가를 미룬다는 것은 첫인상을 부정하는 것과 다른 것이라고 생각된다. 인간은 누구나 상대방에 대한 첫인상이 있는 법이다. 또한, 희망을 끊지 않는다고 해서 상대방에게 언제나 친절한 것은 신이 아닌 이상 불가능한 일이다. Nick은 단순히 타인들에 비해 특이하거나 비정상적인 사람들을 멀리하지 않고 그 이야기를 들어준다는 것뿐 마치 마더 테레사인양 그들을 따뜻하게 대한 것이 아니다. 그렇기 때문에 여기서 Nick의 상반됨에 집중하기 보다는 그가 전달하려는 교훈에 집중해봐야 할 것이다. 
 
