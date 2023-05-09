@@ -22,13 +22,17 @@
 }
 
 .markdown p code {
-  @apply px-1.5 py-1.5 rounded bg-[#D9D9D9] text-[85%] text-[#f06d49];
+  @apply px-1.5 py-1.5 rounded bg-[#78dea1] text-[85%] text-[#444444];
 }
 
 .markdown a {
-  @apply px-1.5 py-1.5 rounded text-[85%] text-[#d08d49];
+  @apply px-1.5 py-1.5 rounded text-[85%] text-[#78dea1];
 }
 
 .markdown code {
   @apply px-0 py-0 text-[85%];
+}
+
+.markdown blockquote {
+  @apply border-l-4 border-[#78dea1] pl-4;
 }
