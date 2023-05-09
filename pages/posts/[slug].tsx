@@ -11,6 +11,7 @@ import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
 import type PostType from "../../interfaces/post";
+import Utterances from "../../components/utterances";
 
 type Props = {
   post: PostType;
@@ -51,6 +52,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                 </div>
               </div>
               <PostBody content={post.content} />
+              <Utterances />
             </article>
           </>
         )}
