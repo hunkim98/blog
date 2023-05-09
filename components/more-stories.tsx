@@ -10,7 +10,7 @@ type Props = {
 const MoreStories = ({ posts, category }: Props) => {
   //this shows on home
   return (
-    <section>
+    <section className="md:ml-[300px]">
       <h2 className="mb-8 text-2xl md:text-4xl font-bold tracking-tighter leading-tight md:mt-[70px]">
         Posts {category && `on #${category}`}
       </h2>

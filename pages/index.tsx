@@ -22,7 +22,7 @@ export default function Index({ allPosts, categories }: Props) {
           <title>Hun&rsquo;s Blog</title>
         </Head>
         <Container>
-          <div className="md:min-w-[300px]">
+          <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">
             <Intro />
             <div className="mb-6 flex flex-wrap">
               {categories.map((category, index) => {

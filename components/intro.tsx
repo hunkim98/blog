@@ -1,5 +1,6 @@
 import React from "react";
 import { CMS_NAME } from "../lib/constants";
+import SocialIcon from "./social-icons";
 
 const Intro = () => {
   return (
@@ -10,6 +11,26 @@ const Intro = () => {
       <h4 className="md:text-left text-lg mt-5">
         I build what I want I want to use.
       </h4>
+      <div className="mt-[15px] flex space-x-1.5">
+        <SocialIcon
+          kind="github"
+          href={`https://github.com/hunkim98`}
+          size={6}
+        />
+        <SocialIcon
+          kind="twitter"
+          href={`https://twitter.com/hunkim98`}
+          size={6}
+        />
+        <SocialIcon kind="mail" href={`mailto:hunkim98@gmail.com`} size={6} />
+        {/* <SocialIcon kind="facebook" href={siteMetadata.facebook} size="6" /> */}
+        {/* <SocialIcon kind="youtube" href={siteMetadata.youtube} size="6" /> */}
+        {/* <SocialIcon
+          kind="linkedin"
+          href={`https://www.linkedin.com/in/hun-kim-2b290a223`}
+          size={6}
+        /> */}
+      </div>
     </section>
   );
 };
