@@ -7,6 +7,7 @@
 .markdown ol,
 .markdown blockquote {
   @apply my-10 leading-relaxed text-[#444444];
+  @apply relative;
 }
 
 .markdown h2 {
@@ -35,4 +36,20 @@
 
 .markdown blockquote {
   @apply border-l-4 border-[#78dea1] pl-4;
+}
+
+.markdown img {
+  @apply mx-auto;
+}
+
+.markdown em {
+  @apply w-full;
+  @apply absolute;
+  @apply ml-auto;
+  @apply mr-auto;
+  @apply left-0;
+  @apply right-0;
+  @apply text-center;
+  @apply opacity-70;
+  @apply text-sm;
 }
