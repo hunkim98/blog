@@ -1,11 +1,11 @@
 ---
 title: "Cryptogalaxy"
-excerpt: "Cache의 개념은 컴퓨터가 메모리를 접근하는 데 걸리는 시간이 너무 오래 걸려서 생긴 개념이다. 일반적으로 컴퓨터는 하드디스크에 메모리를 저장하는데, 컴퓨터가 매번 어떤 변수에 데이터를 넣거나 어떤 데이터를 불러올 때 하드디스크와 직접 소통하면 시간이 너무 걸릴 수 있는 단점이 존재한다."
+excerpt: "CryptoGalaxy is an attempt that visualizes the crypto market. It borrows its concept from the ‘space’ and connects galaxy components with several crypto market indicators. The main purpose of the project was to aid viewers understand the crypto market with visual components."
 startDate: "2022-09-01"
 date: "2022-12-08"
 author:
   name: Kim Dong Hun
-keyword: "Cache"
+keyword: "Crypto"
 categories: ["data-visualization"]
 coverImg: "/assets/project/cryptogalaxy/logo.png"
 WIP: false
