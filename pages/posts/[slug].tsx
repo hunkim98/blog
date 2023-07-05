@@ -6,7 +6,12 @@ import PostBody from "../../components/post-body";
 import Header from "../../components/header";
 import PostHeader from "../../components/post-header";
 import Layout from "../../components/layout";
-import { getPostBySlug, getAllPosts } from "../../lib/api";
+import {
+  getPostBySlug,
+  getAllPosts,
+  getAllProjects,
+  getProjectBySlug,
+} from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
@@ -68,7 +73,7 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
+  const post = getProjectBySlug(params.slug, [
     "title",
     "date",
     "slug",
@@ -90,7 +95,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllProjects(["slug"]);
 
   return {
     paths: posts.map((post) => {
