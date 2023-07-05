@@ -73,7 +73,7 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getProjectBySlug(params.slug, [
+  const post = getPostBySlug(params.slug, [
     "title",
     "date",
     "slug",
@@ -95,7 +95,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllProjects(["slug"]);
+  const posts = getAllPosts(["slug"]);
 
   return {
     paths: posts.map((post) => {

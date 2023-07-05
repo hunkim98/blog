@@ -8,17 +8,18 @@ type Props = {
   title: string;
   date: string;
   excerpt: string;
+  coverImg: string;
   slug: string;
 };
 
-const ProjectPreview = ({ title, date, excerpt, slug }: Props) => {
+const ProjectPreview = ({ title, date, excerpt, slug, coverImg }: Props) => {
   return (
     <div>
-      {/* <div className="mb-5">
-        <CoverImage slug={slug} title={title} src={coverImage} />
-      </div> */}
+      <div className="mb-5">
+        <CoverImage slug={slug} title={title} src={coverImg} />
+      </div>
       <h3 className="text-2xl mb-3 leading-snug font-bold">
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
+        <Link as={`/projects/${slug}`} href="/projects/[slug]">
           <a className="hover:underline">{title}</a>
         </Link>
       </h3>

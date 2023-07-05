@@ -6,6 +6,7 @@ type ProjectType = {
   content: string;
   categories: string[];
   keyword: string;
+  coverImg: string;
 };
 
 export default ProjectType;

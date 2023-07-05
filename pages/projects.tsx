@@ -6,12 +6,12 @@ import Layout from "../components/layout";
 import { getAllProjects } from "../lib/api";
 import Head from "next/head";
 import { CMS_NAME } from "../lib/constants";
-import Post from "../interfaces/post";
+import Project from "../interfaces/project";
 import Link from "next/link";
 import MoreProjects from "../components/more-projects";
 
 type Props = {
-  allProjects: Post[];
+  allProjects: Project[];
   categories: string[];
 };
 
@@ -54,6 +54,7 @@ export const getStaticProps = async () => {
     "excerpt",
     "keyword",
     "categories",
+    "coverImg",
     "WIP",
   ]).filter((element) => !element.WIP);
   const categorySet = new Set();

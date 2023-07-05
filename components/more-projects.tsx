@@ -23,6 +23,7 @@ const MoreProjects = ({ projects, category }: Props) => {
             date={project.date}
             slug={project.slug}
             excerpt={project.excerpt}
+            coverImg={project.coverImg}
           />
         ))}
       </div>
