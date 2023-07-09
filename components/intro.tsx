@@ -1,11 +1,18 @@
 import React from "react";
 import { CMS_NAME } from "../lib/constants";
 import SocialIcon from "./social-icons";
+import { useRouter } from "next/router";
 
 const Intro = () => {
+  const router = useRouter();
   return (
     <section className="flex-col flex md:justify-between mt-16 mb-6 md:mb-10">
-      <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8">
+      <h1
+        className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8"
+        onClick={() => {
+          router.push("/");
+        }}
+      >
         Hun Kim
       </h1>
       <h4 className="md:text-left text-lg mt-5">

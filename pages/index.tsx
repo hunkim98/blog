@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../components/container";
 import MoreStories from "../components/more-stories";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllPosts } from "../lib/api";
+import { getAllPosts, getAllProjects } from "../lib/api";
 import Head from "next/head";
 import { CMS_NAME } from "../lib/constants";
 import Post from "../interfaces/post";
 import Link from "next/link";
+import NavBar from "../components/nav-bar";
+import Project from "../interfaces/project";
+import MoreProjects from "../components/more-projects";
+import About from "../components/about";
 
 type Props = {
   allPosts: Post[];
-  categories: string[];
+  allProjects: Project[];
+  postCategories: string[];
+  projectCategories: string[];
 };
 
-export default function Index({ allPosts, categories }: Props) {
+export default function Index({
+  allPosts,
+  postCategories,
+  allProjects,
+  projectCategories,
+}: Props) {
+  const [selectedCategory, setSelectedCategory] = React.useState<
+    "About" | "Projects" | "Posts" | "CV"
+  >("About");
+
+  useEffect(() => {
+    return;
+  }, [selectedCategory]);
   return (
     <>
       <Layout>
@@ -25,7 +43,7 @@ export default function Index({ allPosts, categories }: Props) {
           <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">
             <Intro />
             <div className="mb-6 flex flex-wrap">
-              {categories.map((category, index) => {
+              {projectCategories.map((category, index) => {
                 return (
                   <a
                     className="pr-2"
@@ -38,7 +56,19 @@ export default function Index({ allPosts, categories }: Props) {
               })}
             </div>
           </div>
-          {allPosts.length > 0 && <MoreStories posts={allPosts} />}
+          <div>
+            <NavBar
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+            {selectedCategory === "About" && allPosts.length > 0 && <About />}
+            {selectedCategory === "Posts" && allPosts.length > 0 && (
+              <MoreStories posts={allPosts} />
+            )}
+            {selectedCategory === "Projects" && allPosts.length > 0 && (
+              <MoreProjects projects={allProjects} />
+            )}
+          </div>
         </Container>
       </Layout>
     </>
@@ -46,6 +76,26 @@ export default function Index({ allPosts, categories }: Props) {
 }
 
 export const getStaticProps = async () => {
+  const allProjects = getAllProjects([
+    "title",
+    "date",
+    "slug",
+    "excerpt",
+    "keyword",
+    "categories",
+    "coverImg",
+    "WIP",
+  ]).filter((element) => !element.WIP);
+  const projectCategorySet = new Set();
+  allProjects
+    .filter((element) => !element.WIP)
+    .map((post) => {
+      const categories = post.categories as string[];
+      categories.map((category) => {
+        projectCategorySet.add(category);
+      });
+    });
+
   const allPosts = getAllPosts([
     "title",
     "date",
@@ -56,17 +106,22 @@ export const getStaticProps = async () => {
     "categories",
     "WIP",
   ]).filter((element) => !element.WIP);
-  const categorySet = new Set();
+  const postCategorySet = new Set();
   allPosts
     .filter((element) => !element.WIP)
     .map((post) => {
       const categories = post.categories as string[];
       categories.map((category) => {
-        categorySet.add(category);
+        postCategorySet.add(category);
       });
     });
 
   return {
-    props: { allPosts, categories: Array.from(categorySet) },
+    props: {
+      allPosts,
+      postCategories: Array.from(postCategorySet),
+      allProjects,
+      projectCategories: Array.from(projectCategorySet),
+    },
   };
 };

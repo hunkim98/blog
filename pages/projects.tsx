@@ -39,7 +39,10 @@ export default function Index({ allProjects, categories }: Props) {
               })}
             </div>
           </div>
-          {allProjects.length > 0 && <MoreProjects projects={allProjects} />}
+
+          {allProjects.length > 0 && (
+            <MoreProjects projects={allProjects} isTitleShown={true} />
+          )}
         </Container>
       </Layout>
     </>

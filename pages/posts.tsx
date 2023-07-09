@@ -38,7 +38,9 @@ export default function Index({ allPosts, categories }: Props) {
               })}
             </div>
           </div>
-          {allPosts.length > 0 && <MoreStories posts={allPosts} />}
+          {allPosts.length > 0 && (
+            <MoreStories posts={allPosts} isTitleShown={true} />
+          )}
         </Container>
       </Layout>
     </>
