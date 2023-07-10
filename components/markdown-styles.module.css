@@ -23,11 +23,11 @@
 }
 
 .markdown p code {
-  @apply px-1.5 py-1.5 rounded bg-[#78dea1] text-[85%] text-[#444444];
+  @apply px-1.5 py-1.5 rounded bg-lightGreen text-[85%] text-[#444444];
 }
 
 .markdown a {
-  @apply px-1.5 py-1.5 rounded text-[85%] text-[#78dea1];
+  @apply px-1.5 py-1.5 rounded text-[85%] text-lightGreen font-bold underline underline-offset-4;
 }
 
 .markdown code {
@@ -35,21 +35,13 @@
 }
 
 .markdown blockquote {
-  @apply border-l-4 border-[#78dea1] pl-4;
+  @apply border-l-4 border-lightGreen pl-4;
 }
 
 .markdown img {
-  @apply mx-auto;
+  @apply mx-auto mb-2;
 }
 
 .markdown em {
-  @apply w-full;
-  @apply absolute;
-  @apply ml-auto;
-  @apply mr-auto;
-  @apply left-0;
-  @apply right-0;
-  @apply text-center;
-  @apply opacity-70;
-  @apply text-sm;
+  @apply w-full absolute ml-auto mr-auto left-0 right-0 text-center opacity-70 text-sm;
 }

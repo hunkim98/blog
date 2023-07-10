@@ -1,20 +1,20 @@
 ---
-title: "Cryptogalaxy"
+title: "Cryptogalaxy: Visualizing cypto markets"
 excerpt: "CryptoGalaxy is an attempt that visualizes the crypto market. It borrows its concept from the ‘space’ and connects galaxy components with several crypto market indicators. The main purpose of the project was to aid viewers understand the crypto market with visual components."
 startDate: "2022-09-01"
 date: "2022-12-08"
 author:
   name: Kim Dong Hun
-keyword: "Crypto"
+keyword: "crypto"
 categories: ["data-visualization"]
 coverImg: "/assets/project/cryptogalaxy/logo.png"
 WIP: false
 ---
 
-[View Website](https://hunkim98.github.io/cryptogalaxy/)
+[Visit Website →](https://hunkim98.github.io/cryptogalaxy/)
 
 <p>
-<img alt="yorkie_website" width="600px" src="/assets/project/cryptogalaxy/logo.png">
+<img alt="cryptogalaxy logo" width="600px" src="/assets/project/cryptogalaxy/logo.png">
 <em>CryptoGalaxy Logo</em>
 </p>
 
