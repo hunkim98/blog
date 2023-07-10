@@ -37,7 +37,7 @@ export default function Index({
     <>
       <Layout>
         <Head>
-          <title>Hun&rsquo;s Blog</title>
+          <title>Hun Kim</title>
         </Head>
         <Container>
           <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">

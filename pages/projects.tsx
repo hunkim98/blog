@@ -20,7 +20,7 @@ export default function Index({ allProjects, categories }: Props) {
     <>
       <Layout>
         <Head>
-          <title>Hun&rsquo;s Blog</title>
+          <title>Hun&rsquo;s Projects</title>
         </Head>
         <Container>
           <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">

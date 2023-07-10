@@ -11,7 +11,13 @@ const NavBar = ({
   return (
     <div className="md:ml-[300px] flex mt-16 mb-6 md:mb-7 gap-10">
       <div
-        className={"" + (selectedCategory === "About" ? "font-bold" : "")}
+        className={
+          "px-5 py-1" +
+          " " +
+          (selectedCategory === "About"
+            ? "font-bold border-b-lightGreen border-b-2"
+            : "")
+        }
         onClick={() => {
           setSelectedCategory("About");
         }}
@@ -19,7 +25,13 @@ const NavBar = ({
         About
       </div>
       <div
-        className={"" + (selectedCategory === "Projects" ? "font-bold" : "")}
+        className={
+          "px-5 py-1" +
+          " " +
+          (selectedCategory === "Projects"
+            ? "font-bold border-b-lightGreen border-b-2"
+            : "")
+        }
         onClick={() => {
           setSelectedCategory("Projects");
         }}
@@ -27,14 +39,20 @@ const NavBar = ({
         Projects
       </div>
       <div
-        className={"" + (selectedCategory === "Posts" ? "font-bold" : "")}
+        className={
+          "px-5 py-1" +
+          " " +
+          (selectedCategory === "Posts"
+            ? "font-bold border-b-lightGreen border-b-2"
+            : "")
+        }
         onClick={() => {
           setSelectedCategory("Posts");
         }}
       >
         Posts
       </div>
-      <div>CV</div>
+      <div className={"px-5 py-1"}>CV</div>
     </div>
   );
 };
