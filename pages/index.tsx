@@ -12,6 +12,7 @@ import NavBar from "../components/nav-bar";
 import Project from "../interfaces/project";
 import MoreProjects from "../components/more-projects";
 import About from "../components/about";
+import { useRouter } from "next/router";
 
 type Props = {
   allPosts: Post[];
@@ -26,13 +27,23 @@ export default function Index({
   allProjects,
   projectCategories,
 }: Props) {
-  const [selectedCategory, setSelectedCategory] = React.useState<
-    "About" | "Projects" | "Posts" | "CV"
-  >("About");
+  const router = useRouter();
+  console.log(router.query);
 
   useEffect(() => {
-    return;
-  }, [selectedCategory]);
+    if (router.query) {
+      const category = router.query.category;
+      if (category) {
+        console.log(category);
+        setSelectedCategory(category as "about" | "projects" | "posts" | "CV");
+      }
+    }
+  }, [router.query]);
+
+  const [selectedCategory, setSelectedCategory] = React.useState<
+    "about" | "projects" | "posts" | "CV"
+  >("about");
+
   return (
     <>
       <Layout>
@@ -61,11 +72,11 @@ export default function Index({
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
             />
-            {selectedCategory === "About" && allPosts.length > 0 && <About />}
-            {selectedCategory === "Posts" && allPosts.length > 0 && (
+            {selectedCategory === "about" && allPosts.length > 0 && <About />}
+            {selectedCategory === "posts" && allPosts.length > 0 && (
               <MoreStories posts={allPosts} />
             )}
-            {selectedCategory === "Projects" && allPosts.length > 0 && (
+            {selectedCategory === "projects" && allPosts.length > 0 && (
               <MoreProjects projects={allProjects} />
             )}
           </div>

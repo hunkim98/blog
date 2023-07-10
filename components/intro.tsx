@@ -15,7 +15,7 @@ const Intro = () => {
       >
         Hun Kim
       </h1>
-      <h4 className="md:text-left text-md mt-5 pr-4">
+      <h4 className="md:text-left text-md mt-5 pr-6">
         I am a developer driven by the desire to create services that enable
         people to perceive their surrounding worlds in unique and transformative
         ways

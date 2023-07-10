@@ -1,12 +1,12 @@
 import React from "react";
 
-import Layout from "../../components/layout";
-import Container from "../../components/container";
-import Header from "../../components/header";
+import Layout from "../../../components/layout";
+import Container from "../../../components/container";
+import Header from "../../../components/header";
 import Head from "next/head";
-import { getAllPosts, getPostBySlug, getPostSlugs } from "../../lib/api";
-import Post from "../../interfaces/post";
-import MoreStories from "../../components/more-stories";
+import { getAllPosts, getPostBySlug, getPostSlugs } from "../../../lib/api";
+import Post from "../../../interfaces/post";
+import MoreStories from "../../../components/more-stories";
 
 type Props = {
   categoryPosts: Post[];
@@ -21,7 +21,7 @@ export default function Category({ categoryPosts, category }: Props) {
           <title>Posts on {category}</title>
         </Head>
         <div className="container mx-auto px-5 max-w-5xl">
-          <Header />
+          <Header title={"Hun's blog"} link="/" />
           {categoryPosts.length > 0 && (
             <MoreStories category={category} posts={categoryPosts} />
           )}

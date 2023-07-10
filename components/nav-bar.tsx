@@ -9,50 +9,50 @@ const NavBar = ({
   setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
-    <div className="md:ml-[300px] flex mt-16 mb-6 md:mb-7 gap-10">
+    <div className="md:ml-[300px] flex mt-16 mb-6 md:mb-7 md:gap-10 gap-6 overflow-auto select-none">
       <div
         className={
-          "px-5 py-1" +
+          "md:px-5 py-1" +
           " " +
-          (selectedCategory === "About"
+          (selectedCategory === "about"
             ? "font-bold border-b-lightGreen border-b-2"
             : "")
         }
         onClick={() => {
-          setSelectedCategory("About");
+          setSelectedCategory("about");
         }}
       >
         About
       </div>
       <div
         className={
-          "px-5 py-1" +
+          "md:px-5 py-1" +
           " " +
-          (selectedCategory === "Projects"
+          (selectedCategory === "projects"
             ? "font-bold border-b-lightGreen border-b-2"
             : "")
         }
         onClick={() => {
-          setSelectedCategory("Projects");
+          setSelectedCategory("projects");
         }}
       >
         Projects
       </div>
       <div
         className={
-          "px-5 py-1" +
+          "md:px-5 py-1" +
           " " +
-          (selectedCategory === "Posts"
+          (selectedCategory === "posts"
             ? "font-bold border-b-lightGreen border-b-2"
             : "")
         }
         onClick={() => {
-          setSelectedCategory("Posts");
+          setSelectedCategory("posts");
         }}
       >
         Posts
       </div>
-      <div className={"px-5 py-1"}>CV</div>
+      <div className={"md:px-5 py-1"}>CV</div>
     </div>
   );
 };

@@ -32,7 +32,7 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
   return (
     <Layout preview={preview}>
       <div className="container mx-auto px-5 max-w-5xl">
-        <Header />
+        <Header title={"← More Projects"} link="/?category=projects" />
 
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
