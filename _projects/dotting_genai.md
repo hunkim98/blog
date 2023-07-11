@@ -14,8 +14,8 @@ WIP: false
 [Hackathon Presentation Video →](https://www.youtube.com/watch?v=nKYJNuTxfTs)
 
 <p>
-<video alt="Demo Video" width="100%" src="/assets/project/dotting_genai/demo.mov">
-<em>Demo Video</em>
+<img alt="Demo" width="100%" src="/assets/project/dotting_genai/demo.gif">
+<em>Demo</em>
 </p>
 
 Generative AI is a hot topic discussed everywhere. In the hopes of decreasing the barrier for creating images, many researchers are publishing better image generation models everyday. However, one problem exists in current Generative AI services: You cannot modify the generated images once they are generated.
