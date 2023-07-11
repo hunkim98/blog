@@ -8,7 +8,7 @@ const Intro = () => {
   return (
     <section className="flex-col flex md:justify-between mt-16 mb-6 md:mb-10">
       <h1
-        className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8"
+        className="cursor-pointer text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8"
         onClick={() => {
           router.push("/");
         }}

@@ -12,7 +12,7 @@ const NavBar = ({
     <div className="md:ml-[300px] flex mt-16 mb-6 md:mb-7 md:gap-10 gap-6 overflow-auto select-none">
       <div
         className={
-          "md:px-5 py-1" +
+          "cursor-pointer md:px-5 py-1" +
           " " +
           (selectedCategory === "about"
             ? "font-bold border-b-lightGreen border-b-2"
@@ -26,7 +26,7 @@ const NavBar = ({
       </div>
       <div
         className={
-          "md:px-5 py-1" +
+          "cursor-pointer md:px-5 py-1" +
           " " +
           (selectedCategory === "projects"
             ? "font-bold border-b-lightGreen border-b-2"
@@ -40,7 +40,7 @@ const NavBar = ({
       </div>
       <div
         className={
-          "md:px-5 py-1" +
+          "cursor-pointer md:px-5 py-1" +
           " " +
           (selectedCategory === "posts"
             ? "font-bold border-b-lightGreen border-b-2"
@@ -52,7 +52,7 @@ const NavBar = ({
       >
         Posts
       </div>
-      <div className={"md:px-5 py-1"}>CV</div>
+      <div className={"cursor-pointer md:px-5 py-1"}>CV</div>
     </div>
   );
 };
