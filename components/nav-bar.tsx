@@ -52,7 +52,12 @@ const NavBar = ({
       >
         Posts
       </div>
-      <div className={"cursor-pointer md:px-5 py-1"}>CV</div>
+      <a
+        href={"assets/blog/cv/HunKim_CV.pdf"}
+        className={"cursor-pointer md:px-5 py-1"}
+      >
+        CV
+      </a>
     </div>
   );
 };
