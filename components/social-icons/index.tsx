@@ -37,7 +37,6 @@ const SocialIcon = ({
   const SocialSvg = components[kind];
 
   // return null;
-  console.log(SocialSvg);
 
   return (
     <a

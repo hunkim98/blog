@@ -28,13 +28,11 @@ export default function Index({
   projectCategories,
 }: Props) {
   const router = useRouter();
-  console.log(router.query);
 
   useEffect(() => {
     if (router.query) {
       const category = router.query.category;
       if (category) {
-        console.log(category);
         setSelectedCategory(category as "about" | "projects" | "posts" | "CV");
       }
     }
