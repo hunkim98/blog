@@ -14,8 +14,13 @@ WIP: false
 [Visit Website →](https://hunkim98.github.io/cryptogalaxy/)
 
 <p>
-<img alt="cryptogalaxy logo" width="600px" src="/assets/project/cryptogalaxy/logo.png">
+<img alt="cryptogalaxy logo" width="100%" src="/assets/project/cryptogalaxy/logo.png">
 <em>CryptoGalaxy Logo</em>
+</p>
+
+<p>
+<img alt="Demo" width="100%" src="/assets/project/cryptogalaxy/demo.gif">
+<em>Demo</em>
 </p>
 
 CryptoGalaxy attempts to visualize the Crypto Market in a fun and interactive way.
