@@ -20,6 +20,7 @@ export default function Category({ categoryPosts, category }: Props) {
         <Head>
           <title>Posts on {category}</title>
         </Head>
+
         <div className="container mx-auto px-5 max-w-5xl">
           <Header title={"Hun's blog"} link="/" />
           {categoryPosts.length > 0 && (
@@ -46,7 +47,8 @@ export const getStaticProps = async ({ params }: Params) => {
     "excerpt",
     "keyword",
     "categories",
-  ]);
+    "WIP",
+  ]).filter((element) => !element.WIP);
   const categoryPosts = allPosts.filter((post) =>
     post.categories.includes(params.slug)
   );

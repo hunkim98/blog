@@ -57,7 +57,7 @@ export default function Index({
                   <a
                     className="pr-2"
                     key={index}
-                    href={`/category/${category}`}
+                    href={`/category/projects/${category}`}
                   >
                     #{category}
                   </a>

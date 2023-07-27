@@ -4,28 +4,52 @@ import Layout from "../../../components/layout";
 import Container from "../../../components/container";
 import Header from "../../../components/header";
 import Head from "next/head";
-import { getAllPosts, getPostBySlug, getPostSlugs } from "../../../lib/api";
-import Post from "../../../interfaces/post";
-import MoreStories from "../../../components/more-stories";
+import { getAllPosts, getAllProjects } from "../../../lib/api";
+import Project from "../../../interfaces/project";
+
+import MoreProjects from "../../../components/more-projects";
+import Intro from "../../../components/intro";
 
 type Props = {
-  categoryPosts: Post[];
+  categoryProjects: Project[];
   category: string;
+  projectCategories: string[];
 };
 
-export default function Category({ categoryPosts, category }: Props) {
+export default function Category({
+  categoryProjects,
+  category,
+  projectCategories,
+}: Props) {
   return (
     <>
       <Layout>
         <Head>
           <title>Projects on {category}</title>
         </Head>
-        <div className="container mx-auto px-5 max-w-5xl">
-          <Header title={"Hun's blog"} link="/" />
-          {categoryPosts.length > 0 && (
-            <MoreStories category={category} posts={categoryPosts} />
-          )}
-        </div>
+        <Container>
+          <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">
+            <Intro />
+            <div className="mb-6 flex flex-wrap">
+              {projectCategories.map((category, index) => {
+                return (
+                  <a
+                    className="pr-2"
+                    key={index}
+                    href={`/category/projects/${category}`}
+                  >
+                    #{category}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+          <div className="container mx-auto px-5 max-w-5xl">
+            {categoryProjects.length > 0 && (
+              <MoreProjects category={category} projects={categoryProjects} />
+            )}
+          </div>
+        </Container>
       </Layout>
     </>
   );
@@ -38,29 +62,43 @@ type Params = {
 };
 
 export const getStaticProps = async ({ params }: Params) => {
-  const allPosts = getAllPosts([
+  const allProjects = getAllProjects([
     "title",
     "date",
     "slug",
-    "author",
     "excerpt",
     "keyword",
     "categories",
-  ]);
-  const categoryPosts = allPosts.filter((post) =>
-    post.categories.includes(params.slug)
+    "coverImg",
+    "WIP",
+  ]).filter((element) => !element.WIP);
+  const projectCategorySet = new Set();
+  allProjects
+    .filter((element) => !element.WIP)
+    .map((project) => {
+      const categories = project.categories as string[];
+      categories.map((category) => {
+        projectCategorySet.add(category);
+      });
+    });
+  const categoryProjects = allProjects.filter((project) =>
+    project.categories.includes(params.slug)
   );
 
   return {
-    props: { categoryPosts, category: params.slug },
+    props: {
+      categoryProjects,
+      category: params.slug,
+      projectCategories: Array.from(projectCategorySet),
+    },
   };
 };
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["categories"]);
+  const projects = getAllProjects(["categories"]);
   const categorySet = new Set();
-  posts.map((post) => {
-    const categories = post.categories as string[];
+  projects.map((project) => {
+    const categories = project.categories as string[];
     categories.map((category) => {
       categorySet.add(category);
     });
