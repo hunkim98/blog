@@ -7,6 +7,12 @@ const Intro = () => {
   const router = useRouter();
   return (
     <section className="flex-col flex md:justify-between mt-16 mb-6 md:mb-10">
+      {/* <div className="md:pr-8">
+        <img
+          className="h-[250px] object-cover w-full mb-7 rounded-lg drop-shadow-md"
+          src="/assets/profile/dotting_intro.JPG"
+        />
+      </div> */}
       <h1
         className="cursor-pointer text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8"
         onClick={() => {

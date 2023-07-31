@@ -47,6 +47,10 @@ export default function Index({
       <Layout>
         <Head>
           <title>Hun Kim</title>
+          <meta
+            name="description"
+            content="Hello this is Hun Kim, a software developer driven by the desire to create services that enable people to perceive their surrounding worlds in unique and transformative ways"
+          />
         </Head>
         <Container>
           <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">
