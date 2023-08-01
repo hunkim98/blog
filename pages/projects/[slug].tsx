@@ -17,6 +17,7 @@ import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
 import type ProjectType from "../../interfaces/project";
 import Utterances from "../../components/utterances";
+import { BLOG_URL } from "../../lib/constants";
 
 type Props = {
   project: ProjectType;
@@ -40,7 +41,13 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
           <>
             <article className="mb-32">
               <Head>
-                <title>{project.title} | hunkim98&rsquo;s Projects</title>
+                <title>{project.title}</title>
+                <meta name="description" content={project.excerpt} />
+                <meta name="title" content={project.title} />
+                <meta
+                  property="og:image"
+                  content={BLOG_URL + project.coverImg}
+                />
               </Head>
               <div className="max-w-3xl mx-auto">
                 <div className="mb-6 text-lg">

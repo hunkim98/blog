@@ -19,6 +19,7 @@ export default function Category({ categoryPosts, category }: Props) {
       <Layout>
         <Head>
           <title>Posts on {category}</title>
+          <meta name="title" content={`My posts on ${category}`} />
         </Head>
 
         <div className="container mx-auto px-5 max-w-5xl">

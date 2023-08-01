@@ -39,7 +39,9 @@ export default function Post({ post, morePosts, preview }: Props) {
           <>
             <article className="mb-32">
               <Head>
-                <title>{post.title} | hunkim98&rsquo;s Blog</title>
+                <title>{post.title}</title>
+                <meta name="description" content={post.excerpt} />
+                <meta name="title" content={post.title} />
               </Head>
               <PostHeader
                 title={post.title}

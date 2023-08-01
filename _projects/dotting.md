@@ -1,12 +1,16 @@
 ---
-title: "Dotting Pixel Art Component"
+title: "Dotting: Opensource web pixel editor"
 excerpt: "Dotting is an opensource project that I have started to provide React developers a pixel art editor"
-startDate: "2022-09-01"
-date: "2022-12-08"
+startDate: "2022-01-18"
+date: "ongoing"
 author:
   name: Kim Dong Hun
-keyword: "cryptography"
-categories: ["opensource"]
-coverImg: "/assets/project/cryptogalaxy/logo.png"
+keyword: "opensource"
+categories: ["opensource", "editor"]
+coverImg: "/assets/project/dotting/thumbnail.png"
 WIP: true
 ---
+
+[Github Repository →](https://github.com/hunkim98/dotting)
+
+Dotting is an opensource web-based React component for creating pixel art editors. With Dotting, React developers can easily implement customized pixel art editors into their websites. The biggest advantage of Dotting is that the pixel canvas is resizable; users can intuitively resize the pixel canvas to any size they want. Not only does it allow users to edit the pixel canvas, but the component also provides hooks that users can use to listen to user events and experiment with their own pixel art editor.

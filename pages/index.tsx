@@ -102,8 +102,9 @@ export const getStaticProps = async () => {
   const projectCategorySet = new Set();
   allProjects
     .filter((element) => !element.WIP)
-    .map((post) => {
-      const categories = post.categories as string[];
+    .map((project) => {
+      console.log(project.title, project.categories);
+      const categories = project.categories as string[];
       categories.map((category) => {
         projectCategorySet.add(category);
       });

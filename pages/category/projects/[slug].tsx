@@ -26,6 +26,7 @@ export default function Category({
       <Layout>
         <Head>
           <title>Projects on {category}</title>
+          <meta name="title" content={`My projects on ${category}`} />
         </Head>
         <Container>
           <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">

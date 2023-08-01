@@ -1,5 +1,6 @@
 import React from "react";
-import { parseISO, format } from "date-fns";
+import { parseISO, format, parse, isValid } from "date-fns";
+import { enGB } from "date-fns/locale";
 
 type Props = {
   dateString: string;
@@ -7,6 +8,9 @@ type Props = {
 
 const DateFormatter = ({ dateString }: Props) => {
   const date = parseISO(dateString);
+  const parsedDate = parse(dateString, "P", new Date(), { locale: enGB });
+  const isValidDate = isValid(parsedDate);
+  if (!isValidDate) return <div>{dateString}</div>;
   return <time dateTime={dateString}>{format(date, "LLLL	d, yyyy")}</time>;
 };
 
