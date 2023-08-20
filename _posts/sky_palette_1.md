@@ -7,7 +7,7 @@ author:
 keyword: "vision"
 categories: ["project", "ai", "color"]
 WIP: false
-thumbnail: ""
+thumbnail: "/assets/posts/sky_palette/sky_palette_kmeans_initial.png"
 ---
 
 ## The sky is the best color palette

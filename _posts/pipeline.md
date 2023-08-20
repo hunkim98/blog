@@ -7,6 +7,7 @@ author:
 keyword: "Pipeline"
 categories: ["computer-architecture"]
 WIP: false
+thumbnail: "/assets/posts/pipeline/thumbnail.png"
 ---
 
 ## Make Common Case Fast!
@@ -21,7 +22,10 @@ WIP: false
 
 여러 instruction을 병렬 수행하는 것이라고 보면 된다. Risc-v에서 배운 pipeline 단계는 Instruction Fetch, Instruction Decode / Register Read, Execute, Memory fetch, Write back 이었다.
 
-<img width="1308" alt="Screen Shot 2022-06-14 at 10 22 14 PM" src="https://user-images.githubusercontent.com/57612141/185966071-f5937e16-313b-41e5-bcbd-9abe8c01517a.png">
+<p>
+<img alt="pipeline memo" width="100%" src="/assets/posts/pipeline/thumbnail.png">
+<em>Pipeline Memo</em>
+</p>
 
 위는 교재 ppt 자료이다. 흔히 어떤 일을 수행하기 위해서 single cycle을 생각하는 것이 흔하다. 하나의 기계가 있다면 그 기계는 일단 하나를 수행 완료한 뒤에 다른 것을 수행하는 것이 정상적으로 느껴진다. 하지만, 수행하는 일을 단계로 나눠서 한꺼번에 여러 단계를 수행할 수 있게 하면 어떨까? 각 단계를 중첩해서 실행하게 하면 걸리는 시간이 크게 줄어지는 것을 확인할 수 있다.
 

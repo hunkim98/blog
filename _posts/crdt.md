@@ -7,6 +7,7 @@ author:
 keyword: "CRDT Basics"
 categories: ["CRDT", "Algorithm"]
 WIP: false
+thumbnail: "assets/posts/crdt/thumbnail.png"
 ---
 
 ## How to resolve multiple peers editing the same text context
