@@ -27,7 +27,7 @@ const ProjectPreview = ({ title, date, excerpt, slug, coverImg }: Props) => {
           <DateFormatter dateString={date} />
         </div>
 
-        <p className="text-md leading-relaxed mb-4 opacity-40 px-5">
+        <p className="text-md leading-relaxed mb-4 opacity-40 px-5 line-clamp-5">
           {excerpt}
         </p>
       </div>

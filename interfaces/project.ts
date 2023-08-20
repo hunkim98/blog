@@ -7,6 +7,10 @@ type ProjectType = {
   categories: string[];
   keyword: string;
   coverImg: string;
+  prevPath?: string;
+  nextPath?: string;
+  prevTitle?: string;
+  nextTitle?: string;
 };
 
 export default ProjectType;

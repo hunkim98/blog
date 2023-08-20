@@ -48,6 +48,7 @@ export const getStaticProps = async ({ params }: Params) => {
     "excerpt",
     "keyword",
     "categories",
+    "thumbnail",
     "WIP",
   ]).filter((element) => !element.WIP);
   const categoryPosts = allPosts.filter((post) =>

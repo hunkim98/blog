@@ -18,6 +18,7 @@ import markdownToHtml from "../../lib/markdownToHtml";
 import type ProjectType from "../../interfaces/project";
 import Utterances from "../../components/utterances";
 import { BLOG_URL } from "../../lib/constants";
+import NavigateToOther from "../../components/navigate-to-other";
 
 type Props = {
   project: ProjectType;
@@ -61,6 +62,14 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
                 </div>
               </div>
               <PostBody content={project.content} />
+              <div className="max-w-3xl mx-auto mt-16 mb-16">
+                <NavigateToOther
+                  prevPath={project.prevPath}
+                  nextPath={project.nextPath}
+                  prevTitle={project.prevTitle}
+                  nextTitle={project.nextTitle}
+                />
+              </div>
               <Utterances />
             </article>
           </>
@@ -77,6 +86,9 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
+  const projects = getAllProjects(["title", "date", "slug", "WIP"]).filter(
+    (post) => !post.WIP
+  );
   const project = getProjectBySlug(params.slug, [
     "title",
     "date",
@@ -88,12 +100,23 @@ export async function getStaticProps({ params }: Params) {
     "coverImg",
   ]);
   const content = await markdownToHtml((project.content as string) || "");
+  const foundIndex = projects.findIndex((p) => p.slug === params.slug);
+  const prevProject = projects[foundIndex + 1];
+  const nextProject = projects[foundIndex - 1];
+  const prevPath = prevProject ? `/projects/${prevProject.slug}` : "";
+  const nextPath = nextProject ? `/projects/${nextProject.slug}` : "";
+  const prevTitle = prevProject ? prevProject.title : "";
+  const nextTitle = nextProject ? nextProject.title : "";
 
   return {
     props: {
       project: {
         ...project,
         content,
+        prevPath,
+        nextPath,
+        prevTitle,
+        nextTitle,
       },
     },
   };

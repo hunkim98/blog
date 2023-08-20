@@ -26,6 +26,7 @@ const MoreStories = ({ posts, category, isTitleShown }: Props) => {
             author={post.author}
             slug={post.slug}
             excerpt={post.excerpt}
+            coverImg={post.thumbnail}
           />
         ))}
       </div>

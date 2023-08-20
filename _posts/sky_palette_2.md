@@ -7,7 +7,7 @@ author:
 keyword: "vision"
 categories: ["project", "ai", "color"]
 WIP: false
-thumbnail: "/assets/posts/sky_palette/pca1.png"
+thumbnail: "/assets/posts/sky_palette/segmented_image.jpg"
 ---
 
 This post is a continuation of the [Sky Palette Project 1](./sky_palette_1).

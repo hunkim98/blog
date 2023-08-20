@@ -9,6 +9,11 @@ type PostType = {
   content: string;
   categories: string[];
   keyword: string;
+  thumbnail: string;
+  prevPath?: string;
+  nextPath?: string;
+  prevTitle?: string;
+  nextTitle?: string;
 };
 
 export default PostType;
