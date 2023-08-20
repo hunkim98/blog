@@ -76,4 +76,4 @@ I thought that increasing the clusters would solve the problem. Though it did se
 
 I end this post here since my initial goals, gathering sky image data and going through basic kmeans algorithm approach, were sufficed. I will continue writing about this project in the next post. Anyone interested in the project can check out the [github repository](https://github.com/hunkim98/sky-palette)
 
-You can read the next story in [Sky Palette Project (2)](https://hunkim98.github.io/posts/sky_palette_2/)
+You can read the next story in [Sky Palette Project (2)](https://hunkim98.github.io/posts/sky_palette_2)
