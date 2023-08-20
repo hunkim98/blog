@@ -10,7 +10,7 @@ WIP: false
 thumbnail: ""
 ---
 
-# Sky Palette Project: 1. The Beginning of the Journey
+## The sky is the best color palette
 
 <p>
 <img alt="Design Homework 2020" width="70%" src="/assets/posts/sky_palette/design_hw.jpeg">
@@ -75,3 +75,5 @@ The result was not too bad. But I felt it was not enough. I first tried extracti
 I thought that increasing the clusters would solve the problem. Though it did seem to improve, the colors were still dull. To me, when the cluster size was set to 15, the extracted colors seemed to represent the sky image well. I felt the need to tweak the Kmeans clustering algorithm to better extract the representative colors of the sky image. Also, in the hindsight, I felt that the ordering of the palette colors could have affected me to view the 5 clusters representation as a mispresentation of the sky image. Due to the random ordering of the colors, the colors seemed to not harmonized. If you see the sky image, you can see there is a gradual change in the color of the sky. However, once the images are seperated and presented discretly and color blocks, they look a bit awkward. I began to think that there is a need to order the colors as the sky image is ordered to lessen the awkwardness of the color blocks.
 
 I end this post here since my initial goals, gathering sky image data and going through basic kmeans algorithm approach, were sufficed. I will continue writing about this project in the next post. Anyone interested in the project can check out the [github repository](https://github.com/hunkim98/sky-palette)
+
+You can read the next story in [Sky Palette Project (2)](https://hunkim98.github.io/posts/sky_palette_2/)
