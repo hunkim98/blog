@@ -10,7 +10,7 @@ WIP: false
 thumbnail: ""
 ---
 
-This post is a continuation of the [Sky Palette Project 1](https://hunkim98.github.io/posts/sky_palette_1).
+This post is a continuation of the [Sky Palette Project 1](./sky_palette_1).
 
 ## PCA Decomposition of the sky image
 
@@ -83,6 +83,6 @@ After much thought, I started to see the problem from a different perspective. I
 <em>PCA extraction for 5 colors</em>
 </p>
 
-Then, I suddenly thought of a new way to group the images in the PCA. **Why don't I group the colors in the PCA radially?** Starting from the middle of the PCA, I could group the colors in the PCA radially. Since the PCA is a 2D graph, I could group the colors in the PCA radially. This would be great for capturing anomalies since the anomalies would be in the outer part of the PCA. I will try this method next time!
+Then, I suddenly thought of a new way to group the images in the PCA. **Why don't I group the colors in the PCA radially?** Starting from the middle of the PCA, I could group the colors in the PCA radially. This would be great for capturing anomalies since the anomalies would be in the outer part of the PCA. I will try this method next time!
 
 You can see my code for this project [here](https://github.com/hunkim98/sky-palette).
