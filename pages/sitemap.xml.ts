@@ -117,4 +117,8 @@ export async function getServerSideProps({ res }) {
     props: {},
   };
 }
-export default function SiteMap() {}
+export default function SiteMap() {
+  // This page does not need to return anything. It just needs to generate
+  // and return the XML sitemap.
+  return null;
+}
