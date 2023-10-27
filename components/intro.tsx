@@ -14,12 +14,12 @@ const Intro = () => {
         />
       </div> */}
       <h1
-        className="cursor-pointer text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8"
+        className="cursor-pointer text-2xl md:text-4xl font-bold tracking-tighter leading-tight md:pr-8"
         onClick={() => {
           router.push("/");
         }}
       >
-        Hun Kim
+        Donghun Kim
       </h1>
       <h4 className="md:text-left text-md mt-5 pr-6">
         I am a developer driven by the desire to create services that enable

@@ -46,10 +46,10 @@ export default function Index({
     <>
       <Layout>
         <Head>
-          <title>Hun Kim</title>
+          <title>Donghun Kim</title>
           <meta
             name="description"
-            content="Hello this is Hun Kim, a software developer driven by the desire to create services that enable people to perceive their surrounding worlds in unique and transformative ways"
+            content="Hello this is Donghun Kim, a software developer driven by the desire to create services that enable people to perceive their surrounding worlds in unique and transformative ways"
           />
         </Head>
         <Container>

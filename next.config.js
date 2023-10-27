@@ -13,4 +13,13 @@ module.exports = {
     NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
     // GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   },
+  webpack(config) {
+    config.resolve.fallback = {
+      ...config.resolve.fallback, // if you miss it, all the other options in fallback, specified
+      // by next.js will be dropped. Doesn't make much sense, but how it is
+      fs: false, // the solution
+    };
+
+    return config;
+  },
 };
