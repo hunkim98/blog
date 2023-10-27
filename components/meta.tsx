@@ -33,8 +33,6 @@ const Meta = () => {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta name="description" content={`hunkim98's Blog`} />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
       <meta
         name="google-site-verification"
         content="l9pNikVAOmXekB00LXYnclf9f_nyVIIjDvu4s2DdYtQ"

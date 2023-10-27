@@ -5,7 +5,7 @@ import Intro from "../components/intro";
 import Layout from "../components/layout";
 import { getAllPosts, getAllProjects } from "../lib/api";
 import Head from "next/head";
-import { CMS_NAME } from "../lib/constants";
+import { CMS_NAME, HOME_OG_IMAGE_URL } from "../lib/constants";
 import Post from "../interfaces/post";
 import Link from "next/link";
 import NavBar from "../components/nav-bar";
@@ -47,6 +47,7 @@ export default function Index({
       <Layout>
         <Head>
           <title>Donghun Kim</title>
+          <meta property="og:image" content={HOME_OG_IMAGE_URL} />
           <meta
             name="description"
             content="Hello this is Donghun Kim, a software developer driven by the desire to create services that enable people to perceive their surrounding worlds in unique and transformative ways"
