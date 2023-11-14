@@ -34,7 +34,7 @@ export default function Post({ post, morePosts, preview }: Props) {
   return (
     <Layout preview={preview}>
       <div className="container mx-auto px-5 max-w-5xl">
-        <Header title={"← More Posts"} link="/?category=posts" />
+        <Header title={"← More Posts"} link="/posts" />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (

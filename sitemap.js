@@ -12,12 +12,18 @@ const projectsDirectory = join(process.cwd(), "_projects");
 function generateSiteMap(posts, projects) {
   const URL =
     process.env.RUNTIME_ENV === "prod"
-      ? "https://hunkim98.github.io"
+      ? "https://donghunkim.dev"
       : "http://localhost:3000";
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
             <loc>${URL}</loc>
+        </url>
+        <url>
+            <loc>${URL + "/projects"}</loc>
+        </url>
+        <url>
+            <loc>${URL + "/posts"}</loc>
         </url>
         ${posts
           .map(({ id, date }) => {
