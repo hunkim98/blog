@@ -2,10 +2,10 @@
 
 //there should only be one module.exports
 module.exports = {
-  images: {
-    loader: "akamai",
-    path: "",
-  },
+  // images: {
+  //   loader: "akamai",
+  //   path: "",
+  // },
   reactStrictMode: true,
   env: {
     // remember that you should update env in .github/workflow/gh-pages.deploy.yml
