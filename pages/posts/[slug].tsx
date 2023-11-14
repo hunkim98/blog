@@ -98,6 +98,7 @@ export async function getStaticProps({ params }: Params) {
     "keyword",
     "categories",
     "thumbnail",
+    "excerpt",
   ]);
   const foundIndex = posts.findIndex((p) => p.slug === params.slug);
   const prevPost = posts[foundIndex + 1];

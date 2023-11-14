@@ -3,6 +3,12 @@
         <url>
             <loc>http://localhost:3000</loc>
         </url>
+        <url>
+            <loc>http://localhost:3000/projects</loc>
+        </url>
+        <url>
+            <loc>http://localhost:3000/posts</loc>
+        </url>
         
         <url>
             <loc>http://localhost:3000/posts/sky_palette_2</loc>

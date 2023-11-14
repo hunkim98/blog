@@ -31,6 +31,7 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
   if (!router.isFallback && !project?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+  console.log(project.excerpt);
   return (
     <Layout preview={preview}>
       <div className="container mx-auto px-5 max-w-5xl">
@@ -98,6 +99,7 @@ export async function getStaticProps({ params }: Params) {
     "keyword",
     "categories",
     "coverImg",
+    "excerpt",
   ]);
   const content = await markdownToHtml((project.content as string) || "");
   const foundIndex = projects.findIndex((p) => p.slug === params.slug);
