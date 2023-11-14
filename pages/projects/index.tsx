@@ -1,3 +1,4 @@
+import React from "react";
 import About from "components/about";
 import Container from "components/container";
 import Layout from "components/layout";
