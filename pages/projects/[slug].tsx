@@ -2,23 +2,27 @@ import React from "react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Container from "../../components/container";
-import PostBody from "../../components/post-body";
+import PostBody from "../../components/posts/post-body";
 import Header from "../../components/header";
-import PostHeader from "../../components/post-header";
+import PostHeader from "../../components/posts/post-header";
 import Layout from "../../components/layout";
+import { serialize } from "next-mdx-remote/serialize";
 import {
   getPostBySlug,
   getAllPosts,
   getProjectBySlug,
   getAllProjects,
+  getPlainProjectContentBySlug,
 } from "../../lib/api";
-import PostTitle from "../../components/post-title";
+import PostTitle from "../../components/posts/post-title";
 import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
 import type ProjectType from "../../interfaces/project";
 import Utterances from "../../components/utterances";
 import { BLOG_URL } from "../../lib/constants";
 import NavigateToOther from "../../components/navigate-to-other";
+import { MDXRemote } from "next-mdx-remote";
+import markdownStyles from "../../components/markdown-styles.module.css";
 
 type Props = {
   project: ProjectType;
@@ -28,15 +32,16 @@ type Props = {
 
 export default function Project({ project, moreProjetcts, preview }: Props) {
   const router = useRouter();
+  const isMdx = project.isMdx;
+
   if (!router.isFallback && !project?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  console.log(project.excerpt);
+
   return (
     <Layout preview={preview}>
       <div className="container mx-auto px-5 max-w-5xl">
         <Header title={"← More Projects"} link="/projects" />
-
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -62,7 +67,7 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
                   </div>
                 </div>
               </div>
-              <PostBody content={project.content} />
+              <PostBody isMdx={isMdx} content={project.content} />
               <div className="max-w-3xl mx-auto mt-16 mb-16">
                 <NavigateToOther
                   prevPath={project.prevPath}
@@ -87,10 +92,17 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const projects = getAllProjects(["title", "date", "slug", "WIP"]).filter(
-    (post) => !post.WIP
-  );
-  const project = getProjectBySlug(params.slug, [
+  const { projects, mds, mdxs } = getAllProjects([
+    "title",
+    "date",
+    "slug",
+    "WIP",
+  ]);
+  const finishedProjects = projects.filter((project) => !project.WIP);
+  const isMdx = mdxs.includes(params.slug);
+  const slug = isMdx ? params.slug + ".mdx" : params.slug;
+
+  const project = getProjectBySlug(slug, [
     "title",
     "date",
     "slug",
@@ -101,10 +113,14 @@ export async function getStaticProps({ params }: Params) {
     "coverImg",
     "excerpt",
   ]);
-  const content = await markdownToHtml((project.content as string) || "");
-  const foundIndex = projects.findIndex((p) => p.slug === params.slug);
-  const prevProject = projects[foundIndex + 1];
-  const nextProject = projects[foundIndex - 1];
+
+  const content = isMdx
+    ? await serialize(project.content as any, { scope: project["data"] as any })
+    : await markdownToHtml((project.content as string) || "");
+  // const content = await markdownToHtml((project.content as string) || "");
+  const foundIndex = finishedProjects.findIndex((p) => p.slug === params.slug);
+  const prevProject = finishedProjects[foundIndex + 1];
+  const nextProject = finishedProjects[foundIndex - 1];
   const prevPath = prevProject ? `/projects/${prevProject.slug}` : "";
   const nextPath = nextProject ? `/projects/${nextProject.slug}` : "";
   const prevTitle = prevProject ? prevProject.title : "";
@@ -119,13 +135,14 @@ export async function getStaticProps({ params }: Params) {
         nextPath,
         prevTitle,
         nextTitle,
+        isMdx,
       },
     },
   };
 }
 
 export async function getStaticPaths() {
-  const projects = getAllProjects(["slug"]);
+  const { projects } = getAllProjects(["slug"]);
 
   return {
     paths: projects.map((project) => {

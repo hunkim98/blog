@@ -55,7 +55,9 @@ function generateSiteMap(posts, projects) {
 
 function getSortedProjectsData() {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(projectsDirectory);
+  const fileNames = fs.readdirSync(projectsDirectory).filter((slug) => {
+    return slug.endsWith(".md") || slug.endsWith(".mdx");
+  });
   const allProjectsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, "");

@@ -2,9 +2,9 @@ import React from "react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Container from "../../components/container";
-import PostBody from "../../components/post-body";
+import PostBody from "../../components/posts/post-body";
 import Header from "../../components/header";
-import PostHeader from "../../components/post-header";
+import PostHeader from "../../components/posts/post-header";
 import Layout from "../../components/layout";
 import {
   getPostBySlug,
@@ -12,7 +12,7 @@ import {
   getAllProjects,
   getProjectBySlug,
 } from "../../lib/api";
-import PostTitle from "../../components/post-title";
+import PostTitle from "../../components/posts/post-title";
 import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
 import type PostType from "../../interfaces/post";
@@ -61,7 +61,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                   </div>
                 </div>
               </div>
-              <PostBody content={post.content} />
+              <PostBody isMdx={false} content={post.content} />
               <div className="max-w-3xl mx-auto mt-16 mb-16">
                 <NavigateToOther
                   prevPath={post.prevPath}

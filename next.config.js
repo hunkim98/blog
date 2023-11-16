@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-//there should only be one module.exports
-module.exports = {
+const withMDX = require("@next/mdx")();
+
+const nextConfig = {
   // images: {
   //   loader: "akamai",
   //   path: "",
@@ -14,3 +15,5 @@ module.exports = {
     // GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   },
 };
+//there should only be one module.exports
+module.exports = withMDX(nextConfig);

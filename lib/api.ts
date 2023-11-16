@@ -38,16 +38,33 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return items;
 }
 
-export function getProjectSlugs() {
-  return fs.readdirSync(projectsDirectory);
+export function getProjectMdMdxSlugs() {
+  return fs.readdirSync(projectsDirectory).filter((slug) => {
+    return slug.endsWith(".md") || slug.endsWith(".mdx");
+  });
+}
+
+export function getPlainProjectContentBySlug(fileName: string) {
+  const fileContent = fs.readFileSync(
+    join(projectsDirectory, `${fileName}`),
+    "utf8"
+  );
+  return fileContent;
 }
 
 export function getProjectBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(projectsDirectory, `${realSlug}.md`);
+  // first find md or mdx file
+
+  const doesEndWithMdx = slug.endsWith(".mdx");
+  const realSlug = doesEndWithMdx
+    ? slug.replace(/\.mdx$/, "")
+    : slug.replace(/\.md$/, "");
+  const fullPath = doesEndWithMdx
+    ? join(projectsDirectory, `${realSlug}.mdx`)
+    : join(projectsDirectory, `${realSlug}.md`);
+  // const fullPath = join(projectsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents); //data has elements of PostType
-
   type Items = {
     [key: string]: string | string[];
   };
@@ -67,6 +84,7 @@ export function getProjectBySlug(slug: string, fields: string[] = []) {
       items[field] = data[field];
     }
   });
+  items["data"] = data as any;
   return items;
 }
 
@@ -80,7 +98,18 @@ export function getAllPosts(fields: string[] = []) {
 }
 
 export function getAllProjects(fields: string[] = []) {
-  const slugs = getProjectSlugs();
+  const slugs = getProjectMdMdxSlugs();
+  const mds = slugs
+    .filter((slug) => slug.endsWith(".md"))
+    .map((slug) => {
+      return slug.replace(/\.md$/, "");
+    });
+  const mdxs = slugs
+    .filter((slug) => slug.endsWith(".mdx"))
+    .map((slug) => {
+      return slug.replace(/\.mdx$/, "");
+    });
+
   const onGoingProjects = slugs.filter((slug) => {
     const project = getProjectBySlug(slug, fields);
     return project.date === "ongoing";
@@ -95,5 +124,5 @@ export function getAllProjects(fields: string[] = []) {
       .map((slug) => getProjectBySlug(slug, fields))
       .sort((project1, project2) => (project1.date > project2.date ? -1 : 1)),
   ];
-  return projects;
+  return { projects, mds, mdxs };
 }

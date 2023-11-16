@@ -10,12 +10,11 @@ export const getAllStaticProps = async () => {
     "categories",
     "coverImg",
     "WIP",
-  ]).filter((element) => !element.WIP);
+  ]).projects.filter((element) => !element.WIP);
   const projectCategorySet = new Set();
   allProjects
     .filter((element) => !element.WIP)
     .map((project) => {
-      console.log(project.title, project.categories);
       const categories = project.categories as string[];
       categories.map((category) => {
         projectCategorySet.add(category);

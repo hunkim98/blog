@@ -41,19 +41,6 @@ export default function Index({
             <NavBar selectedCategory={"projects"} />
             <MoreProjects projects={allProjects} />
           </div>
-          {/* <div>
-            <NavBar
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-            />
-            {selectedCategory === "about" && allPosts.length > 0 && <About />}
-            {selectedCategory === "posts" && allPosts.length > 0 && (
-              <MoreStories posts={allPosts} />
-            )}
-            {selectedCategory === "projects" && allPosts.length > 0 && (
-              <MoreProjects projects={allProjects} />
-            )}
-          </div> */}
         </Container>
       </Layout>
     </>

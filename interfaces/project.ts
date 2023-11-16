@@ -11,6 +11,7 @@ type ProjectType = {
   nextPath?: string;
   prevTitle?: string;
   nextTitle?: string;
+  isMdx?: boolean;
 };
 
 export default ProjectType;

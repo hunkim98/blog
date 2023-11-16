@@ -1,8 +1,8 @@
 import React from "react";
-import DateFormatter from "./date-formatter";
-import CoverImage from "./cover-image";
+import DateFormatter from "../date-formatter";
+import CoverImage from "../cover-image";
 import PostTitle from "./post-title";
-import type Author from "../interfaces/author";
+import type Author from "../../interfaces/author";
 
 type Props = {
   title: string;

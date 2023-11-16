@@ -1,5 +1,5 @@
 import React from "react";
-import PostPreview from "./post-preview";
+import PostPreview from "./posts/post-preview";
 import type Project from "../interfaces/project";
 import ProjectPreview from "./project-preview";
 
