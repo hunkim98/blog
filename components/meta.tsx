@@ -32,7 +32,7 @@ const Meta = () => {
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
-      <meta name="og:sitename" content={"Donghun Kim"} />
+      <meta name="og:sitename" content={"Donghun Kim | Developer"} />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="google-site-verification"
