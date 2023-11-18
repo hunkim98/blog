@@ -7,6 +7,7 @@ const nextConfig = {
   //   loader: "akamai",
   //   path: "",
   // },
+  output: "export",
   reactStrictMode: true,
   env: {
     // remember that you should update env in .github/workflow/gh-pages.deploy.yml
@@ -14,7 +15,6 @@ const nextConfig = {
     NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
     // GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   },
-  output: "export",
 };
 //there should only be one module.exports
 module.exports = withMDX(nextConfig);
