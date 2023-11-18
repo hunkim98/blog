@@ -2,7 +2,7 @@ import React from "react";
 import markdownStyles from "./markdown-styles.module.css";
 import { isMainThread } from "worker_threads";
 import { MDXRemote } from "next-mdx-remote";
-import { DottingComponent } from "../../_projects/components";
+import ProjectComponents from "../../_projects/components";
 
 type Props = {
   isMdx: boolean;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Components = {
-  DottingComponent,
+  ...ProjectComponents,
 };
 
 const PostBody = ({ content, isMdx }: Props) => {

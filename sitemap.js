@@ -59,8 +59,11 @@ function getSortedProjectsData() {
     return slug.endsWith(".md") || slug.endsWith(".mdx");
   });
   const allProjectsData = fileNames.map((fileName) => {
+    const doesEndWithMdx = fileName.endsWith(".mdx");
     // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, "");
+    const id = doesEndWithMdx
+      ? fileName.replace(/\.mdx$/, "")
+      : fileName.replace(/\.md$/, "");
     // Read markdown file as string
     const fullPath = join(projectsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -90,8 +93,11 @@ function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
+    const doesEndWithMdx = fileName.endsWith(".mdx");
     // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, "");
+    const id = doesEndWithMdx
+      ? fileName.replace(/\.mdx$/, "")
+      : fileName.replace(/\.md$/, "");
     // Read markdown file as string
     const fullPath = join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
