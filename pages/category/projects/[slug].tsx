@@ -72,7 +72,7 @@ export const getStaticProps = async ({ params }: Params) => {
     "categories",
     "coverImg",
     "WIP",
-  ]).filter((element) => !element.WIP);
+  ]).projects.filter((element) => !element.WIP);
   const projectCategorySet = new Set();
   allProjects
     .filter((element) => !element.WIP)
@@ -96,7 +96,7 @@ export const getStaticProps = async ({ params }: Params) => {
 };
 
 export async function getStaticPaths() {
-  const projects = getAllProjects(["categories"]);
+  const { projects } = getAllProjects(["categories"]);
   const categorySet = new Set();
   projects.map((project) => {
     const categories = project.categories as string[];
