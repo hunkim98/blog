@@ -14,6 +14,7 @@ const nextConfig = {
     NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
     // GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   },
+  output: "export",
 };
 //there should only be one module.exports
 module.exports = withMDX(nextConfig);
