@@ -5,7 +5,7 @@ date: "2023-08-19"
 author:
   name: Kim Dong Hun
 keyword: "vision"
-categories: ["project", "ai", "color"]
+categories: ["project", "AI", "color"]
 WIP: false
 thumbnail: "/assets/posts/sky_palette/sky_palette_kmeans_initial.png"
 ---
