@@ -27,8 +27,8 @@ jobs:
         run: yarn
       - name: Build project
         run: yarn build
-      # - name: Export static files
-      #   run: yarn export
+      - name: Generate sitemap
+        run: yarn sitemap
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
       - name: Deploy
