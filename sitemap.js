@@ -14,6 +14,7 @@ function generateSiteMap(posts, projects) {
     process.env.NEXT_PUBLIC_RUNTIME_ENV === "prod"
       ? "https://donghunkim.dev"
       : "http://localhost:3000";
+  console.log(process.env.NEXT_PUBLIC_RUNTIME_ENV, URL);
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
