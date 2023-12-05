@@ -11,7 +11,7 @@ const projectsDirectory = join(process.cwd(), "_projects");
 
 function generateSiteMap(posts, projects) {
   const URL =
-    process.env.RUNTIME_ENV === "prod"
+    process.env.NEXT_PUBLIC_RUNTIME_ENV === "prod"
       ? "https://donghunkim.dev"
       : "http://localhost:3000";
   return `<?xml version="1.0" encoding="UTF-8"?>

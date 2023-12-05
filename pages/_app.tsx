@@ -8,13 +8,13 @@ import Script from "next/script";
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      {process.env.RUNTIME_ENV !== "development" && (
+      {process.env.NEXT_PUBLIC_RUNTIME_ENV !== "development" && (
         <Script
           strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
         />
       )}
-      {process.env.RUNTIME_ENV !== "development" && (
+      {process.env.NEXT_PUBLIC_RUNTIME_ENV !== "development" && (
         <Script strategy="lazyOnload">
           {`
         window.dataLayer = window.dataLayer || [];
