@@ -22,8 +22,8 @@ const Intro = () => {
         Donghun Kim
       </h1>
       <h4 className="md:text-left text-md mt-5 pr-6">
-        I am developer interested in building technologies that encourage people
-        to create creative contents
+        I am a developer interested in building technologies that encourage
+        people to create creative contents
       </h4>
       <div className="mt-[15px] flex space-x-1.5">
         <SocialIcon
