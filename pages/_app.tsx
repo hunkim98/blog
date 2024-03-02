@@ -3,6 +3,8 @@ import { AppProps } from "next/app";
 import "../styles/index.css";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import "katex/dist/katex.min.css";
+
 import Script from "next/script";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
