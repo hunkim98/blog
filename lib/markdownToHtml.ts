@@ -7,7 +7,6 @@ import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
-import remarkHighlight from "remark-highlight.js";
 import remarkImages from "remark-images";
 import remarkUnwrapImages from "remark-unwrap-images";
 
