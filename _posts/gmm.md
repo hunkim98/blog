@@ -6,7 +6,7 @@ author:
   name: Kim Dong Hun
 keyword: "GMM"
 categories: ["AI", "ML"]
-WIP: false
+WIP: true
 thumbnail: ""
 ---
 

@@ -90,11 +90,17 @@ As shown in the image, in the end, we end up with three terms we need to conside
 
 ### What we need to find
 
-${\theta^*, \phi^*}={\mathrm{arg\,max}} \sum_{i} \mathbb{E}_{q_\phi(z|x_i)} \left[\log(p_\theta(x_i|z))\right] - \mathrm{KL}\left(q_\phi(z|x_i) \parallel p(z)\right)$
+$$
+\{\theta^*, \phi^*\} = \operatorname{arg\,max}_{\theta, \phi} \sum_{i} \left( \mathbb{E}_{q_\phi(z|x_i)} \left[\log p_\theta(x_i|z)\right] - \mathrm{KL}\left(q_\phi(z|x_i) \parallel p(z)\right) \right)
+$$
+
 
 Since loss functions are often expressed as minimizing the function. we can change the above expression into the loss function below
 
-${\theta^*, \phi^*}={\mathrm{arg\,min}} \sum_{i} -\mathbb{E}_{q_\phi(z|x_i)} \left[\log(p_\theta(x_i|z))\right] + \mathrm{KL}\left(q_\phi(z|x_i) \parallel p(z)\right)$
+$$
+\{\theta^*, \phi^*\} = \operatorname{arg\,min}_{\theta, \phi} \sum_{i} \left( -\mathbb{E}_{q_\phi(z|x_i)} \left[\log p_\theta(x_i|z)\right] + \mathrm{KL}\left(q_\phi(z|x_i) \parallel p(z)\right) \right)
+$$
+
 
 The first term has to do with reconstruction error, where it outputs the error to how much the $x_i$ was wrongly reconstructed, and the second term has to do with the regularization error, where it outputs the encoder's deviation from the normal distribution $p(z)$ (remember that we initially supposed the distribution of latent space vector z to be a normal distribution)
 

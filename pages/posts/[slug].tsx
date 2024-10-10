@@ -56,7 +56,16 @@ export default function Post({ post, morePosts, preview }: Props) {
                   <div>
                     Category:{" "}
                     {post.categories.map((category, index) => {
-                      return <span key={index}>#{category}</span>;
+                      return (
+                        <span
+                          onClick={() =>
+                            router.push(`/category/posts/${category}`)
+                          }
+                          key={index}
+                        >
+                          #{category}{" "}
+                        </span>
+                      );
                     })}
                   </div>
                 </div>

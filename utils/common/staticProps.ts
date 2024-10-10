@@ -16,6 +16,7 @@ export const getAllStaticProps = async () => {
     .filter((element) => !element.WIP)
     .map((project) => {
       const categories = project.categories as string[];
+
       categories.map((category) => {
         projectCategorySet.add(category);
       });
@@ -37,6 +38,7 @@ export const getAllStaticProps = async () => {
     .filter((element) => !element.WIP)
     .map((post) => {
       const categories = post.categories as string[];
+      console.log();
       categories.map((category) => {
         postCategorySet.add(category);
       });

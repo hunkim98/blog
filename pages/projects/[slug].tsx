@@ -62,7 +62,16 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
                   <div>
                     Category:{" "}
                     {project.categories.map((category, index) => {
-                      return <span key={index}>#{category}</span>;
+                      return (
+                        <span
+                          key={index}
+                          onClick={() => {
+                            router.push(`/category/projects/${category}`);
+                          }}
+                        >
+                          #{category}{" "}
+                        </span>
+                      );
                     })}
                   </div>
                 </div>
