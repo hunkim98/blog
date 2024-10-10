@@ -36,6 +36,13 @@
   @apply bg-transparent px-1.5 py-1.5 rounded cursor-pointer !important;
 }
 
+
+.markdown img {
+  /* when mobile size 100%, else 70% */
+  @apply w-[100%] md:w-[70%] mx-auto mb-2;
+}
+
+
 .markdown p code:has(span) {
   @apply text-[#444444] px-1 py-0.5 rounded;
 }

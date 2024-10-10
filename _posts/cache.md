@@ -16,10 +16,8 @@ Cache는 사실 이후 프로그래밍을 할 때 언젠가 써볼 수 있는 �
 
 Cache는 컴퓨터가 자주 접근하는 메모리를 일단 임시로 저장하는 table이라고 보면 된다. 변수에 대한 업데이트가 일어나면 하드디스크에 직접 수정사항을 변경하는 것이 아니라 일단 해당 table에 그 수정사항을 반영하는 것이다. Cache는 일단 새로 접근되는 메모리를 다 table에 추가할 것이다. 하지만, 어떤 row들은 얼마 시간 후에 접근이 안 될 것이고 Cache table 또한 꽉 찰 것이다`(Cache는 하드디스크보다 용량이 클 순 없으니... Size와 access time은 반비례한다는 사실!)`. 이런 경우, 최근에 가장 덜 접근된 row를 추방할 것이다. 수업시간 때 배운 대부분 cache의 구조는 이러했다. 1 Valid bit, Tag(address의 상위 bit), Data 가 하나의 line을 구성했다. 이렇게 써 놓으니깐 이해하기 힘들기 때문에 사진을 첨부하겠다.
 
-<p>
-<img alt="Cache Memo" width="70%" src="/assets/posts/cache/thumbnail.png">
-<em>Cache 메모</em>
-</p>
+![Cache Memo](/assets/posts/cache/thumbnail.png)
+
 
 이런 식으로 구성된다. 2^s개의 line이 존재하고 input(table을 위한 열쇠라고도 볼 수 있겠다) address에서 s bit을 활용해 index, line number를 찾고, valid 한지 여부를 확인하고 나머지 offset bit을 활용하여 data를 추출해내는 구조였다. 실제 이런 구조는 memory cache뿐만 아니라 TLB(virtual page number를 physical page number로 바꿔주는 친구), BTB(instruction address로부터 target branch prediction을 바로 찾게 해주는 친구)에도 쓰였다. 이 table은 access time이 훨씬 더 걸리는 더 큰 메모리에 접근하는 시간을 최대한 낮춰주고자 만든 개념이라고 보면 된다.
 

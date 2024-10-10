@@ -17,28 +17,17 @@ However, implementing a multiplayer aspect into an editor is never an easy task.
 
 Toonie is a real-time CRDT-based collaborative image review editor that I created to research optimization techniques for implementing CRDT mechanisms into whiteboards. In Toonie, users can review on images uploaded to the service together by sharing a URL to another person. The reason I chose an image review domain specifically is because most collaborative editors out there are for general purposes. Thus, I wanted to create a more narrow focused whiteboard where designers and marketers could review on images together by drawing sketches on the images in an online meeting setting.
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/toonie/edit.png">
-<em>Editing Scene</em>
-</p>
+
+![Editing Scene](/assets/project/toonie/edit.png)
 
 Toonie wass built on top of the CRDT-based collaborative SDK called [Yorkie](https://github.com/yorkie-team/yorkie) which is an opensource document store for building collaborative applications created by Naver Alto TF. While contributing to the opensource project, I created Toonie for demonstrating the capabilities of Yorkie.
 
 When creating a multiplayer whiteboard, one should distinguish between actions that need its commit order to be preserved and actions that do not need its commit order to be preserved. This is because in multiplayer operations, actions that needs its order to be preserved consume much computer resources during communication, which can eventually result in lags. In Yorkie, actions that do not need its order to be preserved were managed as Presence, and those that needed its order to be preserved (= that is in need of management through CRDT algorithms) were managed as Data. In a whiteboard application, the real-time action (interactions that the user commits to the whiteboard while their mouse is down) do not really need to be communcated with its order preserved since their actions are not finished, and thus can be managed as Presence. However, the committed action, which is anfinished action of a user (mouse up after mouse down) should have its order preserved since it is a finished action. Those were managed as Data.
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/toonie/soc_step1.png">
-<em>User interaction recorded as presence</em>
-</p>
+![User interaction recorded as presenc](/assets/project/toonie/soc_step1.png)
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/toonie/soc_step2.png">
-<em>User interaction finishes and presence is reset</em>
-</p>
+![User interaction finishes and presence is reset](/assets/project/toonie/soc_step2.png)
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/toonie/soc_step3.png">
-<em>Presence modifications are transferred to data</em>
-</p>
+![Presence modifications are transferred to data](/assets/project/toonie/soc_step3.png)
 
 Separation of concerns was used for implementing the distinction between Presence and Data, and thus multiple layers (presence canvas and data canvas) was designed for the whiteboard application. User's real-time unfinished interactions (whiteboard modifications that occur while the user's mouse is pressed) were drawn in the Presence canvas. As soon as the user's interaction finishes (user finishes modification by mouseup), then the presence canvas data is reset and the modification data is sent to the Data Canvas. By doing so, I was able to design a software design approach for optimizing collaborative whiteboards.

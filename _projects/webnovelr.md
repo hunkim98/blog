@@ -19,27 +19,14 @@ Webnovels are usually served by only a few platforms in Korea. The representativ
 
 To writers, ‘the reader’s speed of reading’ is as important as the originality of the webnovel. If a tense scene does not fit in one page but continues on to the next page, there is a possibility where readers can feel bored of the webnovel. Despite these concerns, there exists no editor that allows webnovel writers to keep track of the reader’s speed of writing. To make the writing experience easier for webnovel writers, Webnovelr presents a ‘Jopan’ based editor.
 
-<p style="margin-bottom:100px">
-<img alt="webnovelr text editing page" width="100%" src="/assets/project/webnovelr/home.png">
-<em>Home Screen</em>
-</p>
+![Home Screen](/assets/project/webnovelr/home.png)
 
-<p style="margin-bottom:100px">
-<img alt="webnovelr text editing page" width="100%" src="/assets/project/webnovelr/edit.png">
-<em>Text Edit Page</em>
-</p>
+![Text Edit Page](/assets/project/webnovelr/edit.png)
 
-<p style="margin-bottom:100px">
-<img alt="webnovelr text editing page" width="100%" src="/assets/project/webnovelr/keyword_search.png">
-<em>Keyword Search UI</em>
-</p>
+![Keyword Search UI](/assets/project/webnovelr/keyword_search.png)
 
-<p style="margin-bottom:100px">
-<img alt="layout edit page" width="100%" src="/assets/project/webnovelr/character_list.png">
-<em>Character List Page</em>
-</p>
 
-<p style="margin-bottom:100px">
-<img alt="layout edit page" width="100%" src="/assets/project/webnovelr/installation.jpg">
-<em>Exhibition at Seoul National University</em>
-</p>
+![Character Edit Page](/assets/project/webnovelr/character_list.png)
+
+
+![Exhibition at Seoul National University](/assets/project/webnovelr/installation.jpg)

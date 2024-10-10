@@ -30,10 +30,8 @@ Last but not least, Hill talked about the importance of watering your network ev
 
 Day 2 ended with John Hill's talk about building networks, and I do not exactly remember what other lectures there wre after Day 2. Later on it was mostly a continuation of meeting mentors and so on. It was till Day 3 that we were lectured, and from then on, each team individually had to meet with mentors and so on. There is not much that I remember from the lectures from then on, but there is one analogy that I remember to this day, and that is what I would like to share in this post.
 
-<p>
-<img alt="mario level up" width="100%" src="/assets/posts/techstars2/mario.png">
-<em>Mario analogy</em>
-</p>
+
+![mario analogy](/assets/posts/techstars2/mario.png)
 
 The above image is brought from UserOnBoard. This is analogy that Kerty used while talking about how we should pitch ourselves. To anyone familiar to Mario game, when the player eats a mushroom, the player evolves (gets bigger). Kurty taught us the core information that we needed to include when we were to pitch our business in 30 seconds. The pitch had to contain who the customers are, what problem do we sove, what the product is, why should you (investors) care, and optionally a breif founder market fit (ex. "I previously worked in NASA as an engineer" would be powerful if your business ahd to do with space engineering). The template provided was, "There are ~ problems these days. Our solution product is ~. We provide solution to ~, SO THAT OUR CUSTOMERS CAN ~". The "SO THAT" part is the most important part. Like explained in the mario image, what the company is selling is not actually the product itself, but the customers who have evolved after using our product.
 

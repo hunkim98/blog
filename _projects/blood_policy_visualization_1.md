@@ -8,5 +8,5 @@ author:
 keyword: "crypto"
 categories: ["data-visualization"]
 coverImg: "/assets/project/cryptogalaxy/logo.png"
-WIP: false
+WIP: true
 ---

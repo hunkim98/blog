@@ -18,10 +18,8 @@ On the first day of the Techstars event (2023-01-19), all attendants sat in a ro
 
 At first, the whole lecture seemed boring. As a student who had listened to business management classes back in Seoul National University, all the things that were taught by the lecturer seemed too obvious. The main topic was about functions of a team, what differentiates a good team and a bad team. However, as the lecture progressed, I felt there were some parts worth notetaking.
 
-<p>
-<img alt="Boston Techstars" width="100%" src="/assets/posts/techstars1/meeting.png">
-<em>Boston Techstars</em>
-</p>
+
+![Boston Techstars](/assets/posts/techstars1/meeting.png)
 
 ### Develop deep relations when a newcomer joins
 
@@ -51,10 +49,7 @@ This also made me reflect upon myself again. Mostly my mother would be quiet whe
 
 ### Beware Triangulation.
 
-<p>
-<img alt="triangulation" width="100%" src="/assets/posts/techstars1/triangulation.png">
-<em>Triangulation</em>
-</p>
+![Triangulation](/assets/posts/techstars1/triangulation.png)
 
 The last memorable topic that the lecturer taught about was 'Triangulation'. 'Triangulation' is a term the lecturer himself coined up. To briefly explain what it is, it is a situation where B tells C the problems he/she has with A instead of having direct conversations with A. The lecturer said that this is one of the signal that a team is not operating well. It seems very obvious, but coming to think of it, it happens rather often in many cases in life, even mine also. The main reason why Triangulation is harmful to a startup especially is because it means that team members are avoiding conflicts. They are just being bystanders to a dying company. This can also lead to decreased commitment among team members since avoiding direct conflict with another person means that people are trying separate in groups. What can be worse than a small group of people in a startup dividing into groups?
 

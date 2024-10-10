@@ -13,7 +13,3 @@ WIP: true
 
 [Github Repository →](https://github.com/hunkim98/dotting)
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/dotting_genai/demo.gif">
-<em>Demo</em>
-</p>

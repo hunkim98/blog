@@ -8,18 +8,21 @@ import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
 import remarkHighlight from "remark-highlight.js";
+import remarkImages from "remark-images";
+import remarkUnwrapImages from "remark-unwrap-images";
 
 export default function markdownToHtml(markdown: string) {
   const result = remark()
     .use(parse)
+    .use(html, { sanitize: false })
     .use(remarkMath)
     // Ensure math is processed before converting to HTML.
     // Now convert to HTML without sanitizing to keep the math HTML intact.
-    // .use(htmlKatex)
     .use(prism, { plugins: ["line-numbers"] })
     .use(remarkRehype)
+    .use(remarkUnwrapImages)
     .use(rehypeKatex)
-    .use(html, { sanitize: false })
+    .use(remarkImages)
     // Finally, apply syntax highlighting.
 
     .use(rehypeStringify)

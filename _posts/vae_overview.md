@@ -14,19 +14,15 @@ thumbnail: "/assets/posts/vae_overview/vae.png"
 
 Variational Autoencoder (VAE) is known to be a more advanced Autoencoder (AE). The main difference between AE and VAE is that VAE has an additional statistical feature added to it in the middle. Both AE and VAE network inputs multi-dimensional data and outputs a multi-dimensional output that has a high resemblance to the inputted data. Thus, it means that AE and VAE are networks that try their best to output the same data that was initially inputted. How they train the parameters for making such output is through an encoder and decoder network, where the encoder tries to compress the multi-dimensional input into smaller data and make the decoder recreate(=reconstruct) the image with that compressed data. In the AI realm, this compressed data is called a vector in a latent space.
 
-<p>
-<img alt="Encoder_Decoder" width="100%" src="/assets/posts/vae_overview/encoder_decoder.png">
-<em>Encoder Decoder network</em>
-</p>
+
+![Encoder_Decoder](/assets/posts/vae_overview/encoder_decoder.png)
 
 Though AE and VAE have similar structures, their purposes differ. While AE's main focus is on the encoder, the VAE's main focus is on the decoder. This means that AE's purpose is to compress the multi-dimensional data into a compressed vector while VAE's purpose is to generate images. For instance, AE can be mainly used to create an image-based search system where every uploaded image goes through the encoder network to output a vector composed of numbers, which will be used to find similar images compared to a newly inputted image. VAE can be used for generative purposes such as generating a new image.
 
 In this post, the main focus is to get a glimpse into how VAE works. As mentioned above, the feature that makes VAE more advanced compared to AE is that it has a statistical feature added in the middle of the network.
 
-<p>
-<img alt="VAE" width="100%" src="/assets/posts/vae_overview/vae.png">
-<em>VAE network</em>
-</p>
+
+![VAE](/assets/posts/vae_overview/vae.png)
 
 ## The additional statistical feature in VAE
 
@@ -77,14 +73,15 @@ Unfortunately, finding $p_\theta(z|x)$ is also not an easy task since finding $p
 
 So back to the original purpose of VAE. Our goal is to maximize the data likelihood, $p_\theta(x)$. Let us add a log to the value to make our calculations simple. $\log{p_\theta(x^{(i)})}$. i is a value from 1 to N, and N represents the number of input data. To make the calculation simple we make the value as Expectation, $E_{z \sim q_\phi(z|x^{(i)})}[\log p_\theta(x^{(i)})]$. Here, z follows the distribution of our encoder($q_\phi(z|x^{(i)})$). According to Bayes' rule, we can change the $p_\theta(x^{(i)})$ into $\log \frac{p_\theta(x^{(i)}|z)p_\theta(z)}{p_\theta(z|x^{(i)})}$. The following math is shown in the image below.
 
-> Bayes rule
->
-> $p(z|x)=\frac{p(x|z)\times p(z)}{p(x)}$
+Bayes rule
 
-<p>
-<img alt="VAE" width="100%" src="/assets/posts/vae_overview/vae_math.png">
-<em>VAE Math brought from stanford cs231n</em>
-</p>
+$$
+p(z|x)=\frac{p(x|z)\times p(z)}{p(x)}
+$$
+
+
+
+![VAE](/assets/posts/vae_overview/vae_math.png)
 
 As shown in the image, in the end, we end up with three terms we need to consider when maximizing $\log{p_\theta(x^{(i)})}$. Unfortunately, since $p_\theta(z|x^{(i)})$ is intractable, the last KL term cannot be calculated. However, due to KL divergence outputting a result that is always >=0, we can kindly disregard this term. The initial two terms combined are called the `Variational lower bound(=ELBO)` in a VAE, and our goal is to maximize the ELBO. The first term in ELBO is related to the decoder network and the second term in the ELBO is related to the encoder.
 
@@ -108,24 +105,18 @@ The first term has to do with reconstruction error, where it outputs the error t
 
 Minimizing the loss in regularization is done by the KLD operation for two distributions. Since the $p(z)$ was set to a normal distribution, the function is relatively simple (I will not discuss the specifics of how KLD is calculated)
 
-<p>
-<img alt="Encoder_Decoder" width="100%" src="/assets/posts/vae_overview/vae_regularization.png">
-<em>VAE regularization calculation</em>
-</p>
+
+![VAE regularization calculation](/assets/posts/vae_overview/vae_regularization.png)
 
 Minimizing the reconstruction error is a little bit more complex due to the necessity to take probabilities into consideration. For this purpose, the researchers used a Monte Carlo technique to simplify the calculation of integral. Also, the L was set to 1 to make the calculation even simpler, resulting in a reconstruction loss calculation to $\log(p_\theta(x_i|z^{(i)}))$
 
-<p>
-<img alt="Encoder_Decoder" width="100%" src="/assets/posts/vae_overview/vae_reconstruction1.png">
-<em>VAE reconstruction calculation 1</em>
-</p>
+
+![VAE reconstruction calculation 1](/assets/posts/vae_overview/vae_reconstruction1.png)
 
 Now to further calculate $\log(p_\theta(x_i|z^{(i)}))$, the characteristic of the p should be determined. The probability can either follow a multivariate Bernoulli or a Gaussian distribution. In the case of bernoulli, $\log(p_\theta(x_i|z^{(i)}))$, the probabilities of each item in the $x_i$ should be multiplied. In logarithmic operation, multiplication can be considered as additions. Thus the below cross entropy can be calculated. By the way, $p_{i,j}$ is the decoder network output.
 
-<p>
-<img alt="Encoder_Decoder" width="100%" src="/assets/posts/vae_overview/vae_bernoulli.png">
-<em>VAE Bernoulli</em>
-</p>
+
+![VAE Bernoulli](/assets/posts/vae_overview/vae_bernoulli.png)
 
 ### References
 

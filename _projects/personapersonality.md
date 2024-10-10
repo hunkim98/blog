@@ -19,28 +19,20 @@ However, I noticed a pattern of misuse of MBTI results among many young people. 
 
 The main reason to this phenomenon was because most MBTI web-based tests were focused on identifying oneself. It was intended to give a single definition on one's personality with a dichotomic approach. To remedy this phenomenon, a test that allows one to realize that one's personality cannot be defined into a single statement, which is in fact true, was necessary. Thus, I contrived a new personality test that rather figures out the personality of one's acquaintances rather than oneself. The recepient of the personality result could receive multiple interpretations of his/her own personality from others, and realize that one's personality is a malleable concept that cannot be defined into a single statement. Even the sender of the personality result can have a deeper understanding of his/her own personality by reviewing what type of people he/she hangs out with.
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/personapersonality/masks.png">
-<em>9 Mask Results in Personapersonality</em>
-</p>
+
+![9 Mask Results in Personapersonality](/assets/project/personapersonality/masks.png)
 
 Personapersonality is the application that I created for this purpose. Its pyshcology test basis is Enneagram, which is a personality trait theory that divides human personalities into 9 types. The reason Enneagram was chosen instead of MBTI was because 1) MBTI had a limited explanation on one's personality while Enneagram explained one's personality holistically, and 2) I wanted to prevent people from interpreting the results in the MBTI point of view. The questions asked in the application were based on the user's acquaintance, and questions such as "What do you think your (acquaintance's name) would do when he has to lead a classroom conference?". After answering custom curated 15 questions on the other person, one could get the enneagram result of the other person. The personality result was presented as a form of a mask, which is a visual representation of the personality type. This was intentional since one's personality can be understood differently based on how the person interacts with that person. Thus, the name 'Persona' personality was given to the application.
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/personapersonality/question.png">
-<em>Question Screen</em>
-</p>
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/personapersonality/mask_result.png">
-<em>Mask Reuslt Screen</em>
-</p>
+![Question Screen](/assets/project/personapersonality/question.png)
+
+
+![Mask Result Screen](/assets/project/personapersonality/mask_result.png)
 
 Ways to maintain a good relationship with other people were provided alongside the explanation of the other person's personality, and this was because the application itself was intended to be used as a tool to understand others better. Also, since the initial goal was to preven people from understanding one's personality as one single truth, I also provided a data visualization of the analyzed results, where one could check the percentage of each personality type that was given to the person. This was to show that one's personality is not a single truth, but rather a combination of multiple personalities.
 
-<p>
-<img alt="Demo" width="100%" src="/assets/project/personapersonality/result_analysis.png">
-<em>Personality Mask Result Analysis</em>
-</p>
+
+![Personality Mask Result Analysis](/assets/project/personapersonality/result_analysis.png)
 
 As of today (2023.07.18), 204495 people have used the application to figure out the personality of their acquaintances.

@@ -80,10 +80,10 @@ Allright, so we have been told that OLS has the least bias among linear regressi
 
 Now when talking about models, bias and variance are two keywords that always show up. Essentially in predictive models, there is always a bias and variance tradeoff. The most famous image that explain both bias and variance is the image below:
 
-<p>
-<img alt="Bias Variance tradeoff" width="70%" src="/assets/posts/linear_regression_geometry/bias_variance.png">
-<em>Bias Variance tradeoff</em>
-</p>
+
+
+![Bias Variance](/assets/posts/linear_regression_geometry/bias_variance.png)
+
 
 In the image, the bullseye is the target. The lower the variance, the denser the shots are to each other (regardless of its proximity to the bullseye). The higher the bias, the more offset the shots are from the bullseye. In linear regression, it is a common practice to find a model that has the least bias and variance, which is in fact difficult due to the tradeoff that exists between them.
 
@@ -175,42 +175,28 @@ Our goal in Ridge Regression is to find the coefficients ($\beta_0, \beta_1, \be
 
 Since we have a two predictor linear regression model, we can plot the combination of all the coefficients into a 2d plane. OLS model will give us only one single combination in the 2d plane, since there is only one combination that can minimize the RSS in the linear regression model. This is the combination that is closest to the actual output values.
 
-<p>
-<img alt="Bias Variance tradeoff" width="70%" src="/assets/posts/linear_regression_geometry/ridge_lasso1.png">
-<em>OLS coefficient combination for two predictors</em>
-</p>
+![OLS coefficient combination for two predictors](/assets/posts/linear_regression_geometry/ridge_lasso1.png)
 
 ### Ridge Regression in a Geometric Perspective
 
 OLS was relatively easy to understand. Now how about Ridge Regression? First remind that Ridge Regression is minimizing the RSS within a fixed budget. Thus it is an optimization probelm. Our budget can be depicted as an area in the 2d plane. Plus, since our ridge regression is a square of the coefficients, the budget area will be a circle. 
 
-<p>
-<img alt="Bias Variance tradeoff" width="70%" src="/assets/posts/linear_regression_geometry/ridge_lasso2.png">
-<em>Ridge Regression budget shown as an area</em>
-</p>
+
+![Ridge Regression budget shown as an area](/assets/posts/linear_regression_geometry/ridge_lasso2.png)
 
 Now the dynamic variable is only the RSS. We need to sacrifice RSS to find the right coefficient combination that is within the budget (=the point should fall in the area of the circle). As we sacrifice more and more of the RSS, the coefficients will change. What happens if we sacrifice RSS? The RSS will be a value higher than 0 and thus, many coefficients can satisfy to meet such RSS. For instance for a RSS=1, the coefficient combinations will be shown as a line in the 2d plane. All combination points on the line will have a RSS of 1.
 
-<p>
-<img alt="Bias Variance tradeoff" width="70%" src="/assets/posts/linear_regression_geometry/ridge_lasso3.png">
-<em>Ridge Regression budget shown as an area</em>
-</p>
+![Ridge Regression budget shown as an area](/assets/posts/linear_regression_geometry/ridge_lasso3.png)
 
 However, remember that though the coefficients can get larger than the original RSS=0 coefficients, we only care about the smaller coefficients since they are the ones that are highly likely to be met in the budget area. This is why Ridge Regression is also called a `shrinkage method`. The coefficients are shrunk to 0 to find the right combination that is within the budget. Since none of the points in RSS=1 line is within the budget, we need to continue sacrificing the RSS to find the right combination.
 
-<p>
-<img alt="Bias Variance tradeoff" width="70%" src="/assets/posts/linear_regression_geometry/ridge_lasso4.png">
-<em>Ridge Regression budget shown as an area</em>
-</p>
+![Ridge Regression budget shown as an area](/assets/posts/linear_regression_geometry/ridge_lasso4.png)
 
 As we continue to sacrifice the RSS, the line of possible combinations of coefficients will be larger and larger. Eventually, we will find the right combination that is within the budget. This is the combination that minimizes the RSS while keeping the sum of the squares of the coefficients within the budget. Since both the area and our line are ellipses, the combination that is the best combination will be the point where both ellipses intersect to each other.
 
 Though we can sacrifice the RSS more and find more combinations that can fit within the boundaries, we have to remember that this is an optimization problem. Thus, the combination that is the best is the one that minimizes the RSS while keeping the sum of the squares of the coefficients within the budget. This is the combination that is the closest to the actual output values. This is in fact the point where the Ridge Regression model stops its exploration and outputs the coefficients. 
 
-<p>
-<img alt="Bias Variance tradeoff" width="70%" src="/assets/posts/linear_regression_geometry/ridge_lasso5.png">
-<em>Ridge Regression budget shown as an area</em>
-</p>
+![Ridge Regression budget shown as an area](/assets/posts/linear_regression_geometry/ridge_lasso5.png)
 
 ### Lasso Regression in a Geometric Perspective
 
@@ -224,10 +210,7 @@ $$
 
 Now the penalty term is different from the Ridge Regression. Thus the budget area will not be shown as an ellipse but a rectangular. Everything else is the same. We need to sacrifice RSS untill there is a point that is within the budget area. 
 
-<p>
-<img alt="Bias Variance tradeoff" width="70%" src="/assets/posts/linear_regression_geometry/ridge_lasso6.png">
-<em>Ridge Regression budget shown as an area</em>
-</p>
+![Ridge Regression budget shown as an area](/assets/posts/linear_regression_geometry/ridge_lasso6.png)
 
 If you see the intersecting point, there is an interesting thing that happens. The Lasso Regression model can output a combination that has some of the coefficients to be 0. This is due to the shape of the budget area. In Ridge regression, the budget area was an ellipse, and thus it is hihgly unlikely for the intersecting points to end up on the axes. However, in Lasso Regression, the budget area is a rectangle, and thus it is highly likely for the intersecting points to end up on the axes. Due to this, Lasso Regression can output a combination that has some of the coefficients to be 0.
 
