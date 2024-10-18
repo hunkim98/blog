@@ -16,10 +16,15 @@ import markdownToHtml from '../../lib/markdownToHtml'
 import Utterances from '../../components/utterances'
 import Container from '../../components/container'
 import { BLOG_URL } from '../../lib/constants'
+import rehypeHighlight from 'rehype-highlight'
 import Header from '../../components/header'
 import Layout from '../../components/layout'
 import { MDXRemote } from 'next-mdx-remote'
+import { mdxToHtml } from 'lib/mdxToHtml'
 import { useRouter } from 'next/router'
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
+import remarkGfm from 'remark-gfm'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import React from 'react'
@@ -116,7 +121,16 @@ export async function getStaticProps({ params }: Params) {
   ])
 
   const content = isMdx
-    ? await serialize(project.content as any, { scope: project['data'] as any })
+    ? await await serialize(project.content as any, {
+        // scope: post['data'] as any,
+        // remarkPlugins: [remarkGfm, remarkMath],
+        // rehypePlugins: [rehypeHighlight, rehypeKatex],
+        mdxOptions: {
+          remarkPlugins: [remarkGfm, remarkMath],
+          // rehypePlugins: [rehypeHighlight, rehypeKatex],
+          rehypePlugins: [rehypeHighlight, rehypeKatex as any],
+        },
+      })
     : await markdownToHtml((project.content as string) || '')
   // const content = await markdownToHtml((project.content as string) || "");
   const foundIndex = finishedProjects.findIndex((p) => p.slug === params.slug)

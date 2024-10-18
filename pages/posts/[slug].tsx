@@ -9,10 +9,17 @@ import Utterances from '../../components/utterances'
 import Container from '../../components/container'
 import type PostType from '../../interfaces/post'
 import { BLOG_URL } from '../../lib/constants'
+import rehypeHighlight from 'rehype-highlight'
 import Header from '../../components/header'
 import Layout from '../../components/layout'
+import { mdxToHtml } from 'lib/mdxToHtml'
 import { useRouter } from 'next/router'
+import rehypeKatex from 'rehype-katex'
+import { compile } from '@mdx-js/mdx'
+import { createElement } from 'react'
+import remarkMath from 'remark-math'
 import ErrorPage from 'next/error'
+import remarkGfm from 'remark-gfm'
 import Head from 'next/head'
 import React from 'react'
 
@@ -116,7 +123,16 @@ export async function getStaticProps({ params }: Params) {
   const nextTitle = nextPost ? nextPost.title : ''
 
   const content = isMdx
-    ? await serialize(post.content as any, { scope: post['data'] as any })
+    ? await serialize(post.content as any, {
+        // scope: post['data'] as any,
+        // remarkPlugins: [remarkGfm, remarkMath],
+        // rehypePlugins: [rehypeHighlight, rehypeKatex],
+        mdxOptions: {
+          remarkPlugins: [remarkGfm, remarkMath],
+          rehypePlugins: [rehypeHighlight, rehypeKatex],
+          // rehypePlugins: [rehypeHighlight, rehypeKatex as any],
+        },
+      })
     : await markdownToHtml((post.content as string) || '')
 
   return {

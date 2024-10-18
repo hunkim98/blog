@@ -3,6 +3,7 @@ import ProjectComponents from '_projects/components'
 import PostComponents from '_posts/components'
 import { isMainThread } from 'worker_threads'
 import { MDXRemote } from 'next-mdx-remote'
+import 'katex/dist/katex.min.css'
 import React from 'react'
 
 type Props = {
