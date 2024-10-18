@@ -15,6 +15,13 @@ const nextConfig = {
     NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
     // GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   },
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.glsl/,
+      type: 'asset/source',
+    })
+    return config
+  },
 }
 //there should only be one module.exports
 module.exports = withMDX(nextConfig)

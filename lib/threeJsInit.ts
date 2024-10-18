@@ -110,4 +110,8 @@ export default class SceneInit {
     this.camera.updateProjectionMatrix()
     this.renderer.setSize(window.innerWidth, window.innerHeight)
   }
+
+  destroy() {
+    this.renderer.domElement.remove()
+  }
 }

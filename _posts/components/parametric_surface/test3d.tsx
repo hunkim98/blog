@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react'
+// import glsl
+import fragmentShader from './shaders/test3d_fragment.glsl'
+import vertexShader from './shaders/test3d_vertex.glsl'
+import React, { useEffect, useRef } from 'react'
 import SceneInit from 'lib/threeJsInit'
 import * as THREE from 'three'
 
@@ -31,19 +34,8 @@ const Test3D: React.FC<Test3DProps> = () => {
     const boxGeometry = new THREE.BoxGeometry(16, 16, 16, 16, 16, 16)
     const boxMaterial = new THREE.ShaderMaterial({
       wireframe: true,
-      vertexShader: `
-      void main()	{
-        // projectionMatrix, modelViewMatrix, position -> passed in from Three.js
-        gl_Position = projectionMatrix
-          * modelViewMatrix
-          * vec4(position.x, position.y, position.z, 1.0);
-      }
-      `,
-      fragmentShader: `
-      void main() {
-        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-      }
-      `,
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
     })
     const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial)
     test.scene.add(boxMesh)
@@ -80,10 +72,14 @@ const Test3D: React.FC<Test3DProps> = () => {
     // });
     // const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
     // test.scene.add(boxMesh);
+    return () => {
+      // remove the canvas
+      // test.renderer.domElement.remove()
+    }
   }, [])
 
   return (
-    <div>
+    <div className="w-full">
       <canvas id="myThreeJsCanvas" />
     </div>
   )
