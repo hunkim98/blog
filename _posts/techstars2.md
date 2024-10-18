@@ -1,13 +1,13 @@
 ---
-title: "Techstars Day2 ~ End - Building Networks, Defining Your Business"
-excerpt: "For a startup, you have nothing you can give to the other person when you want to reach out to them. However when you seek advice from the other person, the story gets a little different, and there will be a deep connection between you and the mentor. We also had practices on pitching ourselves. To pitch ourselves, we had to know the product that we were selling. The product of a company is not what the company actually sells. The customers who have evolved thanks to your product are your real products."
-date: "2023-02-25"
+title: 'Techstars Day2 ~ End - Building Networks, Defining Your Business'
+excerpt: 'For a startup, you have nothing you can give to the other person when you want to reach out to them. However when you seek advice from the other person, the story gets a little different, and there will be a deep connection between you and the mentor. We also had practices on pitching ourselves. To pitch ourselves, we had to know the product that we were selling. The product of a company is not what the company actually sells. The customers who have evolved thanks to your product are your real products.'
+date: '2023-02-25'
 author:
   name: Kim Dong Hun
-keyword: "startup"
-categories: ["diary", "startup"]
+keyword: 'startup'
+categories: ['diary', 'startup']
 WIP: false
-thumbnail: "/assets/posts/techstars2/mario.png"
+thumbnail: '/assets/posts/techstars2/mario.png'
 ---
 
 I soon head back to Korea, and I thought that I might never write a post about the Techstars experience after I go to Korea. In this post, I would like to cram all the things I learned from Techstars since Day 2 to its final day.
@@ -29,7 +29,6 @@ Last but not least, Hill talked about the importance of watering your network ev
 ## Mario analogy for defining your business
 
 Day 2 ended with John Hill's talk about building networks, and I do not exactly remember what other lectures there wre after Day 2. Later on it was mostly a continuation of meeting mentors and so on. It was till Day 3 that we were lectured, and from then on, each team individually had to meet with mentors and so on. There is not much that I remember from the lectures from then on, but there is one analogy that I remember to this day, and that is what I would like to share in this post.
-
 
 ![mario analogy](/assets/posts/techstars2/mario.png)
 

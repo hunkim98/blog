@@ -11,49 +11,44 @@
 }
 
 .markdown h2 {
-  @apply text-3xl mt-16 mb-4 leading-snug font-bold;
+  @apply mb-4 mt-16 text-3xl font-bold leading-snug;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-14 mb-4 leading-snug font-bold;
+  @apply mb-4 mt-14 text-2xl font-bold leading-snug;
 }
 
 .markdown h4 {
-  @apply text-2xl mt-14 mb-4 leading-snug font-bold;
+  @apply mb-4 mt-14 text-2xl font-bold leading-snug;
 }
 
-
-
 .markdown p code {
-  @apply bg-transparent px-1.5 py-1.5 rounded;
+  @apply rounded bg-transparent px-1.5 py-1.5;
 }
 
 .markdown p code:not(:has(span)) {
-  @apply bg-lightGreen px-1.5 py-1.5 rounded text-[85%] text-[#444444];
+  @apply rounded bg-lightGreen px-1.5 py-1.5 text-[85%] text-[#444444];
 }
 
 .markdown a code {
-  @apply bg-transparent px-1.5 py-1.5 rounded cursor-pointer !important;
+  @apply cursor-pointer rounded bg-transparent px-1.5 py-1.5 !important;
 }
-
 
 .markdown img {
   /* when mobile size 100%, else 70% */
-  @apply w-[100%] md:w-[70%] mx-auto mb-2;
+  @apply mx-auto mb-2 w-[100%] md:w-[70%];
 }
 
-
 .markdown p code:has(span) {
-  @apply text-[#444444] px-1 py-0.5 rounded;
+  @apply rounded px-1 py-0.5 text-[#444444];
 }
 
 /* .markdown p code {
   @apply px-1.5 py-1.5 rounded bg-lightGreen text-[85%] text-[#444444];
 } */
 
-
 .markdown a {
-  @apply px-1.5 py-1.5 rounded text-[85%] text-lightGreen font-bold underline underline-offset-4;
+  @apply rounded px-1.5 py-1.5 text-[85%] font-bold text-lightGreen underline underline-offset-4;
 }
 
 .markdown code {
@@ -64,11 +59,10 @@
   @apply border-l-4 border-lightGreen pl-4;
 }
 
-
 .markdown img {
   @apply mx-auto mb-2;
 }
 
 .markdown em {
-  @apply w-full absolute ml-auto mr-auto left-0 right-0 text-center opacity-70 text-sm;
+  @apply absolute left-0 right-0 ml-auto mr-auto w-full text-center text-sm opacity-70;
 }

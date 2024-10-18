@@ -1,26 +1,24 @@
 ---
-title: "VAE the basics"
-excerpt: "Ever since I got interested in generative art, I felt a need to understand the basics of multiple neural networks. In many dissertations, I always found some articles that referenced VAE for generative purposes. In this post, I go through a brief overview of how VAE works"
-date: "2024-03-02"
+title: 'VAE the basics'
+excerpt: 'Ever since I got interested in generative art, I felt a need to understand the basics of multiple neural networks. In many dissertations, I always found some articles that referenced VAE for generative purposes. In this post, I go through a brief overview of how VAE works'
+date: '2024-03-02'
 author:
   name: Kim Dong Hun
-keyword: "VAE"
-categories: ["AI"]
+keyword: 'VAE'
+categories: ['AI']
 WIP: false
-thumbnail: "/assets/posts/vae_overview/vae.png"
+thumbnail: '/assets/posts/vae_overview/vae.png'
 ---
 
 ## What is VAE for?
 
 Variational Autoencoder (VAE) is known to be a more advanced Autoencoder (AE). The main difference between AE and VAE is that VAE has an additional statistical feature added to it in the middle. Both AE and VAE network inputs multi-dimensional data and outputs a multi-dimensional output that has a high resemblance to the inputted data. Thus, it means that AE and VAE are networks that try their best to output the same data that was initially inputted. How they train the parameters for making such output is through an encoder and decoder network, where the encoder tries to compress the multi-dimensional input into smaller data and make the decoder recreate(=reconstruct) the image with that compressed data. In the AI realm, this compressed data is called a vector in a latent space.
 
-
 ![Encoder_Decoder](/assets/posts/vae_overview/encoder_decoder.png)
 
 Though AE and VAE have similar structures, their purposes differ. While AE's main focus is on the encoder, the VAE's main focus is on the decoder. This means that AE's purpose is to compress the multi-dimensional data into a compressed vector while VAE's purpose is to generate images. For instance, AE can be mainly used to create an image-based search system where every uploaded image goes through the encoder network to output a vector composed of numbers, which will be used to find similar images compared to a newly inputted image. VAE can be used for generative purposes such as generating a new image.
 
 In this post, the main focus is to get a glimpse into how VAE works. As mentioned above, the feature that makes VAE more advanced compared to AE is that it has a statistical feature added in the middle of the network.
-
 
 ![VAE](/assets/posts/vae_overview/vae.png)
 
@@ -79,8 +77,6 @@ $$
 p(z|x)=\frac{p(x|z)\times p(z)}{p(x)}
 $$
 
-
-
 ![VAE](/assets/posts/vae_overview/vae_math.png)
 
 As shown in the image, in the end, we end up with three terms we need to consider when maximizing $\log{p_\theta(x^{(i)})}$. Unfortunately, since $p_\theta(z|x^{(i)})$ is intractable, the last KL term cannot be calculated. However, due to KL divergence outputting a result that is always >=0, we can kindly disregard this term. The initial two terms combined are called the `Variational lower bound(=ELBO)` in a VAE, and our goal is to maximize the ELBO. The first term in ELBO is related to the decoder network and the second term in the ELBO is related to the encoder.
@@ -91,13 +87,11 @@ $$
 \{\theta^*, \phi^*\} = \operatorname{arg\,max}_{\theta, \phi} \sum_{i} \left( \mathbb{E}_{q_\phi(z|x_i)} \left[\log p_\theta(x_i|z)\right] - \mathrm{KL}\left(q_\phi(z|x_i) \parallel p(z)\right) \right)
 $$
 
-
 Since loss functions are often expressed as minimizing the function. we can change the above expression into the loss function below
 
 $$
 \{\theta^*, \phi^*\} = \operatorname{arg\,min}_{\theta, \phi} \sum_{i} \left( -\mathbb{E}_{q_\phi(z|x_i)} \left[\log p_\theta(x_i|z)\right] + \mathrm{KL}\left(q_\phi(z|x_i) \parallel p(z)\right) \right)
 $$
-
 
 The first term has to do with reconstruction error, where it outputs the error to how much the $x_i$ was wrongly reconstructed, and the second term has to do with the regularization error, where it outputs the encoder's deviation from the normal distribution $p(z)$ (remember that we initially supposed the distribution of latent space vector z to be a normal distribution)
 
@@ -105,16 +99,13 @@ The first term has to do with reconstruction error, where it outputs the error t
 
 Minimizing the loss in regularization is done by the KLD operation for two distributions. Since the $p(z)$ was set to a normal distribution, the function is relatively simple (I will not discuss the specifics of how KLD is calculated)
 
-
 ![VAE regularization calculation](/assets/posts/vae_overview/vae_regularization.png)
 
 Minimizing the reconstruction error is a little bit more complex due to the necessity to take probabilities into consideration. For this purpose, the researchers used a Monte Carlo technique to simplify the calculation of integral. Also, the L was set to 1 to make the calculation even simpler, resulting in a reconstruction loss calculation to $\log(p_\theta(x_i|z^{(i)}))$
 
-
 ![VAE reconstruction calculation 1](/assets/posts/vae_overview/vae_reconstruction1.png)
 
 Now to further calculate $\log(p_\theta(x_i|z^{(i)}))$, the characteristic of the p should be determined. The probability can either follow a multivariate Bernoulli or a Gaussian distribution. In the case of bernoulli, $\log(p_\theta(x_i|z^{(i)}))$, the probabilities of each item in the $x_i$ should be multiplied. In logarithmic operation, multiplication can be considered as additions. Thus the below cross entropy can be calculated. By the way, $p_{i,j}$ is the decoder network output.
-
 
 ![VAE Bernoulli](/assets/posts/vae_overview/vae_bernoulli.png)
 

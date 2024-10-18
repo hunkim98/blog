@@ -1,17 +1,16 @@
 ---
-title: "Sky Palette Project: 1. The Beginning of the Journey"
-excerpt: "Sky Palette Project is a project that I started to extract colors from the sky. A professor once told me that the sky is the best color palette that a designer can use. The sky has a natural color gradient that is harmonious. I wanted to extract the colors of the sky and make it into a color palette. To begin that journey I first created a sky capturer for capturing the image of the skies"
-date: "2023-08-19"
+title: 'Sky Palette Project: 1. The Beginning of the Journey'
+excerpt: 'Sky Palette Project is a project that I started to extract colors from the sky. A professor once told me that the sky is the best color palette that a designer can use. The sky has a natural color gradient that is harmonious. I wanted to extract the colors of the sky and make it into a color palette. To begin that journey I first created a sky capturer for capturing the image of the skies'
+date: '2023-08-19'
 author:
   name: Kim Dong Hun
-keyword: "vision"
-categories: ["project", "AI", "color"]
+keyword: 'vision'
+categories: ['project', 'AI', 'color']
 WIP: false
-thumbnail: "/assets/posts/sky_palette/sky_palette_kmeans_initial.png"
+thumbnail: '/assets/posts/sky_palette/sky_palette_kmeans_initial.png'
 ---
 
 ## The sky is the best color palette
-
 
 ![Design Homework 2020](/assets/posts/sky_palette/design_hw.jpeg)
 
@@ -24,7 +23,6 @@ Now, transformed into a researcher interested in both Visual Communication Desig
 ## Gathering data from the sky with a sky capturer
 
 To extract colors from the sky, I first needed to capture the sky. I first approached this problem in a technological perspective. I created a web app that periodically captures images every interval.
-
 
 ![Sky Capturer Web App](/assets/posts/sky_palette/sky_capturer.PNG)
 
@@ -42,7 +40,6 @@ I thought of capturing the image of the sky in another place. However, after muc
 
 I first searched for sky image datasets in google. Some datasets that were used for analyzing cloud patterns were available. Most datasets required a request to the owner of the dataset. Thus, I went on to request the dataset in multiple websites. I got some images from NUS (National University of Singapore). Vision & interaction group in NUS had gathered sky cloud images of Singapore for their [research](https://vintage.winklerbros.net/swimcat.html). I got the data from NUS, however, I soon found out that I could not use their image dataset for extracting colors. Most images were basically images of the clouds. Moreover, there seemed to have not much variance in the color of the sky. I needed to find another dataset.
 
-
 ![SWIMCAT sample images](/assets/posts/sky_palette/swimcat.png)
 
 I kept searching google for image datasets. I founds some noteworthy datasets that were simply collected as a hobby. However, many of them had objects or artifacts other than the sky, which would make it difficult to extract the colors of the sky. I needed to find a dataset that was specifically made for the sky. I could go on and perform color segmentation to distinguish the sky from other objects, but that could be done after I had made a working prototype of the sky palette project. I needed to find a find dataset that I could use right away.
@@ -52,7 +49,6 @@ After much surfing, I found an adequate dataset from a artist named [Eric Cahan]
 ## Color Extracting Algorithm Approach: K-Means Clustering
 
 I first approached the problem of extracting colors from the sky with a simple algorithm. I used K-Means clustering to cluster the colors of the sky. Many blogs explained that K-Means clustering is a simple algorithm that can be used to extract colors from an image. Thus, I first tried to use K-Means clustering to extract colors from the sky. I first tried to extract 5 colors from the sky.
-
 
 ![Simple Kmeans Palette](/assets/posts/sky_palette/sky_palette_kmeans_initial.png)
 

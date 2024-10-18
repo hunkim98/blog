@@ -1,26 +1,19 @@
-import React from "react";
-import DateFormatter from "../date-formatter";
-import CoverImage from "../cover-image";
-import Link from "next/link";
-import type Author from "../../interfaces/author";
+import type Author from '../../interfaces/author'
+import DateFormatter from '../date-formatter'
+import CoverImage from '../cover-image'
+import Link from 'next/link'
+import React from 'react'
 
 type Props = {
-  title: string;
-  date: string;
-  excerpt: string;
-  author: Author;
-  slug: string;
-  coverImg: string;
-};
+  title: string
+  date: string
+  excerpt: string
+  author: Author
+  slug: string
+  coverImg: string
+}
 
-const PostPreview = ({
-  title,
-  date,
-  excerpt,
-  author,
-  slug,
-  coverImg,
-}: Props) => {
+const PostPreview = ({ title, date, excerpt, author, slug, coverImg }: Props) => {
   return (
     <div className="flex sm:flex-row flex-col">
       {/* <div className="mb-5">
@@ -49,12 +42,10 @@ const PostPreview = ({
           {/* <div>Written by {author.name}</div> */}
           <DateFormatter dateString={date} />
         </div>
-        <p className="text-md leading-relaxed mb-4 opacity-40 line-clamp-5">
-          {excerpt}
-        </p>
+        <p className="text-md leading-relaxed mb-4 opacity-40 line-clamp-5">{excerpt}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PostPreview;
+export default PostPreview

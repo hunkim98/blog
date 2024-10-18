@@ -1,29 +1,24 @@
-import React from "react";
-import About from "components/about";
-import Container from "components/container";
-import Layout from "components/layout";
-import NavBar from "components/nav-bar";
-import Sidebar from "components/sidebar";
-import { HOME_OG_IMAGE_URL } from "lib/constants";
-import Head from "next/head";
-import { getAllStaticProps } from "utils/common/staticProps";
-import Post from "interfaces/post";
-import Project from "interfaces/project";
-import MoreProjects from "components/more-projects";
+import { getAllStaticProps } from 'utils/common/staticProps'
+import MoreProjects from 'components/more-projects'
+import { HOME_OG_IMAGE_URL } from 'lib/constants'
+import Container from 'components/container'
+import Sidebar from 'components/sidebar'
+import Project from 'interfaces/project'
+import NavBar from 'components/nav-bar'
+import Layout from 'components/layout'
+import About from 'components/about'
+import Post from 'interfaces/post'
+import Head from 'next/head'
+import React from 'react'
 
 type Props = {
-  allPosts: Post[];
-  allProjects: Project[];
-  postCategories: string[];
-  projectCategories: string[];
-};
+  allPosts: Post[]
+  allProjects: Project[]
+  postCategories: string[]
+  projectCategories: string[]
+}
 
-export default function Index({
-  allPosts,
-  postCategories,
-  allProjects,
-  projectCategories,
-}: Props) {
+export default function Index({ allPosts, postCategories, allProjects, projectCategories }: Props) {
   return (
     <>
       <Layout>
@@ -38,13 +33,13 @@ export default function Index({
         <Container>
           <Sidebar projectCategories={projectCategories} />
           <div>
-            <NavBar selectedCategory={"projects"} />
+            <NavBar selectedCategory={'projects'} />
             <MoreProjects projects={allProjects} />
           </div>
         </Container>
       </Layout>
     </>
-  );
+  )
 }
 
-export const getStaticProps = getAllStaticProps;
+export const getStaticProps = getAllStaticProps

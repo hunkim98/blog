@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import Link from 'next/link'
+import React from 'react'
 
 const Header = ({ link, title }: { link: string; title: string }) => {
   return (
@@ -8,7 +8,7 @@ const Header = ({ link, title }: { link: string; title: string }) => {
         <div className="hover:underline">{title}</div>
       </Link>
     </h2>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

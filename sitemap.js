@@ -2,29 +2,29 @@
 // import matter from "gray-matter";
 // import { join } from "path";
 
-const fs = require("fs");
-const matter = require("gray-matter");
-const join = require("path").join;
+const matter = require('gray-matter')
+const fs = require('fs')
+const join = require('path').join
 
-const postsDirectory = join(process.cwd(), "_posts");
-const projectsDirectory = join(process.cwd(), "_projects");
+const postsDirectory = join(process.cwd(), '_posts')
+const projectsDirectory = join(process.cwd(), '_projects')
 
 function generateSiteMap(posts, projects) {
   const URL =
-    process.env.NEXT_PUBLIC_RUNTIME_ENV === "prod"
-      ? "https://donghunkim.dev"
-      : "http://localhost:3000";
-  console.log(process.env.NEXT_PUBLIC_RUNTIME_ENV, URL);
+    process.env.NEXT_PUBLIC_RUNTIME_ENV === 'prod'
+      ? 'https://donghunkim.dev'
+      : 'http://localhost:3000'
+  console.log(process.env.NEXT_PUBLIC_RUNTIME_ENV, URL)
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
             <loc>${URL}</loc>
         </url>
         <url>
-            <loc>${URL + "/projects"}</loc>
+            <loc>${URL + '/projects'}</loc>
         </url>
         <url>
-            <loc>${URL + "/posts"}</loc>
+            <loc>${URL + '/posts'}</loc>
         </url>
         ${posts
           .map(({ id, date }) => {
@@ -35,9 +35,9 @@ function generateSiteMap(posts, projects) {
             <changefreq>monthly</changefreq>
             <priority>1.0</priority>
         </url>
-        `;
+        `
           })
-          .join("")}
+          .join('')}
         ${projects
           .map(({ id, date }) => {
             return `
@@ -47,81 +47,77 @@ function generateSiteMap(posts, projects) {
             <changefreq>monthly</changefreq>
             <priority>1.0</priority>
         </url>
-        `;
+        `
           })
-          .join("")}
+          .join('')}
     </urlset>
-`;
+`
 }
 
 function getSortedProjectsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(projectsDirectory).filter((slug) => {
-    return slug.endsWith(".md") || slug.endsWith(".mdx");
-  });
+    return slug.endsWith('.md') || slug.endsWith('.mdx')
+  })
   const allProjectsData = fileNames.map((fileName) => {
-    const doesEndWithMdx = fileName.endsWith(".mdx");
+    const doesEndWithMdx = fileName.endsWith('.mdx')
     // Remove ".md" from file name to get id
-    const id = doesEndWithMdx
-      ? fileName.replace(/\.mdx$/, "")
-      : fileName.replace(/\.md$/, "");
+    const id = doesEndWithMdx ? fileName.replace(/\.mdx$/, '') : fileName.replace(/\.md$/, '')
     // Read markdown file as string
-    const fullPath = join(projectsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const fullPath = join(projectsDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+    const matterResult = matter(fileContents)
     // Combine the data with the id
     return {
       id,
       ...matterResult.data,
-    };
-  });
+    }
+  })
   // Filter out draft posts
   const liveProjects = allProjectsData.filter((projectData) => {
-    return projectData.WIP == false;
-  });
+    return projectData.WIP == false
+  })
   // Sort posts by date
   return liveProjects.sort((a, b) => {
     if (a.date < b.date) {
-      return 1;
+      return 1
     } else {
-      return -1;
+      return -1
     }
-  });
+  })
 }
 
 function getSortedPostsData() {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
+  const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData = fileNames.map((fileName) => {
-    const doesEndWithMdx = fileName.endsWith(".mdx");
+    const doesEndWithMdx = fileName.endsWith('.mdx')
     // Remove ".md" from file name to get id
-    const id = doesEndWithMdx
-      ? fileName.replace(/\.mdx$/, "")
-      : fileName.replace(/\.md$/, "");
+    const id = doesEndWithMdx ? fileName.replace(/\.mdx$/, '') : fileName.replace(/\.md$/, '')
     // Read markdown file as string
-    const fullPath = join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const fullPath = join(postsDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+    const matterResult = matter(fileContents)
     // Combine the data with the id
     return {
       id,
       ...matterResult.data,
-    };
-  });
+    }
+  })
   // Filter out draft posts
   const livePosts = allPostsData.filter((postData) => {
-    return postData.WIP == false;
-  });
+    return postData.WIP == false
+  })
   // Sort posts by date
   return livePosts.sort((a, b) => {
     if (a.date < b.date) {
-      return 1;
+      return 1
     } else {
-      return -1;
+      return -1
     }
-  });
+  })
 }
 // export async function getStaticProps({ res }) {
 //   const posts = getSortedPostsData();
@@ -142,10 +138,10 @@ function getSortedPostsData() {
 //   return null;
 // }
 
-(async () => {
-  const posts = getSortedPostsData();
-  const projects = getSortedProjectsData();
+;(async () => {
+  const posts = getSortedPostsData()
+  const projects = getSortedProjectsData()
   // Generate the XML sitemap with the blog data
-  const sitemap = generateSiteMap(posts, projects);
-  fs.writeFileSync("public/sitemap.xml", sitemap);
-})();
+  const sitemap = generateSiteMap(posts, projects)
+  fs.writeFileSync('public/sitemap.xml', sitemap)
+})()

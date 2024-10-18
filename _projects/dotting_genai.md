@@ -1,18 +1,17 @@
 ---
-title: "Dotting GenAI: Pixel Art Editor With Generative AI"
-excerpt: "Dotting GenAI is an experimental project that aims to incorporate generative AI into the realm of pixel art. Alongside software development, a user research was conducted in order to gain insights into how experienced designers perceive the collaborative potential with Generative AI."
-startDate: "2023-03-22"
-date: "2023-04-11"
+title: 'Dotting GenAI: Pixel Art Editor With Generative AI'
+excerpt: 'Dotting GenAI is an experimental project that aims to incorporate generative AI into the realm of pixel art. Alongside software development, a user research was conducted in order to gain insights into how experienced designers perceive the collaborative potential with Generative AI.'
+startDate: '2023-03-22'
+date: '2023-04-11'
 author:
   name: Kim Dong Hun
-keyword: "Generative AI"
-categories: ["hackathon", "AI", "editor"]
-coverImg: "/assets/project/dotting_genai/home.png"
+keyword: 'Generative AI'
+categories: ['hackathon', 'AI', 'editor']
+coverImg: '/assets/project/dotting_genai/home.png'
 WIP: false
 ---
 
 [Hackathon Presentation Video →](https://www.youtube.com/watch?v=nKYJNuTxfTs)
-
 
 ![Demo](/assets/project/dotting_genai/demo.gif)
 
@@ -29,6 +28,5 @@ Dotting GenAI allows users to interact with the generative AI through a chat int
 After the development of the service, I conducted a user test on design experts to figure out 1) whether my software design approach was effective, and 2) whether the generative AI was useful for the design experts. The user test was conducted with 12 design experts, and the results showed some interesting insights.
 
 Most users thought the experience of being able to modify the generated images directly in the editor as comfortable. However, they had many worries about using generative AI in their work. Some reported that although generated images do encourage untried styles, they become a burden when the user wants to create a specific image they have in mind. Some also reported that they rather wanted a generative AI that learns from their own styles, rather than some random generated images based on prompts. People more interested in the study may download the <a target="_blank" href="/assets/project/dotting_genai/dissertation.pdf">PDF file</a> for more details.
-
 
 ![Presentation in Primer Hackathon](/assets/project/dotting_genai/presentation.png)

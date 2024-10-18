@@ -1,13 +1,13 @@
-import React from "react";
-import PostPreview from "./posts/post-preview";
-import type Project from "../interfaces/project";
-import ProjectPreview from "./project-preview";
+import type Project from '../interfaces/project'
+import PostPreview from './posts/post-preview'
+import ProjectPreview from './project-preview'
+import React from 'react'
 
 type Props = {
-  projects: Project[];
-  category?: string;
-  isTitleShown?: boolean;
-};
+  projects: Project[]
+  category?: string
+  isTitleShown?: boolean
+}
 
 const MoreProjects = ({ projects, category, isTitleShown }: Props) => {
   //this shows on home
@@ -31,7 +31,7 @@ const MoreProjects = ({ projects, category, isTitleShown }: Props) => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default MoreProjects;
+export default MoreProjects

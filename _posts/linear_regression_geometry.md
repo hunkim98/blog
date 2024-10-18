@@ -1,13 +1,13 @@
 ---
-title: "Linear Regression Model Selection (feat. Geomertry)"
-excerpt: "Linear Regression Model is a powerful tool for modeling multiple variables and their relationships to the targeted output variable. However, having many predictors can overcomplicate the model and output poor results. We will understand linear regression model selection methods (Ridge, Lasso) in a geometric perspective."
-date: "2024-10-10"
+title: 'Linear Regression Model Selection (feat. Geomertry)'
+excerpt: 'Linear Regression Model is a powerful tool for modeling multiple variables and their relationships to the targeted output variable. However, having many predictors can overcomplicate the model and output poor results. We will understand linear regression model selection methods (Ridge, Lasso) in a geometric perspective.'
+date: '2024-10-10'
 author:
   name: Kim Dong Hun
-keyword: "Model Selection"
-categories: ["ML", "Data Science"]
+keyword: 'Model Selection'
+categories: ['ML', 'Data Science']
 WIP: false
-thumbnail: "/assets/posts/linear_regression_geometry/ridge_lasso4.png"
+thumbnail: '/assets/posts/linear_regression_geometry/ridge_lasso4.png'
 ---
 
 ## Linear Regression Fails with Many Predictors
@@ -36,7 +36,7 @@ In this post, we will focus mainly on shrinkage method and introduce them not as
 
 ## Brief Introduction of Ridge and Lasso
 
-To first understand Ridge and Lasso, one should have a good understanding of Ordinary Least Squares, which is the most basic version of linear regression model. 
+To first understand Ridge and Lasso, one should have a good understanding of Ordinary Least Squares, which is the most basic version of linear regression model.
 
 The ultimate goal of Ordinary Least Squares is to find the coefficients ($\beta_0, \beta_1, \cdots, \beta_n$) of the predictors that make the residual sum of squares (RSS) to 0. The Residual sum of squares is calculated as below:
 
@@ -58,7 +58,7 @@ $$
 Minimize \sum_{i=1}^{n} w_i(y_i - \hat{y}_i)^2
 $$
 
-where $w_i$ is the weight applied to the $i$-th sample. 
+where $w_i$ is the weight applied to the $i$-th sample.
 
 On the other hand, OLS does not apply any weights to the squared differences. It just tries to minimize the sum of squared differences:
 
@@ -66,7 +66,7 @@ $$
 Minimize \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 $$
 
-In fact, the 'Ordinary' in OLS means that it does not apply any weights to the squared differences. It just tries to minimize the sum of squared differences.  (For your information $\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$ is also called the Residual Sum of Squares (RSS).)
+In fact, the 'Ordinary' in OLS means that it does not apply any weights to the squared differences. It just tries to minimize the sum of squared differences. (For your information $\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$ is also called the Residual Sum of Squares (RSS).)
 
 So how does Mean Squared Error (MSE) come into play? Well, MSE is essentially the average of the squared differences between the actual and predicted values. So it can be said that MSE is the average of the RSS. Thus, it can be said that OLS is the method that tries to minimize the MSE.
 
@@ -76,14 +76,11 @@ $$
 
 ### Calculation of Bias and Variance
 
-Allright, so we have been told that OLS has the least bias among linear regression models. Let us talk about the bias and variance of it. 
+Allright, so we have been told that OLS has the least bias among linear regression models. Let us talk about the bias and variance of it.
 
 Now when talking about models, bias and variance are two keywords that always show up. Essentially in predictive models, there is always a bias and variance tradeoff. The most famous image that explain both bias and variance is the image below:
 
-
-
 ![Bias Variance](/assets/posts/linear_regression_geometry/bias_variance.png)
-
 
 In the image, the bullseye is the target. The lower the variance, the denser the shots are to each other (regardless of its proximity to the bullseye). The higher the bias, the more offset the shots are from the bullseye. In linear regression, it is a common practice to find a model that has the least bias and variance, which is in fact difficult due to the tradeoff that exists between them.
 
@@ -121,7 +118,7 @@ $$
 RSS = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 $$
 
-For exploaratory purposes, we can safely say that minimizing $RSS$ is the same as minimizing $MSE$ which is 
+For exploaratory purposes, we can safely say that minimizing $RSS$ is the same as minimizing $MSE$ which is
 
 $$
 MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
@@ -139,7 +136,7 @@ $$
 MSE = Bias^2 + Var + \sigma^2
 $$
 
-where $\sigma^2$ is the irreducible error. 
+where $\sigma^2$ is the irreducible error.
 
 If assumptions on the linear model are held, then the bias of the OLS model is 0 according to the Gauss-Markov theorem. The assumptions are 1) the model is linear in the parameters, 2) the errors of residuals are independent and identically distributed, 3) the errors are normally distributed (mean should be 0), and 4) the errors have a constant variance. If these assumptions are held, then the OLS model has the least bias. The specifics of Gauss-Markov theorem can be found in this [link](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). But just to give you a brief overview, In the final equation of the theorem, the OLS model shows that the mean of the estimated coefficients is equal to the true coefficients.
 
@@ -161,7 +158,7 @@ So as you can see here, a new term $\lambda \sum_{j=1}^{p} \beta_j^2$ is added t
 
 In easy words, Ridge Regression introduces a constraint `budget` that the RSS should be operated within. Remind yourself that this is a constraint! The whole point of Ridge Regression is to find the coefficients ($\beta_0, \beta_1, \cdots, \beta_n$) that minimize the RSS while keeping the sum of the squares of the coefficients within the budget. This is why Ridge Regression is also called L2 regularization.
 
-This is in fact an optimization problem! We are given a budget and we need to find the point where the RSS is minimized while keeping the sum of the squares of the coefficients within the budget. 
+This is in fact an optimization problem! We are given a budget and we need to find the point where the RSS is minimized while keeping the sum of the squares of the coefficients within the budget.
 
 Let us understand this easily using geometry. For simplifying the problem let us imagine a two predictor linear regression model. This model will be expressed as below:
 
@@ -179,8 +176,7 @@ Since we have a two predictor linear regression model, we can plot the combinati
 
 ### Ridge Regression in a Geometric Perspective
 
-OLS was relatively easy to understand. Now how about Ridge Regression? First remind that Ridge Regression is minimizing the RSS within a fixed budget. Thus it is an optimization probelm. Our budget can be depicted as an area in the 2d plane. Plus, since our ridge regression is a square of the coefficients, the budget area will be a circle. 
-
+OLS was relatively easy to understand. Now how about Ridge Regression? First remind that Ridge Regression is minimizing the RSS within a fixed budget. Thus it is an optimization probelm. Our budget can be depicted as an area in the 2d plane. Plus, since our ridge regression is a square of the coefficients, the budget area will be a circle.
 
 ![Ridge Regression budget shown as an area](/assets/posts/linear_regression_geometry/ridge_lasso2.png)
 
@@ -194,7 +190,7 @@ However, remember that though the coefficients can get larger than the original 
 
 As we continue to sacrifice the RSS, the line of possible combinations of coefficients will be larger and larger. Eventually, we will find the right combination that is within the budget. This is the combination that minimizes the RSS while keeping the sum of the squares of the coefficients within the budget. Since both the area and our line are ellipses, the combination that is the best combination will be the point where both ellipses intersect to each other.
 
-Though we can sacrifice the RSS more and find more combinations that can fit within the boundaries, we have to remember that this is an optimization problem. Thus, the combination that is the best is the one that minimizes the RSS while keeping the sum of the squares of the coefficients within the budget. This is the combination that is the closest to the actual output values. This is in fact the point where the Ridge Regression model stops its exploration and outputs the coefficients. 
+Though we can sacrifice the RSS more and find more combinations that can fit within the boundaries, we have to remember that this is an optimization problem. Thus, the combination that is the best is the one that minimizes the RSS while keeping the sum of the squares of the coefficients within the budget. This is the combination that is the closest to the actual output values. This is in fact the point where the Ridge Regression model stops its exploration and outputs the coefficients.
 
 ![Ridge Regression budget shown as an area](/assets/posts/linear_regression_geometry/ridge_lasso5.png)
 
@@ -208,7 +204,7 @@ $$
 Minimize \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 + \lambda \sum_{j=1}^{p} |\beta_j|
 $$
 
-Now the penalty term is different from the Ridge Regression. Thus the budget area will not be shown as an ellipse but a rectangular. Everything else is the same. We need to sacrifice RSS untill there is a point that is within the budget area. 
+Now the penalty term is different from the Ridge Regression. Thus the budget area will not be shown as an ellipse but a rectangular. Everything else is the same. We need to sacrifice RSS untill there is a point that is within the budget area.
 
 ![Ridge Regression budget shown as an area](/assets/posts/linear_regression_geometry/ridge_lasso6.png)
 

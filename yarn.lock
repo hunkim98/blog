@@ -4376,6 +4376,23 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
+prettier-plugin-sort-imports@^1.8.6:
+  version "1.8.6"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-sort-imports/-/prettier-plugin-sort-imports-1.8.6.tgz#102cdd774b3e2ffde63b3667f381c0cada2df710"
+  integrity sha512-jOEzFCyvdDL8geCmr4DP/VBKULZ6OaDQHBEmHTuFHf4EzWyedmwnHg2KawNy5rnrQ6gnCqwrfgymMQZctzCE1Q==
+  dependencies:
+    prettier "^3.1.1"
+
+prettier-plugin-tailwindcss@^0.6.8:
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.6.8.tgz#8a178e1679e3f941cc9de396f109c6cffea676d8"
+  integrity sha512-dGu3kdm7SXPkiW4nzeWKCl3uoImdd5CTZEJGxyypEPL37Wj0HT2pLqjrvSei1nTeuQfO4PUfjeW5cTUNRLZ4sA==
+
+prettier@^3.1.1, prettier@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.3.3.tgz#30c54fe0be0d8d12e6ae61dbb10109ea00d53105"
+  integrity sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==
+
 prismjs@^1.23.0:
   version "1.29.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
@@ -4524,6 +4541,15 @@ rehype-katex@^7.0.0:
     katex "^0.16.0"
     unist-util-visit-parents "^6.0.0"
     vfile "^6.0.0"
+
+rehype-react@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-react/-/rehype-react-8.0.0.tgz#a3e2fecb10579af7bb065c7b232410a500699ba7"
+  integrity sha512-vzo0YxYbB2HE+36+9HWXVdxNoNDubx63r5LBzpxBGVWM8s9mdnMdbmuJBAX6TTyuGdZjZix6qU3GcSuKCIWivw==
+  dependencies:
+    "@types/hast" "^3.0.0"
+    hast-util-to-jsx-runtime "^2.0.0"
+    unified "^11.0.0"
 
 rehype-stringify@^10.0.0:
   version "10.0.0"
@@ -5192,6 +5218,11 @@ thenify-all@^1.0.0:
   integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
+
+three@^0.169.0:
+  version "0.169.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.169.0.tgz#4a62114988ad9728d73526d1f1de6760c56b4adc"
+  integrity sha512-Ed906MA3dR4TS5riErd4QBsRGPcx+HBDX2O5yYE5GqJeFQTPU+M56Va/f/Oph9X7uZo3W3o4l2ZhBZ6f6qUv0w==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

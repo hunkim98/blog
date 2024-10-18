@@ -1,8 +1,8 @@
-import React from "react";
-import Intro from "../intro";
+import Intro from '../intro'
+import React from 'react'
 
 interface Props {
-  projectCategories: string[];
+  projectCategories: string[]
 }
 
 const Sidebar: React.FC<Props> = ({ projectCategories }) => {
@@ -19,11 +19,11 @@ const Sidebar: React.FC<Props> = ({ projectCategories }) => {
             >
               #{category}
             </a>
-          );
+          )
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

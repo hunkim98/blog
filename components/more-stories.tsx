@@ -1,12 +1,12 @@
-import React from "react";
-import PostPreview from "./posts/post-preview";
-import type Post from "../interfaces/post";
+import PostPreview from './posts/post-preview'
+import type Post from '../interfaces/post'
+import React from 'react'
 
 type Props = {
-  posts: Post[];
-  category?: string;
-  isTitleShown?: boolean;
-};
+  posts: Post[]
+  category?: string
+  isTitleShown?: boolean
+}
 
 const MoreStories = ({ posts, category, isTitleShown }: Props) => {
   //this shows on home
@@ -31,7 +31,7 @@ const MoreStories = ({ posts, category, isTitleShown }: Props) => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default MoreStories;
+export default MoreStories

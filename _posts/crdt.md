@@ -1,17 +1,16 @@
 ---
-title: "CRDT - 텍스트 문서 실시간 동시 편집의 기본원리"
-excerpt: "동시문서편집 기술이란 무엇인가? 다들 한번씩은 사용해본 적이 있는 Google Docs를 생각해보면 감이 잡힐 것이다. 짧게 설명하자면, 단어 그대로, 동시에 서로가 문서를 편집할 수 있는 기술이다. 즉, 상대방이 무언가를 입력하면, 다른 사용자들(peer)이 그 입력하는 과정을 실시간으로 확인할 수 있고, 상대방이 문서를 편집하는 동시에 본인 또한 무언가를 입력하거나 수정이 가능한 문서 편집 기술이다. 컴퓨터에 대해서 잘 모르더라도, 동시에 같은 것을 작업하는 기술이기 때문에 사용자와 다른 사용자 사이에 정보가 왔다갔다해야 한다는 것은 대충 알 수 있다. 여기에서 기술적 난제는 ‘동시성’에서 발원한다. 이 `동시성`에서 발원하는 문제를 CRDT라는 알고리즘을 활용해서 해결한다."
-date: "2022-09-03"
+title: 'CRDT - 텍스트 문서 실시간 동시 편집의 기본원리'
+excerpt: '동시문서편집 기술이란 무엇인가? 다들 한번씩은 사용해본 적이 있는 Google Docs를 생각해보면 감이 잡힐 것이다. 짧게 설명하자면, 단어 그대로, 동시에 서로가 문서를 편집할 수 있는 기술이다. 즉, 상대방이 무언가를 입력하면, 다른 사용자들(peer)이 그 입력하는 과정을 실시간으로 확인할 수 있고, 상대방이 문서를 편집하는 동시에 본인 또한 무언가를 입력하거나 수정이 가능한 문서 편집 기술이다. 컴퓨터에 대해서 잘 모르더라도, 동시에 같은 것을 작업하는 기술이기 때문에 사용자와 다른 사용자 사이에 정보가 왔다갔다해야 한다는 것은 대충 알 수 있다. 여기에서 기술적 난제는 ‘동시성’에서 발원한다. 이 `동시성`에서 발원하는 문제를 CRDT라는 알고리즘을 활용해서 해결한다.'
+date: '2022-09-03'
 author:
   name: Kim Dong Hun
-keyword: "CRDT Basics"
-categories: ["CRDT", "Algorithm"]
+keyword: 'CRDT Basics'
+categories: ['CRDT', 'Algorithm']
 WIP: false
-thumbnail: "/assets/posts/crdt/thumbnail.png"
+thumbnail: '/assets/posts/crdt/thumbnail.png'
 ---
 
 ## How to resolve multiple peers editing the same text context
-
 
 ![네이버 인턴 초기에 사용한 임시출입증](/assets/blog/images/crdt/card.jpg)
 
@@ -32,7 +31,6 @@ thumbnail: "/assets/posts/crdt/thumbnail.png"
 ![image2](/assets/blog/images/crdt/image2.png)
 
 A와 B 모두 ‘hello’ 뒤에 문자를 추가한다고 하자. A는 ‘hello’ 뒤에 ‘y’을, B는 ‘hello’ 뒤에 ‘!’를 붙인다고 하자. A는 ‘helloy’을 기대할 것이고 B는 ‘hello!’를 기대할 것이다. 정보를 매개하는 중간자는 이를 해결해야 한다. 누군가는 그냥 단순하게 무조건 A의 행위를 우선시켜 A가 하는 모든 것이 B를 우선시하게 하면 되지 않겠냐고 할 수 있겠다. 그럼 결과물은 ‘helloy!’가 되겠다. 그런데 이렇게 단순하게 풀 수 있는 문제가 아니다. 여러가지 상황을 고려하면 해당 해결책은 적합하지 않다. 정말 단순한 상황을 예시로 들자. 만약 A의 컴퓨터가 느려서 A의 행위가 중간자에게 늦게 전달된다면 어떻게 될까? B는 컴퓨터가 빨라서 ‘! My name is’까지 추가한 사항이 중간자에게 전달되고 나서 A의 ‘y’ 행위가 반영이 된다면? 그럴 경우 ‘helloy! My name is’이 되어야 할 것이 실제로는 ‘hello! My name isy’이 될 것이다. A는 분명 ‘hello’ 뒤에 ‘y’을 붙이려는 의도를 가지고 있었는데, A는 컴퓨터 속도의 지연때문에 본인이 보지도 못한 ‘name is’ 뒤에 ‘y’을 붙이게 되어버린다.
-
 
 ![crdt](/assets/blog/images/crdt/crdt.png)
 

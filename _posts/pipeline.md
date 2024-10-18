@@ -1,13 +1,13 @@
 ---
-title: "컴퓨터 구조 - 파이프라인"
-excerpt: "흔히 어떤 일을 수행하기 위해서 single cycle을 생각하는 것이 흔하다. 하나의 기계가 있다면 그 기계는 일단 하나를 수행 완료한 뒤에 다른 것을 수행하는 것이 정상적으로 느껴진다. 하지만, 수행하는 일을 단계로 나눠서 한꺼번에 여러 단계를 수행할 수 있게 하면 어떨까? 각 단계를 중첩해서 실행하게 하면 걸리는 시간이 크게 줄어지는 것을 확인할 수 있다."
-date: "2022-08-23"
+title: '컴퓨터 구조 - 파이프라인'
+excerpt: '흔히 어떤 일을 수행하기 위해서 single cycle을 생각하는 것이 흔하다. 하나의 기계가 있다면 그 기계는 일단 하나를 수행 완료한 뒤에 다른 것을 수행하는 것이 정상적으로 느껴진다. 하지만, 수행하는 일을 단계로 나눠서 한꺼번에 여러 단계를 수행할 수 있게 하면 어떨까? 각 단계를 중첩해서 실행하게 하면 걸리는 시간이 크게 줄어지는 것을 확인할 수 있다.'
+date: '2022-08-23'
 author:
   name: Kim Dong Hun
-keyword: "Pipeline"
-categories: ["computer-architecture"]
+keyword: 'Pipeline'
+categories: ['computer-architecture']
 WIP: false
-thumbnail: "/assets/posts/pipeline/thumbnail.png"
+thumbnail: '/assets/posts/pipeline/thumbnail.png'
 ---
 
 ## Make Common Case Fast!

@@ -1,26 +1,22 @@
-import React from "react";
+import React from 'react'
 
-import Layout from "../../../components/layout";
-import Container from "../../../components/container";
-import Header from "../../../components/header";
-import Head from "next/head";
-import { getAllPosts, getAllProjects } from "../../../lib/api";
-import Project from "../../../interfaces/project";
+import { getAllPosts, getAllProjects } from '../../../lib/api'
+import Container from '../../../components/container'
+import Project from '../../../interfaces/project'
+import Layout from '../../../components/layout'
+import Header from '../../../components/header'
+import Head from 'next/head'
 
-import MoreProjects from "../../../components/more-projects";
-import Intro from "../../../components/intro";
+import MoreProjects from '../../../components/more-projects'
+import Intro from '../../../components/intro'
 
 type Props = {
-  categoryProjects: Project[];
-  category: string;
-  projectCategories: string[];
-};
+  categoryProjects: Project[]
+  category: string
+  projectCategories: string[]
+}
 
-export default function Category({
-  categoryProjects,
-  category,
-  projectCategories,
-}: Props) {
+export default function Category({ categoryProjects, category, projectCategories }: Props) {
   return (
     <>
       <Layout>
@@ -34,14 +30,10 @@ export default function Category({
             <div className="mb-6 flex flex-wrap">
               {projectCategories.map((category, index) => {
                 return (
-                  <a
-                    className="pr-2"
-                    key={index}
-                    href={`/category/projects/${category}`}
-                  >
+                  <a className="pr-2" key={index} href={`/category/projects/${category}`}>
                     #{category}
                   </a>
-                );
+                )
               })}
             </div>
           </div>
@@ -53,38 +45,36 @@ export default function Category({
         </Container>
       </Layout>
     </>
-  );
+  )
 }
 
 type Params = {
   params: {
-    slug: string;
-  };
-};
+    slug: string
+  }
+}
 
 export const getStaticProps = async ({ params }: Params) => {
   const allProjects = getAllProjects([
-    "title",
-    "date",
-    "slug",
-    "excerpt",
-    "keyword",
-    "categories",
-    "coverImg",
-    "WIP",
-  ]).projects.filter((element) => !element.WIP);
-  const projectCategorySet = new Set();
+    'title',
+    'date',
+    'slug',
+    'excerpt',
+    'keyword',
+    'categories',
+    'coverImg',
+    'WIP',
+  ]).projects.filter((element) => !element.WIP)
+  const projectCategorySet = new Set()
   allProjects
     .filter((element) => !element.WIP)
     .map((project) => {
-      const categories = project.categories as string[];
+      const categories = project.categories as string[]
       categories.map((category) => {
-        projectCategorySet.add(category);
-      });
-    });
-  const categoryProjects = allProjects.filter((project) =>
-    project.categories.includes(params.slug)
-  );
+        projectCategorySet.add(category)
+      })
+    })
+  const categoryProjects = allProjects.filter((project) => project.categories.includes(params.slug))
 
   return {
     props: {
@@ -92,18 +82,18 @@ export const getStaticProps = async ({ params }: Params) => {
       category: params.slug,
       projectCategories: Array.from(projectCategorySet),
     },
-  };
-};
+  }
+}
 
 export async function getStaticPaths() {
-  const { projects } = getAllProjects(["categories"]);
-  const categorySet = new Set();
+  const { projects } = getAllProjects(['categories'])
+  const categorySet = new Set()
   projects.map((project) => {
-    const categories = project.categories as string[];
+    const categories = project.categories as string[]
     categories.map((category) => {
-      categorySet.add(category);
-    });
-  });
+      categorySet.add(category)
+    })
+  })
 
   return {
     paths: Array.from(categorySet).map((category) => {
@@ -111,8 +101,8 @@ export async function getStaticPaths() {
         params: {
           slug: category,
         },
-      };
+      }
     }),
     fallback: false,
-  };
+  }
 }

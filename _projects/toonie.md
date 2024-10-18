@@ -1,13 +1,13 @@
 ---
-title: "Toonie: Real-time Collaborative image review editor"
-excerpt: "Toonie is a real-time CRDT-based collaborative image review editor where users can review on images uploaded to the service together. I developed software design appraoches for optimizing collaborative whiteboards."
-startDate: "2022-06-27"
-date: "2022-08-19"
+title: 'Toonie: Real-time Collaborative image review editor'
+excerpt: 'Toonie is a real-time CRDT-based collaborative image review editor where users can review on images uploaded to the service together. I developed software design appraoches for optimizing collaborative whiteboards.'
+startDate: '2022-06-27'
+date: '2022-08-19'
 author:
   name: Kim Dong Hun
-keyword: "collaboration"
-categories: ["opensource", "collaboration", "CRDT"]
-coverImg: "/assets/project/toonie/thumbnail.png"
+keyword: 'collaboration'
+categories: ['opensource', 'collaboration', 'CRDT']
+coverImg: '/assets/project/toonie/thumbnail.png'
 WIP: false
 ---
 
@@ -16,7 +16,6 @@ Collaborative editing is a rising star in software development. Now, people not 
 However, implementing a multiplayer aspect into an editor is never an easy task. First, one should have basic knowledge of how to manage multiple actions from multiple agents. What happens if two people try to edit the same part of the document at the same time? What happens if one person deletes a part of the document while the other person is editing the same part? These are the questions that one should be able to answer when they want to implement a collaborative editor. Second, one should have to decide what features shall be communcated between users, and how their actions do not cause overhead. Relaying data between users can be costly and unreliable in some cases, so one should carefully design the data flow between users in a way that it does not harm user experience.
 
 Toonie is a real-time CRDT-based collaborative image review editor that I created to research optimization techniques for implementing CRDT mechanisms into whiteboards. In Toonie, users can review on images uploaded to the service together by sharing a URL to another person. The reason I chose an image review domain specifically is because most collaborative editors out there are for general purposes. Thus, I wanted to create a more narrow focused whiteboard where designers and marketers could review on images together by drawing sketches on the images in an online meeting setting.
-
 
 ![Editing Scene](/assets/project/toonie/edit.png)
 

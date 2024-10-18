@@ -1,18 +1,17 @@
 ---
-title: "LinkLink: Visualize my social networks"
-excerpt: "LinkLink is a social networking application that is focused on reaching out to the acquaintances of my friends. By providing a visualized social network graph consisted of my friends and the friends of my friends, one can find their suitable companions easily."
-startDate: "2022-09-01"
-date: "2022-12-08"
+title: 'LinkLink: Visualize my social networks'
+excerpt: 'LinkLink is a social networking application that is focused on reaching out to the acquaintances of my friends. By providing a visualized social network graph consisted of my friends and the friends of my friends, one can find their suitable companions easily.'
+startDate: '2022-09-01'
+date: '2022-12-08'
 author:
   name: Kim Dong Hun
-keyword: "social network"
-categories: ["data-visualization", "social-network"]
-coverImg: "/assets/project/linklink/home.png"
+keyword: 'social network'
+categories: ['data-visualization', 'social-network']
+coverImg: '/assets/project/linklink/home.png'
 WIP: false
 ---
 
 [Project Wiki →](https://github.com/swsnu/swppfall2022-team9/wiki/Requirements-and-Specification)
-
 
 ![Demo](/assets/project/linklink/demo.gif)
 
@@ -24,13 +23,10 @@ Would this whole process be simplified if there was a service that showed the qu
 
 LinkedIn previously did a [similar project](https://blog.linkedin.com/2011/01/24/linkedin-inmaps) in 2011. It visualized all the networks of the acquaintances you had. However, the problem was that the visualization was too complex, and thus not very useful. There was too much information in the visualized network resulting in an ununderstandable mess. LinkLink solved this visual mess by putting a limit to how many direct friend connections one can have (one can only have a maximum of 15 direct friends). This benefits the service in two ways: 1) The service is more reliable since one has to carefully choose who to connect with, resulting in a more reliable network, 2) The user is able to understand the network better since there are less connections to look at.
 
-
 ![Personal Profile UI](/assets/project/linklink/profile.png)
-
 
 ![Evaluate Friends](/assets/project/linklink/evaluate.png)
 
 Since the main purpose of the application was to provide users with reliable networks, our team devised evaluation features for users to evaluate their directly connected friends. This could allow users to not only judge the fitness of another person based on their skillsets but also their character. When one finally decides they want to connect with that person, they can chat with the person directly or ask their intermediary friend to introduce them to the person.
-
 
 ![Chat](/assets/project/linklink/chat.png)

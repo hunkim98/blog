@@ -1,13 +1,13 @@
 ---
-title: "Private Chatbot: Encrypted Financial Complaint Chatbot"
-excerpt: "Private Chatbot is a user complaint chatbot application created with two technologies: Homomorphic Encryption and ChatGPT. Cryptolab, a startup that creates cryptographic solutions, provided us with SDKs to use Homomorphic encryption technology allowing us to encrypt chat messages."
-startDate: "2023-03-03"
-date: "2023-06-16"
+title: 'Private Chatbot: Encrypted Financial Complaint Chatbot'
+excerpt: 'Private Chatbot is a user complaint chatbot application created with two technologies: Homomorphic Encryption and ChatGPT. Cryptolab, a startup that creates cryptographic solutions, provided us with SDKs to use Homomorphic encryption technology allowing us to encrypt chat messages.'
+startDate: '2023-03-03'
+date: '2023-06-16'
 author:
   name: Kim Dong Hun
-keyword: "cryptography"
-categories: ["chatgpt", "cryptography"]
-coverImg: "/assets/project/cryptolab/thumbnail.png"
+keyword: 'cryptography'
+categories: ['chatgpt', 'cryptography']
+coverImg: '/assets/project/cryptolab/thumbnail.png'
 WIP: false
 ---
 
@@ -18,7 +18,6 @@ Cryptolab is an cryptography startup me and my teamates partnered with to find s
 ![Demo](/assets/project/cryptolab/thumbnail.png)
 
 We chose the financial domain for our chatbot. The reason for choosing the financial domain is that the financial domain is one of the most sensitive domains in terms of privacy. People are very sensitive about their financial information, and they are very reluctant to share their financial information with others. If there were to be a chatbot that can handle financial information, it should be able to protect the user's privacy.
-
 
 ![Service Architecture](/assets/project/cryptolab/architecture.png)
 

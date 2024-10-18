@@ -1,6 +1,6 @@
-import React from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
+import React from 'react'
 
 export default class MyDocument extends Document {
   render() {
@@ -12,6 +12,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }

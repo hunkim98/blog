@@ -1,16 +1,16 @@
-import React from "react";
-import DateFormatter from "./date-formatter";
-import CoverImage from "./cover-image";
-import Link from "next/link";
-import type Author from "../interfaces/author";
+import type Author from '../interfaces/author'
+import DateFormatter from './date-formatter'
+import CoverImage from './cover-image'
+import Link from 'next/link'
+import React from 'react'
 
 type Props = {
-  title: string;
-  date: string;
-  excerpt: string;
-  coverImg: string;
-  slug: string;
-};
+  title: string
+  date: string
+  excerpt: string
+  coverImg: string
+  slug: string
+}
 
 const ProjectPreview = ({ title, date, excerpt, slug, coverImg }: Props) => {
   return (
@@ -26,13 +26,11 @@ const ProjectPreview = ({ title, date, excerpt, slug, coverImg }: Props) => {
           <DateFormatter dateString={date} />
         </div>
 
-        <p className="text-md leading-relaxed mb-4 opacity-40 px-5 line-clamp-5">
-          {excerpt}
-        </p>
+        <p className="text-md leading-relaxed mb-4 opacity-40 px-5 line-clamp-5">{excerpt}</p>
         <div className="bottom-0 h-[100px] absolute bg-gradient-to-t from-white to-transparent w-full"></div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default ProjectPreview;
+export default ProjectPreview

@@ -1,8 +1,8 @@
-import React from "react";
-import { Dotting } from "dotting";
+import { Dotting } from 'dotting'
+import React from 'react'
 
 function DottingComponent() {
-  return <Dotting width={"100%"} height={300} />;
+  return <Dotting width={'100%'} height={300} />
 }
 
-export default DottingComponent;
+export default DottingComponent

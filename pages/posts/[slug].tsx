@@ -1,40 +1,35 @@
-import React from "react";
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import Container from "../../components/container";
-import PostBody from "../../components/posts/post-body";
-import Header from "../../components/header";
-import PostHeader from "../../components/posts/post-header";
-import Layout from "../../components/layout";
-import {
-  getPostBySlug,
-  getAllPosts,
-  getAllProjects,
-  getProjectBySlug,
-} from "../../lib/api";
-import PostTitle from "../../components/posts/post-title";
-import Head from "next/head";
-import markdownToHtml from "../../lib/markdownToHtml";
-import type PostType from "../../interfaces/post";
-import Utterances from "../../components/utterances";
-import { BLOG_URL } from "../../lib/constants";
-import NavigateToOther from "../../components/navigate-to-other";
+import { getPostBySlug, getAllPosts, getAllProjects, getProjectBySlug } from '../../lib/api'
+import NavigateToOther from '../../components/navigate-to-other'
+import PostHeader from '../../components/posts/post-header'
+import PostTitle from '../../components/posts/post-title'
+import PostBody from '../../components/posts/post-body'
+import markdownToHtml from '../../lib/markdownToHtml'
+import Utterances from '../../components/utterances'
+import Container from '../../components/container'
+import type PostType from '../../interfaces/post'
+import { BLOG_URL } from '../../lib/constants'
+import Header from '../../components/header'
+import Layout from '../../components/layout'
+import { useRouter } from 'next/router'
+import ErrorPage from 'next/error'
+import Head from 'next/head'
+import React from 'react'
 
 type Props = {
-  post: PostType;
-  morePosts: PostType[];
-  preview?: boolean;
-};
+  post: PostType
+  morePosts: PostType[]
+  preview?: boolean
+}
 
 export default function Post({ post, morePosts, preview }: Props) {
-  const router = useRouter();
+  const router = useRouter()
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
+    return <ErrorPage statusCode={404} />
   }
   return (
     <Layout preview={preview}>
       <div className="container mx-auto px-5 max-w-5xl">
-        <Header title={"← More Posts"} link="/posts" />
+        <Header title={'← More Posts'} link="/posts" />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -46,26 +41,20 @@ export default function Post({ post, morePosts, preview }: Props) {
                 <meta name="title" content={post.title} />
                 <meta property="og:image" content={BLOG_URL + post.thumbnail} />
               </Head>
-              <PostHeader
-                title={post.title}
-                date={post.date}
-                author={post.author}
-              />
+              <PostHeader title={post.title} date={post.date} author={post.author} />
               <div className="max-w-3xl mx-auto">
                 <div className="mb-6 text-lg">
                   <div>
-                    Category:{" "}
+                    Category:{' '}
                     {post.categories.map((category, index) => {
                       return (
                         <span
-                          onClick={() =>
-                            router.push(`/category/posts/${category}`)
-                          }
+                          onClick={() => router.push(`/category/posts/${category}`)}
                           key={index}
                         >
-                          #{category}{" "}
+                          #{category}{' '}
                         </span>
-                      );
+                      )
                     })}
                   </div>
                 </div>
@@ -85,39 +74,37 @@ export default function Post({ post, morePosts, preview }: Props) {
         )}
       </div>
     </Layout>
-  );
+  )
 }
 
 type Params = {
   params: {
-    slug: string;
-  };
-};
+    slug: string
+  }
+}
 
 export async function getStaticProps({ params }: Params) {
-  const posts = getAllPosts(["title", "date", "slug", "WIP"]).filter(
-    (post) => !post.WIP
-  );
+  const posts = getAllPosts(['title', 'date', 'slug', 'WIP']).filter((post) => !post.WIP)
   const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "author",
-    "content",
-    "keyword",
-    "categories",
-    "thumbnail",
-    "excerpt",
-  ]);
-  const foundIndex = posts.findIndex((p) => p.slug === params.slug);
-  const prevPost = posts[foundIndex + 1];
-  const nextPost = posts[foundIndex - 1];
-  const prevPath = prevPost ? `/posts/${prevPost.slug}` : "";
-  const nextPath = nextPost ? `/posts/${nextPost.slug}` : "";
-  const prevTitle = prevPost ? prevPost.title : "";
-  const nextTitle = nextPost ? nextPost.title : "";
+    'title',
+    'date',
+    'slug',
+    'author',
+    'content',
+    'keyword',
+    'categories',
+    'thumbnail',
+    'excerpt',
+  ])
+  const foundIndex = posts.findIndex((p) => p.slug === params.slug)
+  const prevPost = posts[foundIndex + 1]
+  const nextPost = posts[foundIndex - 1]
+  const prevPath = prevPost ? `/posts/${prevPost.slug}` : ''
+  const nextPath = nextPost ? `/posts/${nextPost.slug}` : ''
+  const prevTitle = prevPost ? prevPost.title : ''
+  const nextTitle = nextPost ? nextPost.title : ''
 
-  const content = await markdownToHtml((post.content as string) || "");
+  const content = await markdownToHtml((post.content as string) || '')
 
   return {
     props: {
@@ -130,11 +117,11 @@ export async function getStaticProps({ params }: Params) {
         nextTitle,
       },
     },
-  };
+  }
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts(['slug'])
 
   return {
     paths: posts.map((post) => {
@@ -142,8 +129,8 @@ export async function getStaticPaths() {
         params: {
           slug: post.slug,
         },
-      };
+      }
     }),
     fallback: false,
-  };
+  }
 }

@@ -1,5 +1,5 @@
-import DottingComponent from "./DottingComponent";
+import DottingComponent from './DottingComponent'
 
-const ProjectComponents = { DottingComponent };
+const ProjectComponents = { DottingComponent }
 
-export default ProjectComponents;
+export default ProjectComponents

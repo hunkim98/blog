@@ -1,13 +1,13 @@
 ---
-title: "Techstars Day1 - Spare just 1 hour and you can build trust within members"
-excerpt: "No matter what kind of work the team members are doing, if the team has decided to embrace a new team member, everyone should take a leave for their work at least for 1 hour to openly talk with the newcomer and open themselves up to vulnerability. No excuses whatsoever. The newcomer is a priceless and thankful person to have decided to join the risky startup journey together with the team, and thus, the team should pay their utmost respect to the newcomer."
-date: "2023-01-19"
+title: 'Techstars Day1 - Spare just 1 hour and you can build trust within members'
+excerpt: 'No matter what kind of work the team members are doing, if the team has decided to embrace a new team member, everyone should take a leave for their work at least for 1 hour to openly talk with the newcomer and open themselves up to vulnerability. No excuses whatsoever. The newcomer is a priceless and thankful person to have decided to join the risky startup journey together with the team, and thus, the team should pay their utmost respect to the newcomer.'
+date: '2023-01-19'
 author:
   name: Kim Dong Hun
-keyword: "startup"
-categories: ["diary", "startup"]
+keyword: 'startup'
+categories: ['diary', 'startup']
 WIP: false
-thumbnail: "/assets/posts/techstars1/meeting.png"
+thumbnail: '/assets/posts/techstars1/meeting.png'
 ---
 
 ## Spare just 1 hour and you can build trust within members
@@ -17,7 +17,6 @@ I am currently in Boston attending an event hosted by techstars. My brother star
 On the first day of the Techstars event (2023-01-19), all attendants sat in a room to listen to a lecture on teamwork. I have never attended to any MBA classes, but one could say the whole lecture was quite similar to classes provided in MBA programs. We were taught about some theories and strategies to manage a team. But I believe this lecture had more vitality than a normal MBA class in that all participants were CEOs of their startups and thus were eager to get the most out of the lecture.
 
 At first, the whole lecture seemed boring. As a student who had listened to business management classes back in Seoul National University, all the things that were taught by the lecturer seemed too obvious. The main topic was about functions of a team, what differentiates a good team and a bad team. However, as the lecture progressed, I felt there were some parts worth notetaking.
-
 
 ![Boston Techstars](/assets/posts/techstars1/meeting.png)
 

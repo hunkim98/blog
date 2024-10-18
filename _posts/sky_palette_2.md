@@ -1,19 +1,18 @@
 ---
-title: "Sky Palette Project: 2. Sky Images are Different"
-excerpt: "Continuing on the sky palette project, I started to go deeper into how I can best capture the colors in the sky. I tested with various algorithms, but nothing seemed to work really well. Different from other images, the sky had small details in the image that made the color very comprehensive. If I could capture the very details, I thought the there would be progress"
-date: "2023-08-20"
+title: 'Sky Palette Project: 2. Sky Images are Different'
+excerpt: 'Continuing on the sky palette project, I started to go deeper into how I can best capture the colors in the sky. I tested with various algorithms, but nothing seemed to work really well. Different from other images, the sky had small details in the image that made the color very comprehensive. If I could capture the very details, I thought the there would be progress'
+date: '2023-08-20'
 author:
   name: Kim Dong Hun
-keyword: "vision"
-categories: ["project", "AI", "color"]
+keyword: 'vision'
+categories: ['project', 'AI', 'color']
 WIP: false
-thumbnail: "/assets/posts/sky_palette/segmented_image.jpg"
+thumbnail: '/assets/posts/sky_palette/segmented_image.jpg'
 ---
 
 This post is a continuation of the [Sky Palette Project 1](./sky_palette_1).
 
 ## PCA Decomposition of the sky image
-
 
 ![2D PCA Decomposition](/assets/posts/sky_palette/pca2.png)
 
@@ -21,11 +20,9 @@ Continuing where I took off last night, I started to go deeper into the analysis
 
 I first started with analyzing the PCA components of the image. They returned some interesting results, where I could see a beautiful gradient of the sky image. I wanted to extract those very colors that could make the gradient.
 
-
 ![1D PCA Decomposition](/assets/posts/sky_palette/pca1.png)
 
 I tried to express the colors in one dimension too. They were not as beautiful as the 2D PCA, but I could see some gradient in the colors. I thought that if I could extract the colors in the gradient, I could make a beautiful palette.
-
 
 ![PCA extraction for 5 colors](/assets/posts/sky_palette/pca_extracted_5.jpg)
 

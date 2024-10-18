@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 type Props = {
-  prevTitle?: string;
-  nextTitle?: string;
-  prevPath?: string;
-  nextPath?: string;
-};
+  prevTitle?: string
+  nextTitle?: string
+  prevPath?: string
+  nextPath?: string
+}
 
 function NavigateToOther({ prevTitle, nextTitle, prevPath, nextPath }: Props) {
   return (
@@ -29,7 +29,7 @@ function NavigateToOther({ prevTitle, nextTitle, prevPath, nextPath }: Props) {
         </a>
       )}
     </div>
-  );
+  )
 }
 
-export default NavigateToOther;
+export default NavigateToOther

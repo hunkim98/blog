@@ -1,22 +1,22 @@
-import React from "react";
-import { AppProps } from "next/app";
-import "../styles/index.css";
-import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.css";
-import "katex/dist/katex.min.css";
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import 'prismjs/themes/prism-tomorrow.css'
+import { AppProps } from 'next/app'
+import 'katex/dist/katex.min.css'
+import '../styles/index.css'
+import React from 'react'
 
-import Script from "next/script";
+import Script from 'next/script'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      {process.env.NEXT_PUBLIC_RUNTIME_ENV !== "development" && (
+      {process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'development' && (
         <Script
           strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
         />
       )}
-      {process.env.NEXT_PUBLIC_RUNTIME_ENV !== "development" && (
+      {process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'development' && (
         <Script strategy="lazyOnload">
           {`
         window.dataLayer = window.dataLayer || [];
@@ -30,5 +30,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       )}
       <Component {...pageProps} />
     </>
-  );
+  )
 }

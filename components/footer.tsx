@@ -1,6 +1,6 @@
-import React from "react";
-import Container from "./container";
-import { EXAMPLE_PATH } from "../lib/constants";
+import { EXAMPLE_PATH } from '../lib/constants'
+import Container from './container'
+import React from 'react'
 
 const Footer = () => {
   return (
@@ -17,17 +17,14 @@ const Footer = () => {
             >
               Connect through twitter
             </a>
-            <a
-              href={`https://github.com/hunkim98`}
-              className="mx-3 font-bold hover:underline"
-            >
+            <a href={`https://github.com/hunkim98`} className="mx-3 font-bold hover:underline">
               View GitHub
             </a>
           </div>
         </div>
       </Container>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

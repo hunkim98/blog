@@ -1,13 +1,13 @@
 ---
-title: "Webnovelr: Text editor service for web novelers"
-excerpt: "Webnovelr is a text editor prototype I designed for web novelers. To figure out the necessary features of the service, I conducted an interview on experts and created a prototype website for the editor based the research"
-startDate: "2022-09-01"
-date: "2022-12-11"
+title: 'Webnovelr: Text editor service for web novelers'
+excerpt: 'Webnovelr is a text editor prototype I designed for web novelers. To figure out the necessary features of the service, I conducted an interview on experts and created a prototype website for the editor based the research'
+startDate: '2022-09-01'
+date: '2022-12-11'
 author:
   name: Kim Dong Hun
-keyword: "webnovel"
-categories: ["data-visualization", "editor"]
-coverImg: "/assets/project/webnovelr/screen.png"
+keyword: 'webnovel'
+categories: ['data-visualization', 'editor']
+coverImg: '/assets/project/webnovelr/screen.png'
 WIP: false
 ---
 
@@ -25,8 +25,6 @@ To writers, ‘the reader’s speed of reading’ is as important as the origina
 
 ![Keyword Search UI](/assets/project/webnovelr/keyword_search.png)
 
-
 ![Character Edit Page](/assets/project/webnovelr/character_list.png)
-
 
 ![Exhibition at Seoul National University](/assets/project/webnovelr/installation.jpg)

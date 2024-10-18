@@ -1,5 +1,5 @@
 type Author = {
-  name: string;
-};
+  name: string
+}
 
-export default Author;
+export default Author
