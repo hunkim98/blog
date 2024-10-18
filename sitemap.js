@@ -90,7 +90,9 @@ function getSortedProjectsData() {
 
 function getSortedPostsData() {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory)
+  const fileNames = fs.readdirSync(postsDirectory).filter((slug) => {
+    return slug.endsWith('.md') || slug.endsWith('.mdx')
+  })
   const allPostsData = fileNames.map((fileName) => {
     const doesEndWithMdx = fileName.endsWith('.mdx')
     // Remove ".md" from file name to get id
@@ -139,8 +141,8 @@ function getSortedPostsData() {
 // }
 
 ;(async () => {
-  const posts = getSortedPostsData()
   const projects = getSortedProjectsData()
+  const posts = getSortedPostsData()
   // Generate the XML sitemap with the blog data
   const sitemap = generateSiteMap(posts, projects)
   fs.writeFileSync('public/sitemap.xml', sitemap)

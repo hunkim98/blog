@@ -1,5 +1,6 @@
-import ProjectComponents from '../../_projects/components'
 import markdownStyles from './markdown-styles.module.css'
+import ProjectComponents from '_projects/components'
+import PostComponents from '_posts/components'
 import { isMainThread } from 'worker_threads'
 import { MDXRemote } from 'next-mdx-remote'
 import React from 'react'
@@ -11,6 +12,7 @@ type Props = {
 
 const Components = {
   ...ProjectComponents,
+  ...PostComponents,
 }
 
 const PostBody = ({ content, isMdx }: Props) => {

@@ -1,7 +1,9 @@
 import { Dotting } from 'dotting'
 import React from 'react'
 
-function DottingComponent() {
+interface DottingComponentProps {}
+
+const DottingComponent: React.FC<DottingComponentProps> = () => {
   return <Dotting width={'100%'} height={300} />
 }
 

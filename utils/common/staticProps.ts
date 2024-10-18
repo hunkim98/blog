@@ -32,7 +32,7 @@ export const getAllStaticProps = async () => {
     'categories',
     'thumbnail',
     'WIP',
-  ]).filter((element) => !element.WIP)
+  ]).posts.filter((element) => !element.WIP)
   const postCategorySet = new Set()
   allPosts
     .filter((element) => !element.WIP)

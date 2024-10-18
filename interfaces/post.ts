@@ -14,6 +14,7 @@ type PostType = {
   nextPath?: string
   prevTitle?: string
   nextTitle?: string
+  isMdx?: boolean
 }
 
 export default PostType

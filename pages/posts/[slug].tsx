@@ -3,6 +3,7 @@ import NavigateToOther from '../../components/navigate-to-other'
 import PostHeader from '../../components/posts/post-header'
 import PostTitle from '../../components/posts/post-title'
 import PostBody from '../../components/posts/post-body'
+import { serialize } from 'next-mdx-remote/serialize'
 import markdownToHtml from '../../lib/markdownToHtml'
 import Utterances from '../../components/utterances'
 import Container from '../../components/container'
@@ -23,6 +24,7 @@ type Props = {
 
 export default function Post({ post, morePosts, preview }: Props) {
   const router = useRouter()
+  const isMdx = post.isMdx
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
@@ -59,7 +61,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                   </div>
                 </div>
               </div>
-              <PostBody isMdx={false} content={post.content} />
+              <PostBody isMdx={isMdx} content={post.content} />
               <div className="max-w-3xl mx-auto mt-16 mb-16">
                 <NavigateToOther
                   prevPath={post.prevPath}
@@ -84,8 +86,17 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const posts = getAllPosts(['title', 'date', 'slug', 'WIP']).filter((post) => !post.WIP)
-  const post = getPostBySlug(params.slug, [
+  const { posts, mds, mdxs } = getAllPosts(['title', 'date', 'slug', 'WIP'])
+  const finishedPosts = posts.filter((element) => !element.WIP)
+  const isMdx = mdxs.includes(params.slug)
+  const slug = isMdx ? params.slug + '.mdx' : params.slug
+  // const posts = getAllPosts(['title', 'date', 'slug', 'WIP']).filter((post) => {
+  //   if (process.env.NODE_ENV === 'development') {
+  //     return true
+  //   }
+  //   return !post.WIP
+  // })
+  const post = getPostBySlug(slug, [
     'title',
     'date',
     'slug',
@@ -96,15 +107,17 @@ export async function getStaticProps({ params }: Params) {
     'thumbnail',
     'excerpt',
   ])
-  const foundIndex = posts.findIndex((p) => p.slug === params.slug)
-  const prevPost = posts[foundIndex + 1]
-  const nextPost = posts[foundIndex - 1]
+  const foundIndex = finishedPosts.findIndex((p) => p.slug === params.slug)
+  const prevPost = finishedPosts[foundIndex + 1]
+  const nextPost = finishedPosts[foundIndex - 1]
   const prevPath = prevPost ? `/posts/${prevPost.slug}` : ''
   const nextPath = nextPost ? `/posts/${nextPost.slug}` : ''
   const prevTitle = prevPost ? prevPost.title : ''
   const nextTitle = nextPost ? nextPost.title : ''
 
-  const content = await markdownToHtml((post.content as string) || '')
+  const content = isMdx
+    ? await serialize(post.content as any, { scope: post['data'] as any })
+    : await markdownToHtml((post.content as string) || '')
 
   return {
     props: {
@@ -115,13 +128,14 @@ export async function getStaticProps({ params }: Params) {
         prevPath,
         prevTitle,
         nextTitle,
+        isMdx,
       },
     },
   }
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+  const { posts } = getAllPosts(['slug'])
 
   return {
     paths: posts.map((post) => {

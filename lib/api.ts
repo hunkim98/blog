@@ -10,11 +10,14 @@ export function getPostSlugs() {
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.md$/, '')
-  const fullPath = join(postsDirectory, `${realSlug}.md`)
+  const doesEndWithMdx = slug.endsWith('.mdx')
+  const realSlug = doesEndWithMdx ? slug.replace(/\.mdx$/, '') : slug.replace(/\.md$/, '')
+  const fullPath = doesEndWithMdx
+    ? join(postsDirectory, `${realSlug}.mdx`)
+    : join(postsDirectory, `${realSlug}.md`)
+
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents) //data has elements of PostType
-
   type Items = {
     [key: string]: string | string[]
   }
@@ -35,11 +38,18 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
     }
   })
 
+  items['data'] = data as any
   return items
 }
 
 export function getProjectMdMdxSlugs() {
   return fs.readdirSync(projectsDirectory).filter((slug) => {
+    return slug.endsWith('.md') || slug.endsWith('.mdx')
+  })
+}
+
+export function getPostsMdMdxSlugs() {
+  return fs.readdirSync(postsDirectory).filter((slug) => {
     return slug.endsWith('.md') || slug.endsWith('.mdx')
   })
 }
@@ -58,6 +68,7 @@ export function getProjectBySlug(slug: string, fields: string[] = []) {
     ? join(projectsDirectory, `${realSlug}.mdx`)
     : join(projectsDirectory, `${realSlug}.md`)
   // const fullPath = join(projectsDirectory, `${realSlug}.md`);
+
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents) //data has elements of PostType
   type Items = {
@@ -84,12 +95,23 @@ export function getProjectBySlug(slug: string, fields: string[] = []) {
 }
 
 export function getAllPosts(fields: string[] = []) {
-  const slugs = getPostSlugs()
+  const slugs = getPostsMdMdxSlugs()
+  const mds = slugs
+    .filter((slug) => slug.endsWith('.md'))
+    .map((slug) => {
+      return slug.replace(/\.md$/, '')
+    })
+  const mdxs = slugs
+    .filter((slug) => slug.endsWith('.mdx'))
+    .map((slug) => {
+      return slug.replace(/\.mdx$/, '')
+    })
+
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
-  return posts
+  return { posts, mds, mdxs }
 }
 
 export function getAllProjects(fields: string[] = []) {

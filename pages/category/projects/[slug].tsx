@@ -64,10 +64,21 @@ export const getStaticProps = async ({ params }: Params) => {
     'categories',
     'coverImg',
     'WIP',
-  ]).projects.filter((element) => !element.WIP)
+  ]).projects.filter((element) => {
+    // chec if development mode
+    if (process.env.NODE_ENV === 'development') {
+      return true
+    }
+    return !element.WIP
+  })
   const projectCategorySet = new Set()
   allProjects
-    .filter((element) => !element.WIP)
+    .filter((element) => {
+      if (process.env.NODE_ENV === 'development') {
+        return true
+      }
+      return !element.WIP
+    })
     .map((project) => {
       const categories = project.categories as string[]
       categories.map((category) => {
