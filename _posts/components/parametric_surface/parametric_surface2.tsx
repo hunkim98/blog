@@ -1,14 +1,16 @@
 // import glsl
-import fragmentShader from './shaders/test3d_fragment.glsl'
-import vertexShader from './shaders/test3d_vertex.glsl'
+import fragmentShader from './shaders/parametricSurface/fragment2.glsl'
+import vertexShader from './shaders/parametricSurface/vertex2.glsl'
 import { ThreeJsCanvas } from 'lib/threejsCanvas'
 import React, { useEffect, useRef } from 'react'
-import SceneInit from 'lib/threeJsInit'
 import * as THREE from 'three'
 
-interface Test3DProps {}
+interface ParametricSurface2Props {}
 
-const Test3D: React.FC<Test3DProps> = () => {
+const planeWidth = 16
+const planeHeight = 16
+
+const ParametricSurface2: React.FC<ParametricSurface2Props> = () => {
   const containerRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   useEffect(() => {
@@ -16,6 +18,14 @@ const Test3D: React.FC<Test3DProps> = () => {
       u_time: {
         type: 'f',
         value: 0,
+      },
+      planeWidth: {
+        type: 'f',
+        value: planeWidth,
+      },
+      planeHeight: {
+        type: 'f',
+        value: planeHeight,
       },
     }
 
@@ -43,16 +53,18 @@ const Test3D: React.FC<Test3DProps> = () => {
     // test.scene.add(boxMesh);
 
     // part 2 - re-write boilerplate code with a shadermaterial
-
-    const boxGeometry = new THREE.BoxGeometry(16, 16, 16, 16, 16, 16)
-    const boxMaterial = new THREE.ShaderMaterial({
+    const width = 16
+    const height = 16
+    const depth = 50
+    const planeGeometry = new THREE.PlaneGeometry(width, height, depth, depth)
+    const planeMaterial = new THREE.ShaderMaterial({
       wireframe: true,
       vertexShader: vertexShader,
       uniforms: uniformData,
       fragmentShader: fragmentShader,
     })
-    const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial)
-    threeJsCanvas.scene.add(boxMesh)
+    const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial)
+    threeJsCanvas.scene.add(planeMesh)
 
     return () => {
       // remove the canvas
@@ -75,4 +87,4 @@ const Test3D: React.FC<Test3DProps> = () => {
   )
 }
 
-export default Test3D
+export default ParametricSurface2

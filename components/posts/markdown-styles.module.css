@@ -30,6 +30,7 @@
   @apply rounded bg-lightGreen px-1.5 py-1.5 text-[85%] text-[#444444];
 }
 
+
 .markdown a code {
   @apply cursor-pointer rounded bg-transparent px-1.5 py-1.5 !important;
 }
@@ -42,6 +43,16 @@
 .markdown p code:has(span) {
   @apply rounded px-1 py-0.5 text-[#444444];
 }
+
+.markdown pre code:has(span) {
+  @apply rounded px-1 py-0.5 text-[#444444]
+}
+
+
+.markdown pre:has(code) {
+  @apply rounded bg-[#f6f8fa] p-4 overflow-x-auto mb-4;
+}
+
 
 /* .markdown p code {
   @apply px-1.5 py-1.5 rounded bg-lightGreen text-[85%] text-[#444444];

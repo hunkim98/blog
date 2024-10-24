@@ -6,7 +6,7 @@ author:
   name: Kim Dong Hun
 keyword: 'Parametric Curves'
 categories: ['Geometry', 'Mathematics']
-WIP: true
+WIP: false
 thumbnail: '/assets/posts/parametric_surface/pasta_surface.jpg'
 ---
 
@@ -20,7 +20,7 @@ In fact, if you think this problem in a practical point of view, this is in fact
 
 ## Parametric Curves
 
-Now to solve the intersection of somewhat complex equations, we can use the concept of parametric curves. The idea is to represent the equations into a single vector form. For example, the intersection of the two equations $x^2 + y^2 = 1$ and $y=xz$ can be represented as a parametric curve as follows:
+Now to solve the intersection of somewhat complex equations, we can use the concept of parametric curves. The idea is to represent the equations into a single vector form. For example, let us say we want to parameterize $x^2 + y^2 = 1$ and $y=xz$. At first glance, it seems impossible to represent the intersection of these two equations. However, if we use a common variable $t$ to represent the equations and change the euclidean coordinates into a radial coordinate, we can easily represent the intersection of the two equations.
 
 $$
 \begin{align*}
@@ -30,6 +30,61 @@ z &= 25\cos(t) \sin(t)
 \end{align*}
 $$ 
 
-This is a parametric curve that represents the intersection of the two equations. The approach we used was to use a common variable $t$ to represent the equations. This is a very powerful concept that can be used to represent complex equations in a single vector form.
+This is a parametric curve that represents the intersection of the two equations. The approach we used was to use a common variable $t$ to represent the equations. Now the cool thing about making the equations into a parametric form is that we can easily visualize the curve as a code!
 
-<Test3D />
+```c++
+// float t is a variable with a range of 0 to 2 * PI
+
+float x = 5 * cos(t);
+float y = 5 * sin(t);
+float z = 25 * cos(t) * sin(t);
+```
+
+I created a glsl shader that visualizes the curve. I first created a plane using Three.js and then created a shader that visualizes the curve. I set the t as `position.x` and then calculated the x, y, and z values using the equations above. The result is a beautiful curve that represents the intersection of the two equations.
+
+<ParametricSurface1 />
+
+Now in most cases, we use two variables to parametricize the equations. In most cases, they are named as $u$ and $v$. An example that requires us to use two variables to parametricize the equations would be the below equation:
+
+$$
+\begin{align*}
+x^2 - y^2 + z^2 &= 0 \\
+\end{align*}
+$$
+
+There is no way we gan use a single variable to parametricize the equation. We need to use two variables to parametricize the equation. There are two ways you can parametricize the equation. One way is to think of x and y being the two variables that we will use to parametricize the equation. Then we will have the following equations:
+
+$$
+\begin{align*}
+x &= u \\
+y &= v \\
+z &= \pm\sqrt{u^2 - v^2}
+\end{align*}
+$$
+
+However, the above equation is problematic in that we need to use the $\pm$ sign to represent the equation. In terms of coding, this will mean that we need to create two curves to represent the equation. We can solve this by parametricizing the equation in a different way, which is to use radial coordinates.
+
+In most cases, in the case of $\mathbb{R}^3$, when there are two squared terms that are added together, we can use radial coordinates to parametricize the equation. In the case of the equation $x^2 - y^2 + z^2 = 0$, we can change x and z into radial coordinates since they are squared terms that are added together.
+
+$$
+\begin{align*}
+x &= v\cos(u) \\
+y &= v \\
+z &= v\sin(u)
+\end{align*}
+$$
+
+The reason why we add an v in front of the $\cos$ and $\sin$ functions is because according to the equation $x^2 - y^2 + z^2 = 0$, the radius of the curve is $y$. Now with the parametricized equations expressed in terms of u and v, we can easily visualize the curve using the code below:
+
+```c++
+// float u and v are variables with a range of 0 to 2 * PI
+float x = v * cos(u);
+float y = v;
+float z = v * sin(u);
+```
+
+<ParametricSurface2 />
+
+Similar to the above coding, I used the x and y in the plane geometry of Three.js as u and v and then calculated the x, y, and z values using the equations above.
+
+Parametric surface is an interesting concept that is good to have in your toolbox especially for computer graphics and art. If it is difficult to imagine why we need to learn parametricization, just simply remember that it is through parametricization that we can code the surfaces in software!

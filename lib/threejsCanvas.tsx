@@ -25,6 +25,9 @@ export class ThreeJsCanvas {
   canvas: HTMLCanvasElement
   container: HTMLDivElement
   addRenderCallback: (t: number) => void
+  xRange?: [number, number]
+  yRange?: [number, number]
+  zRange?: [number, number]
 
   constructor({
     canvas,
@@ -34,6 +37,9 @@ export class ThreeJsCanvas {
     canvas: HTMLCanvasElement
     container: HTMLDivElement
     addRenderCallback?: (t: number) => void
+    xRange?: [number, number]
+    yRange?: [number, number]
+    zRange?: [number, number]
   }) {
     this.width = 0
     this.height = 0
@@ -107,6 +113,10 @@ export class ThreeJsCanvas {
     //   colorB: { type: 'vec3', value: new THREE.Color(0xfff000) },
     //   colorA: { type: 'vec3', value: new THREE.Color(0xffffff) },
     // };
+
+    // add axes
+    const axesHelper = new THREE.AxesHelper(5)
+    this.scene.add(axesHelper)
   }
 
   animate() {
