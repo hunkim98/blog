@@ -12,9 +12,19 @@ const Test3D: React.FC<Test3DProps> = () => {
   const containerRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   useEffect(() => {
+    const uniformData = {
+      u_time: {
+        type: 'f',
+        value: 0,
+      },
+    }
+
     const threeJsCanvas = new ThreeJsCanvas({
       canvas: canvasRef.current,
       container: containerRef.current,
+      addRenderCallback: (time) => {
+        uniformData.u_time.value = time
+      },
     })
     threeJsCanvas.animate()
 
@@ -33,10 +43,12 @@ const Test3D: React.FC<Test3DProps> = () => {
     // test.scene.add(boxMesh);
 
     // part 2 - re-write boilerplate code with a shadermaterial
+
     const boxGeometry = new THREE.BoxGeometry(16, 16, 16, 16, 16, 16)
     const boxMaterial = new THREE.ShaderMaterial({
       wireframe: true,
       vertexShader: vertexShader,
+      uniforms: uniformData,
       fragmentShader: fragmentShader,
     })
     const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial)
@@ -45,6 +57,7 @@ const Test3D: React.FC<Test3DProps> = () => {
     return () => {
       // remove the canvas
       // test.renderer.domElement.remove()
+
       threeJsCanvas.destroy()
     }
   }, [])

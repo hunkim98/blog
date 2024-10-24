@@ -24,8 +24,17 @@ export class ThreeJsCanvas {
   directionalLight: THREE.DirectionalLight
   canvas: HTMLCanvasElement
   container: HTMLDivElement
+  addRenderCallback: (t: number) => void
 
-  constructor({ canvas, container }: { canvas: HTMLCanvasElement; container: HTMLDivElement }) {
+  constructor({
+    canvas,
+    container,
+    addRenderCallback,
+  }: {
+    canvas: HTMLCanvasElement
+    container: HTMLDivElement
+    addRenderCallback?: (t: number) => void
+  }) {
     this.width = 0
     this.height = 0
     // NOTE: Core components to initialize Three.js app.
@@ -48,6 +57,7 @@ export class ThreeJsCanvas {
     this.directionalLight = undefined
     this.canvas = canvas
     this.container = container
+    this.addRenderCallback = addRenderCallback
     this.initialize()
   }
 
@@ -103,6 +113,7 @@ export class ThreeJsCanvas {
     this.controls.update()
     // this.stats.update()
     this.renderer.render(this.scene, this.camera)
+    this.addRenderCallback && this.addRenderCallback(this.clock.getElapsedTime())
     requestAnimationFrame(() => this.animate())
   }
 
