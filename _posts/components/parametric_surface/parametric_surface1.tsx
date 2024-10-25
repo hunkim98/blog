@@ -13,6 +13,19 @@ const planeHeight = 16
 const ParametricSurface1: React.FC<ParametricSurface1Props> = () => {
   const containerRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const threeRef = useRef<ThreeJsCanvas>()
+
+  useEffect(() => {
+    //resize
+    const onResize = () => {
+      threeRef.current?.onResize()
+    }
+    window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
+
   useEffect(() => {
     const uniformData = {
       u_time: {
@@ -65,6 +78,7 @@ const ParametricSurface1: React.FC<ParametricSurface1Props> = () => {
     })
     const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial)
     threeJsCanvas.scene.add(planeMesh)
+    threeRef.current = threeJsCanvas
 
     return () => {
       // remove the canvas

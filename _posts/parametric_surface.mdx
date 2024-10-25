@@ -1,6 +1,6 @@
 ---
-title: 'Representing Equations as Parametric Surfaces'
-excerpt: 'When it comes to visualizing an equation, the ability to decompose the equation into parametric equations is key. It is especially useful when creating creative 3D geometric surfaces mathematically and also a fun practice to see equations in a different perspective.'
+title: '3D Parametric curves and surfaces for computer visualization'
+excerpt: 'When it comes to programatically visualizing an equation in a 3D space, the ability to decompose the equation into parametric equations is key. Based on how we parametricize the equation, we can have a curve or either a surface. The resulting curves or surfaces are called parametric curves or surfaces.'
 date: '2024-10-18'
 author:
   name: Kim Dong Hun
@@ -12,15 +12,15 @@ thumbnail: '/assets/posts/parametric_surface/pasta_surface.jpg'
 
 ## Representing a curve in $\mathbb{R}^3$
 
-We all know who to create a line or a curve in $\mathbb{R}^2$ using the equation $y = f(x)$. We just need to have a single equation that have two variables in it. What happens if you want to represent a curve in $\mathbb{R}^3$? We can use the concept of parametric curves to represent a curve in $\mathbb{R}^3$.
+We all know how to create a line or a curve in $\mathbb{R}^2$ using the equation $y = f(x)$. We just need to have a single equation that have two variables in it. What happens if you want to represent a curve in $\mathbb{R}^3$? We can use the concept of parametric curves to represent a curve in $\mathbb{R}^3$.
 
-However, creating a line or a curve in $\mathbb{R}^3$ is not as simple as creating a curve in $\mathbb{R}^2$. Yes, if the function is simple enough like $z = x^2 + y^2$, then we can easily represent the curve in $\mathbb{R}^3$. But what if we were given two equations instead and need to find the intersecting lines, such as $x^2 + y^2 = 1$ and $y=xz$? Finding a curve to represent the intersection of these two equations is not as simple as finding the intersection of two lines in $\mathbb{R}^2$.
+However, creating a curve in $\mathbb{R}^3$ is not as simple as creating a curve in $\mathbb{R}^2$. Yes, if the function is simple enough like $z = x^2 + y^2$, then we can easily represent the curve in $\mathbb{R}^3$. But what if we were given two implicit equations instead and required to find the intersecting line, such as $x^2 + y^2 = 1$ and $y=xz$? Finding a curve to represent the intersection of these two equations is not as simple as finding the intersection of two lines in $\mathbb{R}^2$.
 
-In fact, if you think this problem in a practical point of view, this is in fact how many of our social science models are introduced. We do not have a single equation that can represent the behavior of the system. Instead, we have multiple equations that can represent the behavior of the system. Thus, being able to solve the intersection of these equations is a very important skill to have.
+In fact, if you think this problem in a practical point of view, this is in fact how many of our social science models are introduced. We do not have a single equation that represent the behavior of the system. Instead, we have multiple equations that can represent the behavior of the system. Thus, being able to solve the intersection of these equations is a very important skill to have.
 
 ## Parametric Curves
 
-Now to solve the intersection of somewhat complex equations, we can use the concept of parametric curves. The idea is to represent the equations into a single vector form. For example, let us say we want to parameterize $x^2 + y^2 = 1$ and $y=xz$. At first glance, it seems impossible to represent the intersection of these two equations. However, if we use a common variable $t$ to represent the equations and change the euclidean coordinates into a radial coordinate, we can easily represent the intersection of the two equations.
+Now to solve the intersection of the given equations (at least two should be provided for $\mathbb{R}^3$), we can use the concept of parametric curves. The idea is to represent the equations with a common variable. For example, let us say we want to parameterize $x^2 + y^2 = 1$ and $y=xz$. At first glance, it seems impossible to represent the intersection of these two equations. However, if we use a common variable $t$ to represent the equations and change the euclidean coordinates into a radial coordinate, we can easily represent the intersection of the two equations.
 
 $$
 \begin{align*}
@@ -30,7 +30,7 @@ z &= 25\cos(t) \sin(t)
 \end{align*}
 $$ 
 
-This is a parametric curve that represents the intersection of the two equations. The approach we used was to use a common variable $t$ to represent the equations. Now the cool thing about making the equations into a parametric form is that we can easily visualize the curve as a code!
+Since all $x$, $y$, and $z$ are represented in terms of $t$, the resulting visualization will be a curve. This is a parametric curve that represents the intersection of the two equations. Now thanks to representing the curve with a single variable, we can easily visualize the curve as a code!
 
 ```c++
 // float t is a variable with a range of 0 to 2 * PI
@@ -44,7 +44,9 @@ I created a glsl shader that visualizes the curve. I first created a plane using
 
 <ParametricSurface1 />
 
-Now in most cases, we use two variables to parametricize the equations. In most cases, they are named as $u$ and $v$. An example that requires us to use two variables to parametricize the equations would be the below equation:
+## Parametric Surface
+
+There are some cases we are not given sufficient information to express all $x$, $y$, and $z$ in terms of a single variable. In those cases, we would need two variables to parametricize the equations. Since the variable dimension is now 2, instead of having a curve, we will have a surface. The resulting surface is called a parametric surface. In most cases, the variables we will parameterize on are named $u$ and $v$. An example that requires us to use two variables to parametricize the equations would be the below equation:
 
 $$
 \begin{align*}
@@ -52,7 +54,7 @@ x^2 - y^2 + z^2 &= 0 \\
 \end{align*}
 $$
 
-There is no way we gan use a single variable to parametricize the equation. We need to use two variables to parametricize the equation. There are two ways you can parametricize the equation. One way is to think of x and y being the two variables that we will use to parametricize the equation. Then we will have the following equations:
+There is no way we can use a single variable to parametricize the equation. We need to use two variables to parametricize the equation. There are two ways you can parametricize the equation. One way is to think of x and y being the two variables that we will use to parametricize the equation. Then we will have the following equations:
 
 $$
 \begin{align*}
@@ -64,7 +66,9 @@ $$
 
 However, the above equation is problematic in that we need to use the $\pm$ sign to represent the equation. In terms of coding, this will mean that we need to create two curves to represent the equation. We can solve this by parametricizing the equation in a different way, which is to use radial coordinates.
 
-In most cases, in the case of $\mathbb{R}^3$, when there are two squared terms that are added together, we can use radial coordinates to parametricize the equation. In the case of the equation $x^2 - y^2 + z^2 = 0$, we can change x and z into radial coordinates since they are squared terms that are added together.
+> In most cases, in the case of $\mathbb{R}^3$, when there are two squared terms that are added together, we can use radial coordinates to parametricize the equation. In the case of the equation $x^2 - y^2 + z^2 = 0$, we can change x and z into radial coordinates since they are squared terms that are added together.
+
+> Remember that changing a cartisian coordinate into a radial coordinate is done by using the following equations: $x = r\cos(u)$, $y = r$, and $z = r\sin(u)$.
 
 $$
 \begin{align*}
@@ -87,4 +91,28 @@ float z = v * sin(u);
 
 Similar to the above coding, I used the x and y in the plane geometry of Three.js as u and v and then calculated the x, y, and z values using the equations above.
 
-Parametric surface is an interesting concept that is good to have in your toolbox especially for computer graphics and art. If it is difficult to imagine why we need to learn parametricization, just simply remember that it is through parametricization that we can code the surfaces in software!
+We can creatively experiment on new forms such as a pasta with the correct equations. We can visualize a pasta using a parametric surface described with radial coordinates. 
+
+$$
+\begin{align*}
+r = 15 - 9 \cos(x/3) \\
+\end{align*}
+$$
+
+With the above equation, since $x$ is in the equation already, it would be nice if we could think of $x$ as $u$. We can think of the $\theta$ as $v$ since it is not given. Then we can parametricize the equation as follows:
+
+$$
+\begin{align*}
+x &= u \\
+y &= (15 - 9 \cos(u/3)) \sin(v) \\
+z &= (15 - 9 \cos(u/3)) \cos(v) \\
+\end{align*}
+$$
+
+The resulting visualization is a pasta that is represented by the parametric surface.
+
+<ParametricSurface3 />
+
+
+
+Parametric curves and surfaces are an interesting concept that is good to have in your toolbox especially for computer graphics and art. If it is difficult to imagine why we need to learn parametricization, just simply remember that it is through parametricization that we can code the surfaces in software!

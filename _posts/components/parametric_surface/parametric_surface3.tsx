@@ -1,16 +1,16 @@
 // import glsl
-import fragmentShader from './shaders/parametricSurface/fragment2.glsl'
-import vertexShader from './shaders/parametricSurface/vertex2.glsl'
+import fragmentShader from './shaders/parametricSurface/fragment3.glsl'
+import vertexShader from './shaders/parametricSurface/vertex3.glsl'
 import { ThreeJsCanvas } from 'lib/threejsCanvas'
 import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
-interface ParametricSurface2Props {}
+interface ParametricSurface3Props {}
 
-const planeWidth = 16
-const planeHeight = 16
+const planeWidth = 100
+const planeHeight = 100
 
-const ParametricSurface2: React.FC<ParametricSurface2Props> = () => {
+const ParametricSurface3: React.FC<ParametricSurface3Props> = () => {
   const containerRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
 
@@ -67,8 +67,8 @@ const ParametricSurface2: React.FC<ParametricSurface2Props> = () => {
     // test.scene.add(boxMesh);
 
     // part 2 - re-write boilerplate code with a shadermaterial
-    const width = 16
-    const height = 16
+    const width = planeWidth
+    const height = planeHeight
     const depth = 50
     const planeGeometry = new THREE.PlaneGeometry(width, height, depth, depth)
     const planeMaterial = new THREE.ShaderMaterial({
@@ -102,4 +102,4 @@ const ParametricSurface2: React.FC<ParametricSurface2Props> = () => {
   )
 }
 
-export default ParametricSurface2
+export default ParametricSurface3
