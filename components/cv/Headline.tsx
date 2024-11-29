@@ -20,15 +20,15 @@ const Headline: React.FC<HeadlineProps> = () => {
       c="#454545"
     >
       <Text size="md">
-        I am experienced in creating real-time{' '}
+        I am a software engineer with professional experience in developing{' '}
         <Text span fw="bold">
-          data visualizations{' '}
+          web applications{' '}
         </Text>
-        using D3.js and P5.js. I specialize in rendering{' '}
+        using Typescript. I specialize in rendering{' '}
         <Text span fw="bold">
           graphics
         </Text>{' '}
-        in the web and have a proven track record managing an open-source{' '}
+        on the web and have a proven track record of managing an open-source{' '}
         <a href="https://github.com/hunkim98/dotting">
           <u>
             <b>pixel-art editor package</b>
@@ -37,15 +37,16 @@ const Headline: React.FC<HeadlineProps> = () => {
         on NPM.
       </Text>
       <Text size="md">
-        I am also experienced in creating{' '}
+        I am also skilled in developing{' '}
         <Text span fw="bold">
           machine learning
         </Text>{' '}
-        models through Python and have worked as a Research Assistant at a{' '}
+        models using Python and have worked as a Research Assistant in a{' '}
         <Text span fw="bold">
           Human-Computer Interaction
         </Text>{' '}
-        Lab to develop Human-AI collaborative tools targeted on designers.
+        Lab, where I contributed to the development of Human-AI collaborative tools designed for
+        designers.
       </Text>
     </Flex>
   )
