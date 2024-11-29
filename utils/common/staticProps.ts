@@ -8,7 +8,7 @@ export const getAllStaticProps = async () => {
     'excerpt',
     'keyword',
     'categories',
-    'coverImg',
+    'thumbnail',
     'WIP',
   ]).projects.filter((element) => !element.WIP)
   const projectCategorySet = new Set()

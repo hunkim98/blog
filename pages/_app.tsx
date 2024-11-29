@@ -1,11 +1,12 @@
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import { MantineProvider } from '@mantine/core'
 import 'prismjs/themes/prism-tomorrow.css'
 import { AppProps } from 'next/app'
 import 'katex/dist/katex.min.css'
+import '@mantine/core/styles.css'
+import Script from 'next/script'
 import '../styles/index.css'
 import React from 'react'
-
-import Script from 'next/script'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -28,7 +29,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       `}
         </Script>
       )}
-      <Component {...pageProps} />
+      <MantineProvider>
+        <Component {...pageProps} />
+      </MantineProvider>
     </>
   )
 }

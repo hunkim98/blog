@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'social network'
 categories: ['data-visualization', 'social-network']
-coverImg: '/assets/project/linklink/home.png'
+thumbnail: '/assets/project/linklink/home.png'
 WIP: false
 ---
 

@@ -57,7 +57,7 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
                 <title>{project.title}</title>
                 <meta name="description" content={project.excerpt} />
                 <meta name="title" content={project.title} />
-                <meta property="og:image" content={BLOG_URL + project.coverImg} />
+                <meta property="og:image" content={BLOG_URL + project.thumbnail} />
               </Head>
               <div className="max-w-3xl mx-auto">
                 <div className="mb-6 text-lg">
@@ -117,7 +117,7 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'keyword',
     'categories',
-    'coverImg',
+    'thumbnail',
     'excerpt',
   ])
 

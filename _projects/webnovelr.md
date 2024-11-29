@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'webnovel'
 categories: ['data-visualization', 'editor']
-coverImg: '/assets/project/webnovelr/screen.png'
+thumbnail: '/assets/project/webnovelr/screen.png'
 WIP: false
 ---
 

@@ -7,7 +7,6 @@ const nextConfig = {
   //   loader: "akamai",
   //   path: "",
   // },
-  output: 'export',
   reactStrictMode: true,
   env: {
     // remember that you should update env in .github/workflow/gh-pages.deploy.yml

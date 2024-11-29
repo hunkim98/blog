@@ -1,46 +1,59 @@
+import { Flex, Text, Title } from '@mantine/core'
+import SocialIcon from './social-icons'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import React from 'react'
 
 const NavBar = ({ selectedCategory }: { selectedCategory: string }) => {
+  const router = useRouter()
   return (
-    <div className="md:ml-[300px] flex mt-16 mb-6 md:mb-7 md:gap-10 gap-6 overflow-auto select-none">
-      <Link href={'/'}>
-        <div
-          className={
-            'cursor-pointer md:px-5 py-1' +
-            ' ' +
-            (selectedCategory === 'about' ? 'font-bold border-b-lightGreen border-b-2' : '')
-          }
-        >
-          About
-        </div>
-      </Link>
-      <Link href={'/projects'}>
-        <div
-          className={
-            'cursor-pointer md:px-5 py-1' +
-            ' ' +
-            (selectedCategory === 'projects' ? 'font-bold border-b-lightGreen border-b-2' : '')
-          }
-        >
-          Projects
-        </div>
-      </Link>
-      <Link href={'/posts'}>
-        <div
-          className={
-            'cursor-pointer md:px-5 py-1' +
-            ' ' +
-            (selectedCategory === 'posts' ? 'font-bold border-b-lightGreen border-b-2' : '')
-          }
-        >
-          Posts
-        </div>
-      </Link>
-      <Link href={'assets/blog/cv/HunKim_CV.pdf'}>
-        <div className={'cursor-pointer md:px-5 py-1'}>CV</div>
-      </Link>
-    </div>
+    <Flex
+      gap={{
+        xs: 'xs',
+        md: 'md',
+      }}
+      direction={'row'}
+      className="mt-16 mb-6 md:mb-7 select-none"
+      align={'center'}
+    >
+      <Flex direction={'column'}>
+        <Flex gap="lg" align={'center'}>
+          <Text
+            // order={1}
+            size="lg"
+            className="font-bold cursor-pointer"
+            onClick={() => {
+              router.push('/')
+            }}
+          >
+            Donghun Kim
+          </Text>
+        </Flex>
+        <Text>
+          <Text opacity={0.5} span>
+            Software Engineer engineering
+          </Text>{' '}
+          <Text opacity={0.8} span>
+            {' '}
+            Computer Graphics
+          </Text>{' '}
+          <Text opacity={0.8} span>
+            &
+          </Text>
+          <Text opacity={0.8} span>
+            {' '}
+            AI{' '}
+          </Text>
+          <Text opacity={0.5} span>
+            at Graduate School of Design
+          </Text>
+        </Text>
+        <Flex gap={'xs'} mt={8}>
+          <SocialIcon kind="github" href={`https://github.com/hunkim98`} size={18} />
+          <SocialIcon kind="mail" href={`mailto:hunkim98@gmail.com`} size={18} />
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
 

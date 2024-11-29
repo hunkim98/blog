@@ -12,7 +12,7 @@ type Props = {
 const MoreProjects = ({ projects, category, isTitleShown }: Props) => {
   //this shows on home
   return (
-    <section className="md:ml-[300px]">
+    <section className="">
       {(isTitleShown || category) && (
         <h2 className="mb-8 text-2xl md:text-4xl font-bold tracking-tighter leading-tight md:mt-[70px]">
           Projects {category && `on #${category}`}
@@ -26,7 +26,7 @@ const MoreProjects = ({ projects, category, isTitleShown }: Props) => {
             date={project.date}
             slug={project.slug}
             excerpt={project.excerpt}
-            coverImg={project.coverImg}
+            thumbnail={project.thumbnail}
           />
         ))}
       </div>

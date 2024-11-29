@@ -6,7 +6,7 @@ type ProjectType = {
   content: string
   categories: string[]
   keyword: string
-  coverImg: string
+  thumbnail: string
   prevPath?: string
   nextPath?: string
   prevTitle?: string

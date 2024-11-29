@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'collaboration'
 categories: ['opensource', 'collaboration', 'CRDT']
-coverImg: '/assets/project/toonie/thumbnail.png'
+thumbnail: '/assets/project/toonie/thumbnail.png'
 WIP: false
 ---
 

@@ -10,10 +10,10 @@ type Props = {
   excerpt: string
   author: Author
   slug: string
-  coverImg: string
+  thumbnail: string
 }
 
-const PostPreview = ({ title, date, excerpt, author, slug, coverImg }: Props) => {
+const PostPreview = ({ title, date, excerpt, author, slug, thumbnail }: Props) => {
   return (
     <div className="flex sm:flex-row flex-col">
       {/* <div className="mb-5">
@@ -21,7 +21,7 @@ const PostPreview = ({ title, date, excerpt, author, slug, coverImg }: Props) =>
       </div> */}
       <Link as={`/posts/${slug}`} href="/posts/[slug]">
         <img
-          src={coverImg}
+          src={thumbnail}
           alt={`Cover Image for ${title}`}
           className="sm:min-h-full sm:max-h-full
           mb-5 sm:mr-5

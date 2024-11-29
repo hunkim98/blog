@@ -25,7 +25,7 @@ export default function Category({ categoryProjects, category, projectCategories
           <meta name="title" content={`My projects on ${category}`} />
         </Head>
         <Container>
-          <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">
+          {/* <div className="md:min-w-[300px] md:fixed md:max-w-[300px]">
             <Intro />
             <div className="mb-6 flex flex-wrap">
               {projectCategories.map((category, index) => {
@@ -36,7 +36,7 @@ export default function Category({ categoryProjects, category, projectCategories
                 )
               })}
             </div>
-          </div>
+          </div> */}
           <div className="container mx-auto px-5 max-w-5xl">
             {categoryProjects.length > 0 && (
               <MoreProjects category={category} projects={categoryProjects} />
@@ -62,7 +62,7 @@ export const getStaticProps = async ({ params }: Params) => {
     'excerpt',
     'keyword',
     'categories',
-    'coverImg',
+    'thumbnail',
     'WIP',
   ]).projects.filter((element) => {
     // chec if development mode

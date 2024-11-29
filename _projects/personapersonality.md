@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'enneagram'
 categories: ['personality-test']
-coverImg: '/assets/project/personapersonality/thumbnail.png'
+thumbnail: '/assets/project/personapersonality/thumbnail.png'
 WIP: false
 ---
 

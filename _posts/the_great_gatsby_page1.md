@@ -6,7 +6,7 @@ author:
   name: Kim Dong Hun
 keyword: 'the great gatsby'
 categories: ['book', 'literature']
-WIP: false
+WIP: true
 thumbnail: '/assets/posts/the_great_gatsby_page1/cover.gif'
 ---
 

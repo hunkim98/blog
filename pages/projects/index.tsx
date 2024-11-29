@@ -31,7 +31,7 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
           />
         </Head>
         <Container>
-          <Sidebar projectCategories={projectCategories} />
+          {/* <Sidebar projectCategories={projectCategories} /> */}
           <div>
             <NavBar selectedCategory={'projects'} />
             <MoreProjects projects={allProjects} />

@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'cryptography'
 categories: ['chatgpt', 'cryptography']
-coverImg: '/assets/project/cryptolab/thumbnail.png'
+thumbnail: '/assets/project/cryptolab/thumbnail.png'
 WIP: false
 ---
 

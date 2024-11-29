@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'crypto'
 categories: ['data-visualization']
-coverImg: '/assets/project/cryptogalaxy/logo.png'
+thumbnail: '/assets/project/cryptogalaxy/logo.png'
 WIP: false
 ---
 

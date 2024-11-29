@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'opensource'
 categories: ['opensource', 'editor', '3D']
-coverImg: '/assets/project/dotting/thumbnail.png'
+thumbnail: '/assets/project/dotting/thumbnail.png'
 WIP: true
 ---
 

@@ -11,7 +11,7 @@ type Props = {
 const MoreStories = ({ posts, category, isTitleShown }: Props) => {
   //this shows on home
   return (
-    <section className="md:ml-[300px]">
+    <section className="">
       {(isTitleShown || category) && (
         <h2 className="mb-8 text-2xl md:text-4xl font-bold tracking-tighter leading-tight md:mt-[70px]">
           Posts {category && `on #${category}`}
@@ -26,7 +26,7 @@ const MoreStories = ({ posts, category, isTitleShown }: Props) => {
             author={post.author}
             slug={post.slug}
             excerpt={post.excerpt}
-            coverImg={post.thumbnail}
+            thumbnail={post.thumbnail}
           />
         ))}
       </div>
