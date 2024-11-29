@@ -47,25 +47,29 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
             }}
           >
             <NavBar selectedCategory={'about'} />
-            <Text>
-              <Link href="/projects">
-                <Text span opacity={0.5} size="sm">
-                  Projects
-                </Text>
-              </Link>
-            </Text>
-            <Divider mb={8} />
-            <ContentCarousel allPosts={allPosts} allProjects={allProjects} />
-            <Text mt={15}>
-              <Link href="/posts">
-                <Text span opacity={0.5} size="sm">
-                  Posts
-                </Text>
-              </Link>
-            </Text>
-            <Divider />
-            <ContentList allPosts={allPosts} allProjects={allProjects} />
-            <Divider mb={20} />
+            <Box>
+              <Text>
+                <Link href="/projects">
+                  <Text span opacity={0.5} size="sm">
+                    Projects
+                  </Text>
+                </Link>
+              </Text>
+
+              <Divider mb={8} />
+              <ContentCarousel allPosts={allPosts} allProjects={allProjects} />
+
+              <Text mt={15}>
+                <Link href="/posts">
+                  <Text span opacity={0.5} size="sm">
+                    Posts
+                  </Text>
+                </Link>
+              </Text>
+              <Divider />
+              <ContentList allPosts={allPosts} allProjects={allProjects} />
+              <Divider mb={20} />
+            </Box>
             <About />
           </Box>
           {/* <div>
