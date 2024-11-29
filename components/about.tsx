@@ -12,9 +12,6 @@ const About = () => {
       /> */}
       {/* </div> */}
       <Headline />
-      <a href="https://github.com/hunkim98" className="underline">
-        Visit my Gihub to see what I do!
-      </a>
     </section>
   )
 }

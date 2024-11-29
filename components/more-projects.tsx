@@ -18,7 +18,7 @@ const MoreProjects = ({ projects, category, isTitleShown }: Props) => {
           Projects {category && `on #${category}`}
         </h2>
       )}
-      <div className="grid md:grid-cols-2 gird-cols-1 md:gap-x-10 gap-y-16 md:gap-y-16 mb-32">
+      <div className="grid md:grid-cols-3 gird-cols-1 md:gap-x-10 gap-y-16 md:gap-y-16 mb-32">
         {projects.map((project) => (
           <ProjectPreview
             key={project.slug}

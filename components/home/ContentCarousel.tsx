@@ -8,18 +8,18 @@ import Link from 'next/link'
 
 const MAX_ITEMS = 8
 
-interface CarouselProps {
+interface ContentCarouselProps {
   allPosts: Post[]
   allProjects: Project[]
 }
 
-const Carousel: React.FC<CarouselProps> = ({ allPosts, allProjects }) => {
+const ContentCarousel: React.FC<ContentCarouselProps> = ({ allPosts, allProjects }) => {
   const postsProjectsSorted = useMemo(() => {
     const allPostsProjects = [
-      ...allPosts.map((i) => ({
-        ...i,
-        type: 'post',
-      })),
+      // ...allPosts.map((i) => ({
+      //   ...i,
+      //   type: 'post',
+      // })),
       ...allProjects.map((i) => ({
         ...i,
         type: 'project',
@@ -34,13 +34,13 @@ const Carousel: React.FC<CarouselProps> = ({ allPosts, allProjects }) => {
   return (
     <>
       <Flex justify={'space-between'}>
-        <Text>
-          <Link href="/posts">
+        {/* <Text>
+          <Link href="/projects">
             <Text span opacity={0.5} size="sm">
-              More Posts..
+              Projects
             </Text>
           </Link>
-        </Text>
+        </Text> */}
         {postsProjectsSorted.length > 0 && (
           <Text fs="oblique" span opacity={0.5} size="sm" className="md:visible hidden">
             updated on {postsProjectsSorted[0].date}
@@ -66,14 +66,14 @@ const Carousel: React.FC<CarouselProps> = ({ allPosts, allProjects }) => {
                 />
               ))}
               {[...allPosts, ...allProjects].length > MAX_ITEMS && (
-                <Link href="/posts">
+                <Link href="/projects">
                   <Box
                     w={100}
                     h={200}
                     className="bg-gradient-to-r from-gray-50 to-transparent rounded-lg"
                   >
                     <Center h="100%">
-                      <Text pr={6} ml={6} span opacity={0.5} size="sm">
+                      <Text pr={6} ml={6} span opacity={0.5} size="xs">
                         More..{' '}
                       </Text>
                     </Center>
@@ -102,4 +102,4 @@ const Carousel: React.FC<CarouselProps> = ({ allPosts, allProjects }) => {
   )
 }
 
-export default Carousel
+export default ContentCarousel

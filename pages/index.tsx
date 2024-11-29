@@ -1,9 +1,11 @@
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import ContentCarousel from 'components/home/ContentCarousel'
 import { getAllPosts, getAllProjects } from '../lib/api'
-import Carousel from 'components/home/ContentCarousel'
 import MoreProjects from '../components/more-projects'
+import ContentList from 'components/home/ContentList'
 import MoreStories from '../components/more-stories'
+import { Box, Divider, Text } from '@mantine/core'
 import Container from '../components/container'
 import ProjectType from '../interfaces/project'
 import Sidebar from '../components/sidebar'
@@ -14,7 +16,6 @@ import React, { useEffect } from 'react'
 import Intro from '../components/intro'
 import About from '../components/about'
 import { useRouter } from 'next/router'
-import { Box } from '@mantine/core'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -46,7 +47,25 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
             }}
           >
             <NavBar selectedCategory={'about'} />
-            <Carousel allPosts={allPosts} allProjects={allProjects} />
+            <Text>
+              <Link href="/projects">
+                <Text span opacity={0.5} size="sm">
+                  Projects
+                </Text>
+              </Link>
+            </Text>
+            <Divider mb={8} />
+            <ContentCarousel allPosts={allPosts} allProjects={allProjects} />
+            <Text mt={15}>
+              <Link href="/posts">
+                <Text span opacity={0.5} size="sm">
+                  Posts
+                </Text>
+              </Link>
+            </Text>
+            <Divider />
+            <ContentList allPosts={allPosts} allProjects={allProjects} />
+            <Divider mb={20} />
             <About />
           </Box>
           {/* <div>
