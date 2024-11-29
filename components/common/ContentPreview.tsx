@@ -24,6 +24,7 @@ const ContentPreview: React.FC<ContentPreviewProps> = ({ content, type }) => {
     <Box>
       <Box w={300} h={200} className="relative cursor-pointer rounded-md overflow-hidden">
         <Image
+          onClick={onItemClick}
           src={content.thumbnail}
           alt={content.slug}
           fill={true}

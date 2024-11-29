@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'Generative AI'
 categories: ['hackathon', 'AI', 'editor']
-thumbnail: '/assets/project/dotting_genai/home.png'
+thumbnail: '/assets/project/dotting_genai/demo.gif'
 WIP: false
 ---
 

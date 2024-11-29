@@ -8,7 +8,7 @@ author:
 keyword: 'cryptography'
 categories: ['chatgpt', 'cryptography']
 thumbnail: '/assets/project/cryptolab/thumbnail.png'
-WIP: false
+WIP: true
 ---
 
 ChatGPT is gaining popularity as a new way to create chatbots. With the ChatGPT making chat responses more natural, developers can create chatbots that are fully serviceable with little effort. However, in the midst of the advancement of ChatGPT, one now small but yet to be big problem is emerging: the privacy of the user. During the conversation with ChatGPT, users may reveal their personal information. There should be a way to protect the user's privacy while using ChatGPT.
