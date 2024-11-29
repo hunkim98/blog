@@ -46,13 +46,6 @@
         </url>
         
         <url>
-            <loc>https://donghunkim.dev/posts/the_great_gatsby_page1</loc>
-            <lastmod>2023-05-07T00:00:00.000Z</lastmod>
-            <changefreq>monthly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        
-        <url>
             <loc>https://donghunkim.dev/posts/techstars2</loc>
             <lastmod>2023-02-25T00:00:00.000Z</lastmod>
             <changefreq>monthly</changefreq>
@@ -87,13 +80,6 @@
             <priority>1.0</priority>
         </url>
         
-        
-        <url>
-            <loc>https://donghunkim.dev/projects/cryptolab</loc>
-            <lastmod>2023-06-16T00:00:00.000Z</lastmod>
-            <changefreq>monthly</changefreq>
-            <priority>1.0</priority>
-        </url>
         
         <url>
             <loc>https://donghunkim.dev/projects/dotting_genai</loc>
