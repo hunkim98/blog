@@ -1,3 +1,4 @@
+import { gaussianBlurSeperable } from './filtering'
 import { Filter } from './Filter'
 import { Image } from './Image'
 
@@ -17,14 +18,8 @@ const get1DGaussianFilterValues = (sigma: number, truncate: number) => {
 
 export const lowPassSpatialFilter = (imageData: Image, sigma: number, truncate: number) => {
   // we use gaussian
-  const filterValues = get1DGaussianFilterValues(sigma, truncate)
-  const filterXKernel = new Filter(
-    filterValues.length,
-    1,
-    filterValues.map((value) => [value])
-  )
-
-  return imageData
+  const result = gaussianBlurSeperable(imageData, sigma, truncate)
+  return result
 }
 
 export const highPassSpatialFilter = (imageData: Image, sigma: number, truncate: number) => {

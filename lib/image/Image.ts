@@ -38,25 +38,34 @@ export class Image {
     } else if (c === undefined) {
       throw new Error('Channel is not specified')
     }
-    if (x < 0) {
-      x = 0
-    }
-    if (x >= this.width) {
-      x = this.width - 1
-    }
-    if (y < 0) {
-      y = 0
-    }
-    if (y >= this.height) {
-      y = this.height - 1
-    }
-    if (c < 0) {
-      c = 0
-    }
-    if (c >= this.channels) {
-      c = this.channels - 1
+    if (x < 0 || x >= this.width || y < 0 || y >= this.height || c < 0 || c >= this.channels) {
+      throw new Error('Index out of bounds')
     }
     return this.data[y * this.width * this.channels + x * this.channels + c]
+  }
+
+  smartAccessor(x: number, y: number, c: number, clamp = true) {
+    const black = 0
+    let x0 = x
+    let y0 = y
+    if (y < 0 || y >= this.height) {
+      if (clamp) {
+        y0 = Math.min(Math.max(y, 0), this.height - 1)
+      } else {
+        return black
+      }
+    }
+    if (x < 0 || x >= this.width) {
+      if (clamp) {
+        x0 = Math.min(Math.max(x, 0), this.width - 1)
+      } else {
+        return black
+      }
+    }
+    if (c < 0 || c >= this.channels) {
+      return black
+    }
+    return this.get(x0, y0, c)
   }
 
   // operator +
