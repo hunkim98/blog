@@ -10,6 +10,8 @@ WIP: false
 thumbnail: '/assets/project/korea_blood_donation/thumbnail.gif'
 ---
 
+[Visit Website →](https://hunkim98.github.io/korea-blood-donation/)
+
 ![Demo](/assets/project/korea_blood_donation/thumbnail.gif)
 
 Many report that the blood donation rate is decreasing worldwide. In January 2024, Red Cross announced that the current status of blood donation is a emergency blood shortage, explaining that the number of U.S. blood donors hit all-time low for the past 20 years. To confirm whether such a problem exists, I decided to target a country that has a centralized blood donation system, South Korea, and visualize its blood donation status from 2000 to 2022.
