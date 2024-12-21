@@ -36,8 +36,8 @@
 }
 
 .markdown img {
-  /* when mobile size 100%, else 70% */
-  @apply mx-auto mb-2 w-[100%] md:w-[70%];
+  /* when mobile size 100%, else 90% */
+  @apply mx-auto mb-2 w-[100%] md:w-[90%];
 }
 
 .markdown p code:has(span) {
