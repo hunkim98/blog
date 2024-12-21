@@ -1,5 +1,5 @@
 ---
-title: "South Korea's Blood Donation Supply and Demand"
+title: "Visualizing a Nation's Blood Donation and Demand"
 excerpt: 'There have been multiple articles explaining the blood donation system worldwide is suffering from a lack of blood donation. To understand whether such a problem exists, this data visualization project targeted the blood donation system of South Korea and visualized its blood donation status.'
 date: '2024-12-21'
 author:
