@@ -1,12 +1,37 @@
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import { MantineProvider } from '@mantine/core'
 import 'prismjs/themes/prism-tomorrow.css'
+
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
+import localFont from 'next/font/local'
 import { AppProps } from 'next/app'
 import 'katex/dist/katex.min.css'
 import '@mantine/core/styles.css'
 import Script from 'next/script'
 import '../styles/index.css'
 import React from 'react'
+
+const tiemposFont = localFont({
+  src: [
+    {
+      path: '../fonts/TestTiemposHeadline-Light.otf',
+      weight: '300',
+      style: 'thin',
+    },
+    {
+      path: '../fonts/TestTiemposHeadline-Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/TestTiemposHeadline-Medium.otf',
+      weight: '500',
+      style: 'medium',
+    },
+  ],
+  variable: '--font-tiempos',
+})
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -30,7 +55,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         </Script>
       )}
       <MantineProvider>
-        <Component {...pageProps} />
+        <main className={`${tiemposFont.variable} ${GeistSans.variable}`}>
+          <Component {...pageProps} />
+        </main>
       </MantineProvider>
     </>
   )

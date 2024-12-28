@@ -1,10 +1,12 @@
-import { Flex, Text, Title } from '@mantine/core'
+import GradientDivider from './common/GradientDivider'
+import { Box, Flex, Text, Title } from '@mantine/core'
 import SocialIcon from './social-icons'
 import { useRouter } from 'next/router'
+import NameSvg from './svgs/name'
 import Link from 'next/link'
 import React from 'react'
 
-const NavBar = ({ selectedCategory }: { selectedCategory: string }) => {
+const NavBar = () => {
   const router = useRouter()
   return (
     <Flex
@@ -13,23 +15,30 @@ const NavBar = ({ selectedCategory }: { selectedCategory: string }) => {
         md: 'md',
       }}
       direction={'row'}
-      className="mt-16 mb-6 md:mb-7 select-none"
+      className="mt-16 mb-[22px] md:mb-[22px] select-none"
       align={'center'}
     >
-      <Flex direction={'column'}>
-        <Flex gap="lg" align={'center'}>
+      <Flex direction={'column'} align={'center'} w={'100%'}>
+        <Flex w="100%" maw={600} direction={'column'} align={'center'}>
+          <NameSvg fill="white" />
+          <Box w="80%" mt={18} mb={18}>
+            <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
+          </Box>
           <Text
-            // order={1}
-            size="lg"
-            className="font-bold cursor-pointer"
-            onClick={() => {
-              router.push('/')
+            className="text-center font-tiempos font-thin"
+            c={'white'}
+            size={'16px'}
+            style={{
+              lineHeight: 'normal',
+              letterSpacing: 1.0,
             }}
+            maw={500}
           >
-            Donghun Kim
+            Software Engineer + Data Scientist professionally trained to build data management web
+            tools but also does data visualizations as a hobby.
           </Text>
         </Flex>
-        <Text>
+        {/* <Text>
           <Text opacity={0.5} span>
             Software Engineer engineering
           </Text>{' '}
@@ -47,11 +56,11 @@ const NavBar = ({ selectedCategory }: { selectedCategory: string }) => {
           <Text opacity={0.5} span>
             at Graduate School of Design
           </Text>
-        </Text>
-        <Flex gap={'xs'} mt={8}>
+        </Text> */}
+        {/* <Flex gap={'xs'} mt={8}>
           <SocialIcon kind="github" href={`https://github.com/hunkim98`} size={18} />
           <SocialIcon kind="mail" href={`mailto:hunkim98@gmail.com`} size={18} />
-        </Flex>
+        </Flex> */}
       </Flex>
     </Flex>
   )

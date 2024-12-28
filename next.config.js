@@ -9,6 +9,7 @@ const nextConfig = {
   // },
   output: 'export',
   reactStrictMode: true,
+  transpilePackages: ['geist'],
   env: {
     // remember that you should update env in .github/workflow/gh-pages.deploy.yml
     NEXT_PUBLIC_RUNTIME_ENV: process.env.NEXT_PUBLIC_RUNTIME_ENV,

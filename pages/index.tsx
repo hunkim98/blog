@@ -1,3 +1,4 @@
+import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
 import ContentCarousel from 'components/home/ContentCarousel'
@@ -9,7 +10,7 @@ import { Box, Divider, Text } from '@mantine/core'
 import Container from '../components/container'
 import ProjectType from '../interfaces/project'
 import Sidebar from '../components/sidebar'
-import NavBar from '../components/nav-bar'
+import NavBar from '../components/Navbar'
 import Layout from '../components/layout'
 import PostType from '../interfaces/post'
 import React, { useEffect } from 'react'
@@ -46,8 +47,9 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
               maxWidth: '100%',
             }}
           >
-            <NavBar selectedCategory={'about'} />
-            <Box>
+            <NavBar />
+            <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
+            <Box mt={25}>
               <Text>
                 <Link href="/projects">
                   <Text span opacity={0.5} size="sm">
