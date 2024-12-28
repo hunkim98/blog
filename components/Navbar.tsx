@@ -37,8 +37,11 @@ const NavBar = () => {
             maw={480}
             mb={20}
           >
-            Software Engineer + Data Scientist professionally trained to build data management web
-            tools but also does data visualizations as a hobby.
+            <Text span className="font-tiempos font-medium">
+              Software Engineer + Data Scientist
+            </Text>{' '}
+            professionally trained to build data management tools on the web. Producer of data
+            visualizations and 3D graphics as a hobby.
           </Text>
         </Flex>
         {/* <Text>

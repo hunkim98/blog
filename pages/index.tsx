@@ -1,3 +1,4 @@
+import AnimateRadialGradient from 'components/home/AnimateRadialGradient'
 import TopRadialGradient from 'components/home/TopRadialGradient'
 import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
@@ -32,6 +33,7 @@ type Props = {
 export default function Index({ allPosts, postCategories, allProjects, projectCategories }: Props) {
   return (
     <>
+      <AnimateRadialGradient />
       <Layout>
         <Head>
           <title>Donghun Kim | Developer</title>
@@ -51,6 +53,7 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
           >
             <NavBar />
             <TopRadialGradient />
+
             <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
             <Works allProjects={allProjects} />
             <Box mt={25}>
