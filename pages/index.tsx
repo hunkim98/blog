@@ -1,3 +1,4 @@
+import TopRadialGradient from 'components/home/TopRadialGradient'
 import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
@@ -10,6 +11,7 @@ import { Box, Divider, Text } from '@mantine/core'
 import Container from '../components/container'
 import ProjectType from '../interfaces/project'
 import Sidebar from '../components/sidebar'
+import Works from 'components/home/Works'
 import NavBar from '../components/Navbar'
 import Layout from '../components/layout'
 import PostType from '../interfaces/post'
@@ -48,7 +50,9 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
             }}
           >
             <NavBar />
+            <TopRadialGradient />
             <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
+            <Works allProjects={allProjects} />
             <Box mt={25}>
               <Text>
                 <Link href="/projects">

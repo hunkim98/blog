@@ -8,7 +8,12 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head />
-        <body className={`bg-[black]`}>
+        <body
+          className={`bg-[black] bg-repeat`}
+          style={{
+            backgroundImage: 'url(/assets/background/noise50.png)',
+          }}
+        >
           <Main />
           <NextScript />
         </body>

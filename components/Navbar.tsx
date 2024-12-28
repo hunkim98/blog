@@ -1,5 +1,5 @@
+import { Box, Flex, Text, Title, Image } from '@mantine/core'
 import GradientDivider from './common/GradientDivider'
-import { Box, Flex, Text, Title } from '@mantine/core'
 import SocialIcon from './social-icons'
 import { useRouter } from 'next/router'
 import NameSvg from './svgs/name'
@@ -20,19 +20,22 @@ const NavBar = () => {
     >
       <Flex direction={'column'} align={'center'} w={'100%'}>
         <Flex w="100%" maw={600} direction={'column'} align={'center'}>
+          <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} />
           <NameSvg fill="white" />
-          <Box w="80%" mt={18} mb={18}>
+          {/* <Box w="80%" mt={18} mb={18}>
             <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
-          </Box>
+          </Box> */}
           <Text
+            mt={25}
             className="text-center font-tiempos font-thin"
             c={'white'}
             size={'16px'}
             style={{
               lineHeight: 'normal',
-              letterSpacing: 1.0,
+              letterSpacing: 0.6,
             }}
-            maw={500}
+            maw={480}
+            mb={20}
           >
             Software Engineer + Data Scientist professionally trained to build data management web
             tools but also does data visualizations as a hobby.
