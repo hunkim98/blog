@@ -5,9 +5,9 @@ import { BaseWorkTemplateProps } from './BaseWorkTemplate'
 import { useInView } from 'react-intersection-observer'
 import { useHover } from '@mantine/hooks'
 
-interface ThreeImageTemplateProps extends BaseWorkTemplateProps {}
+interface MultiImageTemplateProps extends BaseWorkTemplateProps {}
 
-const ThreeImageTemplate: React.FC<ThreeImageTemplateProps> = ({ work }) => {
+const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
   const { setViewingProject } = useViewProjectContext()
   const thumbnail = useMemo(() => {
     return work.thumbnail
@@ -211,4 +211,4 @@ const ThreeImageTemplate: React.FC<ThreeImageTemplateProps> = ({ work }) => {
   )
 }
 
-export default ThreeImageTemplate
+export default MultiImageTemplate

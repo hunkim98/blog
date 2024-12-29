@@ -4,6 +4,8 @@ import ProjectType from 'interfaces/project'
 interface ViewProjectContextProps {
   projectTopMargin: number
   setProjectTopMargin: React.Dispatch<React.SetStateAction<number>>
+  projectContentHeight: number
+  setProjectContentHeight: React.Dispatch<React.SetStateAction<number>>
   viewingProject: ProjectType | null
   setViewingProject: React.Dispatch<React.SetStateAction<ProjectType | null>>
 }
@@ -16,6 +18,7 @@ interface ViewProjectContextProviderProps {
 
 const ViewProjectContextProvider: React.FC<ViewProjectContextProviderProps> = ({ children }) => {
   const [projectTopMargin, setProjectTopMargin] = useState<number>()
+  const [projectContentHeight, setProjectContentHeight] = useState<number>()
 
   const [viewingProject, setViewingProject] = useState<ProjectType | null>(null)
   return (
@@ -23,6 +26,8 @@ const ViewProjectContextProvider: React.FC<ViewProjectContextProviderProps> = ({
       value={{
         projectTopMargin,
         setProjectTopMargin,
+        projectContentHeight,
+        setProjectContentHeight,
         viewingProject,
         setViewingProject,
       }}

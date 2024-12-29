@@ -1,24 +1,38 @@
 import WorkTemplateComponent from './WorkTemplate/WorkTemplateComponent'
 import SingleImageTemplate from './WorkTemplate/SingleImageTemplate'
-import ThreeImageTemplate from './WorkTemplate/ThreeImageTemplate'
+import MultiImageTemplate from './WorkTemplate/MultiImageTemplate'
+import { useViewProjectContext } from 'context/ViewProjectContext'
 import GradientDivider from 'components/common/GradientDivider'
+import React, { useEffect, useMemo, useRef } from 'react'
 import { Flex, Text, Image } from '@mantine/core'
 import Project from '../../interfaces/project'
-import React, { useMemo } from 'react'
 
 interface WorksProps {
   allProjects: Project[]
 }
 
 const Works: React.FC<WorksProps> = ({ allProjects }) => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { setProjectContentHeight } = useViewProjectContext()
   const projectsSorted = useMemo(() => {
     const sortedItems = allProjects.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
     return sortedItems
   }, [allProjects])
+  useEffect(() => {
+    const sizeChangeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        setProjectContentHeight(entry.contentRect.height)
+      })
+    })
+    sizeChangeObserver.observe(containerRef.current)
+    return () => {
+      sizeChangeObserver.disconnect()
+    }
+  }, [setProjectContentHeight])
   return (
-    <Flex mt={23} direction={'column'}>
+    <Flex mt={23} direction={'column'} ref={containerRef}>
       <Text
         className="font-sans font-bold"
         c={'white'}

@@ -1,10 +1,10 @@
 import { useViewProjectContext } from 'context/ViewProjectContext'
 import { Box, Flex, Text, Title, Image } from '@mantine/core'
-import GradientDivider from './common/GradientDivider'
+import GradientDivider from '../common/GradientDivider'
 import React, { useEffect, useRef } from 'react'
-import SocialIcon from './social-icons'
+import SocialIcon from '../social-icons'
 import { useRouter } from 'next/router'
-import NameSvg from './svgs/name'
+import NameSvg from '../svgs/name'
 import Link from 'next/link'
 
 const Intro = () => {
