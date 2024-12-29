@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { useViewProjectContext } from 'context/ViewProjectContext'
 import { Image, Grid, Text, Flex, Box } from '@mantine/core'
 import { BaseWorkTemplateProps } from './BaseWorkTemplate'
 import { useInView } from 'react-intersection-observer'
@@ -7,6 +8,7 @@ import { useHover } from '@mantine/hooks'
 interface ThreeImageTemplateProps extends BaseWorkTemplateProps {}
 
 const ThreeImageTemplate: React.FC<ThreeImageTemplateProps> = ({ work }) => {
+  const { setViewingProject } = useViewProjectContext()
   const thumbnail = useMemo(() => {
     return work.thumbnail
   }, [work.thumbnail])
@@ -72,11 +74,17 @@ const ThreeImageTemplate: React.FC<ThreeImageTemplateProps> = ({ work }) => {
     }
   }, [])
 
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     threshold: 0.7,
   })
   const { hovered: isFirstImageHovered, ref: firstImageHover } = useHover()
   const { hovered: isSecondImageHovered, ref: secondImageHover } = useHover()
+
+  useEffect(() => {
+    if (inView) {
+      setViewingProject(work)
+    }
+  }, [inView])
 
   return (
     // <ScrollAnimation animateIn="fadeIn" animateOnce>

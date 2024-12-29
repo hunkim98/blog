@@ -5,8 +5,8 @@ import { HOME_OG_IMAGE_URL } from 'lib/constants'
 import Container from 'components/container'
 import Sidebar from 'components/sidebar'
 import Project from 'interfaces/project'
-import NavBar from 'components/Navbar'
 import Layout from 'components/layout'
+import Intro from 'components/Intro'
 import About from 'components/about'
 import Post from 'interfaces/post'
 import Head from 'next/head'
@@ -34,7 +34,7 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
         <Container>
           {/* <Sidebar projectCategories={projectCategories} /> */}
           <div>
-            <NavBar selectedCategory={'posts'} />
+            <Intro selectedCategory={'posts'} />
             <MoreStories posts={allPosts} />
           </div>
         </Container>

@@ -25,9 +25,8 @@ const Works: React.FC<WorksProps> = ({ allProjects }) => {
         size={'20px'}
         style={{
           letterSpacing: -0.6,
-          marginBottom: 20,
         }}
-        bg="black"
+        // bg="black"
         p={10}
       >
         Selected Works

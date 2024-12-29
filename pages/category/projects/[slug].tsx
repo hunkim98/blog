@@ -8,7 +8,7 @@ import Header from '../../../components/header'
 import Head from 'next/head'
 
 import MoreProjects from '../../../components/more-projects'
-import Intro from '../../../components/intro'
+import Intro from '../../../components/deprecated/intro'
 
 type Props = {
   categoryProjects: Project[]
