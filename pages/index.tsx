@@ -54,9 +54,9 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
             <NavBar />
             <TopRadialGradient />
 
-            <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
+            {/* <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" /> */}
             <Works allProjects={allProjects} />
-            <Box mt={25}>
+            {/* <Box mt={25}>
               <Text>
                 <Link href="/projects">
                   <Text span opacity={0.5} size="sm">
@@ -78,7 +78,7 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
               <Divider />
               <ContentList allPosts={allPosts} allProjects={allProjects} />
               <Divider mb={20} />
-            </Box>
+            </Box> */}
             <About />
           </Box>
           {/* <div>

@@ -4,6 +4,7 @@ import 'prismjs/themes/prism-tomorrow.css'
 
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import 'animate.css/animate.compat.css'
 import localFont from 'next/font/local'
 import { AppProps } from 'next/app'
 import 'katex/dist/katex.min.css'

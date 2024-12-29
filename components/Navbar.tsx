@@ -40,8 +40,8 @@ const NavBar = () => {
             <Text span className="font-tiempos font-medium">
               Software Engineer + Data Scientist
             </Text>{' '}
-            professionally trained to build data management tools on the web. Producer of data
-            visualizations and 3D graphics as a hobby.
+            professionally trained to build data management tools on the web. Produce data
+            visualizations and 3D graphics for the web as a hobby.
           </Text>
         </Flex>
         {/* <Text>
