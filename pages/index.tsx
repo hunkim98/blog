@@ -1,6 +1,7 @@
 import { useViewProjectContext, ViewProjectContextProvider } from 'context/ViewProjectContext'
 import AnimateRadialGradient from 'components/home/Decoration/AnimateRadialGradient'
 import TopRadialGradient from 'components/home/Decoration/TopRadialGradient'
+import { BaseContainerClassName } from 'components/layout/config'
 import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
@@ -19,6 +20,7 @@ import About from '../components/about'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
+import { cn } from 'lib/tw'
 
 type Props = {
   allPosts: PostType[]
@@ -27,7 +29,12 @@ type Props = {
   projectCategories: string[]
 }
 
-export default function Index({ allPosts, postCategories, allProjects, projectCategories }: Props) {
+export default function HomePage({
+  allPosts,
+  postCategories,
+  allProjects,
+  projectCategories,
+}: Props) {
   const { projectTopMargin, projectContentHeight } = useViewProjectContext()
   return (
     <>
@@ -39,28 +46,30 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
           content="I am developer interested in building technologies that encourage people to create creative contents"
         />
       </Head>
-      <AnimateRadialGradient />
       <Layout>
         <HomeNavbar
           appearFrom={projectTopMargin}
           disappearFrom={projectContentHeight + projectTopMargin}
         />
-        <Container>
-          {/* <Sidebar projectCategories={projectCategories} /> */}
-          <Box
-            style={{
-              width: '100%',
-              maxWidth: '100%',
-            }}
-          >
+        {/* <Container> */}
+        {/* <Sidebar projectCategories={projectCategories} /> */}
+        <Box
+          className={'bg-repeat'}
+          style={{
+            backgroundImage: 'url(/assets/background/noise50.png)',
+          }}
+        >
+          <Box className={cn(BaseContainerClassName, ['z-10'])}>
             <Intro />
+            <AnimateRadialGradient />
             <TopRadialGradient />
 
             {/* <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" /> */}
             <Works allProjects={allProjects} />
             <Posts allPosts={allPosts} />
           </Box>
-          {/* <div>
+        </Box>
+        {/* <div>
             <NavBar
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
@@ -73,7 +82,7 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
               <MoreProjects projects={allProjects} />
             )}
           </div> */}
-        </Container>
+        {/* </Container> */}
       </Layout>
     </>
   )

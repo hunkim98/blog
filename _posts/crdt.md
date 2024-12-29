@@ -6,7 +6,7 @@ author:
   name: Kim Dong Hun
 keyword: 'CRDT Basics'
 categories: ['CRDT', 'Algorithm']
-WIP: false
+WIP: true
 thumbnail: '/assets/posts/crdt/thumbnail.png'
 ---
 

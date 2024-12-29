@@ -33,7 +33,7 @@ const Intro = () => {
       }}
       ref={ref}
       direction={'row'}
-      className="mt-16 mb-[22px] md:mb-[22px] select-none"
+      className="pt-16 mb-[22px] md:mb-[22px] select-none"
       align={'center'}
     >
       <Flex direction={'column'} align={'center'} w={'100%'}>

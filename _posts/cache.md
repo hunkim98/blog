@@ -6,7 +6,7 @@ author:
   name: Kim Dong Hun
 keyword: 'Cache'
 categories: ['computer-architecture']
-WIP: false
+WIP: true
 thumbnail: '/assets/posts/cache/thumbnail.png'
 ---
 

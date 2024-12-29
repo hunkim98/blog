@@ -6,7 +6,7 @@ author:
   name: Kim Dong Hun
 keyword: 'Pipeline'
 categories: ['computer-architecture']
-WIP: false
+WIP: true
 thumbnail: '/assets/posts/pipeline/thumbnail.png'
 ---
 
