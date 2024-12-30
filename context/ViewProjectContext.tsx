@@ -1,42 +1,51 @@
 import React, { createContext, useContext, useState } from 'react'
 import ProjectType from 'interfaces/project'
 
-interface ViewProjectContextProps {
+interface HomeViewContentContextProps {
   projectTopMargin: number
   setProjectTopMargin: React.Dispatch<React.SetStateAction<number>>
   projectContentHeight: number
   setProjectContentHeight: React.Dispatch<React.SetStateAction<number>>
+  postContentHeight: number
+  setPostContentHeight: React.Dispatch<React.SetStateAction<number>>
   viewingProject: ProjectType | null
   setViewingProject: React.Dispatch<React.SetStateAction<ProjectType | null>>
 }
 
-const ViewProjectContext = createContext<ViewProjectContextProps>({} as ViewProjectContextProps)
+const HomeViewContentContext = createContext<HomeViewContentContextProps>(
+  {} as HomeViewContentContextProps
+)
 
 interface ViewProjectContextProviderProps {
   children: React.ReactNode
 }
 
-const ViewProjectContextProvider: React.FC<ViewProjectContextProviderProps> = ({ children }) => {
+const HomeViewContentContextProvider: React.FC<ViewProjectContextProviderProps> = ({
+  children,
+}) => {
   const [projectTopMargin, setProjectTopMargin] = useState<number>()
   const [projectContentHeight, setProjectContentHeight] = useState<number>()
+  const [postContentHeight, setPostContentHeight] = useState<number>()
 
   const [viewingProject, setViewingProject] = useState<ProjectType | null>(null)
   return (
-    <ViewProjectContext.Provider
+    <HomeViewContentContext.Provider
       value={{
         projectTopMargin,
         setProjectTopMargin,
         projectContentHeight,
         setProjectContentHeight,
+        postContentHeight,
+        setPostContentHeight,
         viewingProject,
         setViewingProject,
       }}
     >
       {children}
-    </ViewProjectContext.Provider>
+    </HomeViewContentContext.Provider>
   )
 }
 
-export const useViewProjectContext = () => useContext(ViewProjectContext)
+export const useHomeViewContentContext = () => useContext(HomeViewContentContext)
 
-export { ViewProjectContext, ViewProjectContextProvider }
+export { HomeViewContentContext, HomeViewContentContextProvider }

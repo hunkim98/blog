@@ -1,5 +1,5 @@
+import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { useViewProjectContext } from 'context/ViewProjectContext'
 import { Image, Grid, Text, Flex, Box } from '@mantine/core'
 import { BaseWorkTemplateProps } from './BaseWorkTemplate'
 import { useInView } from 'react-intersection-observer'
@@ -8,7 +8,7 @@ import { useHover } from '@mantine/hooks'
 interface MultiImageTemplateProps extends BaseWorkTemplateProps {}
 
 const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
-  const { setViewingProject } = useViewProjectContext()
+  const { setViewingProject } = useHomeViewContentContext()
   const thumbnail = useMemo(() => {
     return work.thumbnail
   }, [work.thumbnail])

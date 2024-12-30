@@ -1,4 +1,4 @@
-import { useViewProjectContext } from 'context/ViewProjectContext'
+import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import { Box, Flex, Text, Title, Image } from '@mantine/core'
 import GradientDivider from '../common/GradientDivider'
 import React, { useEffect, useRef } from 'react'
@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 const Intro = () => {
   const ref = useRef<HTMLDivElement>(null)
-  const { setProjectTopMargin: setProjectTopDistance } = useViewProjectContext()
+  const { setProjectTopMargin: setProjectTopDistance } = useHomeViewContentContext()
 
   useEffect(() => {
     // get the size of the div

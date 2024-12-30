@@ -1,26 +1,26 @@
-import { useViewProjectContext } from 'context/ViewProjectContext'
-import React, { useEffect, useState } from 'react'
+import { useHomeViewContentContext } from 'context/ViewProjectContext'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Box, Flex, Text } from '@mantine/core'
 import { useHover } from '@mantine/hooks'
 
 interface HomeNavbarProps {
   appearFrom: number
   disappearFrom: number
+  contentPerScroll: Array<{
+    scrollTop: number
+    content: string
+  }>
 }
 
-const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, disappearFrom }) => {
+const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll }) => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(false)
-  const { viewingProject } = useViewProjectContext()
+  const { viewingProject } = useHomeViewContentContext()
+  const [windowScrollY, setWindowScrollY] = useState(0)
   useEffect(() => {
     // listen to scrolltop of body
     const handleScroll = () => {
+      setWindowScrollY(window.scrollY)
       if (window.scrollY < appearFrom) {
-        setIsNavbarVisible(false)
-      } else if (window.scrollY > appearFrom && window.scrollY < disappearFrom) {
-        // show navbar
-        setIsNavbarVisible(true)
-      } else if (window.scrollY > disappearFrom) {
-        // hide navbar
         setIsNavbarVisible(false)
       } else {
         setIsNavbarVisible(true)
@@ -33,8 +33,35 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, disappearFrom }) =>
       window.removeEventListener('scroll', handleScroll)
     }
   }, [appearFrom])
-
-  if (!viewingProject) return null
+  const shouldShowContentPerScroll = useMemo(() => {
+    const minScrollTop = contentPerScroll[0].scrollTop
+    if (windowScrollY < minScrollTop) {
+      return false
+    } else {
+      return true
+    }
+  }, [windowScrollY, contentPerScroll])
+  const currentShowContentIndex = useMemo(() => {
+    if (shouldShowContentPerScroll) {
+      let index = 0
+      for (let i = 0; i < contentPerScroll.length; i++) {
+        if (windowScrollY > contentPerScroll[i].scrollTop) {
+          // index = i
+          if (i < contentPerScroll.length - 1) {
+            if (windowScrollY < contentPerScroll[i + 1].scrollTop) {
+              index = i
+              break
+            }
+          } else {
+            index = i
+            break
+          }
+        }
+      }
+      return index
+    }
+    return 0
+  }, [windowScrollY, contentPerScroll, shouldShowContentPerScroll])
 
   return (
     <Flex
@@ -57,16 +84,30 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, disappearFrom }) =>
         gap={'sm'}
         pos="absolute"
         left={'50%'}
+        // w={'100%'}
         style={{
+          // backgroundColor: '#f3f4f6',
+          // textAlign: 'center',
           transform: 'translate(-50%, 0)',
         }}
       >
-        <Text className="font-sans font-medium">{viewingProject.categories[0]}</Text>
-        <Text>{'|'}</Text>
-        <Text className="font-sans font-normal">{viewingProject.title}</Text>
+        {viewingProject && !shouldShowContentPerScroll && (
+          <>
+            <Text className="font-sans font-medium">{viewingProject.categories[0]}</Text>
+            <Text>{'|'}</Text>
+            <Text className="font-sans font-normal">{viewingProject.title}</Text>
+          </>
+        )}
+        {shouldShowContentPerScroll && (
+          <Text className="font-sans font-normal">
+            {contentPerScroll[currentShowContentIndex].content}
+          </Text>
+        )}
       </Flex>
       <Box>
-        <Text className="font-tiempos">{viewingProject.date.split('-')[0]}</Text>
+        {viewingProject && !shouldShowContentPerScroll && (
+          <Text className="font-sans">{viewingProject.date.split('-')[0]}</Text>
+        )}
       </Box>
     </Flex>
   )

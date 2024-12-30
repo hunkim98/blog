@@ -2,7 +2,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import { MantineProvider } from '@mantine/core'
 import 'prismjs/themes/prism-tomorrow.css'
 
-import { ViewProjectContextProvider } from 'context/ViewProjectContext'
+import { HomeViewContentContextProvider } from 'context/ViewProjectContext'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import 'animate.css/animate.compat.css'
@@ -58,9 +58,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       )}
       <MantineProvider>
         <main className={`${tiemposFont.variable} ${GeistSans.variable}`}>
-          <ViewProjectContextProvider>
+          <HomeViewContentContextProvider>
             <Component {...pageProps} />
-          </ViewProjectContextProvider>
+          </HomeViewContentContextProvider>
         </main>
       </MantineProvider>
     </>

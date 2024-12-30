@@ -1,10 +1,11 @@
-import { useViewProjectContext, ViewProjectContextProvider } from 'context/ViewProjectContext'
+import { useHomeViewContentContext, HomeViewContentContext } from 'context/ViewProjectContext'
 import AnimateRadialGradient from 'components/home/Decoration/AnimateRadialGradient'
 import TopRadialGradient from 'components/home/Decoration/TopRadialGradient'
 import { BaseContainerClassName } from 'components/layout/config'
 import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import Experience from 'components/home/Experience'
 import { Box, Divider, Text } from '@mantine/core'
 import Container from '../components/container'
 import HomeNavbar from 'components/home/Navbar'
@@ -35,7 +36,7 @@ export default function HomePage({
   allProjects,
   projectCategories,
 }: Props) {
-  const { projectTopMargin, projectContentHeight } = useViewProjectContext()
+  const { projectTopMargin, projectContentHeight, postContentHeight } = useHomeViewContentContext()
   return (
     <>
       <Head>
@@ -50,6 +51,16 @@ export default function HomePage({
         <HomeNavbar
           appearFrom={projectTopMargin}
           disappearFrom={projectContentHeight + projectTopMargin}
+          contentPerScroll={[
+            {
+              scrollTop: projectContentHeight + projectTopMargin,
+              content: 'Writings',
+            },
+            {
+              scrollTop: projectContentHeight + postContentHeight + projectTopMargin,
+              content: 'Experience',
+            },
+          ]}
         />
         {/* <Container> */}
         {/* <Sidebar projectCategories={projectCategories} /> */}
@@ -68,6 +79,14 @@ export default function HomePage({
             <Works allProjects={allProjects} />
             <Posts allPosts={allPosts} />
           </Box>
+        </Box>
+        <Box
+          className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]"
+          mt={-50}
+          h={80}
+        ></Box>
+        <Box className={cn(BaseContainerClassName)} pos={'relative'}>
+          <Experience />
         </Box>
         {/* <div>
             <NavBar

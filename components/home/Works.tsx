@@ -1,7 +1,7 @@
 import WorkTemplateComponent from './WorkTemplate/WorkTemplateComponent'
+import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import SingleImageTemplate from './WorkTemplate/SingleImageTemplate'
 import MultiImageTemplate from './WorkTemplate/MultiImageTemplate'
-import { useViewProjectContext } from 'context/ViewProjectContext'
 import GradientDivider from 'components/common/GradientDivider'
 import React, { useEffect, useMemo, useRef } from 'react'
 import { Flex, Text, Image } from '@mantine/core'
@@ -13,7 +13,7 @@ interface WorksProps {
 
 const Works: React.FC<WorksProps> = ({ allProjects }) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { setProjectContentHeight } = useViewProjectContext()
+  const { setProjectContentHeight } = useHomeViewContentContext()
   const projectsSorted = useMemo(() => {
     const sortedItems = allProjects.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()

@@ -1,22 +1,33 @@
+import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import SimplePostTemplate from './PostTemplate/SimplePostTemplate'
 import GradientDivider from 'components/common/GradientDivider'
 import { Box, Flex, Grid, Text } from '@mantine/core'
+import { useResizeObserver } from '@mantine/hooks'
+import React, { useEffect, useMemo } from 'react'
 import PostType from 'interfaces/post'
-import React, { useMemo } from 'react'
 
 interface PostsProps {
   allPosts: PostType[]
 }
 
+const PostsMarginTop = 100
+
 const Posts: React.FC<PostsProps> = ({ allPosts }) => {
+  const { setPostContentHeight } = useHomeViewContentContext()
   const postsSorted = useMemo(() => {
     const sortedItems = allPosts.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
     return sortedItems
   }, [allPosts])
+  const [ref, rect] = useResizeObserver()
+  useEffect(() => {
+    if (rect) {
+      setPostContentHeight(rect.height + PostsMarginTop)
+    }
+  }, [rect])
   return (
-    <Box mt={100} mb={500}>
+    <Box mt={PostsMarginTop} mb={200} ref={ref}>
       <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
       <Flex direction={'column'}>
         <Text
