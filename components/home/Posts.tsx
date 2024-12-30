@@ -10,7 +10,7 @@ interface PostsProps {
   allPosts: PostType[]
 }
 
-const PostsMarginTop = 100
+const PostsMarginTop = 150
 
 const Posts: React.FC<PostsProps> = ({ allPosts }) => {
   const { setPostContentHeight } = useHomeViewContentContext()
@@ -48,6 +48,7 @@ const Posts: React.FC<PostsProps> = ({ allPosts }) => {
           })}
         </Grid>
       </Flex>
+      <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
     </Box>
   )
 }

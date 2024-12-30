@@ -1,8 +1,5 @@
+import ExperienceType from 'interfaces/experience'
+
 export interface BaseExperienceTemplateProps {
-  company: string
-  companyLink: string
-  position: string
-  description: string
-  startDate: string
-  endDate: string
+  experience: ExperienceType
 }

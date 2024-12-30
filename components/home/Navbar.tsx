@@ -88,15 +88,16 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
         style={{
           // backgroundColor: '#f3f4f6',
           // textAlign: 'center',
+          whiteSpace: 'nowrap',
           transform: 'translate(-50%, 0)',
         }}
       >
         {viewingProject && !shouldShowContentPerScroll && (
-          <>
+          <Flex gap={4} flex={1}>
             <Text className="font-sans font-medium">{viewingProject.categories[0]}</Text>
             <Text>{'|'}</Text>
             <Text className="font-sans font-normal">{viewingProject.title}</Text>
-          </>
+          </Flex>
         )}
         {shouldShowContentPerScroll && (
           <Text className="font-sans font-normal">

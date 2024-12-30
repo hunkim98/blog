@@ -5,12 +5,13 @@ import { BaseContainerClassName } from 'components/layout/config'
 import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import { Box, Divider, Flex, Text } from '@mantine/core'
 import Experience from 'components/home/Experience'
-import { Box, Divider, Text } from '@mantine/core'
 import Container from '../components/container'
 import HomeNavbar from 'components/home/Navbar'
 import ProjectType from '../interfaces/project'
 import Intro from '../components/home/Intro'
+import Skills from 'components/home/Skills'
 import Sidebar from '../components/sidebar'
 import Works from 'components/home/Works'
 import Posts from 'components/home/Posts'
@@ -85,9 +86,17 @@ export default function HomePage({
           mt={-50}
           h={80}
         ></Box>
-        <Box className={cn(BaseContainerClassName)} pos={'relative'}>
-          <Experience />
-        </Box>
+        <Flex className={cn(BaseContainerClassName)} pos={'relative'} mb={300} mt={100}>
+          <Flex gap={'lg'} p={10}>
+            <Experience />
+            <GradientDivider
+              fromColor="rgba(255,255,255,1)"
+              toColor="rgba(255,255,255,0)"
+              isVertical={true}
+            />
+            <Skills />
+          </Flex>
+        </Flex>
         {/* <div>
             <NavBar
               selectedCategory={selectedCategory}
