@@ -31,7 +31,15 @@ const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
   }, [post])
   const { ref: hoverRef, hovered } = useHover()
   return (
-    <Grid.Col span={6} key={post.title} ref={hoverRef}>
+    <Grid.Col
+      span={{
+        base: 12,
+        xs: 12,
+        sm: 6,
+      }}
+      key={post.title}
+      ref={hoverRef}
+    >
       <Flex direction={'column'} gap={'sm'}>
         <Text className="font-tiempos font-medium" size="18px">
           {post.title}

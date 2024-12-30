@@ -87,7 +87,15 @@ export default function HomePage({
           h={80}
         ></Box>
         <Flex className={cn(BaseContainerClassName)} pos={'relative'} mb={300} mt={100}>
-          <Flex gap={'lg'} p={10}>
+          <Flex
+            gap={'lg'}
+            p={10}
+            direction={{
+              base: 'column',
+              xs: 'column',
+              sm: 'row',
+            }}
+          >
             <Experience />
             <GradientDivider
               fromColor="rgba(255,255,255,1)"
@@ -97,20 +105,6 @@ export default function HomePage({
             <Skills />
           </Flex>
         </Flex>
-        {/* <div>
-            <NavBar
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-            />
-            {selectedCategory === "about" && allPosts.length > 0 && <About />}
-            {selectedCategory === "posts" && allPosts.length > 0 && (
-              <MoreStories posts={allPosts} />
-            )}
-            {selectedCategory === "projects" && allPosts.length > 0 && (
-              <MoreProjects projects={allProjects} />
-            )}
-          </div> */}
-        {/* </Container> */}
       </Layout>
     </>
   )

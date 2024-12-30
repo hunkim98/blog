@@ -30,7 +30,16 @@ const SkillsData: Array<SkillType> = [
 
 const Skills: React.FC<SkillsProps> = () => {
   return (
-    <Flex direction={'column'} gap={'sm'} flex={1}>
+    <Flex
+      direction={'column'}
+      gap={'sm'}
+      flex={1}
+      display={{
+        base: 'none',
+        sm: 'none',
+        md: 'block',
+      }}
+    >
       <Text
         className="font-sans font-bold"
         c={'white'}
@@ -41,7 +50,7 @@ const Skills: React.FC<SkillsProps> = () => {
       >
         Skills
       </Text>
-      <Grid gutter={'lg'}>
+      <Grid gutter={'lg'} pt={10}>
         {SkillsData.map((skill) => {
           return <SimpleSkillTemplate key={skill.name} skill={skill} />
         })}

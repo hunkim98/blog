@@ -7,7 +7,13 @@ interface SimpleSkillTemplateProps extends BaseSkillTemplateProps {}
 const SimpleSkillTemplate: React.FC<SimpleSkillTemplateProps> = ({ skill }) => {
   return (
     <>
-      <Grid.Col span={3}>
+      <Grid.Col
+        span={{
+          base: 12,
+          xs: 12,
+          sm: 3,
+        }}
+      >
         <Text
           className="font-sans font-semibold"
           style={{
@@ -17,7 +23,13 @@ const SimpleSkillTemplate: React.FC<SimpleSkillTemplateProps> = ({ skill }) => {
           {skill.name}
         </Text>
       </Grid.Col>
-      <Grid.Col span={9}>
+      <Grid.Col
+        span={{
+          base: 12,
+          xs: 12,
+          sm: 9,
+        }}
+      >
         <Flex wrap="wrap" gap={6}>
           {skill.subSkills.map((subSkill) => {
             const isLast = skill.subSkills.indexOf(subSkill) === skill.subSkills.length - 1

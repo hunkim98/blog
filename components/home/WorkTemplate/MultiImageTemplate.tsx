@@ -103,7 +103,16 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
       ref={ref}
     >
       {/* Default is 12 */}
-      <Grid.Col span={7}>
+      <Grid.Col
+        span={{
+          base: 12,
+          xs: 12,
+          sm: 7,
+          md: 7,
+          lg: 7,
+          xl: 7,
+        }}
+      >
         <Flex gap={'md'} direction={'column'}>
           <Image src={thumbnail} w={'100%'} />
           <Text className="font-tiempos font-medium" size="22px">
@@ -135,6 +144,14 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
         </Flex>
       </Grid.Col>
       <Grid.Col
+        display={{
+          base: 'none',
+          xs: 'none',
+          sm: 'block',
+          md: 'block',
+          lg: 'block',
+          xl: 'block',
+        }}
         span={5}
         // opacity={isHovered ? 1 : 0.2}
         // style={{
