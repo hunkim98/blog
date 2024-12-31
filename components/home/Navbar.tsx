@@ -1,7 +1,8 @@
 import { useHover, useMediaQuery, useViewportSize } from '@mantine/hooks'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
-import React, { useEffect, useMemo, useState } from 'react'
 import { Box, em, Flex, Text } from '@mantine/core'
+import { IconArrowUp } from '@tabler/icons-react'
 
 interface HomeNavbarProps {
   appearFrom: number
@@ -16,8 +17,12 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
   const [isNavbarVisible, setIsNavbarVisible] = useState(false)
   const { viewingProject } = useHomeViewContentContext()
   const [windowScrollY, setWindowScrollY] = useState(0)
-  const isMobile = useMediaQuery(`(max-width: ${em(750)})`)
-  const [parentWidth, setParentWidth] = useState(0)
+  const onClickUp = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }, [])
   useEffect(() => {
     // listen to scrolltop of body
     const handleScroll = () => {
@@ -64,6 +69,7 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
     }
     return 0
   }, [windowScrollY, contentPerScroll, shouldShowContentPerScroll])
+  const IsMantineMedium = useMediaQuery(`(max-width: ${em(992)})`)
   const { width: screenWidth } = useViewportSize()
 
   return (
@@ -86,39 +92,44 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
       }}
       justify={'space-between'}
     >
-      <Box></Box>
+      <Box className="cursor-pointer" onClick={onClickUp}>
+        <IconArrowUp />
+      </Box>
       <Flex
         gap={'sm'}
-        pos="absolute"
-        left={'50%'}
+        pos={{
+          base: 'relative',
+          md: 'absolute',
+        }}
+        left={{
+          base: 0,
+          md: '50%',
+        }}
         // w={'100%'}
         style={{
           // backgroundColor: '#f3f4f6',
           // textAlign: 'center',
           whiteSpace: 'nowrap',
-          transform: 'translate(-50%, 0)',
+          transform: IsMantineMedium ? '' : 'translate(-50%, 0)',
         }}
       >
         {viewingProject && !shouldShowContentPerScroll && (
           <Text
             className="truncate"
             style={{
-              maxWidth: screenWidth - 50,
+              maxWidth: screenWidth - 100,
             }}
           >
             <Text span className="w-fit">
               <Text span className="font-sans font-medium">
                 {viewingProject.categories[0]}
               </Text>
-
-              <>
-                <Text span ml={5} mr={5}>
-                  {'|'}
-                </Text>
-                <Text span className="font-sans font-normal">
-                  {viewingProject.title}
-                </Text>
-              </>
+              <Text span ml={5} mr={5}>
+                {'|'}
+              </Text>
+              <Text span className="font-sans font-normal">
+                {viewingProject.title}
+              </Text>
             </Text>
           </Text>
         )}

@@ -6,6 +6,7 @@ import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
 import BelowGradient from 'components/common/BelowGradient'
+import { contentIdGenerator } from 'lib/contentIdGenerator'
 import { Box, Divider, Flex, Text } from '@mantine/core'
 import Experience from 'components/home/Experience'
 import Container from '../components/container'
@@ -39,6 +40,23 @@ export default function HomePage({
   projectCategories,
 }: Props) {
   const { projectTopMargin, projectContentHeight, postContentHeight } = useHomeViewContentContext()
+  const router = useRouter()
+  useEffect(() => {
+    if (router.query) {
+      if (router.query.contentFromSlug && router.query.contentFromType) {
+        const contentFromSlug = router.query.contentFromSlug as string
+        const contentFromType = router.query.contentFromType as string
+        const contentId = contentIdGenerator({
+          slug: contentFromSlug,
+          type: contentFromType,
+        })
+        const element = document.getElementById(contentId)
+        if (element) {
+          element.scrollIntoView()
+        }
+      }
+    }
+  }, [router.query])
   return (
     <>
       <Head>

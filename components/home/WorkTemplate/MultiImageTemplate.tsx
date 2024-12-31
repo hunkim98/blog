@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import { Image, Grid, Text, Flex, Box } from '@mantine/core'
+import { contentIdGenerator } from 'lib/contentIdGenerator'
 import { BaseWorkTemplateProps } from './BaseWorkTemplate'
 import { useInView } from 'react-intersection-observer'
 import { useHover } from '@mantine/hooks'
@@ -72,6 +73,10 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
 
   return (
     <Grid
+      id={contentIdGenerator({
+        slug: work.slug,
+        type: 'project',
+      })}
       bg="black"
       p={15}
       c={'white'}

@@ -1,3 +1,4 @@
+import { contentIdGenerator } from 'lib/contentIdGenerator'
 import { BasePostTemplate } from './BasePostTemplate'
 import { Flex, Grid, Text } from '@mantine/core'
 import { useHover } from '@mantine/hooks'
@@ -37,6 +38,10 @@ const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
         xs: 12,
         sm: 6,
       }}
+      id={contentIdGenerator({
+        slug: post.slug,
+        type: 'post',
+      })}
       key={post.title}
       ref={hoverRef}
     >

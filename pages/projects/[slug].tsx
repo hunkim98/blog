@@ -23,6 +23,8 @@ import rehypeKatex from 'rehype-katex'
 import { Text } from '@mantine/core'
 import remarkMath from 'remark-math'
 
+import NoiseFadeOut from 'components/common/NoiseFadeOut'
+import ContentNavbar from 'components/content/Navbar'
 import remarkGfm from 'remark-gfm'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
@@ -43,58 +45,63 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
   }
 
   return (
-    <Layout preview={preview}>
-      <div className="container mx-auto px-5 max-w-5xl">
-        <Header title={'← More Projects'} link="/projects" />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{project.title}</title>
-                <meta name="description" content={project.excerpt} />
-                <meta name="title" content={project.title} />
-                <meta property="og:image" content={BLOG_URL + project.thumbnail} />
-              </Head>
-              <div className="max-w-3xl mx-auto">
-                <div className="mb-6 text-lg">
-                  <Text className="font-tiempos" size={'30px'}>
-                    {project.title}
-                  </Text>
-                  {/* <PostTitle>{project.title}</PostTitle> */}
-                  <div>
-                    Category:{' '}
-                    {project.categories.map((category, index) => {
-                      return (
-                        <span
-                          key={index}
-                          onClick={() => {
-                            router.push(`/category/projects/${category}`)
-                          }}
-                        >
-                          #{category}{' '}
-                        </span>
-                      )
-                    })}
+    <>
+      <ContentNavbar content={project} isPost={false} />
+      <NoiseFadeOut height={300} />
+      <Layout preview={preview}>
+        <div className="container mx-auto px-5 max-w-5xl">
+          {/* <Header title={'← More Projects'} link="/projects" /> */}
+          {router.isFallback ? (
+            <PostTitle>Loading…</PostTitle>
+          ) : (
+            <>
+              <article className="mb-32">
+                <Head>
+                  <title>{project.title}</title>
+                  <meta name="description" content={project.excerpt} />
+                  <meta name="title" content={project.title} />
+                  <meta property="og:image" content={BLOG_URL + project.thumbnail} />
+                </Head>
+
+                <div className="max-w-3xl mx-auto">
+                  <div className="mb-6 text-lg">
+                    <Text className="font-tiempos" size={'30px'}>
+                      {project.title}
+                    </Text>
+                    {/* <PostTitle>{project.title}</PostTitle> */}
+                    <div>
+                      Category:{' '}
+                      {project.categories.map((category, index) => {
+                        return (
+                          <span
+                            key={index}
+                            onClick={() => {
+                              router.push(`/category/projects/${category}`)
+                            }}
+                          >
+                            #{category}{' '}
+                          </span>
+                        )
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <PostBody isMdx={isMdx} content={project.content} />
-              <div className="max-w-3xl mx-auto mt-16 mb-16">
-                <NavigateToOther
-                  prevPath={project.prevPath}
-                  nextPath={project.nextPath}
-                  prevTitle={project.prevTitle}
-                  nextTitle={project.nextTitle}
-                />
-              </div>
-              <Utterances />
-            </article>
-          </>
-        )}
-      </div>
-    </Layout>
+                <PostBody isMdx={isMdx} content={project.content} />
+                <div className="max-w-3xl mx-auto mt-16 mb-16">
+                  <NavigateToOther
+                    prevPath={project.prevPath}
+                    nextPath={project.nextPath}
+                    prevTitle={project.prevTitle}
+                    nextTitle={project.nextTitle}
+                  />
+                </div>
+                <Utterances />
+              </article>
+            </>
+          )}
+        </div>
+      </Layout>
+    </>
   )
 }
 
