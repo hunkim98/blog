@@ -1,7 +1,7 @@
+import { useHover, useMediaQuery, useViewportSize } from '@mantine/hooks'
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import React, { useEffect, useMemo, useState } from 'react'
-import { Box, Flex, Text } from '@mantine/core'
-import { useHover } from '@mantine/hooks'
+import { Box, em, Flex, Text } from '@mantine/core'
 
 interface HomeNavbarProps {
   appearFrom: number
@@ -16,6 +16,8 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
   const [isNavbarVisible, setIsNavbarVisible] = useState(false)
   const { viewingProject } = useHomeViewContentContext()
   const [windowScrollY, setWindowScrollY] = useState(0)
+  const isMobile = useMediaQuery(`(max-width: ${em(750)})`)
+  const [parentWidth, setParentWidth] = useState(0)
   useEffect(() => {
     // listen to scrolltop of body
     const handleScroll = () => {
@@ -62,6 +64,7 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
     }
     return 0
   }, [windowScrollY, contentPerScroll, shouldShowContentPerScroll])
+  const { width: screenWidth } = useViewportSize()
 
   return (
     <Flex
@@ -97,11 +100,27 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
         }}
       >
         {viewingProject && !shouldShowContentPerScroll && (
-          <Flex gap={4} flex={1}>
-            <Text className="font-sans font-medium">{viewingProject.categories[0]}</Text>
-            <Text>{'|'}</Text>
-            <Text className="font-sans font-normal">{viewingProject.title}</Text>
-          </Flex>
+          <Text
+            className="truncate"
+            style={{
+              maxWidth: screenWidth - 50,
+            }}
+          >
+            <Text span className="w-fit">
+              <Text span className="font-sans font-medium">
+                {viewingProject.categories[0]}
+              </Text>
+
+              <>
+                <Text span ml={5} mr={5}>
+                  {'|'}
+                </Text>
+                <Text span className="font-sans font-normal">
+                  {viewingProject.title}
+                </Text>
+              </>
+            </Text>
+          </Text>
         )}
         {shouldShowContentPerScroll && (
           <Text className="font-sans font-normal">
