@@ -23,6 +23,7 @@ import rehypeKatex from 'rehype-katex'
 import { Text } from '@mantine/core'
 import remarkMath from 'remark-math'
 
+import BelowGradient from 'components/common/BelowGradient'
 import NoiseFadeOut from 'components/common/NoiseFadeOut'
 import ContentNavbar from 'components/content/Navbar'
 import remarkGfm from 'remark-gfm'
@@ -69,21 +70,23 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
                       {project.title}
                     </Text>
                     {/* <PostTitle>{project.title}</PostTitle> */}
-                    <div>
+                    <Text>
                       Category:{' '}
                       {project.categories.map((category, index) => {
                         return (
-                          <span
+                          <Text
+                            span
+                            className="font-sans"
                             key={index}
                             onClick={() => {
                               router.push(`/category/projects/${category}`)
                             }}
                           >
                             #{category}{' '}
-                          </span>
+                          </Text>
                         )
                       })}
-                    </div>
+                    </Text>
                   </div>
                 </div>
                 <PostBody isMdx={isMdx} content={project.content} />
@@ -100,6 +103,12 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
             </>
           )}
         </div>
+        <BelowGradient />
+        <NoiseFadeOut
+          height={1000}
+          direction="top"
+          className="absolute bottom-0 bg-red-400 w-full -z-10"
+        />
       </Layout>
     </>
   )

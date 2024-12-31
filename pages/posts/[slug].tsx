@@ -1,6 +1,7 @@
 import { getPostBySlug, getAllPosts, getAllProjects, getProjectBySlug } from '../../lib/api'
 import NavigateToOther from '../../components/navigate-to-other'
 import PostHeader from '../../components/posts/post-header'
+import BelowGradient from 'components/common/BelowGradient'
 import PostTitle from '../../components/posts/post-title'
 import PostBody from '../../components/posts/post-body'
 import { serialize } from 'next-mdx-remote/serialize'
@@ -82,6 +83,7 @@ export default function Post({ post, morePosts, preview }: Props) {
           </>
         )}
       </div>
+      <BelowGradient />
     </Layout>
   )
 }
