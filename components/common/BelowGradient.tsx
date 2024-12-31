@@ -1,4 +1,4 @@
-import { Box } from '@mantine/core'
+import { Box, MantineStyleProp, MantineStyleProps } from '@mantine/core'
 import React from 'react'
 
 interface BelowGradientProps {}

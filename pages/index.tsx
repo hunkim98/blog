@@ -99,12 +99,13 @@ export default function HomePage({
             <Works allProjects={allProjects} />
             <Posts allPosts={allPosts} />
           </Box>
+          <Box
+            className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]"
+            c={'white'}
+            mt={-50}
+            h={80}
+          ></Box>
         </Box>
-        <Box
-          className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]"
-          mt={-50}
-          h={80}
-        ></Box>
         <Flex
           className={cn(BaseContainerClassName, ['max-w-[1200px]'])}
           pos={'relative'}
