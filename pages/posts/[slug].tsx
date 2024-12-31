@@ -1,5 +1,5 @@
 import { getPostBySlug, getAllPosts, getAllProjects, getProjectBySlug } from '../../lib/api'
-import NavigateToOther from '../../components/navigate-to-other'
+import NavigateToOther from '../../components/content/NavigateToOther'
 import PostHeader from '../../components/posts/post-header'
 import BelowGradient from 'components/common/BelowGradient'
 import PostTitle from '../../components/posts/post-title'

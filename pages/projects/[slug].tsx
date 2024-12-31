@@ -6,7 +6,7 @@ import {
   getPlainProjectContentBySlug,
 } from '../../lib/api'
 import markdownStyles from '../../components/markdown-styles.module.css'
-import NavigateToOther from '../../components/navigate-to-other'
+import NavigateToOther from '../../components/content/NavigateToOther'
 import PostHeader from '../../components/posts/post-header'
 import PostTitle from '../../components/posts/post-title'
 import PostBody from '../../components/posts/post-body'
@@ -70,9 +70,14 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
                       {project.title}
                     </Text>
                     {/* <PostTitle>{project.title}</PostTitle> */}
-                    <Text>
+                    <Text className="font-sans" mt={20}>
                       Category:{' '}
                       {project.categories.map((category, index) => {
+                        const isLastIndex = index === project.categories.length - 1
+                        let categoryText = `${category}`
+                        if (!isLastIndex) {
+                          categoryText += ', '
+                        }
                         return (
                           <Text
                             span
@@ -82,7 +87,7 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
                               router.push(`/category/projects/${category}`)
                             }}
                           >
-                            #{category}{' '}
+                            {categoryText}{' '}
                           </Text>
                         )
                       })}
