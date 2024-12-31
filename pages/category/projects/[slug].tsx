@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { getAllPosts, getAllProjects } from '../../../lib/api'
+import Header from '../../../components/deprecated/header'
 import Container from '../../../components/container'
 import Project from '../../../interfaces/project'
 import Layout from '../../../components/layout'
-import Header from '../../../components/header'
 import Head from 'next/head'
 
-import MoreProjects from '../../../components/more-projects'
+import MoreProjects from '../../../components/deprecated/more-projects'
 import Intro from '../../../components/deprecated/intro'
 
 type Props = {

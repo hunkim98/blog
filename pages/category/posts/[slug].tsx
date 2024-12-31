@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { getAllPosts, getPostBySlug, getPostSlugs } from '../../../lib/api'
-import MoreStories from '../../../components/more-stories'
+import MoreStories from '../../../components/deprecated/more-stories'
+import Header from '../../../components/deprecated/header'
 import Container from '../../../components/container'
 import Intro from 'components/deprecated/intro'
 import Layout from '../../../components/layout'
-import Header from '../../../components/header'
 import Post from '../../../interfaces/post'
 import Head from 'next/head'
 

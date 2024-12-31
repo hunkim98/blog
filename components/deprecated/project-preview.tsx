@@ -1,5 +1,5 @@
-import type Author from '../interfaces/author'
-import DateFormatter from './date-formatter'
+import type Author from '../../interfaces/author'
+import DateFormatter from '../date-formatter'
 import CoverImage from './cover-image'
 import { Title } from '@mantine/core'
 import Link from 'next/link'

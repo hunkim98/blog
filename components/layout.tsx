@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Transition } from '@mantine/core'
-import Footer from './footer'
 import Meta from './meta'
 
 type Props = {
@@ -14,11 +13,7 @@ const Layout = ({ preview, children }: Props) => {
       <Meta />
       <div className="relative min-h-screen text-[#fff] overflow-x-hidden">
         <main>{children}</main>
-        {/* <Transition mounted={isMounted} transition="fade" duration={200} timingFunction="ease">
-          {(styles) => <main style={styles}>{children}</main>}
-        </Transition> */}
       </div>
-      {/* <Footer /> */}
     </>
   )
 }
