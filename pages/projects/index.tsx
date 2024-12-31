@@ -2,14 +2,16 @@ import { getAllStaticProps } from 'utils/common/staticProps'
 import MoreProjects from 'components/more-projects'
 import { HOME_OG_IMAGE_URL } from 'lib/constants'
 import Container from 'components/container'
+import { redirect } from 'next/navigation'
 import Intro from 'components/home/Intro'
 import Sidebar from 'components/sidebar'
 import Project from 'interfaces/project'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Layout from 'components/layout'
 import About from 'components/about'
 import Post from 'interfaces/post'
 import Head from 'next/head'
-import React from 'react'
 
 type Props = {
   allPosts: Post[]
@@ -18,7 +20,17 @@ type Props = {
   projectCategories: string[]
 }
 
-export default function Index({ allPosts, postCategories, allProjects, projectCategories }: Props) {
+export default function ProjectsPage({
+  allPosts,
+  postCategories,
+  allProjects,
+  projectCategories,
+}: Props) {
+  const router = useRouter()
+  useEffect(() => {
+    router.push('/')
+  }, [])
+  return null
   return (
     <>
       <Layout>
@@ -33,7 +45,7 @@ export default function Index({ allPosts, postCategories, allProjects, projectCa
         <Container>
           {/* <Sidebar projectCategories={projectCategories} /> */}
           <div>
-            <Intro selectedCategory={'projects'} />
+            {/* <Intro selectedCategory={'projects'} /> */}
             <MoreProjects projects={allProjects} />
           </div>
         </Container>

@@ -67,15 +67,19 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
     <Flex
       pos="fixed"
       h={56}
-      bg={'#000'}
+      // bg={'#000'}
+      bg={'rgba(0,0,0,0.2)'}
       w={'100%'}
       className="z-50"
       align={'center'}
       pl={20}
       pr={20}
+      // display={isNavbarVisible ? 'flex' : 'none'}
+      opacity={isNavbarVisible ? 1 : 0}
       top={isNavbarVisible ? 0 : -appearFrom}
       style={{
-        transition: 'top 0.3s ease-in-out',
+        transition: 'all 0.3s ease-in-out',
+        backdropFilter: 'blur(10px)',
       }}
       justify={'space-between'}
     >
@@ -105,7 +109,12 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
           </Text>
         )}
       </Flex>
-      <Box>
+      <Box
+        display={{
+          base: 'none',
+          md: 'block',
+        }}
+      >
         {viewingProject && !shouldShowContentPerScroll && (
           <Text className="font-sans">{viewingProject.date.split('-')[0]}</Text>
         )}

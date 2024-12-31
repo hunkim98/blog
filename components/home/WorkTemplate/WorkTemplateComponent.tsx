@@ -21,8 +21,10 @@ const WorkTemplateComponent: React.FC<WorkTemplateComponentProps> = ({ work, ind
 
   if (images.length >= 3) {
     return <MultiImageTemplate work={work} />
+  } else {
+    return null
   }
-  return <SingleImageTemplate work={work} index={index} />
+  // return <SingleImageTemplate work={work} index={index} />
 }
 
 export default WorkTemplateComponent

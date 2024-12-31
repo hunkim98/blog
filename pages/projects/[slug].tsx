@@ -14,15 +14,13 @@ import type ProjectType from '../../interfaces/project'
 import { serialize } from 'next-mdx-remote/serialize'
 import markdownToHtml from '../../lib/markdownToHtml'
 import Utterances from '../../components/utterances'
-import Container from '../../components/container'
 import { BLOG_URL } from '../../lib/constants'
 import rehypeHighlight from 'rehype-highlight'
 import Header from '../../components/header'
 import Layout from '../../components/layout'
-import { MDXRemote } from 'next-mdx-remote'
-import { mdxToHtml } from 'lib/mdxToHtml'
 import { useRouter } from 'next/router'
 import rehypeKatex from 'rehype-katex'
+import { Text } from '@mantine/core'
 import remarkMath from 'remark-math'
 
 import remarkGfm from 'remark-gfm'
@@ -61,7 +59,10 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
               </Head>
               <div className="max-w-3xl mx-auto">
                 <div className="mb-6 text-lg">
-                  <PostTitle>{project.title}</PostTitle>
+                  <Text className="font-tiempos" size={'30px'}>
+                    {project.title}
+                  </Text>
+                  {/* <PostTitle>{project.title}</PostTitle> */}
                   <div>
                     Category:{' '}
                     {project.categories.map((category, index) => {

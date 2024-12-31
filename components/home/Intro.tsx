@@ -36,7 +36,7 @@ const Intro = () => {
       className="pt-16 mb-[22px] md:mb-[22px] select-none"
       align={'center'}
     >
-      <Flex direction={'column'} align={'center'} w={'100%'}>
+      <Flex direction={'column'} align={'center'} w={'100%'} pl={20} pr={20}>
         <Flex w="100%" maw={600} direction={'column'} align={'center'}>
           <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} />
           <NameSvg fill="white" />
@@ -47,19 +47,22 @@ const Intro = () => {
             mt={25}
             className="text-center font-tiempos font-thin"
             c={'white'}
-            size={'16px'}
+            size={'15px'}
             style={{
-              lineHeight: 'normal',
-              letterSpacing: 0.6,
+              lineHeight: 1.3,
+              letterSpacing: 1,
             }}
             maw={480}
             mb={20}
           >
             <Text span className="font-tiempos font-medium">
-              Software Engineer + Data Scientist
+              Software Engineer + Data Analyst
             </Text>{' '}
-            professionally trained to build data management tools on the web. Produce data
-            visualizations and 3D graphics for the web as a hobby.
+            <Text span className="font-tiempos font-thin">
+              professionally trained in building data management tools and conducting user behavior
+              analysis. Proficient in rendering graphics on the web and implementing AI into web
+              services. Creates data visualizations and 3D graphics as a hobby.
+            </Text>
           </Text>
         </Flex>
         {/* <Text>

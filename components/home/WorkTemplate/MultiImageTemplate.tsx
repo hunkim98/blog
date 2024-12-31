@@ -1,9 +1,10 @@
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Image, Grid, Text, Flex, Box } from '@mantine/core'
 import { BaseWorkTemplateProps } from './BaseWorkTemplate'
 import { useInView } from 'react-intersection-observer'
 import { useHover } from '@mantine/hooks'
+import { useRouter } from 'next/router'
 
 interface MultiImageTemplateProps extends BaseWorkTemplateProps {}
 
@@ -12,10 +13,10 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
   const thumbnail = useMemo(() => {
     return work.thumbnail
   }, [work.thumbnail])
-  const isThumbnailGif = useMemo(() => {
-    return thumbnail.includes('.gif')
-  }, [thumbnail])
-  const [isHovered, setIsHovered] = useState(false)
+  const router = useRouter()
+  // const isThumbnailGif = useMemo(() => {
+  //   return thumbnail.includes('.gif')
+  // }, [thumbnail])
   const images = useMemo(() => {
     // use regex to find .png, .jpg, .jpeg, .gif, .svg in the content inside the bracket () but also include the [ and ! for markdown]
     const regex = /\[.*?\]\((.*?)\.(png|jpg|jpeg|gif|svg)\)/g
@@ -48,37 +49,20 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
     }
     return []
   }, [work.content])
+
   const excerpt = useMemo(() => {
     return work.excerpt
   }, [work.excerpt])
-  const textRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (textRef.current) {
-      textRef.current.addEventListener('mouseenter', () => {
-        setIsHovered(true)
-      })
-      textRef.current.addEventListener('mouseleave', () => {
-        setIsHovered(false)
-      })
-    }
-    return () => {
-      if (textRef.current) {
-        textRef.current.removeEventListener('mouseenter', () => {
-          setIsHovered(true)
-        })
-        textRef.current.removeEventListener('mouseleave', () => {
-          setIsHovered(false)
-        })
-      }
-    }
-  }, [])
 
   const { ref, inView } = useInView({
     threshold: 0.7,
   })
   const { hovered: isFirstImageHovered, ref: firstImageHover } = useHover()
   const { hovered: isSecondImageHovered, ref: secondImageHover } = useHover()
+
+  const onClickWork = useCallback(() => {
+    router.push(`/projects/${work.slug}`)
+  }, [work, router])
 
   useEffect(() => {
     if (inView) {
@@ -87,7 +71,6 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
   }, [inView])
 
   return (
-    // <ScrollAnimation animateIn="fadeIn" animateOnce>
     <Grid
       bg="black"
       p={15}
@@ -114,33 +97,27 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
         }}
       >
         <Flex gap={'md'} direction={'column'}>
-          <Image src={thumbnail} w={'100%'} />
-          <Text className="font-tiempos font-medium" size="22px">
+          <Image src={thumbnail} w={'100%'} className="cursor-pointer" onClick={onClickWork} />
+          <Text
+            className="font-tiempos font-medium cursor-pointer"
+            size="22px"
+            onClick={onClickWork}
+          >
             {work.title}
           </Text>
           <Text
-            className="font-sans"
+            className="font-sans cursor-pointer"
             size="15px"
             style={{
               lineHeight: 'normal',
               letterSpacing: -0.1,
             }}
             opacity={0.5}
+            onClick={onClickWork}
           >
             {/* {paragraphs[0]} */}
             {excerpt}
           </Text>
-          {/* <Text
-              className="font-sans "
-              size="15px"
-              style={{
-                lineHeight: 'normal',
-                letterSpacing: 0.6,
-              }}
-              opacity={0.5}
-            >
-              {paragraphs[0]}
-            </Text> */}
         </Flex>
       </Grid.Col>
       <Grid.Col
@@ -153,13 +130,8 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
           xl: 'block',
         }}
         span={5}
-        // opacity={isHovered ? 1 : 0.2}
-        // style={{
-        //   transition: 'opacity 0.3s ease-in-out',
-        // }}
-        ref={textRef}
       >
-        <Flex gap={'md'} direction={'column'}>
+        <Flex gap={'md'} direction={'column'} className="cursor-pointer" onClick={onClickWork}>
           <Box ref={firstImageHover} pos={'relative'}>
             <Text
               className="font-sans font-normal"
@@ -184,7 +156,12 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
               }}
             />
           </Box>
-          <Box ref={secondImageHover} pos={'relative'}>
+          <Box
+            ref={secondImageHover}
+            pos={'relative'}
+            className="cursor-pointer"
+            onClick={onClickWork}
+          >
             <Text
               className="font-san font-normal"
               pos={'absolute'}
@@ -209,22 +186,7 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
           </Box>
         </Flex>
       </Grid.Col>
-      {/* <Grid.Col span={3.5}>
-        <Flex gap={'md'} direction={'column'}>
-          <Text
-            className="font-tiempos font-thin"
-            size="15px"
-            style={{
-              lineHeight: 'normal',
-              letterSpacing: 0.6,
-            }}
-          >
-            {paragraphs[paragraphs.length - 1]}
-          </Text>
-        </Flex>
-      </Grid.Col> */}
     </Grid>
-    // </ScrollAnimation>
   )
 }
 

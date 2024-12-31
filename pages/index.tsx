@@ -5,6 +5,7 @@ import { BaseContainerClassName } from 'components/layout/config'
 import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import BelowGradient from 'components/common/BelowGradient'
 import { Box, Divider, Flex, Text } from '@mantine/core'
 import Experience from 'components/home/Experience'
 import Container from '../components/container'
@@ -66,17 +67,17 @@ export default function HomePage({
         {/* <Container> */}
         {/* <Sidebar projectCategories={projectCategories} /> */}
         <Box
-          className={'bg-repeat'}
+          className={'bg-repeat relative z-10'}
           style={{
-            backgroundImage: 'url(/assets/background/noise50.png)',
+            backgroundImage: 'url(/assets/background/noise30.png)',
           }}
         >
-          <Box className={cn(BaseContainerClassName, ['z-10'])}>
-            <Intro />
+          <Box w={'100%'} className="overflow-hidden z-50 bg-white overflow-x-hidden">
             <AnimateRadialGradient />
             <TopRadialGradient />
-
-            {/* <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" /> */}
+          </Box>
+          <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50'])}>
+            <Intro />
             <Works allProjects={allProjects} />
             <Posts allPosts={allPosts} />
           </Box>
@@ -86,7 +87,12 @@ export default function HomePage({
           mt={-50}
           h={80}
         ></Box>
-        <Flex className={cn(BaseContainerClassName)} pos={'relative'} mb={300} mt={100}>
+        <Flex
+          className={cn(BaseContainerClassName, ['max-w-[1200px]'])}
+          pos={'relative'}
+          mb={300}
+          mt={100}
+        >
           <Flex
             gap={'lg'}
             p={10}
@@ -98,6 +104,14 @@ export default function HomePage({
           >
             <Experience />
             <GradientDivider
+              display={{
+                base: 'none',
+                xs: 'none',
+                sm: 'none',
+                md: 'block',
+                lg: 'block',
+                xl: 'block',
+              }}
               fromColor="rgba(255,255,255,1)"
               toColor="rgba(255,255,255,0)"
               isVertical={true}
@@ -105,6 +119,7 @@ export default function HomePage({
             <Skills />
           </Flex>
         </Flex>
+        <BelowGradient />
       </Layout>
     </>
   )

@@ -1,3 +1,5 @@
+import { BaseContainerClassName } from './layout/config'
+import { cn } from 'lib/tw'
 import React from 'react'
 
 type Props = {
@@ -5,11 +7,7 @@ type Props = {
 }
 
 const Container = ({ children }: Props) => {
-  return (
-    <div className="container relative mx-auto px-5 max-w-7xl flex-col md:flex-row flex select-none">
-      {children}
-    </div>
-  )
+  return <div className={cn(BaseContainerClassName)}>{children}</div>
 }
 
 export default Container
