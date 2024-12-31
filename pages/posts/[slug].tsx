@@ -1,13 +1,17 @@
 import { getPostBySlug, getAllPosts, getAllProjects, getProjectBySlug } from '../../lib/api'
+import PostHeader from '../../components/deprecated/posts/post-header'
 import NavigateToOther from '../../components/content/NavigateToOther'
-import PostHeader from '../../components/posts/post-header'
+import PostBody from '../../components/deprecated/posts/post-body'
 import BelowGradient from 'components/common/BelowGradient'
-import PostTitle from '../../components/posts/post-title'
-import PostBody from '../../components/posts/post-body'
+import ContentTitle from '../../components/content/Title'
+import NoiseFadeOut from 'components/common/NoiseFadeOut'
 import { serialize } from 'next-mdx-remote/serialize'
+import ContentNavbar from 'components/content/Navbar'
 import markdownToHtml from '../../lib/markdownToHtml'
 import Utterances from '../../components/utterances'
 import Container from '../../components/container'
+import ContentTags from 'components/content/Tags'
+import ContentBody from 'components/content/Body'
 import type PostType from '../../interfaces/post'
 import { BLOG_URL } from '../../lib/constants'
 import rehypeHighlight from 'rehype-highlight'
@@ -37,54 +41,55 @@ export default function Post({ post, morePosts, preview }: Props) {
     return <ErrorPage statusCode={404} />
   }
   return (
-    <Layout preview={preview}>
-      <div className="container mx-auto px-5 max-w-5xl">
-        <Header title={'← More Posts'} link="/posts" />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{post.title}</title>
-                <meta name="description" content={post.excerpt} />
-                <meta name="title" content={post.title} />
-                <meta property="og:image" content={BLOG_URL + post.thumbnail} />
-              </Head>
-              <PostHeader title={post.title} date={post.date} author={post.author} />
-              <div className="max-w-3xl mx-auto">
-                <div className="mb-6 text-lg">
-                  <div>
-                    Category:{' '}
-                    {post.categories.map((category, index) => {
-                      return (
-                        <span
-                          onClick={() => router.push(`/category/posts/${category}`)}
-                          key={index}
-                        >
-                          #{category}{' '}
-                        </span>
-                      )
-                    })}
+    <>
+      <ContentNavbar content={post} isPost={true} />
+      <NoiseFadeOut height={300} />
+      <Layout preview={preview}>
+        <div className="container mx-auto px-5 max-w-5xl">
+          {router.isFallback ? (
+            <ContentTitle>Loading…</ContentTitle>
+          ) : (
+            <>
+              <article className="mb-32">
+                <Head>
+                  <title>{post.title}</title>
+                  <meta name="description" content={post.excerpt} />
+                  <meta name="title" content={post.title} />
+                  <meta property="og:image" content={BLOG_URL + post.thumbnail} />
+                </Head>
+                <div className="max-w-3xl mx-auto">
+                  <div className="mb-6 text-lg">
+                    <ContentTitle>{post.title}</ContentTitle>
+                    <ContentTags
+                      tags={post.categories}
+                      onTagClick={(tag) => {
+                        router.push(`/category/posts/${tag}`)
+                      }}
+                    />
                   </div>
                 </div>
-              </div>
-              <PostBody isMdx={isMdx} content={post.content} />
-              <div className="max-w-3xl mx-auto mt-16 mb-16">
-                <NavigateToOther
-                  prevPath={post.prevPath}
-                  nextPath={post.nextPath}
-                  prevTitle={post.prevTitle}
-                  nextTitle={post.nextTitle}
-                />
-              </div>
-              <Utterances />
-            </article>
-          </>
-        )}
-      </div>
-      <BelowGradient />
-    </Layout>
+                <ContentBody isMdx={isMdx} content={post.content} />
+                <div className="max-w-3xl mx-auto mt-16 mb-16">
+                  <NavigateToOther
+                    prevPath={post.prevPath}
+                    nextPath={post.nextPath}
+                    prevTitle={post.prevTitle}
+                    nextTitle={post.nextTitle}
+                  />
+                </div>
+                <Utterances />
+              </article>
+            </>
+          )}
+        </div>
+        <BelowGradient />
+        <NoiseFadeOut
+          height={1000}
+          direction="top"
+          className="absolute bottom-0 bg-red-400 w-full -z-10"
+        />
+      </Layout>
+    </>
   )
 }
 

@@ -12,6 +12,8 @@ interface PostsProps {
 
 const PostsMarginTop = 150
 
+export const POSTS_CONTAINER_ID = 'posts-container'
+
 const Posts: React.FC<PostsProps> = ({ allPosts }) => {
   const { setPostContentHeight } = useHomeViewContentContext()
   const postsSorted = useMemo(() => {
@@ -27,7 +29,7 @@ const Posts: React.FC<PostsProps> = ({ allPosts }) => {
     }
   }, [rect])
   return (
-    <Box mt={PostsMarginTop} mb={200} ref={ref}>
+    <Box mt={PostsMarginTop} mb={200} ref={ref} id={POSTS_CONTAINER_ID}>
       <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
       <Flex direction={'column'}>
         <Text

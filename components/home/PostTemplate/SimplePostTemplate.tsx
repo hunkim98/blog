@@ -1,12 +1,14 @@
 import { contentIdGenerator } from 'lib/contentIdGenerator'
 import { BasePostTemplate } from './BasePostTemplate'
+import React, { useCallback, useMemo } from 'react'
 import { Flex, Grid, Text } from '@mantine/core'
 import { useHover } from '@mantine/hooks'
-import React, { useMemo } from 'react'
+import { useRouter } from 'next/router'
 
 interface SimplePostTemplateProps extends BasePostTemplate {}
 
 const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
+  const router = useRouter()
   const createdOffsetString = useMemo(() => {
     const createdDayDiff = Math.floor(
       (new Date().getTime() - new Date(post.date).getTime()) / (1000 * 60 * 60 * 24)
@@ -31,6 +33,11 @@ const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
     return output
   }, [post])
   const { ref: hoverRef, hovered } = useHover()
+
+  const onClickPost = useCallback(() => {
+    router.push(`/posts/${post.slug}`)
+  }, [post, router])
+
   return (
     <Grid.Col
       span={{
@@ -46,11 +53,12 @@ const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
       ref={hoverRef}
     >
       <Flex direction={'column'} gap={'sm'}>
-        <Text className="font-tiempos font-medium" size="18px">
+        <Text className="font-tiempos font-medium cursor-pointer" size="18px" onClick={onClickPost}>
           {post.title}
         </Text>
         <Text
-          className="font-sans"
+          onClick={onClickPost}
+          className="font-sans cursor-pointer"
           size="15px"
           style={{
             lineHeight: 'normal',

@@ -30,7 +30,7 @@ In the VAE network, this probabilistic layer is implemented by extracting a `μ 
 
 I first was curious whether it is possible to extract the μ and σ of a multi-dimensional input. Was there a mathematical function to get the μ and σ of any encoded data? However, after looking through some codes, it became evident that there does not exist a specific mathematical approach to calculating the μ and σ. In most networks, μ and σ are simply vectors that go through a linear layer in the encoder network. It is the loss function's job to make the linear layers to make the two vectors the μ and σ of a normal distribution. The element that makes the two vectors into the μ and σ of a normal distribution is the KL divergence loss element, which is something that is discussed in the later paragraphs.
 
-```
+```python
 class Encoder(nn.Module):
 
     def __init__(self, input_dim, hidden_dim, latent_dim):

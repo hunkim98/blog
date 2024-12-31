@@ -2,6 +2,7 @@ import { useHomeViewContentContext, HomeViewContentContext } from 'context/ViewP
 import AnimateRadialGradient from 'components/home/Decoration/AnimateRadialGradient'
 import TopRadialGradient from 'components/home/Decoration/TopRadialGradient'
 import { BaseContainerClassName } from 'components/layout/config'
+import Posts, { POSTS_CONTAINER_ID } from 'components/home/Posts'
 import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
@@ -16,7 +17,6 @@ import Intro from '../components/home/Intro'
 import Skills from 'components/home/Skills'
 import Sidebar from '../components/sidebar'
 import Works from 'components/home/Works'
-import Posts from 'components/home/Posts'
 import Layout from '../components/layout'
 import PostType from '../interfaces/post'
 import React, { useEffect } from 'react'
@@ -50,9 +50,19 @@ export default function HomePage({
           slug: contentFromSlug,
           type: contentFromType,
         })
-        const element = document.getElementById(contentId)
-        if (element) {
-          element.scrollIntoView()
+        if (contentFromType === 'post') {
+          const element = document.getElementById(POSTS_CONTAINER_ID)
+          if (element) {
+            element.scrollIntoView()
+            // but scroll a little bit more to show the content
+            window.scrollBy(0, -100)
+          }
+        } else {
+          const element = document.getElementById(contentId)
+          if (element) {
+            element.scrollIntoView()
+            window.scrollBy(0, -100)
+          }
         }
       }
     }

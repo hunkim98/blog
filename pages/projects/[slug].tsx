@@ -6,10 +6,9 @@ import {
   getPlainProjectContentBySlug,
 } from '../../lib/api'
 import markdownStyles from '../../components/markdown-styles.module.css'
+import PostHeader from '../../components/deprecated/posts/post-header'
 import NavigateToOther from '../../components/content/NavigateToOther'
-import PostHeader from '../../components/posts/post-header'
-import PostTitle from '../../components/posts/post-title'
-import PostBody from '../../components/posts/post-body'
+import PostBody from '../../components/deprecated/posts/post-body'
 import type ProjectType from '../../interfaces/project'
 import { serialize } from 'next-mdx-remote/serialize'
 import markdownToHtml from '../../lib/markdownToHtml'
@@ -26,6 +25,9 @@ import remarkMath from 'remark-math'
 import BelowGradient from 'components/common/BelowGradient'
 import NoiseFadeOut from 'components/common/NoiseFadeOut'
 import ContentNavbar from 'components/content/Navbar'
+import ContentTitle from 'components/content/Title'
+import ContentTags from 'components/content/Tags'
+import ContentBody from 'components/content/Body'
 import remarkGfm from 'remark-gfm'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
@@ -53,7 +55,7 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
         <div className="container mx-auto px-5 max-w-5xl">
           {/* <Header title={'← More Projects'} link="/projects" /> */}
           {router.isFallback ? (
-            <PostTitle>Loading…</PostTitle>
+            <Text>Loading…</Text>
           ) : (
             <>
               <article className="mb-32">
@@ -66,35 +68,17 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
 
                 <div className="max-w-3xl mx-auto">
                   <div className="mb-6 text-lg">
-                    <Text className="font-tiempos" size={'30px'}>
-                      {project.title}
-                    </Text>
+                    <ContentTitle>{project.title}</ContentTitle>
                     {/* <PostTitle>{project.title}</PostTitle> */}
-                    <Text className="font-sans" mt={20}>
-                      Category:{' '}
-                      {project.categories.map((category, index) => {
-                        const isLastIndex = index === project.categories.length - 1
-                        let categoryText = `${category}`
-                        if (!isLastIndex) {
-                          categoryText += ', '
-                        }
-                        return (
-                          <Text
-                            span
-                            className="font-sans"
-                            key={index}
-                            onClick={() => {
-                              router.push(`/category/projects/${category}`)
-                            }}
-                          >
-                            {categoryText}{' '}
-                          </Text>
-                        )
-                      })}
-                    </Text>
+                    <ContentTags
+                      tags={project.categories}
+                      onTagClick={(category) => {
+                        router.push(`/category/projects/${category}`)
+                      }}
+                    />
                   </div>
                 </div>
-                <PostBody isMdx={isMdx} content={project.content} />
+                <ContentBody isMdx={isMdx} content={project.content} />
                 <div className="max-w-3xl mx-auto mt-16 mb-16">
                   <NavigateToOther
                     prevPath={project.prevPath}
