@@ -1,4 +1,4 @@
-import type Project from '../interfaces/project'
+import type Project from '../../interfaces/project'
 import PostPreview from './posts/post-preview'
 import ProjectPreview from './project-preview'
 import React from 'react'

@@ -1,5 +1,5 @@
-import { CMS_NAME } from '../lib/constants'
-import SocialIcon from './social-icons'
+import { CMS_NAME } from '../../lib/constants'
+import SocialIcon from '../social-icons'
 import { useRouter } from 'next/router'
 import React from 'react'
 

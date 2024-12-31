@@ -10,6 +10,11 @@ module.exports = {
         cyan: '#79FFE1',
         lightGreen: '#78dea1',
       },
+      fontFamily: {
+        tiempos: ['var(--font-tiempos)'],
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
+      },
       spacing: {
         28: '7rem',
       },

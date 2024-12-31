@@ -1,23 +1,29 @@
+import { useHomeViewContentContext, HomeViewContentContext } from 'context/ViewProjectContext'
+import AnimateRadialGradient from 'components/home/Decoration/AnimateRadialGradient'
+import TopRadialGradient from 'components/home/Decoration/TopRadialGradient'
+import { BaseContainerClassName } from 'components/layout/config'
+import Posts, { POSTS_CONTAINER_ID } from 'components/home/Posts'
+import GradientDivider from 'components/common/GradientDivider'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
-import ContentCarousel from 'components/home/ContentCarousel'
-import { getAllPosts, getAllProjects } from '../lib/api'
-import MoreProjects from '../components/more-projects'
-import ContentList from 'components/home/ContentList'
-import MoreStories from '../components/more-stories'
-import { Box, Divider, Text } from '@mantine/core'
-import Container from '../components/container'
+import BelowGradient from 'components/common/BelowGradient'
+import { contentIdGenerator } from 'lib/contentIdGenerator'
+import { Box, Divider, Flex, Text } from '@mantine/core'
+import Experience from 'components/home/Experience'
+import About from '../components/deprecated/about'
+import HomeNavbar from 'components/home/Navbar'
 import ProjectType from '../interfaces/project'
+import Intro from '../components/home/Intro'
+import Skills from 'components/home/Skills'
 import Sidebar from '../components/sidebar'
-import NavBar from '../components/nav-bar'
+import Works from 'components/home/Works'
 import Layout from '../components/layout'
 import PostType from '../interfaces/post'
 import React, { useEffect } from 'react'
-import Intro from '../components/intro'
-import About from '../components/about'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
+import { cn } from 'lib/tw'
 
 type Props = {
   allPosts: PostType[]
@@ -26,66 +32,122 @@ type Props = {
   projectCategories: string[]
 }
 
-export default function Index({ allPosts, postCategories, allProjects, projectCategories }: Props) {
+export default function HomePage({
+  allPosts,
+  postCategories,
+  allProjects,
+  projectCategories,
+}: Props) {
+  const { projectTopMargin, projectContentHeight, postContentHeight } = useHomeViewContentContext()
+  const router = useRouter()
+  useEffect(() => {
+    if (router.query) {
+      if (router.query.contentFromSlug && router.query.contentFromType) {
+        const contentFromSlug = router.query.contentFromSlug as string
+        const contentFromType = router.query.contentFromType as string
+        const contentId = contentIdGenerator({
+          slug: contentFromSlug,
+          type: contentFromType,
+        })
+        if (contentFromType === 'post') {
+          const element = document.getElementById(POSTS_CONTAINER_ID)
+          if (element) {
+            element.scrollIntoView()
+            // but scroll a little bit more to show the content
+            window.scrollBy(0, -100)
+          }
+        } else {
+          const element = document.getElementById(contentId)
+          if (element) {
+            element.scrollIntoView()
+            window.scrollBy(0, -100)
+          }
+        }
+      }
+    }
+  }, [router.query])
   return (
     <>
+      <Head>
+        <title>Donghun Kim | Developer</title>
+        <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+        <meta
+          name="description"
+          content="I am developer interested in building technologies that encourage people to create creative contents"
+        />
+      </Head>
       <Layout>
-        <Head>
-          <title>Donghun Kim | Developer</title>
-          <meta property="og:image" content={HOME_OG_IMAGE_URL} />
-          <meta
-            name="description"
-            content="I am developer interested in building technologies that encourage people to create creative contents"
-          />
-        </Head>
-        <Container>
-          {/* <Sidebar projectCategories={projectCategories} /> */}
+        <HomeNavbar
+          appearFrom={projectTopMargin}
+          disappearFrom={projectContentHeight + projectTopMargin}
+          contentPerScroll={[
+            {
+              scrollTop: projectContentHeight + projectTopMargin,
+              content: 'Writings',
+            },
+            {
+              scrollTop: projectContentHeight + postContentHeight + projectTopMargin,
+              content: 'Experience',
+            },
+          ]}
+        />
+        {/* <Container> */}
+        {/* <Sidebar projectCategories={projectCategories} /> */}
+        <Box
+          className={'bg-repeat relative z-10'}
+          style={{
+            backgroundImage: 'url(/assets/background/noise30.png)',
+          }}
+        >
+          <Box w={'100%'} className="overflow-hidden z-50 bg-white overflow-x-hidden">
+            <AnimateRadialGradient />
+            <TopRadialGradient />
+          </Box>
+          <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50'])}>
+            <Intro />
+            <Works allProjects={allProjects} />
+            <Posts allPosts={allPosts} />
+          </Box>
           <Box
-            style={{
-              width: '100%',
-              maxWidth: '100%',
+            className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]"
+            c={'white'}
+            mt={-50}
+            h={80}
+          ></Box>
+        </Box>
+        <Flex
+          className={cn(BaseContainerClassName, ['max-w-[1200px]'])}
+          pos={'relative'}
+          mb={300}
+          mt={100}
+        >
+          <Flex
+            gap={'lg'}
+            p={10}
+            direction={{
+              base: 'column',
+              xs: 'column',
+              sm: 'row',
             }}
           >
-            <NavBar selectedCategory={'about'} />
-            <Box>
-              <Text>
-                <Link href="/projects">
-                  <Text span opacity={0.5} size="sm">
-                    Projects
-                  </Text>
-                </Link>
-              </Text>
-
-              <Divider mb={8} />
-              <ContentCarousel allPosts={allPosts} allProjects={allProjects} />
-
-              <Text mt={15}>
-                <Link href="/posts">
-                  <Text span opacity={0.5} size="sm">
-                    Posts
-                  </Text>
-                </Link>
-              </Text>
-              <Divider />
-              <ContentList allPosts={allPosts} allProjects={allProjects} />
-              <Divider mb={20} />
-            </Box>
-            <About />
-          </Box>
-          {/* <div>
-            <NavBar
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
+            <Experience />
+            <GradientDivider
+              display={{
+                base: 'none',
+                xs: 'none',
+                sm: 'none',
+                md: 'block',
+                lg: 'block',
+                xl: 'block',
+              }}
+              fromColor="rgba(255,255,255,1)"
+              toColor="rgba(255,255,255,0)"
+              isVertical={true}
             />
-            {selectedCategory === "about" && allPosts.length > 0 && <About />}
-            {selectedCategory === "posts" && allPosts.length > 0 && (
-              <MoreStories posts={allPosts} />
-            )}
-            {selectedCategory === "projects" && allPosts.length > 0 && (
-              <MoreProjects projects={allProjects} />
-            )}
-          </div> */}
-        </Container>
+            <Skills />
+          </Flex>
+        </Flex>
+        <BelowGradient />
       </Layout>
     </>
   )

@@ -1,6 +1,6 @@
-import Footer from './footer'
+import React, { useEffect, useState } from 'react'
+import { Transition } from '@mantine/core'
 import Meta from './meta'
-import React from 'react'
 
 type Props = {
   preview?: boolean
@@ -11,10 +11,9 @@ const Layout = ({ preview, children }: Props) => {
   return (
     <>
       <Meta />
-      <div className="min-h-screen text-[#000000]">
+      <div className="relative min-h-screen text-[#fff] overflow-x-hidden">
         <main>{children}</main>
       </div>
-      {/* <Footer /> */}
     </>
   )
 }

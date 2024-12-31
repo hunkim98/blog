@@ -1,14 +1,18 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  @apply text-lg leading-relaxed font-tiempos;
 }
 
 .markdown p,
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-10 leading-relaxed text-[#444444];
+  @apply my-10 leading-relaxed text-[#d9d9d9] font-tiempos font-light text-[19.2px];
   @apply relative;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  letter-spacing: 0.9px;
 }
+
+
 
 .markdown h2 {
   @apply mb-4 mt-16 text-3xl font-bold leading-snug;
@@ -27,7 +31,7 @@
 }
 
 .markdown p code:not(:has(span)) {
-  @apply rounded bg-lightGreen px-1.5 py-1.5 text-[85%] text-[#444444];
+  @apply rounded bg-lightGreen px-1.5 py-1.5 text-[85%] text-[#000] font-sans font-medium;
 }
 
 
@@ -59,7 +63,8 @@
 } */
 
 .markdown a {
-  @apply rounded px-1.5 py-1.5 text-[85%] font-bold text-lightGreen underline underline-offset-4;
+  @apply rounded px-1.5 py-1.5 text-[85%] font-bold text-lightGreen underline underline-offset-4 font-sans;
+  letter-spacing: 0.1px;
 }
 
 .markdown code {

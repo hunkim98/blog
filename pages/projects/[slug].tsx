@@ -6,25 +6,28 @@ import {
   getPlainProjectContentBySlug,
 } from '../../lib/api'
 import markdownStyles from '../../components/markdown-styles.module.css'
-import NavigateToOther from '../../components/navigate-to-other'
-import PostHeader from '../../components/posts/post-header'
-import PostTitle from '../../components/posts/post-title'
-import PostBody from '../../components/posts/post-body'
+import PostHeader from '../../components/deprecated/posts/post-header'
+import NavigateToOther from '../../components/content/NavigateToOther'
+import PostBody from '../../components/deprecated/posts/post-body'
+import Header from '../../components/deprecated/header'
 import type ProjectType from '../../interfaces/project'
 import { serialize } from 'next-mdx-remote/serialize'
 import markdownToHtml from '../../lib/markdownToHtml'
 import Utterances from '../../components/utterances'
-import Container from '../../components/container'
 import { BLOG_URL } from '../../lib/constants'
 import rehypeHighlight from 'rehype-highlight'
-import Header from '../../components/header'
 import Layout from '../../components/layout'
-import { MDXRemote } from 'next-mdx-remote'
-import { mdxToHtml } from 'lib/mdxToHtml'
 import { useRouter } from 'next/router'
 import rehypeKatex from 'rehype-katex'
+import { Text } from '@mantine/core'
 import remarkMath from 'remark-math'
 
+import BelowGradient from 'components/common/BelowGradient'
+import NoiseFadeOut from 'components/common/NoiseFadeOut'
+import ContentNavbar from 'components/content/Navbar'
+import ContentTitle from 'components/content/Title'
+import ContentTags from 'components/content/Tags'
+import ContentBody from 'components/content/Body'
 import remarkGfm from 'remark-gfm'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
@@ -45,55 +48,58 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
   }
 
   return (
-    <Layout preview={preview}>
-      <div className="container mx-auto px-5 max-w-5xl">
-        <Header title={'← More Projects'} link="/projects" />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{project.title}</title>
-                <meta name="description" content={project.excerpt} />
-                <meta name="title" content={project.title} />
-                <meta property="og:image" content={BLOG_URL + project.thumbnail} />
-              </Head>
-              <div className="max-w-3xl mx-auto">
-                <div className="mb-6 text-lg">
-                  <PostTitle>{project.title}</PostTitle>
-                  <div>
-                    Category:{' '}
-                    {project.categories.map((category, index) => {
-                      return (
-                        <span
-                          key={index}
-                          onClick={() => {
-                            router.push(`/category/projects/${category}`)
-                          }}
-                        >
-                          #{category}{' '}
-                        </span>
-                      )
-                    })}
+    <>
+      <ContentNavbar content={project} isPost={false} />
+      <NoiseFadeOut height={300} />
+      <Layout preview={preview}>
+        <div className="container mx-auto px-5 max-w-5xl">
+          {/* <Header title={'← More Projects'} link="/projects" /> */}
+          {router.isFallback ? (
+            <Text>Loading…</Text>
+          ) : (
+            <>
+              <article className="mb-32">
+                <Head>
+                  <title>{project.title}</title>
+                  <meta name="description" content={project.excerpt} />
+                  <meta name="title" content={project.title} />
+                  <meta property="og:image" content={BLOG_URL + project.thumbnail} />
+                </Head>
+
+                <div className="max-w-3xl mx-auto">
+                  <div className="mb-6 text-lg">
+                    <ContentTitle>{project.title}</ContentTitle>
+                    {/* <PostTitle>{project.title}</PostTitle> */}
+                    <ContentTags
+                      tags={project.categories}
+                      onTagClick={(category) => {
+                        router.push(`/category/projects/${category}`)
+                      }}
+                    />
                   </div>
                 </div>
-              </div>
-              <PostBody isMdx={isMdx} content={project.content} />
-              <div className="max-w-3xl mx-auto mt-16 mb-16">
-                <NavigateToOther
-                  prevPath={project.prevPath}
-                  nextPath={project.nextPath}
-                  prevTitle={project.prevTitle}
-                  nextTitle={project.nextTitle}
-                />
-              </div>
-              <Utterances />
-            </article>
-          </>
-        )}
-      </div>
-    </Layout>
+                <ContentBody isMdx={isMdx} content={project.content} />
+                <div className="max-w-3xl mx-auto mt-16 mb-16">
+                  <NavigateToOther
+                    prevPath={project.prevPath}
+                    nextPath={project.nextPath}
+                    prevTitle={project.prevTitle}
+                    nextTitle={project.nextTitle}
+                  />
+                </div>
+                <Utterances />
+              </article>
+            </>
+          )}
+        </div>
+        <BelowGradient />
+        <NoiseFadeOut
+          height={1000}
+          direction="top"
+          className="absolute bottom-0 bg-red-400 w-full -z-10"
+        />
+      </Layout>
+    </>
   )
 }
 

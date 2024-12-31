@@ -1,0 +1,113 @@
+.markdown {
+  @apply text-lg leading-relaxed font-tiempos;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply my-10 leading-relaxed text-[#d9d9d9] font-tiempos font-light text-[19.2px];
+  @apply relative;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  letter-spacing: 0.8px;
+}
+
+.markdown ol,
+.markdown ul {
+  @apply list-inside list-none font-sans;
+  --icon-space: 1.5rem;
+  letter-spacing: 0px;
+  padding: 0;
+}
+
+.markdown strong{
+  @apply font-bold;
+  letter-spacing: 0px;
+}
+
+.markdown li {
+  display: flex;
+  padding-left: var(--icon-space);
+}
+
+.markdown li > p {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.markdown li:before {
+  content: "-"; /* FontAwesome Unicode */
+  display: inline-block;
+  margin-left: calc( var(--icon-space) * -1 );
+  min-width: var(--icon-space);
+}
+
+
+.markdown h2 {
+  @apply mb-4 mt-16 text-2xl font-medium leading-snug font-tiempos;
+}
+
+.markdown h3 {
+  @apply mb-4 mt-14 text-xl font-medium leading-snug font-tiempos;
+}
+
+.markdown h4 {
+  @apply mb-4 mt-14 text-lg font-medium leading-snug font-tiempos;
+}
+
+.markdown p code {
+  @apply rounded bg-transparent px-1.5 py-1.5;
+}
+
+.markdown p code:not(:has(span)) {
+  @apply rounded bg-lightGreen px-1.5 py-1.5 text-[85%] text-[#000] font-sans font-medium;
+}
+
+
+.markdown a code {
+  @apply cursor-pointer rounded bg-transparent px-1.5 py-1.5 !important;
+}
+
+.markdown img {
+  /* when mobile size 100%, else 90% */
+  @apply mx-auto mb-2 w-[100%] md:w-[90%];
+}
+
+.markdown p code:has(span) {
+  @apply rounded px-1 py-0.5;
+}
+
+.markdown pre code:has(span) {
+  @apply rounded px-1 py-0.5;
+}
+
+
+.markdown pre:has(code) {
+  @apply rounded p-4 overflow-x-auto mb-4;
+}
+
+
+/* .markdown p code {
+  @apply px-1.5 py-1.5 rounded bg-lightGreen text-[85%] text-[#444444];
+} */
+
+.markdown a {
+  @apply rounded px-1.5 py-1.5 text-[85%] font-bold text-lightGreen underline underline-offset-4 font-sans;
+  letter-spacing: 0.1px;
+}
+
+.markdown code {
+  @apply px-0 py-0 text-[85%];
+}
+
+.markdown blockquote {
+  @apply border-l-4 border-lightGreen pl-4;
+}
+
+.markdown img {
+  @apply mx-auto mb-2;
+}
+
+.markdown em {
+  @apply absolute left-0 right-0 ml-auto mr-auto w-full text-center text-sm opacity-70;
+}

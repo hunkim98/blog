@@ -1,4 +1,4 @@
-import Intro from '../intro'
+import Intro from '../deprecated/intro'
 import React from 'react'
 
 interface Props {

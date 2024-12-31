@@ -11,7 +11,7 @@ const Utterances: React.FC = () => (
       scriptElem.async = true
       scriptElem.setAttribute('repo', 'hunkim98/hunkim98.github.io')
       scriptElem.setAttribute('issue-term', 'title')
-      scriptElem.setAttribute('theme', 'github-light')
+      scriptElem.setAttribute('theme', 'github-dark')
       scriptElem.setAttribute('label', 'blog-comment')
       scriptElem.crossOrigin = 'anonymous'
       elem.appendChild(scriptElem)

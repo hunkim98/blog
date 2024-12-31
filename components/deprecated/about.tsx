@@ -1,5 +1,5 @@
+import Headline from '../cv/Headline'
 import { Text } from '@mantine/core'
-import Headline from './cv/Headline'
 import React from 'react'
 
 const About = () => {

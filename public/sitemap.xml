@@ -59,27 +59,6 @@
             <priority>1.0</priority>
         </url>
         
-        <url>
-            <loc>http://localhost:3000/posts/crdt</loc>
-            <lastmod>2022-09-03T00:00:00.000Z</lastmod>
-            <changefreq>monthly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        
-        <url>
-            <loc>http://localhost:3000/posts/pipeline</loc>
-            <lastmod>2022-08-23T00:00:00.000Z</lastmod>
-            <changefreq>monthly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        
-        <url>
-            <loc>http://localhost:3000/posts/cache</loc>
-            <lastmod>2022-08-23T00:00:00.000Z</lastmod>
-            <changefreq>monthly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        
         
         <url>
             <loc>http://localhost:3000/projects/korea_blood_donation</loc>

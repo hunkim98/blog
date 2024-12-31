@@ -1,5 +1,5 @@
 import PostPreview from './posts/post-preview'
-import type Post from '../interfaces/post'
+import type Post from '../../interfaces/post'
 import React from 'react'
 
 type Props = {
