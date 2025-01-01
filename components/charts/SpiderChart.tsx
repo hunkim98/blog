@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { Box } from '@mantine/core'
 import { exit } from 'process'
 import * as d3 from 'd3'
@@ -8,22 +8,42 @@ interface SpiderChartProps {
   width: number
   height: number
   levels: number
+  labelFontSize: number
   //   margin: { top: number; right: number; bottom: number; left: number }
 }
 
-const SpiderChart: React.FC<SpiderChartProps> = ({ data, width, height, levels }) => {
+const SpiderChart: React.FC<SpiderChartProps> = ({
+  data,
+  width,
+  height,
+  levels,
+  labelFontSize,
+}) => {
   const ref = useRef<HTMLDivElement>()
   const svgContainerRef = useRef<d3.Selection<SVGSVGElement, unknown, HTMLElement, any>>()
   const svgGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const pentagonGridGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const pentagonGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
+  const textLabelGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const renderGraph = useCallback(() => {
     if (!ref.current) {
       return
     }
     // const svg = d3.select(ref.current).append('svg').attr('width', width).attr('height', height)
+    const maxWordLength = data.reduce(
+      (acc, d) =>
+        d.label.split(' ').some((word) => word.length > acc)
+          ? Math.max(...d.label.split(' ').map((word) => word.length))
+          : acc,
+      0
+    )
+    const textPadding = maxWordLength * labelFontSize * 0.5
+    console.log(textPadding)
     if (svgContainerRef.current) {
-      svgContainerRef.current.attr('width', width).attr('height', height)
+      svgContainerRef.current
+        .attr('width', width)
+        .attr('height', height)
+        .attr('style', 'z-index: 50')
     } else {
       svgContainerRef.current = d3
         .select(ref.current)
@@ -43,11 +63,15 @@ const SpiderChart: React.FC<SpiderChartProps> = ({ data, width, height, levels }
     const pentagonG = pentagonGRef.current
       ? pentagonGRef.current
       : (pentagonGRef.current = svg.append('g'))
-    // create circles
+
+    const textLabelG = textLabelGRef.current
+      ? textLabelGRef.current
+      : (textLabelGRef.current = svg.append('g'))
+
     const radialScale = d3
       .scaleLinear()
       .domain([0, 1])
-      .range([0, width / 2])
+      .range([0, width / 2 - textPadding])
 
     const ticks = Array.from({ length: levels }).map((_, i) => (i + 1) / levels)
 
@@ -110,7 +134,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({ data, width, height, levels }
           enter
             .append('polygon')
             .attr('points', (d) => computePoints(data)) // Initial points
-            .attr('fill', 'rgba(255,255,255,0.3)')
+            .attr('fill', 'rgba(255,255,255,0.4)')
             .attr('transform', `translate(${width / 2},${height / 2})`) // Initial position
             .call(
               (enter) =>
@@ -131,7 +155,83 @@ const SpiderChart: React.FC<SpiderChartProps> = ({ data, width, height, levels }
             .attr('transform', `translate(${width / 2},${height / 2})`),
         (exit) => exit.call((exit) => exit.transition().duration(500).style('opacity', 0)).remove()
       )
+
+    const computeTextPosition = (d: { label: string; ratio: number }, i: number) => {
+      const startAngle = -Math.PI / 2
+      const angle = startAngle + (i * Math.PI * 2) / data.length
+      console.log(d, i)
+      const scaledRatio = radialScale(1.25)
+      return [Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio]
+    }
+
+    function computeTextHtml(d: { label: string; ratio: number }) {
+      const x = d3.select(this).attr('x')
+      const y = d3.select(this).attr('dy')
+      const t = d.label
+        .split(' ')
+        .map((word, i) => {
+          return (
+            `<tspan class="font-tiempos cursor-pointer" style="font-size:${labelFontSize}px;" x=` +
+            x +
+            ' dy=' +
+            (+y + labelFontSize * 1.5 * i) +
+            '>' +
+            word +
+            '</tspan>'
+          )
+        })
+        .join('')
+      return t
+    }
+    textLabelG
+      .selectAll('text')
+      .data(data)
+      .join(
+        (enter) => {
+          return (
+            enter
+              // .html((d) => d.label)
+              .append('text')
+              .attr('class', 'cursor-pointer')
+              .attr('style', 'cursor: pointer;')
+              .attr('x', (d, i) => computeTextPosition(d, i)[0])
+              .attr('y', (d, i) => computeTextPosition(d, i)[1])
+              //   .text((d) => d.label.split(' ').join('\n'))
+              .attr('fill', 'white')
+
+              .attr('text-align', 'center')
+              .attr('font-size', labelFontSize)
+              .attr('text-anchor', (d, i) => {
+                return 'middle'
+              })
+              .attr('transform', `translate(${width / 2},${height / 2})`)
+              .html(computeTextHtml)
+          )
+        }
+        // (update) => {
+        //   return update
+        //     .attr('x', (d, i) => computeTextPosition(d, i)[0])
+        //     .attr('y', (d, i) => computeTextPosition(d, i)[1])
+        //     .attr('transform', `translate(${width / 2},${height / 2})`)
+        // },
+        // (exit) => {
+        //   return exit.remove()
+        // }
+      )
+
+      // mouse hover on text
+      .on('mouseover', function (event, d) {
+        // change cursor
+        d3.select(this).style('cursor', 'pointer')
+        // d3.select(this).attr('fill', 'rgba(255,255,255,1)')
+      })
+      .on('click', function (event, d) {
+        console.log(event, d)
+        console.log(d)
+      })
   }, [data, width, height, levels])
+
+  const biggerSize = useMemo(() => Math.max(width, height), [width, height])
 
   useEffect(() => {
     renderGraph()
@@ -142,12 +242,27 @@ const SpiderChart: React.FC<SpiderChartProps> = ({ data, width, height, levels }
       ref={ref}
       w={width}
       h={height}
+      pos={'relative'}
+      className="z-50"
       style={
         {
           // zIndex: 50,
         }
       }
-    ></Box>
+    >
+      <Box
+        pos="absolute"
+        left={width / 2}
+        top={height / 2}
+        w={biggerSize}
+        h={biggerSize}
+        className="-z-10"
+        style={{
+          transform: 'translate(-50%, -50%)',
+          backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%)`,
+        }}
+      ></Box>
+    </Box>
   )
 }
 

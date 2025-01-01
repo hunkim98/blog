@@ -40,20 +40,20 @@ const Intro = () => {
       <Flex direction={'column'} align={'center'} w={'100%'} pl={20} pr={20}>
         <Flex w="100%" maw={600} direction={'column'} align={'center'}>
           <SpiderChart
-            width={250}
-            height={250}
+            width={400}
+            height={400}
             levels={10}
             data={[
-              { label: 'Python', ratio: 1.0 },
-              { label: 'JavaScript', ratio: 0.8 },
-              { label: 'React', ratio: 0.8 },
-              { label: 'D3', ratio: 0.8 },
-              { label: 'AI', ratio: 0.7 },
-              { label: 'AI', ratio: 0.9 },
+              { label: 'Data Visualization', ratio: 1.0 },
+              { label: 'Machine Learning', ratio: 0.8 },
+              { label: 'Web Development', ratio: 0.8 },
+              { label: 'Computer Graphics', ratio: 0.8 },
+              { label: 'Product Design', ratio: 0.7 },
             ]}
+            labelFontSize={13}
             // margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
           />
-          <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} />
+          {/* <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} /> */}
           <NameSvg fill="white" />
           {/* <Box w="80%" mt={18} mb={18}>
             <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
