@@ -1,5 +1,6 @@
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import { Box, Flex, Text, Title, Image } from '@mantine/core'
+import SpiderChart from 'components/charts/SpiderChart'
 import GradientDivider from '../common/GradientDivider'
 import React, { useEffect, useRef } from 'react'
 import SocialIcon from '../social-icons'
@@ -38,11 +39,28 @@ const Intro = () => {
     >
       <Flex direction={'column'} align={'center'} w={'100%'} pl={20} pr={20}>
         <Flex w="100%" maw={600} direction={'column'} align={'center'}>
+          <SpiderChart
+            width={350}
+            height={350}
+            levels={10}
+            data={[
+              { label: 'Python', ratio: 0.8 },
+              { label: 'JavaScript', ratio: 0.8 },
+              { label: 'React', ratio: 0.8 },
+              { label: 'D3', ratio: 0.8 },
+              { label: 'AI', ratio: 0.8 },
+              { label: 'Data Analysis', ratio: 0.8 },
+              { label: 'WebGL', ratio: 0.8 },
+              { label: 'Web Development', ratio: 0.8 },
+            ]}
+            // margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+          />
           <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} />
           <NameSvg fill="white" />
           {/* <Box w="80%" mt={18} mb={18}>
             <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
           </Box> */}
+
           <Text
             mt={25}
             className="text-center font-tiempos font-thin"
