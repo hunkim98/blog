@@ -40,18 +40,16 @@ const Intro = () => {
       <Flex direction={'column'} align={'center'} w={'100%'} pl={20} pr={20}>
         <Flex w="100%" maw={600} direction={'column'} align={'center'}>
           <SpiderChart
-            width={350}
-            height={350}
+            width={250}
+            height={250}
             levels={10}
             data={[
-              { label: 'Python', ratio: 0.8 },
+              { label: 'Python', ratio: 1.0 },
               { label: 'JavaScript', ratio: 0.8 },
               { label: 'React', ratio: 0.8 },
               { label: 'D3', ratio: 0.8 },
-              { label: 'AI', ratio: 0.8 },
-              { label: 'Data Analysis', ratio: 0.8 },
-              { label: 'WebGL', ratio: 0.8 },
-              { label: 'Web Development', ratio: 0.8 },
+              { label: 'AI', ratio: 0.7 },
+              { label: 'AI', ratio: 0.9 },
             ]}
             // margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
           />
