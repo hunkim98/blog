@@ -9,11 +9,12 @@ import Project from '../../interfaces/project'
 
 interface WorksProps {
   projects: Project[]
+  containerId: string
 }
 
-const Works: React.FC<WorksProps> = ({ projects }) => {
+const Works: React.FC<WorksProps> = ({ projects, containerId }) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { setProjectContentHeight } = useHomeViewContentContext()
+  const { setProjectContentHeight, filterCategory } = useHomeViewContentContext()
   const projectsSorted = useMemo(() => {
     const sortedItems = projects.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -32,7 +33,7 @@ const Works: React.FC<WorksProps> = ({ projects }) => {
     }
   }, [setProjectContentHeight])
   return (
-    <Flex mt={23} direction={'column'} ref={containerRef}>
+    <Flex mt={23} direction={'column'} ref={containerRef} id={containerId}>
       <Text
         className="font-sans font-bold"
         c={'white'}
@@ -43,7 +44,20 @@ const Works: React.FC<WorksProps> = ({ projects }) => {
         // bg="black"
         p={10}
       >
-        Selected Works
+        <Text
+          className="font-sans font-bold"
+          span
+          style={{
+            letterSpacing: -0.6,
+          }}
+        >
+          Selected Works
+        </Text>
+        {filterCategory && (
+          <Text className="font-sans font-thin ml-2" size={'sm'} span>
+            (feat: {filterCategory})
+          </Text>
+        )}
       </Text>
       <Flex direction={'column'} gap={50}>
         {/* <ThreeImageTemplate work={postsProjectsSorted[0]} />

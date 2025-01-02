@@ -14,7 +14,6 @@ import AnimateRadialGradient from 'components/home/Decoration/AnimateRadialGradi
 import TopRadialGradient from 'components/home/Decoration/TopRadialGradient'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { BaseContainerClassName } from 'components/layout/config'
-import Posts, { POSTS_CONTAINER_ID } from 'components/home/Posts'
 import GradientDivider from 'components/common/GradientDivider'
 import FloatingMessage from 'components/common/FloatingMessage'
 import { getAllStaticProps } from '../utils/common/staticProps'
@@ -30,6 +29,7 @@ import ProjectType from '../interfaces/project'
 import Intro from '../components/home/Intro'
 import Skills from 'components/home/Skills'
 import Sidebar from '../components/sidebar'
+import Posts from 'components/home/Posts'
 import Works from 'components/home/Works'
 import Layout from '../components/layout'
 import PostType from '../interfaces/post'
@@ -44,6 +44,9 @@ type Props = {
   postCategories: string[]
   projectCategories: string[]
 }
+
+const WORKS_CONTAINER_ID = 'works'
+const WRITINGS_CONTAINER_ID = 'writings'
 
 export default function HomePage({
   allPosts,
@@ -70,32 +73,36 @@ export default function HomePage({
           type: contentFromType,
         })
         if (contentFromType === 'post') {
-          const element = document.getElementById(POSTS_CONTAINER_ID)
+          const element = document.getElementById(WRITINGS_CONTAINER_ID)
           if (element) {
-            element.scrollIntoView()
+            element.scrollIntoView({
+              block: 'center',
+            })
             // but scroll a little bit more to show the content
-            window.scrollBy(0, -100)
+            // window.scrollBy(0, -100)
           }
         } else {
           const element = document.getElementById(contentId)
           if (element) {
-            element.scrollIntoView()
-            window.scrollBy(0, -100)
+            element.scrollIntoView({
+              block: 'center',
+            })
+            // window.scrollBy(0, -100)
           }
         }
       }
     }
   }, [router.query])
-  const onSelectFilter = useCallback((category: string | null) => {
-    setFilterCategory(category)
-  }, [])
+  const onSelectFilter = useCallback(
+    (category: string | null) => {
+      setFilterCategory(category)
+    },
+    [projectTopMargin]
+  )
   const filteredProjects = useMemo(
     () =>
       allProjects.filter((project) => {
         if (filterCategory) {
-          if (project.categories.includes(filterCategory)) {
-            console.log('project.categories', project.categories)
-          }
           return project.categories.includes(filterCategory)
         }
         return true
@@ -112,6 +119,17 @@ export default function HomePage({
       }),
     [allPosts, filterCategory]
   )
+  useEffect(() => {
+    if (!filterCategory) return
+    const workElement = document.getElementById(WORKS_CONTAINER_ID)
+    if (workElement) {
+      // console.log(workElement)
+      setTimeout(() => {
+        workElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+      }, 200)
+      // workElement.scrollBy(0, -projectTopMargin)
+    }
+  }, [filterCategory])
   return (
     <>
       <Head>
@@ -151,11 +169,16 @@ export default function HomePage({
             <AnimateRadialGradient />
             <TopRadialGradient />
           </Box>
-          <VisViewer selectedLabel={filterCategory} setSelectedLabel={onSelectFilter} />
+          <VisViewer
+            selectedLabel={filterCategory}
+            setSelectedLabel={onSelectFilter}
+            allPosts={allPosts}
+            allProjects={allProjects}
+          />
           <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50 mb-[80px]'])}>
             <Intro />
-            <Works projects={filteredProjects} />
-            <Posts posts={filteredPosts} />
+            <Works projects={filteredProjects} containerId={WORKS_CONTAINER_ID} />
+            <Posts posts={filteredPosts} containerId={WRITINGS_CONTAINER_ID} />
           </Box>
           <Box
             className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)] z-50"

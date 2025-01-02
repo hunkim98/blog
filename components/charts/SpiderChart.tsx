@@ -481,6 +481,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
           h={biggerSize * 0.8}
           className="-z-10"
           style={{
+            zIndex: -10,
             transform: 'translate(-50%, -50%)',
             transition: 'all 0.5s ease-in-out',
             backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%)`,

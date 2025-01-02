@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
 type ChartResizerProps<T> = T & {
-  children: React.ReactElement<{
-    width: number
-  }>
+  children:
+    | React.ReactElement<{
+        width: number
+      }>
+    | React.ReactElement<{
+        width: number
+      }>[]
   maxWidth?: number
 }
 

@@ -27,6 +27,7 @@ const Intro = () => {
       sizeChangeObserver.disconnect()
     }
   }, [setProjectTopDistance])
+
   return (
     <Flex
       gap={{
@@ -68,29 +69,6 @@ const Intro = () => {
             </Text>
           </Text>
         </Flex>
-        {/* <Text>
-          <Text opacity={0.5} span>
-            Software Engineer engineering
-          </Text>{' '}
-          <Text opacity={0.8} span>
-            {' '}
-            Computer Graphics
-          </Text>{' '}
-          <Text opacity={0.8} span>
-            &
-          </Text>
-          <Text opacity={0.8} span>
-            {' '}
-            AI{' '}
-          </Text>
-          <Text opacity={0.5} span>
-            at Graduate School of Design
-          </Text>
-        </Text> */}
-        {/* <Flex gap={'xs'} mt={8}>
-          <SocialIcon kind="github" href={`https://github.com/hunkim98`} size={18} />
-          <SocialIcon kind="mail" href={`mailto:hunkim98@gmail.com`} size={18} />
-        </Flex> */}
       </Flex>
     </Flex>
   )
