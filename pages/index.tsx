@@ -233,7 +233,7 @@ export default function HomePage({
                   w={25}
                   h={25}
                   className="rounded-lg cursor-pointer"
-                  bg={'red'}
+                  bg={'black'}
                   onClick={() => {
                     onSelectFilter(null)
                   }}
