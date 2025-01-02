@@ -171,12 +171,16 @@ export default function HomePage({
             <AnimateRadialGradient />
             <TopRadialGradient />
           </Box>
-          <VisViewer
-            selectedLabel={filterCategory}
-            setSelectedLabel={onSelectFilter}
-            allPosts={allPosts}
-            allProjects={allProjects}
-          />
+          <Flex direction={'column'} align={'center'} px={15} w={'100%'}>
+            {/* <Box w={'100%'}> */}
+            <VisViewer
+              selectedLabel={filterCategory}
+              setSelectedLabel={onSelectFilter}
+              allPosts={allPosts}
+              allProjects={allProjects}
+            />
+            {/* </Box> */}
+          </Flex>
           <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50 mb-[80px]'])}>
             <Intro />
             <Works projects={filteredProjects} containerId={WORKS_CONTAINER_ID} />

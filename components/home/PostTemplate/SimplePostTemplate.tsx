@@ -1,7 +1,7 @@
 import { contentIdGenerator } from 'lib/contentIdGenerator'
 import { BasePostTemplate } from './BasePostTemplate'
+import { em, Flex, Grid, Text } from '@mantine/core'
 import React, { useCallback, useMemo } from 'react'
-import { Flex, Grid, Text } from '@mantine/core'
 import { useHover } from '@mantine/hooks'
 import { useRouter } from 'next/router'
 
@@ -52,7 +52,7 @@ const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
       key={post.title}
       ref={hoverRef}
     >
-      <Flex direction={'column'} gap={'sm'}>
+      <Flex direction={'column'}>
         <Text
           className="font-tiempos font-medium cursor-pointer"
           size="18px"
@@ -67,6 +67,7 @@ const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
           onClick={onClickPost}
           className="font-sans cursor-pointer"
           size="15px"
+          mt={em(8)}
           style={{
             lineHeight: 'normal',
             letterSpacing: -0.1,
@@ -80,6 +81,8 @@ const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
         <Text
           className="font-sans"
           size="15px"
+          mt={em(8)}
+          mb={em(8)}
           style={{
             lineHeight: 'normal',
             letterSpacing: -0.1,

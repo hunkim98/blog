@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { cn } from 'lib/tw'
 
 type ChartResizerProps<T> = T & {
   children:
@@ -9,9 +10,10 @@ type ChartResizerProps<T> = T & {
         width: number
       }>[]
   maxWidth?: number
+  className?: string
 }
 
-const ChartResizer = <T,>({ children, maxWidth }: ChartResizerProps<T>) => {
+const ChartResizer = <T,>({ children, maxWidth, className }: ChartResizerProps<T>) => {
   // add resize observer here
   const [containerWidth, setContainerWidth] = useState<number>(0)
   const containerRef = React.useRef<HTMLDivElement>(null)
@@ -47,6 +49,7 @@ const ChartResizer = <T,>({ children, maxWidth }: ChartResizerProps<T>) => {
         width: '100%',
         maxWidth: maxWidth ?? '100%',
       }}
+      className={cn(className)}
     >
       {enhancedChildren}
     </div>

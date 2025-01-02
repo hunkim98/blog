@@ -1,8 +1,10 @@
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
-import { Box, Flex, Text, Title, Image } from '@mantine/core'
+import { Box, Flex, Text, Title, Image, em } from '@mantine/core'
+import { useMantineMediaQuery } from 'lib/mantineMediaQuery'
 import SpiderChart from 'components/charts/SpiderChart'
 import GradientDivider from '../common/GradientDivider'
 import React, { useEffect, useRef } from 'react'
+import { useMediaQuery } from '@mantine/hooks'
 import SocialIcon from '../social-icons'
 import { useRouter } from 'next/router'
 import VisViewer from './VisViewer'
@@ -12,6 +14,7 @@ import Link from 'next/link'
 const Intro = () => {
   const ref = useRef<HTMLDivElement>(null)
   const { setProjectTopMargin: setProjectTopDistance } = useHomeViewContentContext()
+  const { isSmallerThanSm } = useMantineMediaQuery()
 
   useEffect(() => {
     // get the size of the div
@@ -51,9 +54,9 @@ const Intro = () => {
             mt={25}
             className="text-center font-tiempos font-thin"
             c={'white'}
-            size={'15px'}
+            size={isSmallerThanSm ? '14px' : '15px'}
             style={{
-              lineHeight: 1.3,
+              lineHeight: isSmallerThanSm ? '1.4' : '1.3',
               letterSpacing: 1,
             }}
             maw={480}
