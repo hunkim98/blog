@@ -1,8 +1,8 @@
 import ChartResizer from 'components/charts/ChartResizer'
 import SpiderChart from 'components/charts/SpiderChart'
 import SelectVis from './SelectVis/SelectVis'
+import { Box, Flex } from '@mantine/core'
 import React, { useState } from 'react'
-import { Box } from '@mantine/core'
 
 interface VisViewerProps {}
 

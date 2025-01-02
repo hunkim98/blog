@@ -258,11 +258,12 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
     function computeTextHtml(d: { label: string; ratio: number }) {
       const x = d3.select(this).attr('x')
       const y = d3.select(this).attr('dy')
+      const dIdx = data.findIndex((dd) => dd.label === d.label)
       const t = d.label
         .split(' ')
         .map((word, i) => {
           return (
-            `<tspan class="font-sans font-medium" style="font-size:${labelFontSize}px;" x=` +
+            `<tspan class="font-sans font-medium node-${dIdx}" style="font-size:${labelFontSize}px;" x=` +
             x +
             ' dy=' +
             (+y + labelFontSize * 1.5 * i) +
@@ -305,15 +306,17 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
           )
         },
         (update) => {
-          return update
-            .attr('transform', `translate(${width / 2},${height / 2})`)
-            .attr('x', (d, i) => computeTextPosition(d, i)[0])
-            .attr('y', (d, i) => computeTextPosition(d, i)[1])
-            .attr('opacity', 0)
-            .html(computeTextHtml)
-            .transition()
-            .duration(500)
-            .attr('opacity', 1)
+          return (
+            update
+              .attr('transform', `translate(${width / 2},${height / 2})`)
+              .attr('x', (d, i) => computeTextPosition(d, i)[0])
+              .attr('y', (d, i) => computeTextPosition(d, i)[1])
+              // .attr('opacity', 0)
+              .html(computeTextHtml)
+              .transition()
+              .duration(500)
+              .attr('opacity', 1)
+          )
         },
         (exit) => {
           return exit.remove()
@@ -355,7 +358,11 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
           return
         } else {
           if (targetClass.includes('node-')) {
-            const nodeIdx = parseInt(targetClass.split('-')[1])
+            // const nodeIdx = parseInt(targetClass.split('-')[1])
+            // find the index of node-
+            const nodeIdxStartpoint = targetClass.indexOf('node-')
+            const nodeIdx = parseInt(targetClass.slice(nodeIdxStartpoint).split('-')[1])
+
             setHoveringDataIdx(nodeIdx)
           } else {
             setHoveringDataIdx(null)
@@ -382,7 +389,6 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         .domain([0, 1])
         .range([0, width / 2 - textPadding])
       const scaledRatio = radialScale(d.ratio)
-      console.log(Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio)
       return [Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio]
     },
     [data, hoveringDataIdx, textPadding, width]

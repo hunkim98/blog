@@ -11,6 +11,7 @@ import { contentIdGenerator } from 'lib/contentIdGenerator'
 import { Box, Divider, Flex, Text } from '@mantine/core'
 import Experience from 'components/home/Experience'
 import About from '../components/deprecated/about'
+import VisViewer from 'components/home/VisViewer'
 import HomeNavbar from 'components/home/Navbar'
 import ProjectType from '../interfaces/project'
 import Intro from '../components/home/Intro'
@@ -93,8 +94,10 @@ export default function HomePage({
         />
         {/* <Container> */}
         {/* <Sidebar projectCategories={projectCategories} /> */}
-        <Box
-          className={'bg-repeat relative z-10'}
+        <Flex
+          direction={'column'}
+          align={'center'}
+          className={'bg-repeat relative z-10 pt-16'}
           style={{
             backgroundImage: 'url(/assets/background/noise30.png)',
           }}
@@ -103,6 +106,7 @@ export default function HomePage({
             <AnimateRadialGradient />
             <TopRadialGradient />
           </Box>
+          <VisViewer />
           <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50'])}>
             <Intro />
             <Works allProjects={allProjects} />
@@ -114,7 +118,7 @@ export default function HomePage({
             mt={-50}
             h={80}
           ></Box>
-        </Box>
+        </Flex>
         <Flex
           className={cn(BaseContainerClassName, ['max-w-[1200px]'])}
           pos={'relative'}

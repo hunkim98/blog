@@ -34,13 +34,12 @@ const Intro = () => {
         md: 'md',
       }}
       ref={ref}
-      direction={'row'}
-      className="pt-16 mb-[22px] md:mb-[22px] select-none"
+      direction={'column'}
+      className="mb-[22px] md:mb-[22px] select-none"
       align={'center'}
     >
-      <Flex direction={'column'} align={'center'} w={'100%'} pl={20} pr={20}>
-        <Flex w="100%" maw={600} direction={'column'} align={'center'}>
-          <VisViewer />
+      <Flex direction={'column'} align={'center'} w={'100%'}>
+        <Flex w="100%" maw={550} direction={'column'} align={'center'}>
           {/* <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} /> */}
           <NameSvg fill="white" />
           {/* <Box w="80%" mt={18} mb={18}>
