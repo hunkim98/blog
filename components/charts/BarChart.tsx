@@ -348,7 +348,6 @@ const BarChart: React.FC<BarChartProps> = ({
             .transition()
             .duration(1000)
             .attr('opacity', (d, i) => {
-              console.log(selectedLabel, 'from behind')
               if (selectedLabel !== null) {
                 const selectedIdx = data.findIndex((item) => item.label === selectedLabel)
                 return selectedIdx === i ? 1 : 0
@@ -366,7 +365,6 @@ const BarChart: React.FC<BarChartProps> = ({
             .attr('y', (d) => y(d.value))
             .attr('width', x.bandwidth())
             .attr('opacity', (d, i) => {
-              console.log(selectedLabel)
               if (selectedLabel !== null) {
                 const selectedIdx = data.findIndex((item) => item.label === selectedLabel)
                 return selectedIdx === i ? 1 : 0

@@ -5,13 +5,16 @@ import {
   IconFilter,
   IconFilterFilled,
   IconSquareXFilled,
+  IconTrashX,
   IconTrashXFilled,
   IconX,
   IconXboxAFilled,
+  IconXd,
 } from '@tabler/icons-react'
 import { useHomeViewContentContext, HomeViewContentContext } from 'context/ViewProjectContext'
 import AnimateRadialGradient from 'components/home/Decoration/AnimateRadialGradient'
 import TopRadialGradient from 'components/home/Decoration/TopRadialGradient'
+import { Box, Center, CloseIcon, Divider, Flex, Text } from '@mantine/core'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { BaseContainerClassName } from 'components/layout/config'
 import GradientDivider from 'components/common/GradientDivider'
@@ -20,7 +23,6 @@ import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
 import BelowGradient from 'components/common/BelowGradient'
 import { contentIdGenerator } from 'lib/contentIdGenerator'
-import { Box, Divider, Flex, Text } from '@mantine/core'
 import Experience from 'components/home/Experience'
 import About from '../components/deprecated/about'
 import VisViewer from 'components/home/VisViewer'
@@ -226,14 +228,27 @@ export default function HomePage({
             filterCategory ? (
               <Flex align={'center'} gap={6}>
                 {/* <IconFilter size={16} /> */}
-                <Text className="font-sans">Filter: {filterCategory}</Text>
-                <IconTrashXFilled
-                  className="cursor-pointer"
-                  size={20}
+                <Text className="font-sans font-medium">Filter: {filterCategory}</Text>
+                <Center
+                  w={25}
+                  h={25}
+                  className="rounded-lg cursor-pointer"
+                  bg={'red'}
                   onClick={() => {
                     onSelectFilter(null)
                   }}
-                />
+                >
+                  <CloseIcon size={'20px'} color="white" strokeWidth={'25px'} fontVariant={16} />
+                </Center>
+
+                {/* <IconTrashXFilled
+                  className="cursor-pointer"
+                  size={20}
+                  color="red"
+                  onClick={() => {
+                    onSelectFilter(null)
+                  }}
+                /> */}
               </Flex>
             ) : null
           }
