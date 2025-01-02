@@ -7,29 +7,31 @@ import React, { useEffect, useMemo } from 'react'
 import PostType from 'interfaces/post'
 
 interface PostsProps {
-  allPosts: PostType[]
+  posts: PostType[]
+  containerId: string
 }
 
-const PostsMarginTop = 150
+const PostsMarginTop = 200
 
-export const POSTS_CONTAINER_ID = 'posts-container'
-
-const Posts: React.FC<PostsProps> = ({ allPosts }) => {
-  const { setPostContentHeight } = useHomeViewContentContext()
+const Posts: React.FC<PostsProps> = ({ posts, containerId }) => {
+  const { setPostContentHeight, filterCategory } = useHomeViewContentContext()
   const postsSorted = useMemo(() => {
-    const sortedItems = allPosts.sort((a, b) => {
+    const sortedItems = posts.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
     return sortedItems
-  }, [allPosts])
+  }, [posts])
   const [ref, rect] = useResizeObserver()
   useEffect(() => {
     if (rect) {
       setPostContentHeight(rect.height + PostsMarginTop)
     }
   }, [rect])
+  if (postsSorted.length === 0) {
+    return null
+  }
   return (
-    <Box mt={PostsMarginTop} mb={200} ref={ref} id={POSTS_CONTAINER_ID}>
+    <Box mt={PostsMarginTop} mb={200} ref={ref} id={containerId}>
       <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
       <Flex direction={'column'}>
         <Text
@@ -42,7 +44,21 @@ const Posts: React.FC<PostsProps> = ({ allPosts }) => {
           // bg="black"
           p={10}
         >
-          Writings
+          <Text
+            span
+            className="font-sans font-bold"
+            size={'20px'}
+            style={{
+              letterSpacing: -0.6,
+            }}
+          >
+            Writings
+          </Text>
+          {filterCategory && (
+            <Text className="font-sans font-thin ml-2" size={'sm'} span>
+              (feat: {filterCategory})
+            </Text>
+          )}
         </Text>
         <Grid p={10} gutter={'lg'}>
           {postsSorted.map((post) => {

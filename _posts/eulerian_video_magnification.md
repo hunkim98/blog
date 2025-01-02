@@ -5,7 +5,8 @@ date: '2024-03-08'
 author:
   name: Kim Dong Hun
 keyword: 'Video Magnification'
-categories: ['Computer Vision']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Computer Graphics']
 WIP: true
 thumbnail: ''
 ---

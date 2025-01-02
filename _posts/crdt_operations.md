@@ -5,7 +5,8 @@ date: '2022-10-10'
 author:
   name: Kim Dong Hun
 keyword: 'CRDT Basics'
-categories: ['CRDT', 'distributed-systems']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Web Development']
 WIP: true
 ---
 

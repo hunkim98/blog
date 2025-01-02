@@ -5,7 +5,8 @@ date: '2024-11-29'
 author:
   name: Kim Dong Hun
 keyword: 'filter'
-categories: ['color', 'vision']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Computer Graphics']
 WIP: true
 thumbnail: ''
 ---

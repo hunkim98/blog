@@ -5,7 +5,8 @@ date: '2023-01-19'
 author:
   name: Kim Dong Hun
 keyword: 'startup'
-categories: ['diary', 'startup']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Other']
 WIP: false
 thumbnail: '/assets/posts/techstars1/meeting.png'
 ---

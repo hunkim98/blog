@@ -107,6 +107,9 @@ const MultiImageTemplate: React.FC<MultiImageTemplateProps> = ({ work }) => {
             className="font-tiempos font-medium cursor-pointer"
             size="22px"
             onClick={onClickWork}
+            style={{
+              lineHeight: 'normal',
+            }}
           >
             {work.title}
           </Text>

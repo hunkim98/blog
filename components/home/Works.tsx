@@ -8,18 +8,19 @@ import { Flex, Text, Image } from '@mantine/core'
 import Project from '../../interfaces/project'
 
 interface WorksProps {
-  allProjects: Project[]
+  projects: Project[]
+  containerId: string
 }
 
-const Works: React.FC<WorksProps> = ({ allProjects }) => {
+const Works: React.FC<WorksProps> = ({ projects, containerId }) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { setProjectContentHeight } = useHomeViewContentContext()
+  const { setProjectContentHeight, filterCategory } = useHomeViewContentContext()
   const projectsSorted = useMemo(() => {
-    const sortedItems = allProjects.sort((a, b) => {
+    const sortedItems = projects.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
     return sortedItems
-  }, [allProjects])
+  }, [projects])
   useEffect(() => {
     const sizeChangeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
@@ -32,7 +33,7 @@ const Works: React.FC<WorksProps> = ({ allProjects }) => {
     }
   }, [setProjectContentHeight])
   return (
-    <Flex mt={23} direction={'column'} ref={containerRef}>
+    <Flex mt={23} direction={'column'} ref={containerRef} id={containerId}>
       <Text
         className="font-sans font-bold"
         c={'white'}
@@ -43,7 +44,20 @@ const Works: React.FC<WorksProps> = ({ allProjects }) => {
         // bg="black"
         p={10}
       >
-        Selected Works
+        <Text
+          className="font-sans font-bold"
+          span
+          style={{
+            letterSpacing: -0.6,
+          }}
+        >
+          Selected Works
+        </Text>
+        {filterCategory && (
+          <Text className="font-sans font-thin ml-2" size={'sm'} span>
+            (feat: {filterCategory})
+          </Text>
+        )}
       </Text>
       <Flex direction={'column'} gap={50}>
         {/* <ThreeImageTemplate work={postsProjectsSorted[0]} />

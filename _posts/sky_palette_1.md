@@ -5,7 +5,8 @@ date: '2023-08-19'
 author:
   name: Kim Dong Hun
 keyword: 'vision'
-categories: ['project', 'AI', 'color']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Computer Graphics', 'Machine Learning']
 WIP: false
 thumbnail: '/assets/posts/sky_palette/sky_palette_kmeans_initial.png'
 ---

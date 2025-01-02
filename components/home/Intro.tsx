@@ -1,9 +1,11 @@
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import { Box, Flex, Text, Title, Image } from '@mantine/core'
+import SpiderChart from 'components/charts/SpiderChart'
 import GradientDivider from '../common/GradientDivider'
 import React, { useEffect, useRef } from 'react'
 import SocialIcon from '../social-icons'
 import { useRouter } from 'next/router'
+import VisViewer from './VisViewer'
 import NameSvg from '../svgs/name'
 import Link from 'next/link'
 
@@ -25,6 +27,7 @@ const Intro = () => {
       sizeChangeObserver.disconnect()
     }
   }, [setProjectTopDistance])
+
   return (
     <Flex
       gap={{
@@ -32,17 +35,18 @@ const Intro = () => {
         md: 'md',
       }}
       ref={ref}
-      direction={'row'}
-      className="pt-16 mb-[22px] md:mb-[22px] select-none"
+      direction={'column'}
+      className="mb-[22px] md:mb-[22px] select-none"
       align={'center'}
     >
-      <Flex direction={'column'} align={'center'} w={'100%'} pl={20} pr={20}>
-        <Flex w="100%" maw={600} direction={'column'} align={'center'}>
-          <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} />
+      <Flex direction={'column'} align={'center'} w={'100%'}>
+        <Flex w="100%" maw={550} direction={'column'} align={'center'}>
+          {/* <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} /> */}
           <NameSvg fill="white" />
           {/* <Box w="80%" mt={18} mb={18}>
             <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />
           </Box> */}
+
           <Text
             mt={25}
             className="text-center font-tiempos font-thin"
@@ -65,29 +69,6 @@ const Intro = () => {
             </Text>
           </Text>
         </Flex>
-        {/* <Text>
-          <Text opacity={0.5} span>
-            Software Engineer engineering
-          </Text>{' '}
-          <Text opacity={0.8} span>
-            {' '}
-            Computer Graphics
-          </Text>{' '}
-          <Text opacity={0.8} span>
-            &
-          </Text>
-          <Text opacity={0.8} span>
-            {' '}
-            AI{' '}
-          </Text>
-          <Text opacity={0.5} span>
-            at Graduate School of Design
-          </Text>
-        </Text> */}
-        {/* <Flex gap={'xs'} mt={8}>
-          <SocialIcon kind="github" href={`https://github.com/hunkim98`} size={18} />
-          <SocialIcon kind="mail" href={`mailto:hunkim98@gmail.com`} size={18} />
-        </Flex> */}
       </Flex>
     </Flex>
   )

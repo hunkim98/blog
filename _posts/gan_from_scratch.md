@@ -5,7 +5,8 @@ date: '2023-09-07'
 author:
   name: Kim Dong Hun
 keyword: 'GAN'
-categories: ['AI', 'Coding']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Machine Learning']
 WIP: true
 thumbnail: '/assets/posts/cache/thumbnail.png'
 ---

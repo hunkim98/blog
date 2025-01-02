@@ -6,7 +6,8 @@ date: '2023-04-11'
 author:
   name: Kim Dong Hun
 keyword: 'Generative AI'
-categories: ['hackathon', 'AI', 'editor']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Machine Learning', 'Product Design', 'Web Development']
 thumbnail: '/assets/project/dotting_genai/demo.gif'
 WIP: false
 ---

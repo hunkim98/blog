@@ -48,7 +48,7 @@ const Skills: React.FC<SkillsProps> = () => {
           letterSpacing: -0.6,
         }}
       >
-        Skills
+        Skills/Language
       </Text>
       <Grid gutter={'lg'} pt={10}>
         {SkillsData.map((skill) => {

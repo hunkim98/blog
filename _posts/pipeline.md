@@ -5,6 +5,7 @@ date: '2022-08-23'
 author:
   name: Kim Dong Hun
 keyword: 'Pipeline'
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
 categories: ['computer-architecture']
 WIP: true
 thumbnail: '/assets/posts/pipeline/thumbnail.png'

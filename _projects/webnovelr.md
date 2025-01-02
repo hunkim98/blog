@@ -6,7 +6,8 @@ date: '2022-12-11'
 author:
   name: Kim Dong Hun
 keyword: 'webnovel'
-categories: ['data-visualization', 'editor']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Data Visualization', 'Web Development', 'Product Design']
 thumbnail: '/assets/project/webnovelr/screen.png'
 WIP: false
 ---

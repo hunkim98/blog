@@ -1,9 +1,21 @@
+import {
+  IconCircleXFilled,
+  IconEyeglass,
+  IconEyeX,
+  IconFilter,
+  IconFilterFilled,
+  IconSquareXFilled,
+  IconTrashXFilled,
+  IconX,
+  IconXboxAFilled,
+} from '@tabler/icons-react'
 import { useHomeViewContentContext, HomeViewContentContext } from 'context/ViewProjectContext'
 import AnimateRadialGradient from 'components/home/Decoration/AnimateRadialGradient'
 import TopRadialGradient from 'components/home/Decoration/TopRadialGradient'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { BaseContainerClassName } from 'components/layout/config'
-import Posts, { POSTS_CONTAINER_ID } from 'components/home/Posts'
 import GradientDivider from 'components/common/GradientDivider'
+import FloatingMessage from 'components/common/FloatingMessage'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
 import BelowGradient from 'components/common/BelowGradient'
@@ -11,15 +23,16 @@ import { contentIdGenerator } from 'lib/contentIdGenerator'
 import { Box, Divider, Flex, Text } from '@mantine/core'
 import Experience from 'components/home/Experience'
 import About from '../components/deprecated/about'
+import VisViewer from 'components/home/VisViewer'
 import HomeNavbar from 'components/home/Navbar'
 import ProjectType from '../interfaces/project'
 import Intro from '../components/home/Intro'
 import Skills from 'components/home/Skills'
 import Sidebar from '../components/sidebar'
+import Posts from 'components/home/Posts'
 import Works from 'components/home/Works'
 import Layout from '../components/layout'
 import PostType from '../interfaces/post'
-import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -32,14 +45,24 @@ type Props = {
   projectCategories: string[]
 }
 
+const WORKS_CONTAINER_ID = 'works'
+const WRITINGS_CONTAINER_ID = 'writings'
+
 export default function HomePage({
   allPosts,
   postCategories,
   allProjects,
   projectCategories,
 }: Props) {
-  const { projectTopMargin, projectContentHeight, postContentHeight } = useHomeViewContentContext()
+  const {
+    projectTopMargin,
+    projectContentHeight,
+    postContentHeight,
+    setFilterCategory,
+    filterCategory,
+  } = useHomeViewContentContext()
   const router = useRouter()
+
   useEffect(() => {
     if (router.query) {
       if (router.query.contentFromSlug && router.query.contentFromType) {
@@ -50,22 +73,63 @@ export default function HomePage({
           type: contentFromType,
         })
         if (contentFromType === 'post') {
-          const element = document.getElementById(POSTS_CONTAINER_ID)
+          const element = document.getElementById(WRITINGS_CONTAINER_ID)
           if (element) {
-            element.scrollIntoView()
+            element.scrollIntoView({
+              block: 'center',
+            })
             // but scroll a little bit more to show the content
-            window.scrollBy(0, -100)
+            // window.scrollBy(0, -100)
           }
         } else {
           const element = document.getElementById(contentId)
           if (element) {
-            element.scrollIntoView()
-            window.scrollBy(0, -100)
+            element.scrollIntoView({
+              block: 'center',
+            })
+            // window.scrollBy(0, -100)
           }
         }
       }
     }
   }, [router.query])
+  const onSelectFilter = useCallback(
+    (category: string | null) => {
+      setFilterCategory(category)
+    },
+    [projectTopMargin]
+  )
+  const filteredProjects = useMemo(
+    () =>
+      allProjects.filter((project) => {
+        if (filterCategory) {
+          return project.categories.includes(filterCategory)
+        }
+        return true
+      }),
+    [allProjects, filterCategory]
+  )
+  const filteredPosts = useMemo(
+    () =>
+      allPosts.filter((post) => {
+        if (filterCategory) {
+          return post.categories.includes(filterCategory)
+        }
+        return true
+      }),
+    [allPosts, filterCategory]
+  )
+  useEffect(() => {
+    if (!filterCategory) return
+    const workElement = document.getElementById(WORKS_CONTAINER_ID)
+    if (workElement) {
+      // console.log(workElement)
+      setTimeout(() => {
+        workElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+      }, 200)
+      // workElement.scrollBy(0, -projectTopMargin)
+    }
+  }, [filterCategory])
   return (
     <>
       <Head>
@@ -93,8 +157,10 @@ export default function HomePage({
         />
         {/* <Container> */}
         {/* <Sidebar projectCategories={projectCategories} /> */}
-        <Box
-          className={'bg-repeat relative z-10'}
+        <Flex
+          direction={'column'}
+          align={'center'}
+          className={'bg-repeat relative z-10 pt-16'}
           style={{
             backgroundImage: 'url(/assets/background/noise30.png)',
           }}
@@ -103,18 +169,25 @@ export default function HomePage({
             <AnimateRadialGradient />
             <TopRadialGradient />
           </Box>
-          <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50'])}>
+          <VisViewer
+            selectedLabel={filterCategory}
+            setSelectedLabel={onSelectFilter}
+            allPosts={allPosts}
+            allProjects={allProjects}
+          />
+          <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50 mb-[80px]'])}>
             <Intro />
-            <Works allProjects={allProjects} />
-            <Posts allPosts={allPosts} />
+            <Works projects={filteredProjects} containerId={WORKS_CONTAINER_ID} />
+            <Posts posts={filteredPosts} containerId={WRITINGS_CONTAINER_ID} />
           </Box>
           <Box
-            className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]"
+            className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)] z-50"
             c={'white'}
+            w="100%"
             mt={-50}
             h={80}
           ></Box>
-        </Box>
+        </Flex>
         <Flex
           className={cn(BaseContainerClassName, ['max-w-[1200px]'])}
           pos={'relative'}
@@ -148,6 +221,23 @@ export default function HomePage({
           </Flex>
         </Flex>
         <BelowGradient />
+        <FloatingMessage
+          message={
+            filterCategory ? (
+              <Flex align={'center'} gap={6}>
+                {/* <IconFilter size={16} /> */}
+                <Text className="font-sans">Filter: {filterCategory}</Text>
+                <IconTrashXFilled
+                  className="cursor-pointer"
+                  size={20}
+                  onClick={() => {
+                    onSelectFilter(null)
+                  }}
+                />
+              </Flex>
+            ) : null
+          }
+        />
       </Layout>
     </>
   )
