@@ -9,6 +9,8 @@ interface SpiderChartProps {
   height: number
   levels: number
   labelFontSize: number
+  selectedLabel: string | null
+  setSelectedLabel: React.Dispatch<React.SetStateAction<string | null>>
   //   margin: { top: number; right: number; bottom: number; left: number }
 }
 
@@ -18,6 +20,8 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
   height,
   levels,
   labelFontSize,
+  selectedLabel,
+  setSelectedLabel,
 }) => {
   const ref = useRef<HTMLDivElement>()
   const svgContainerRef = useRef<d3.Selection<SVGSVGElement, unknown, HTMLElement, any>>()
@@ -348,7 +352,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         }
       )
 
-    svg
+    svgContainerRef.current
       .on('mouseover', function (event, d) {
         // console.log('svg mouseover')
         // check if there is a text element
@@ -372,13 +376,36 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
       .on('mouseout', function (event, d) {
         setHoveringDataIdx(null)
       })
-  }, [data, width, height, levels])
+      .on('click', function (event, d) {
+        const targetClass = d3.select(event.target).attr('class')
+        if (!targetClass) {
+          setSelectedLabel(null)
+          return
+        } else {
+          if (targetClass.includes('node-')) {
+            // const nodeIdx = parseInt(targetClass.split('-')[1])
+            // find the index of node-
+            const nodeIdxStartpoint = targetClass.indexOf('node-')
+            const nodeIdx = parseInt(targetClass.slice(nodeIdxStartpoint).split('-')[1])
+
+            setSelectedLabel((prev) => {
+              if (prev === data[nodeIdx].label) {
+                return null
+              }
+              return data[nodeIdx].label
+            })
+          } else {
+            setSelectedLabel(null)
+          }
+        }
+      })
+  }, [data, width, height, levels, selectedLabel, setSelectedLabel])
 
   const biggerSize = useMemo(() => Math.max(width, height), [width, height])
 
   const computeTextNodePosition = useCallback(
     (i: number) => {
-      if (hoveringDataIdx === null) {
+      if (i === null) {
         return [0, 0]
       }
       const startAngle = -Math.PI / 2
@@ -391,8 +418,16 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
       const scaledRatio = radialScale(d.ratio)
       return [Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio]
     },
-    [data, hoveringDataIdx, textPadding, width]
+    [data, textPadding, width]
   )
+
+  const selectedLabelIdx = useMemo(() => {
+    const index = data.findIndex((d) => d.label === selectedLabel)
+    if (index === -1) {
+      return null
+    }
+    return index
+  }, [selectedLabel])
 
   useEffect(() => {
     renderGraph()
@@ -429,12 +464,20 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
       {width !== 0 && height !== 0 && data.length > 0 && (
         <Box
           pos="absolute"
-          left={computeTextNodePosition(hoveringDataIdx)[0] + width / 2}
-          top={computeTextNodePosition(hoveringDataIdx)[1] + height / 2}
+          left={
+            selectedLabelIdx !== null
+              ? computeTextNodePosition(selectedLabelIdx)[0] + width / 2
+              : computeTextNodePosition(hoveringDataIdx)[0] + width / 2
+          }
+          top={
+            selectedLabelIdx !== null
+              ? computeTextNodePosition(selectedLabelIdx)[1] + height / 2
+              : computeTextNodePosition(hoveringDataIdx)[1] + height / 2
+          }
           // left={width / 2}
           // top={height / 2}
           w={biggerSize * 0.8}
-          opacity={hoveringDataIdx !== null ? 1 : 0}
+          opacity={selectedLabelIdx !== null ? 1 : hoveringDataIdx !== null ? 0.5 : 0}
           h={biggerSize * 0.8}
           className="-z-10"
           style={{

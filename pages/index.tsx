@@ -1,9 +1,22 @@
+import {
+  IconCircleXFilled,
+  IconEyeglass,
+  IconEyeX,
+  IconFilter,
+  IconFilterFilled,
+  IconSquareXFilled,
+  IconTrashXFilled,
+  IconX,
+  IconXboxAFilled,
+} from '@tabler/icons-react'
 import { useHomeViewContentContext, HomeViewContentContext } from 'context/ViewProjectContext'
 import AnimateRadialGradient from 'components/home/Decoration/AnimateRadialGradient'
 import TopRadialGradient from 'components/home/Decoration/TopRadialGradient'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { BaseContainerClassName } from 'components/layout/config'
 import Posts, { POSTS_CONTAINER_ID } from 'components/home/Posts'
 import GradientDivider from 'components/common/GradientDivider'
+import FloatingMessage from 'components/common/FloatingMessage'
 import { getAllStaticProps } from '../utils/common/staticProps'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
 import BelowGradient from 'components/common/BelowGradient'
@@ -20,7 +33,6 @@ import Sidebar from '../components/sidebar'
 import Works from 'components/home/Works'
 import Layout from '../components/layout'
 import PostType from '../interfaces/post'
-import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -39,8 +51,15 @@ export default function HomePage({
   allProjects,
   projectCategories,
 }: Props) {
-  const { projectTopMargin, projectContentHeight, postContentHeight } = useHomeViewContentContext()
+  const {
+    projectTopMargin,
+    projectContentHeight,
+    postContentHeight,
+    setFilterCategory,
+    filterCategory,
+  } = useHomeViewContentContext()
   const router = useRouter()
+
   useEffect(() => {
     if (router.query) {
       if (router.query.contentFromSlug && router.query.contentFromType) {
@@ -67,6 +86,32 @@ export default function HomePage({
       }
     }
   }, [router.query])
+  const onSelectFilter = useCallback((category: string | null) => {
+    setFilterCategory(category)
+  }, [])
+  const filteredProjects = useMemo(
+    () =>
+      allProjects.filter((project) => {
+        if (filterCategory) {
+          if (project.categories.includes(filterCategory)) {
+            console.log('project.categories', project.categories)
+          }
+          return project.categories.includes(filterCategory)
+        }
+        return true
+      }),
+    [allProjects, filterCategory]
+  )
+  const filteredPosts = useMemo(
+    () =>
+      allPosts.filter((post) => {
+        if (filterCategory) {
+          return post.categories.includes(filterCategory)
+        }
+        return true
+      }),
+    [allPosts, filterCategory]
+  )
   return (
     <>
       <Head>
@@ -106,11 +151,11 @@ export default function HomePage({
             <AnimateRadialGradient />
             <TopRadialGradient />
           </Box>
-          <VisViewer />
-          <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50'])}>
+          <VisViewer selectedLabel={filterCategory} setSelectedLabel={onSelectFilter} />
+          <Box className={cn(BaseContainerClassName, ['max-w-[1200px] z-50 mb-[80px]'])}>
             <Intro />
-            <Works allProjects={allProjects} />
-            <Posts allPosts={allPosts} />
+            <Works projects={filteredProjects} />
+            <Posts posts={filteredPosts} />
           </Box>
           <Box
             className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)] z-50"
@@ -153,6 +198,23 @@ export default function HomePage({
           </Flex>
         </Flex>
         <BelowGradient />
+        <FloatingMessage
+          message={
+            filterCategory ? (
+              <Flex align={'center'} gap={6}>
+                {/* <IconFilter size={16} /> */}
+                <Text className="font-sans">Filter: {filterCategory}</Text>
+                <IconTrashXFilled
+                  className="cursor-pointer"
+                  size={20}
+                  onClick={() => {
+                    onSelectFilter(null)
+                  }}
+                />
+              </Flex>
+            ) : null
+          }
+        />
       </Layout>
     </>
   )

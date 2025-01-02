@@ -7,7 +7,7 @@ author:
   name: Kim Dong Hun
 keyword: 'collaboration'
 # Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
-categories: ['Web Development']
+categories: ['Web Development', 'Computer Graphics']
 thumbnail: '/assets/project/toonie/thumbnail.png'
 WIP: false
 ---

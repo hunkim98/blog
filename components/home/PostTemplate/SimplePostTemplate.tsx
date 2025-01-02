@@ -53,7 +53,14 @@ const SimplePostTemplate: React.FC<SimplePostTemplateProps> = ({ post }) => {
       ref={hoverRef}
     >
       <Flex direction={'column'} gap={'sm'}>
-        <Text className="font-tiempos font-medium cursor-pointer" size="18px" onClick={onClickPost}>
+        <Text
+          className="font-tiempos font-medium cursor-pointer"
+          size="18px"
+          onClick={onClickPost}
+          style={{
+            lineHeight: 'normal',
+          }}
+        >
           {post.title}
         </Text>
         <Text

@@ -1,17 +1,21 @@
+import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import ChartResizer from 'components/charts/ChartResizer'
 import SpiderChart from 'components/charts/SpiderChart'
 import SelectVis from './SelectVis/SelectVis'
 import { Box, Flex } from '@mantine/core'
 import React, { useState } from 'react'
 
-interface VisViewerProps {}
+interface VisViewerProps {
+  selectedLabel: string | null
+  setSelectedLabel: (label: string | null) => void
+}
 
 export enum VisViewerItems {
   SkillsMap = 'Skills Map',
   WorksCount = 'Works Frequency Map',
 }
 
-const VisViewer: React.FC<VisViewerProps> = () => {
+const VisViewer: React.FC<VisViewerProps> = ({ selectedLabel, setSelectedLabel }) => {
   const [selectedVis, setSelectedVis] = useState(VisViewerItems.SkillsMap)
   return (
     <>
@@ -19,6 +23,8 @@ const VisViewer: React.FC<VisViewerProps> = () => {
       {/* <Box maw={400}> */}
       <ChartResizer maxWidth={350}>
         <SpiderChart
+          selectedLabel={selectedLabel}
+          setSelectedLabel={setSelectedLabel}
           width={400}
           height={400}
           levels={10}

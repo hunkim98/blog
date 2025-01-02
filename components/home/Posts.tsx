@@ -7,27 +7,30 @@ import React, { useEffect, useMemo } from 'react'
 import PostType from 'interfaces/post'
 
 interface PostsProps {
-  allPosts: PostType[]
+  posts: PostType[]
 }
 
-const PostsMarginTop = 150
+const PostsMarginTop = 200
 
 export const POSTS_CONTAINER_ID = 'posts-container'
 
-const Posts: React.FC<PostsProps> = ({ allPosts }) => {
+const Posts: React.FC<PostsProps> = ({ posts }) => {
   const { setPostContentHeight } = useHomeViewContentContext()
   const postsSorted = useMemo(() => {
-    const sortedItems = allPosts.sort((a, b) => {
+    const sortedItems = posts.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
     return sortedItems
-  }, [allPosts])
+  }, [posts])
   const [ref, rect] = useResizeObserver()
   useEffect(() => {
     if (rect) {
       setPostContentHeight(rect.height + PostsMarginTop)
     }
   }, [rect])
+  if (postsSorted.length === 0) {
+    return null
+  }
   return (
     <Box mt={PostsMarginTop} mb={200} ref={ref} id={POSTS_CONTAINER_ID}>
       <GradientDivider fromColor="rgba(255,255,255,1)" toColor="rgba(255,255,255,0)" />

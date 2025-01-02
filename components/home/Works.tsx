@@ -8,18 +8,18 @@ import { Flex, Text, Image } from '@mantine/core'
 import Project from '../../interfaces/project'
 
 interface WorksProps {
-  allProjects: Project[]
+  projects: Project[]
 }
 
-const Works: React.FC<WorksProps> = ({ allProjects }) => {
+const Works: React.FC<WorksProps> = ({ projects }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const { setProjectContentHeight } = useHomeViewContentContext()
   const projectsSorted = useMemo(() => {
-    const sortedItems = allProjects.sort((a, b) => {
+    const sortedItems = projects.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
     return sortedItems
-  }, [allProjects])
+  }, [projects])
   useEffect(() => {
     const sizeChangeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
