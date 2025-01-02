@@ -86,13 +86,13 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
 
     const scoreG = scoreGRef.current ? scoreGRef.current : (scoreGRef.current = svg.append('g'))
 
-    const nodesG = nodesGRef.current ? nodesGRef.current : (nodesGRef.current = svg.append('g'))
-
     const clickCircleG = clickCircleGRef.current
       ? clickCircleGRef.current
       : (clickCircleGRef.current = svg.append('g'))
 
     const axisG = axisGRef.current ? axisGRef.current : (axisGRef.current = svg.append('g'))
+
+    const nodesG = nodesGRef.current ? nodesGRef.current : (nodesGRef.current = svg.append('g'))
 
     const radialScale = d3
       .scaleLinear()
@@ -201,15 +201,15 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
             .append('polygon')
             .attr('stroke', 'rgba(255,255,255,1)')
             .attr('stroke-width', 3)
+            .attr('transform', `translate(${width / 2},${height / 2})`) // Initial position
             .attr('points', (d) => {
               // start from center
               return data.map((d, i) => `0,0`).join(' ')
             }) // Initial points
             .transition()
-            .duration(500)
+            .duration(1000)
             .attr('points', (d) => computePoints(data)) // Initial points
-            .attr('fill', 'rgba(255,255,255,0.2)')
-            .attr('transform', `translate(${width / 2},${height / 2})`), // Initial position
+            .attr('fill', 'rgba(255,255,255,0.2)'),
         (update) =>
           update
             .attr('transform', `translate(${width / 2},${height / 2})`)
@@ -217,39 +217,6 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
             .duration(1000)
             .attr('points', (d) => computePoints(data)), // Final points
         (exit) => exit.call((exit) => exit.transition().duration(500).style('opacity', 0)).remove()
-      )
-
-    nodesG
-      .selectAll('circle')
-      .data(data)
-      .join(
-        (enter) => {
-          return (
-            enter
-              .append('circle')
-              .attr('class', (d, i) => `node-${i} cursor-pointer`)
-              .attr('cx', (d, i) => 0)
-              .attr('cy', (d, i) => 0)
-              .attr('transform', `translate(${width / 2},${height / 2})`)
-              .attr('fill', 'white')
-              // .transition()
-              // .duration(1000)
-              // .attr('cx', (d, i) => computeNodePoints(d, i)[0])
-              // .attr('cy', (d, i) => computeNodePoints(d, i)[1])
-              .attr('r', 5)
-          )
-        },
-        (update) => {
-          return update
-            .attr('transform', `translate(${width / 2},${height / 2})`)
-            .transition()
-            .duration(1000)
-            .attr('cx', (d, i) => computeNodePoints(d, i)[0])
-            .attr('cy', (d, i) => computeNodePoints(d, i)[1])
-        },
-        (exit) => {
-          return exit.remove()
-        }
       )
 
     const computeTextPosition = (d: { label: string; ratio: number }, i: number) => {
@@ -346,6 +313,42 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
             .attr('transform', `translate(${width / 2},${height / 2})`)
             .attr('cx', (d, i) => computeTextPosition(d, i)[0])
             .attr('cy', (d, i) => computeTextPosition(d, i)[1])
+        },
+        (exit) => {
+          return exit.remove()
+        }
+      )
+
+    nodesG
+      .selectAll('circle')
+      .data(data)
+      .join(
+        (enter) => {
+          return enter
+            .append('circle')
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+            .attr('class', (d, i) => `node-${i} cursor-pointer`)
+            .attr('cx', 0)
+            .attr('cy', 0)
+            .attr('fill', 'white')
+            .attr('r', 5)
+            .transition()
+            .duration(1000)
+            .attr('cx', (d, i) => {
+              console.log('called', d, i)
+              return computeNodePoints(d, i)[0]
+            })
+            .attr('cy', (d, i) => {
+              return computeNodePoints(d, i)[1]
+            })
+        },
+        (update) => {
+          return update
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+            .transition()
+            .duration(1000)
+            .attr('cx', (d, i) => computeNodePoints(d, i)[0])
+            .attr('cy', (d, i) => computeNodePoints(d, i)[1])
         },
         (exit) => {
           return exit.remove()

@@ -8,7 +8,7 @@ const nextConfig = {
   //   path: "",
   // },
   output: 'export',
-  reactStrictMode: true,
+  reactStrictMode: false,
   transpilePackages: ['geist'],
   env: {
     // remember that you should update env in .github/workflow/gh-pages.deploy.yml
