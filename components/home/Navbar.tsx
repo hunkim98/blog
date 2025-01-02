@@ -21,7 +21,9 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
   const [windowScrollY, setWindowScrollY] = useState(0)
   const onClickUp = useCallback(() => {
     // remove the queries in the router
-    router.replace(router.pathname)
+    // if (Object.keys(router.query).length > 0) {
+    //   router.replace(router.pathname)
+    // }
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

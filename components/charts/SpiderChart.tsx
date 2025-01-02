@@ -28,19 +28,29 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
   const textLabelGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const scoreGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const nodesGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
+  const clickCircleGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
+  const [hoveringDataIdx, setHoveringDataIdx] = React.useState<number | null>(null)
+  const maxWordLength = useMemo(
+    () =>
+      data.reduce(
+        (acc, d) =>
+          d.label.split(' ').some((word) => word.length > acc)
+            ? Math.max(...d.label.split(' ').map((word) => word.length))
+            : acc,
+        0
+      ),
+    [data]
+  )
+  const textPadding = useMemo(
+    () => maxWordLength * labelFontSize * 0.4,
+    [maxWordLength, labelFontSize]
+  )
   const renderGraph = useCallback(() => {
     if (!ref.current) {
       return
     }
     // const svg = d3.select(ref.current).append('svg').attr('width', width).attr('height', height)
-    const maxWordLength = data.reduce(
-      (acc, d) =>
-        d.label.split(' ').some((word) => word.length > acc)
-          ? Math.max(...d.label.split(' ').map((word) => word.length))
-          : acc,
-      0
-    )
-    const textPadding = maxWordLength * labelFontSize * 0.4
+
     if (svgContainerRef.current) {
       svgContainerRef.current
         .attr('width', width)
@@ -73,6 +83,10 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
     const scoreG = scoreGRef.current ? scoreGRef.current : (scoreGRef.current = svg.append('g'))
 
     const nodesG = nodesGRef.current ? nodesGRef.current : (nodesGRef.current = svg.append('g'))
+
+    const clickCircleG = clickCircleGRef.current
+      ? clickCircleGRef.current
+      : (clickCircleGRef.current = svg.append('g'))
 
     const axisG = axisGRef.current ? axisGRef.current : (axisGRef.current = svg.append('g'))
 
@@ -209,6 +223,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
           return (
             enter
               .append('circle')
+              .attr('class', (d, i) => `node-${i} cursor-pointer`)
               .attr('cx', (d, i) => 0)
               .attr('cy', (d, i) => 0)
               .attr('transform', `translate(${width / 2},${height / 2})`)
@@ -247,7 +262,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         .split(' ')
         .map((word, i) => {
           return (
-            `<tspan class="font-sans font-medium cursor-pointer" style="font-size:${labelFontSize}px;" x=` +
+            `<tspan class="font-sans font-medium" style="font-size:${labelFontSize}px;" x=` +
             x +
             ' dy=' +
             (+y + labelFontSize * 1.5 * i) +
@@ -261,6 +276,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
     }
     textLabelG
       .selectAll('text')
+      // .classed('cursor-pointer', true)
       .data(data)
       .join(
         (enter) => {
@@ -268,8 +284,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
             enter
               // .html((d) => d.label)
               .append('text')
-              .attr('class', 'cursor-pointer')
-              .attr('style', 'cursor: pointer;')
+              .attr('class', (d, i) => `node-${i} cursor-pointer`)
 
               .attr('x', (d, i) => computeTextPosition(d, i)[0])
               .attr('y', (d, i) => computeTextPosition(d, i)[1])
@@ -305,19 +320,73 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         }
       )
 
-      // mouse hover on text
+    clickCircleG
+      .selectAll('circle')
+      .data(data)
+      .join(
+        (enter) => {
+          return enter
+            .append('circle')
+            .attr('class', (d, i) => `node-${i} cursor-pointer`)
+            .attr('cx', (d, i) => computeTextPosition(d, i)[0])
+            .attr('cy', (d, i) => computeTextPosition(d, i)[1])
+            .attr('r', 20)
+            .attr('fill', 'transparent')
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+        },
+        (update) => {
+          return update
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+            .attr('cx', (d, i) => computeTextPosition(d, i)[0])
+            .attr('cy', (d, i) => computeTextPosition(d, i)[1])
+        },
+        (exit) => {
+          return exit.remove()
+        }
+      )
+
+    svg
       .on('mouseover', function (event, d) {
-        // change cursor
-        d3.select(this).style('cursor', 'pointer')
-        // d3.select(this).attr('fill', 'rgba(255,255,255,1)')
+        // console.log('svg mouseover')
+        // check if there is a text element
+        // if not, do nothing
+        const targetClass = d3.select(event.target).attr('class')
+        if (!targetClass) {
+          return
+        } else {
+          if (targetClass.includes('node-')) {
+            const nodeIdx = parseInt(targetClass.split('-')[1])
+            setHoveringDataIdx(nodeIdx)
+          } else {
+            setHoveringDataIdx(null)
+          }
+        }
       })
-      .on('click', function (event, d) {
-        // console.log(event, d)
-        // console.log(d)
+      .on('mouseout', function (event, d) {
+        setHoveringDataIdx(null)
       })
   }, [data, width, height, levels])
 
   const biggerSize = useMemo(() => Math.max(width, height), [width, height])
+
+  const computeTextNodePosition = useCallback(
+    (i: number) => {
+      if (hoveringDataIdx === null) {
+        return [0, 0]
+      }
+      const startAngle = -Math.PI / 2
+      const angle = startAngle + (i * Math.PI * 2) / data.length
+      const d = data[i]
+      const radialScale = d3
+        .scaleLinear()
+        .domain([0, 1])
+        .range([0, width / 2 - textPadding])
+      const scaledRatio = radialScale(d.ratio)
+      console.log(Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio)
+      return [Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio]
+    },
+    [data, hoveringDataIdx, textPadding, width]
+  )
 
   useEffect(() => {
     renderGraph()
@@ -348,6 +417,24 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
             transform: 'translate(-50%, -50%)',
             transition: 'all 1s ease-in-out',
             backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%)`,
+          }}
+        ></Box>
+      )}
+      {width !== 0 && height !== 0 && data.length > 0 && (
+        <Box
+          pos="absolute"
+          left={computeTextNodePosition(hoveringDataIdx)[0] + width / 2}
+          top={computeTextNodePosition(hoveringDataIdx)[1] + height / 2}
+          // left={width / 2}
+          // top={height / 2}
+          w={biggerSize * 0.8}
+          opacity={hoveringDataIdx !== null ? 1 : 0}
+          h={biggerSize * 0.8}
+          className="-z-10"
+          style={{
+            transform: 'translate(-50%, -50%)',
+            transition: 'all 0.5s ease-in-out',
+            backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%)`,
           }}
         ></Box>
       )}
