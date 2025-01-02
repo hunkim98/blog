@@ -6,7 +6,8 @@ date: '2022-12-08'
 author:
   name: Kim Dong Hun
 keyword: 'social network'
-categories: ['data-visualization', 'social-network']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Data Visualization', 'Web Development', 'Product Design']
 thumbnail: '/assets/project/linklink/demo.gif'
 WIP: false
 ---

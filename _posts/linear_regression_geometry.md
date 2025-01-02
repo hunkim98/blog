@@ -5,7 +5,8 @@ date: '2024-10-10'
 author:
   name: Kim Dong Hun
 keyword: 'Model Selection'
-categories: ['ML', 'Data Science']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Machine Learning']
 WIP: false
 thumbnail: '/assets/posts/linear_regression_geometry/ridge_lasso4.png'
 ---

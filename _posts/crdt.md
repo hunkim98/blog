@@ -5,7 +5,8 @@ date: '2022-09-03'
 author:
   name: Kim Dong Hun
 keyword: 'CRDT Basics'
-categories: ['CRDT', 'Algorithm']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Web Development']
 WIP: true
 thumbnail: '/assets/posts/crdt/thumbnail.png'
 ---

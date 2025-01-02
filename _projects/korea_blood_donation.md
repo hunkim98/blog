@@ -5,7 +5,8 @@ date: '2024-12-21'
 author:
   name: Kim Dong Hun
 keyword: 'Data Visualization'
-categories: ['Data Visualization', 'Policy']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Data Visualization']
 WIP: false
 thumbnail: '/assets/project/korea_blood_donation/thumbnail.gif'
 ---

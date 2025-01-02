@@ -5,7 +5,8 @@ date: '2024-03-08'
 author:
   name: Kim Dong Hun
 keyword: 'GMM'
-categories: ['AI', 'ML']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Machine Learning']
 WIP: true
 thumbnail: ''
 ---

@@ -5,7 +5,8 @@ date: '2023-05-07'
 author:
   name: Kim Dong Hun
 keyword: 'the great gatsby'
-categories: ['book', 'literature']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Other']
 WIP: true
 thumbnail: '/assets/posts/the_great_gatsby_page1/cover.gif'
 ---

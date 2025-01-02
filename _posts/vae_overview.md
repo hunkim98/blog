@@ -5,7 +5,8 @@ date: '2024-03-02'
 author:
   name: Kim Dong Hun
 keyword: 'VAE'
-categories: ['AI']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Machine Learning']
 WIP: false
 thumbnail: '/assets/posts/vae_overview/vae.png'
 ---

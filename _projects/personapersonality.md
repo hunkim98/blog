@@ -6,7 +6,8 @@ date: '2021-06-01'
 author:
   name: Kim Dong Hun
 keyword: 'enneagram'
-categories: ['personality-test']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Web Development']
 thumbnail: '/assets/project/personapersonality/thumbnail.png'
 WIP: false
 ---

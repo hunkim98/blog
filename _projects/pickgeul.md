@@ -6,7 +6,8 @@ date: '2022-12-08'
 author:
   name: Kim Dong Hun
 keyword: 'Crypto'
-categories: ['data-visualization']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Web Development']
 thumbnail: '/assets/project/cryptogalaxy/logo.png'
 WIP: true
 ---

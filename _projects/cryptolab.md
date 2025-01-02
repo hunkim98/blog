@@ -6,7 +6,8 @@ date: '2023-06-16'
 author:
   name: Kim Dong Hun
 keyword: 'cryptography'
-categories: ['chatgpt', 'cryptography']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Machine Learning']
 thumbnail: '/assets/project/cryptolab/thumbnail.png'
 WIP: true
 ---

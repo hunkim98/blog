@@ -6,7 +6,8 @@ date: 'ongoing'
 author:
   name: Kim Dong Hun
 keyword: 'opensource'
-categories: ['opensource', 'editor', '3D']
+# Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
+categories: ['Computer Graphics', 'Web Development']
 thumbnail: '/assets/project/dotting/thumbnail.png'
 WIP: true
 ---

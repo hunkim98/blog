@@ -113,8 +113,9 @@ export default function HomePage({
             <Posts allPosts={allPosts} />
           </Box>
           <Box
-            className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]"
+            className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)] z-50"
             c={'white'}
+            w="100%"
             mt={-50}
             h={80}
           ></Box>
