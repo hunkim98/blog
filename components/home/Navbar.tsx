@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import { Box, em, Flex, Text } from '@mantine/core'
 import { IconArrowUp } from '@tabler/icons-react'
+import { useRouter } from 'next/router'
 
 interface HomeNavbarProps {
   appearFrom: number
@@ -14,10 +15,13 @@ interface HomeNavbarProps {
 }
 
 const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll }) => {
+  const router = useRouter()
   const [isNavbarVisible, setIsNavbarVisible] = useState(false)
   const { viewingProject } = useHomeViewContentContext()
   const [windowScrollY, setWindowScrollY] = useState(0)
   const onClickUp = useCallback(() => {
+    // remove the queries in the router
+    router.replace(router.pathname)
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

@@ -5,6 +5,7 @@ import GradientDivider from '../common/GradientDivider'
 import React, { useEffect, useRef } from 'react'
 import SocialIcon from '../social-icons'
 import { useRouter } from 'next/router'
+import VisViewer from './VisViewer'
 import NameSvg from '../svgs/name'
 import Link from 'next/link'
 
@@ -39,20 +40,7 @@ const Intro = () => {
     >
       <Flex direction={'column'} align={'center'} w={'100%'} pl={20} pr={20}>
         <Flex w="100%" maw={600} direction={'column'} align={'center'}>
-          <SpiderChart
-            width={400}
-            height={400}
-            levels={10}
-            data={[
-              { label: 'Data Visualization', ratio: 1.0 },
-              { label: 'Machine Learning', ratio: 0.8 },
-              { label: 'Web Development', ratio: 0.8 },
-              { label: 'Computer Graphics', ratio: 0.8 },
-              { label: 'Product Design', ratio: 0.7 },
-            ]}
-            labelFontSize={13}
-            // margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-          />
+          <VisViewer />
           {/* <Image src={'/assets/profile/temp_datavis.png'} w={400} mb={45} /> */}
           <NameSvg fill="white" />
           {/* <Box w="80%" mt={18} mb={18}>

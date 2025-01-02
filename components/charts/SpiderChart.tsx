@@ -22,9 +22,12 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
   const ref = useRef<HTMLDivElement>()
   const svgContainerRef = useRef<d3.Selection<SVGSVGElement, unknown, HTMLElement, any>>()
   const svgGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
+  const axisGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const pentagonGridGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const pentagonGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const textLabelGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
+  const scoreGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
+  const nodesGRef = useRef<d3.Selection<SVGGElement, unknown, HTMLElement, any>>()
   const renderGraph = useCallback(() => {
     if (!ref.current) {
       return
@@ -37,8 +40,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
           : acc,
       0
     )
-    const textPadding = maxWordLength * labelFontSize * 0.5
-    console.log(textPadding)
+    const textPadding = maxWordLength * labelFontSize * 0.4
     if (svgContainerRef.current) {
       svgContainerRef.current
         .attr('width', width)
@@ -67,6 +69,12 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
     const textLabelG = textLabelGRef.current
       ? textLabelGRef.current
       : (textLabelGRef.current = svg.append('g'))
+
+    const scoreG = scoreGRef.current ? scoreGRef.current : (scoreGRef.current = svg.append('g'))
+
+    const nodesG = nodesGRef.current ? nodesGRef.current : (nodesGRef.current = svg.append('g'))
+
+    const axisG = axisGRef.current ? axisGRef.current : (axisGRef.current = svg.append('g'))
 
     const radialScale = d3
       .scaleLinear()
@@ -102,7 +110,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
             .attr('points', (d) => computeGridPoints(d))
             .attr('transform', `translate(${width / 2},${height / 2})`)
             .attr('fill', 'none')
-            .attr('stroke', 'rgba(255,255,255,0.5)')
+            .attr('stroke', 'rgba(255,255,255,0.3)')
         },
         (update) => {
           // we only need to update the locations of the points
@@ -115,14 +123,54 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         }
       )
 
+    axisG
+      .selectAll('line')
+      .data(ticks)
+      .join(
+        (enter) => {
+          return enter
+            .append('line')
+            .attr('x1', 0)
+            .attr('y1', 0)
+            .attr('x2', (d, i) => {
+              const startAngle = -Math.PI / 2
+              const angle = startAngle + (i * Math.PI * 2) / data.length
+              return Math.cos(angle) * radialScale(1)
+            })
+            .attr('y2', (d, i) => {
+              const startAngle = -Math.PI / 2
+              const angle = startAngle + (i * Math.PI * 2) / data.length
+              return Math.sin(angle) * radialScale(1)
+            })
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+            .attr('stroke', 'rgba(255,255,255,0.3)')
+        },
+        (update) => {
+          return update
+            .attr('x2', (d, i) => {
+              const startAngle = -Math.PI / 2
+              const angle = startAngle + (i * Math.PI * 2) / data.length
+              return Math.cos(angle) * radialScale(1)
+            })
+            .attr('y2', (d, i) => {
+              const startAngle = -Math.PI / 2
+              const angle = startAngle + (i * Math.PI * 2) / data.length
+              return Math.sin(angle) * radialScale(1)
+            })
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+        }
+      )
+
+    const computeNodePoints = (d: { label: string; ratio: number }, i) => {
+      const startAngle = -Math.PI / 2
+      const angle = startAngle + (i * Math.PI * 2) / data.length
+      const scaledRatio = radialScale(d.ratio)
+      return [Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio]
+    }
+
     const computePoints = (data: Array<{ label: string; ratio: number }>) => {
       return data
-        .map((d, i) => {
-          const startAngle = -Math.PI / 2
-          const angle = startAngle + (i * Math.PI * 2) / data.length
-          const scaledRatio = radialScale(d.ratio)
-          return [Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio]
-        })
+        .map((d, i) => computeNodePoints(d, i))
         .map((p) => p.join(','))
         .join(' ')
     }
@@ -133,34 +181,62 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         (enter) =>
           enter
             .append('polygon')
+            .attr('stroke', 'rgba(255,255,255,1)')
+            .attr('stroke-width', 3)
+            .attr('points', (d) => {
+              // start from center
+              return data.map((d, i) => `0,0`).join(' ')
+            }) // Initial points
+            .transition()
+            .duration(500)
             .attr('points', (d) => computePoints(data)) // Initial points
-            .attr('fill', 'rgba(255,255,255,0.4)')
-            .attr('transform', `translate(${width / 2},${height / 2})`) // Initial position
-            .call(
-              (enter) =>
-                enter
-                  .transition()
-                  .duration(1000) // Transition duration
-                  .attr('points', (d) => computePoints(data)) // Final points
-            ),
+            .attr('fill', 'rgba(255,255,255,0.2)')
+            .attr('transform', `translate(${width / 2},${height / 2})`), // Initial position
         (update) =>
           update
-            .call(
-              (update) =>
-                update
-                  .transition()
-                  .duration(1000) // Transition duration
-                  .attr('points', (d) => computePoints(data)) // Final points
-            )
-            .attr('transform', `translate(${width / 2},${height / 2})`),
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+            .transition()
+            .duration(1000)
+            .attr('points', (d) => computePoints(data)), // Final points
         (exit) => exit.call((exit) => exit.transition().duration(500).style('opacity', 0)).remove()
+      )
+
+    nodesG
+      .selectAll('circle')
+      .data(data)
+      .join(
+        (enter) => {
+          return (
+            enter
+              .append('circle')
+              .attr('cx', (d, i) => 0)
+              .attr('cy', (d, i) => 0)
+              .attr('transform', `translate(${width / 2},${height / 2})`)
+              .attr('fill', 'white')
+              // .transition()
+              // .duration(1000)
+              // .attr('cx', (d, i) => computeNodePoints(d, i)[0])
+              // .attr('cy', (d, i) => computeNodePoints(d, i)[1])
+              .attr('r', 5)
+          )
+        },
+        (update) => {
+          return update
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+            .transition()
+            .duration(1000)
+            .attr('cx', (d, i) => computeNodePoints(d, i)[0])
+            .attr('cy', (d, i) => computeNodePoints(d, i)[1])
+        },
+        (exit) => {
+          return exit.remove()
+        }
       )
 
     const computeTextPosition = (d: { label: string; ratio: number }, i: number) => {
       const startAngle = -Math.PI / 2
       const angle = startAngle + (i * Math.PI * 2) / data.length
-      console.log(d, i)
-      const scaledRatio = radialScale(1.25)
+      const scaledRatio = radialScale(1.35)
       return [Math.cos(angle) * scaledRatio, Math.sin(angle) * scaledRatio]
     }
 
@@ -171,7 +247,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         .split(' ')
         .map((word, i) => {
           return (
-            `<tspan class="font-tiempos cursor-pointer" style="font-size:${labelFontSize}px;" x=` +
+            `<tspan class="font-sans font-medium cursor-pointer" style="font-size:${labelFontSize}px;" x=` +
             x +
             ' dy=' +
             (+y + labelFontSize * 1.5 * i) +
@@ -194,6 +270,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
               .append('text')
               .attr('class', 'cursor-pointer')
               .attr('style', 'cursor: pointer;')
+
               .attr('x', (d, i) => computeTextPosition(d, i)[0])
               .attr('y', (d, i) => computeTextPosition(d, i)[1])
               //   .text((d) => d.label.split(' ').join('\n'))
@@ -205,18 +282,27 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
                 return 'middle'
               })
               .attr('transform', `translate(${width / 2},${height / 2})`)
+              .attr('opacity', 0)
               .html(computeTextHtml)
+              .transition()
+              .duration(1000)
+              .attr('opacity', 1)
           )
+        },
+        (update) => {
+          return update
+            .attr('transform', `translate(${width / 2},${height / 2})`)
+            .attr('x', (d, i) => computeTextPosition(d, i)[0])
+            .attr('y', (d, i) => computeTextPosition(d, i)[1])
+            .attr('opacity', 0)
+            .html(computeTextHtml)
+            .transition()
+            .duration(500)
+            .attr('opacity', 1)
+        },
+        (exit) => {
+          return exit.remove()
         }
-        // (update) => {
-        //   return update
-        //     .attr('x', (d, i) => computeTextPosition(d, i)[0])
-        //     .attr('y', (d, i) => computeTextPosition(d, i)[1])
-        //     .attr('transform', `translate(${width / 2},${height / 2})`)
-        // },
-        // (exit) => {
-        //   return exit.remove()
-        // }
       )
 
       // mouse hover on text
@@ -226,8 +312,8 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         // d3.select(this).attr('fill', 'rgba(255,255,255,1)')
       })
       .on('click', function (event, d) {
-        console.log(event, d)
-        console.log(d)
+        // console.log(event, d)
+        // console.log(d)
       })
   }, [data, width, height, levels])
 
@@ -250,18 +336,21 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
         }
       }
     >
-      <Box
-        pos="absolute"
-        left={width / 2}
-        top={height / 2}
-        w={biggerSize}
-        h={biggerSize}
-        className="-z-10"
-        style={{
-          transform: 'translate(-50%, -50%)',
-          backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%)`,
-        }}
-      ></Box>
+      {width !== 0 && height !== 0 && (
+        <Box
+          pos="absolute"
+          left={width / 2}
+          top={height / 2}
+          w={biggerSize}
+          h={biggerSize}
+          className="-z-10"
+          style={{
+            transform: 'translate(-50%, -50%)',
+            transition: 'all 1s ease-in-out',
+            backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%)`,
+          }}
+        ></Box>
+      )}
     </Box>
   )
 }
