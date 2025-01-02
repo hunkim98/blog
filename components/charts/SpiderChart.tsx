@@ -335,7 +335,6 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
             .transition()
             .duration(1000)
             .attr('cx', (d, i) => {
-              console.log('called', d, i)
               return computeNodePoints(d, i)[0]
             })
             .attr('cy', (d, i) => {
@@ -442,7 +441,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
       w={width}
       h={height}
       pos={'relative'}
-      className="z-50"
+      className="z-40"
       style={
         {
           // zIndex: 50,

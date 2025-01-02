@@ -165,7 +165,7 @@ export default function HomePage({
             backgroundImage: 'url(/assets/background/noise30.png)',
           }}
         >
-          <Box w={'100%'} className="overflow-hidden z-50 bg-white overflow-x-hidden">
+          <Box w={'100%'} className="overflow-hidden z-40 bg-white overflow-x-hidden">
             <AnimateRadialGradient />
             <TopRadialGradient />
           </Box>

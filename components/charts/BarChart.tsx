@@ -342,12 +342,21 @@ const BarChart: React.FC<BarChartProps> = ({
             .attr('class', (d, i) => `cursor-pointer node-${i}`)
             .attr('fill', 'rgba(255,255,255,0.3)')
             .attr('x', (d) => x(d.label))
-            .attr('y', (d) => y(0))
+            .attr('y', (d) => svgHeight)
             .attr('width', x.bandwidth())
-            .attr('opacity', 0)
             .attr('height', 0)
             .transition()
             .duration(1000)
+            .attr('opacity', (d, i) => {
+              console.log(selectedLabel, 'from behind')
+              if (selectedLabel !== null) {
+                const selectedIdx = data.findIndex((item) => item.label === selectedLabel)
+                return selectedIdx === i ? 1 : 0
+              }
+              return 0
+            })
+            .attr('y', (d) => y(d.value))
+            .attr('height', (d) => svgHeight - y(d.value))
         },
         (update) => {
           return update
@@ -357,6 +366,7 @@ const BarChart: React.FC<BarChartProps> = ({
             .attr('y', (d) => y(d.value))
             .attr('width', x.bandwidth())
             .attr('opacity', (d, i) => {
+              console.log(selectedLabel)
               if (selectedLabel !== null) {
                 const selectedIdx = data.findIndex((item) => item.label === selectedLabel)
                 return selectedIdx === i ? 1 : 0
