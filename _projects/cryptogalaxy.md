@@ -1,6 +1,6 @@
 ---
 title: 'Cryptogalaxy: Visualizing cypto markets'
-excerpt: 'CryptoGalaxy is an attempt that visualizes the crypto market. It borrows its concept from the ‘space’ and connects galaxy components with several crypto market indicators. The main purpose of the project was to aid viewers understand the crypto market with visual components.'
+excerpt: 'CryptoGalaxy is an attempt to visualize the crypto market. It borrows its concept from the ‘space’ and connects galaxy components with several crypto market indicators. The main purpose of the project was to create a dynamic visualization that responds to the market in real time.'
 startDate: '2022-09-01'
 date: '2022-12-11'
 author:
@@ -18,18 +18,29 @@ WIP: false
 
 ![Demo](/assets/project/cryptogalaxy/demo.gif)
 
-CryptoGalaxy attempts to visualize the Crypto Market in a fun and interactive way.
+CryptoGalaxy is an attempt that visualizes the Crypto Market in a fun and interactive way.
 
-Traditionally, Markets are represented as a table of numbers, full of jargon and hard to understand. CryptoGalaxy aims to change that by providing a fun and interactive way to visualize the Crypto Market.
-
-The Crypto Market is a market where expert traders and normal traders participate in. Each participant hold to their own strategies and make decisions. To make a strategy, one must understand all sorts of indicators such as Moving Average, RSI, and so on. Unfortunately since all indicators are comprised of numbers and graph, it is very difficult for a newcomer to get familiar with trading.
+Traditionally, markets are represented as a table of numbers, full of jargon. CryptoGalaxy aims to change that by providing a fun and interactive way to visualize the Crypto Market.
 
 ![Crypto Planets Orbiting BTC Sun](/assets/project/cryptogalaxy/screen.png)
 
-CryptoGalaxy is an attempt that visualizes the crypto market. It borrows its concept from the ‘space’ and connects galaxy components with several crypto market indicators. The main purpose of the project was to aid viewers understand the crypto market with visual components.
-
 The conduits that convey information in CryptoGalaxy are the sun, planet, and spaceships. The Sun represents Bitcoin(BTC), and planets represent other coins such as Ethereum(ETH), Dogecoin(DOGE). The sentiments regarding a specific coin(planet) was shown with the in-and-outs of the spaceships.
 
-The indicators used for visualization were Moving Average Increase Rate, Market Capital, Relative Strength Index(RSI), Money Flow Index(MFI), and Correlation Coefficient of the trend similarity between BTC and a specific coin. Since Moving Average Increase Rate is often related to how lucrative a coin is, the indicator was connected to the brightness of the sun(BTC), and the orbit speed of the planet(other coins) respectively. The Market Capital was connected to size of a planet. The RSI was connected to how spaceships come in to a planet and come out of the planet. The MFI was connected to the ice age degree of the planet. The Correlation Coefficient of the trend similarity between BTC and a specific coin was connected to how far a planet is from the sun.
+The indicators used for visualization were Moving Average Increase Rate, Market Capital, Relative Strength Index(RSI), Money Flow Index(MFI), and Correlation Coefficient of the trend similarity between BTC and a specific coin. 
+
+
+### Sun 
+
+In CryptoGalaxy, the sun represents the Bitcoin as it is the first crypto currency to have appeared. To a sun, the most important feature is its brightness, and its brightness was connected with the Moving Average Increase Reat of the Bitcoin. 
+
+### Planets
+
+The planets that orbit around the sun represent other coins such as Ethereum(ETH), Dogecoin(DOGE). The size of the planet was connected to the Market Capital of the coin. Different from the sun, the planets have more features that can be connected with the indicators. The planet's orbit speed and ice-age degree were the features that were connected with the indicators. Similar to how the sun's brightness was connected to the Moving Average Increase Rate of the Bitcoin, the orbit speed of the planet was connected to the Moving Average Increase Rate of the coin. The ice-age degree was connected to the MFI of the coin.
+
+### Spaceships
+
+The most dynamic component, the spaceships, represent the main activity happening to a specific coin. The in-and-outs represent the buying and selling of the coin. Since RSI is an indicator that shows the sentiment of the market, the in-and-outs of the spaceships were connected to the RSI of the coin.
+
+The project was built using Typescript and HTML Canvas. The data was fetched from Dunamu's Upbit API in real time. The project was deployed using Github Pages and later exhibited in Seoul National University's 2022 Visual Design Graduation Exhibition.
 
 ![Installation Viewed from Side](/assets/project/cryptogalaxy/front.jpg)

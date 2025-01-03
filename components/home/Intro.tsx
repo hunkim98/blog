@@ -60,7 +60,10 @@ const Intro = () => {
               letterSpacing: 1,
             }}
             maw={480}
-            mb={20}
+            mb={{
+              base: 80,
+              sm: 20,
+            }}
           >
             <Text span className="font-tiempos font-medium">
               Software Engineer + Data Analyst

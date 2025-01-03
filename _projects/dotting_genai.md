@@ -12,22 +12,26 @@ thumbnail: '/assets/project/dotting_genai/demo.gif'
 WIP: false
 ---
 
-[Hackathon Presentation Video →](https://www.youtube.com/watch?v=nKYJNuTxfTs)
+<!-- [Hackathon Presentation Video →](https://www.youtube.com/watch?v=nKYJNuTxfTs) -->
 
 ![Demo](/assets/project/dotting_genai/demo.gif)
 
-Generative AI is a hot topic discussed everywhere. In the hopes of decreasing the barrier for creating images, many researchers are publishing better image generation models everyday. However, one problem exists in current Generative AI services: You cannot modify the generated images once they are generated.
+Generative AI is everyday nowadays. Everyone in town are hype about it. However, while generative features such as text-to-image AI are promising, there is one limitation: it is not easy to modify the generated contents as you intended. Especially for text-to-image generation tasks, delivering your intention of how you want to modify an image only through text prompts is a nightmare.
 
-For generative AI to be usable, the user should be able to modify the generated image. The modification can be as simple as changing the color of the generated image, or as complex as changing the shape of the generated image. For enabling modifications, the generative AI services should be integrated into an editor that provides additional tools that can be used to modify the generated images. However, there are no definitive software design principles on how to merge the two distinct experiences: generating and editing.
+For mass adoption of generative AI, allowing users to easily modify generated image output as they intend to do so is crucial. In fact, in most scenarios, the tools that users want to use for modifying images are changing a color of an area or removing a specific region out of the image. To achieve that goal, generative AI services should be integrated into an editor that provides additional modification tools. At the moment, however, there exists no definitive software design principles on how to merge the two distinct experiences: generating and editing.
 
-To test the methods of integrating Generative AI into editors, I created a pixel art editor with Generative AI named Dotting GenAI. The project was also a contestant for the 2023 Hackathon hosted by the a Korean Venture Capital, Primer. Dotting GenAI was awarded as one of the top 16 projects in the hackathon. It was created with an opensource project that I have started to provide React developers a pixel art editor, `Dotting`.
+To test the methods of integrating Generative AI into editors myself, I created a pixel-art editor with Generative AI features and named it Dotting GenAI. I also used this project to participate in a 2023 Hackathon hosted by the a Korean Venture Capital, Primer. Dotting GenAI was awarded as one of the top 16 projects in the hackathon. It was created with an opensource project that I have started to provide React developers a pixel art editor, `Dotting`.
 
 ![Editor screen](/assets/project/dotting_genai/home.png)
 
+### Chat Agent for Generating Pixel-art
+
 Dotting GenAI allows users to interact with the generative AI through a chat interface positioned on the right of the screen. The user can ask the generative AI to generate an image, and the generative AI will generate an image based on the user's request. The generated images will return as replies in the chat log. The user can place the generated image on the pixel art canvas and then modify the generated image with the editor tools provided by Dotting GenAI.
 
-After the development of the service, I conducted a user test on design experts to figure out 1) whether my software design approach was effective, and 2) whether the generative AI was useful for the design experts. The user test was conducted with 12 design experts, and the results showed some interesting insights.
+### User Test
+
+After the development of the service, I conducted a user test with people who specialize in desing to figure out 1) whether my software design approach was effective, and 2) whether the generative AI was useful for them. The user test was conducted with 12 design experts, and the results showed some interesting insights.
 
 Most users thought the experience of being able to modify the generated images directly in the editor as comfortable. However, they had many worries about using generative AI in their work. Some reported that although generated images do encourage untried styles, they become a burden when the user wants to create a specific image they have in mind. Some also reported that they rather wanted a generative AI that learns from their own styles, rather than some random generated images based on prompts. People more interested in the study may download the <a target="_blank" href="/assets/project/dotting_genai/dissertation.pdf">PDF file</a> for more details.
 
-![Presentation in Primer Hackathon](/assets/project/dotting_genai/presentation.png)
+![Presentation at Primer Hackathon](/assets/project/dotting_genai/presentation.png)

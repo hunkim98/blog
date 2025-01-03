@@ -16,6 +16,7 @@ import type PostType from '../../interfaces/post'
 import { BLOG_URL } from '../../lib/constants'
 import rehypeHighlight from 'rehype-highlight'
 import Layout from '../../components/layout'
+import { Flex, Text } from '@mantine/core'
 import { mdxToHtml } from 'lib/mdxToHtml'
 import { useRouter } from 'next/router'
 import rehypeKatex from 'rehype-katex'
@@ -41,6 +42,12 @@ export default function Post({ post, morePosts, preview }: Props) {
   }
   return (
     <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.excerpt} />
+        <meta name="title" content={post.title} />
+        <meta property="og:image" content={BLOG_URL + post.thumbnail} />
+      </Head>
       <ContentNavbar content={post} isPost={true} />
       <NoiseFadeOut height={300} />
       <Layout preview={preview}>
@@ -50,22 +57,24 @@ export default function Post({ post, morePosts, preview }: Props) {
           ) : (
             <>
               <article className="mb-32">
-                <Head>
-                  <title>{post.title}</title>
-                  <meta name="description" content={post.excerpt} />
-                  <meta name="title" content={post.title} />
-                  <meta property="og:image" content={BLOG_URL + post.thumbnail} />
-                </Head>
                 <div className="max-w-3xl mx-auto">
-                  <div className="mb-6 text-lg">
+                  <Flex direction={'column'} className="mb-6 text-lg" gap={'lg'}>
                     <ContentTitle>{post.title}</ContentTitle>
+                    <Text className="font-tiempos font-thin" opacity={0.5} mt={8}>
+                      <Text span className="font-sans">
+                        Posted on:
+                      </Text>
+                      <Text span className="font-sans" ml={5}>
+                        {post.date}
+                      </Text>
+                    </Text>
                     <ContentTags
                       tags={post.categories}
                       onTagClick={(tag) => {
                         router.push(`/category/posts/${tag}`)
                       }}
                     />
-                  </div>
+                  </Flex>
                 </div>
                 <ContentBody isMdx={isMdx} content={post.content} />
                 <div className="max-w-3xl mx-auto mt-16 mb-16">

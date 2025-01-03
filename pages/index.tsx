@@ -135,7 +135,7 @@ export default function HomePage({
   return (
     <>
       <Head>
-        <title>Donghun Kim | Developer</title>
+        <title>Donghun Kim</title>
         <meta property="og:image" content={HOME_OG_IMAGE_URL} />
         <meta
           name="description"
@@ -232,7 +232,14 @@ export default function HomePage({
             filterCategory ? (
               <Flex align={'center'} gap={6}>
                 {/* <IconFilter size={16} /> */}
-                <Text className="font-sans font-medium">Filter: {filterCategory}</Text>
+                <Text
+                  className="font-sans font-medium"
+                  style={{
+                    letterSpacing: -0.1,
+                  }}
+                >
+                  Filter: {filterCategory}
+                </Text>
                 <Center
                   w={25}
                   h={25}
