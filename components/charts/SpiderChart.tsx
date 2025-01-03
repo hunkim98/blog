@@ -435,11 +435,23 @@ const SpiderChart: React.FC<SpiderChartProps> = ({
     renderGraph()
   }, [renderGraph])
 
+  const downloadSvg = () => {
+    const svgString = new XMLSerializer().serializeToString(svgContainerRef.current.node())
+    const blob = new Blob([svgString], { type: 'image/svg+xml' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'spider-chart.svg'
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <Box
       ref={ref}
       w={width}
       h={height}
+      // onClick={downloadSvg}
       pos={'relative'}
       className="z-40"
       style={
