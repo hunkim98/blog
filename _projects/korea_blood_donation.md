@@ -35,7 +35,7 @@ With all our data, we decided to create an effective visual representation of th
 
 After multiple experimentation, we found that balancer-looking shape was effective to show how imbalanced a blood donation supply and demand are. In our visualized blood donation supply and demand, the left thick line represents the blood donation, and the right colorless thin line represented the blood usage. The thicker the left area, the more blood donation there was compared to the blood usage. We additionally used color and angle to represent how much the ratio is off.
 
-![Data Heatmap](/assets/project/korea_blood_donation/tokenization.png)
+![Visualization Strategy](/assets/project/korea_blood_donation/tokenization.png)
 
 ### Findings
 
