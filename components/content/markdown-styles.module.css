@@ -6,7 +6,7 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-10 leading-relaxed text-[#d9d9d9] font-tiempos font-light text-[19.2px];
+  @apply my-10 leading-relaxed text-[#d9d9d9] font-tiempos font-light text-[18.2px];
   @apply relative;
   font-feature-settings: 'pnum' on, 'lnum' on;
   letter-spacing: 0.8px;
@@ -45,14 +45,17 @@
 
 .markdown h2 {
   @apply mb-4 mt-16 text-2xl font-medium leading-snug font-tiempos;
+  letter-spacing: 0.8px;
 }
 
 .markdown h3 {
   @apply mb-4 mt-14 text-xl font-medium leading-snug font-tiempos;
+  letter-spacing: 0.8px;
 }
 
 .markdown h4 {
   @apply mb-4 mt-14 text-lg font-medium leading-snug font-tiempos;
+  letter-spacing: 0.8px;
 }
 
 .markdown p code {

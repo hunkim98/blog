@@ -17,7 +17,7 @@ interface VisViewerProps {
 
 export enum VisViewerItems {
   SkillsMap = 'Skills Map',
-  WorksCount = 'Works Analysis',
+  WorksCount = 'Blog Contents',
 }
 
 export const BasicCategories = [

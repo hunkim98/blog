@@ -1,6 +1,7 @@
 import { useHover, useMediaQuery, useViewportSize } from '@mantine/hooks'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useHomeViewContentContext } from 'context/ViewProjectContext'
+import { useMantineMediaQuery } from 'lib/mantineMediaQuery'
 import { Box, em, Flex, Text } from '@mantine/core'
 import { IconArrowUp } from '@tabler/icons-react'
 import { useRouter } from 'next/router'
@@ -75,7 +76,8 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
     }
     return 0
   }, [windowScrollY, contentPerScroll, shouldShowContentPerScroll])
-  const IsMantineMedium = useMediaQuery(`(max-width: ${em(992)})`)
+  const { isSmallerThanSm } = useMantineMediaQuery()
+  // const IsMantineMedium = useMediaQuery(`(max-width: ${em(992)})`)
   const { width: screenWidth } = useViewportSize()
 
   return (
@@ -105,18 +107,18 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
         gap={'sm'}
         pos={{
           base: 'relative',
-          md: 'absolute',
+          sm: 'absolute',
         }}
         left={{
           base: 0,
-          md: '50%',
+          sm: '50%',
         }}
         // w={'100%'}
         style={{
           // backgroundColor: '#f3f4f6',
           // textAlign: 'center',
           whiteSpace: 'nowrap',
-          transform: IsMantineMedium ? '' : 'translate(-50%, 0)',
+          transform: isSmallerThanSm ? '' : 'translate(-50%, 0)',
         }}
       >
         {viewingProject && !shouldShowContentPerScroll && (
@@ -148,7 +150,7 @@ const HomeNavbar: React.FC<HomeNavbarProps> = ({ appearFrom, contentPerScroll })
       <Box
         display={{
           base: 'none',
-          md: 'block',
+          sm: 'block',
         }}
       >
         {viewingProject && !shouldShowContentPerScroll && (

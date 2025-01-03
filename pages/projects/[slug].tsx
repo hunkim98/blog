@@ -17,9 +17,9 @@ import Utterances from '../../components/utterances'
 import { BLOG_URL } from '../../lib/constants'
 import rehypeHighlight from 'rehype-highlight'
 import Layout from '../../components/layout'
+import { Flex, Text } from '@mantine/core'
 import { useRouter } from 'next/router'
 import rehypeKatex from 'rehype-katex'
-import { Text } from '@mantine/core'
 import remarkMath from 'remark-math'
 
 import BelowGradient from 'components/common/BelowGradient'
@@ -49,6 +49,12 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
 
   return (
     <>
+      <Head>
+        <title>{project.title}</title>
+        <meta name="description" content={project.excerpt} />
+        <meta name="title" content={project.title} />
+        <meta property="og:image" content={BLOG_URL + project.thumbnail} />
+      </Head>
       <ContentNavbar content={project} isPost={false} />
       <NoiseFadeOut height={300} />
       <Layout preview={preview}>
@@ -59,16 +65,17 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
           ) : (
             <>
               <article className="mb-32">
-                <Head>
-                  <title>{project.title}</title>
-                  <meta name="description" content={project.excerpt} />
-                  <meta name="title" content={project.title} />
-                  <meta property="og:image" content={BLOG_URL + project.thumbnail} />
-                </Head>
-
                 <div className="max-w-3xl mx-auto">
-                  <div className="mb-6 text-lg">
+                  <Flex direction={'column'} className="mb-6 text-lg" gap={'lg'}>
                     <ContentTitle>{project.title}</ContentTitle>
+                    <Text className="font-tiempos font-thin" opacity={0.5} mt={8}>
+                      <Text span className="font-sans">
+                        Posted on:
+                      </Text>
+                      <Text span className="font-sans" ml={5}>
+                        {project.date}
+                      </Text>
+                    </Text>
                     {/* <PostTitle>{project.title}</PostTitle> */}
                     <ContentTags
                       tags={project.categories}
@@ -76,7 +83,7 @@ export default function Project({ project, moreProjetcts, preview }: Props) {
                         router.push(`/category/projects/${category}`)
                       }}
                     />
-                  </div>
+                  </Flex>
                 </div>
                 <ContentBody isMdx={isMdx} content={project.content} />
                 <div className="max-w-3xl mx-auto mt-16 mb-16">

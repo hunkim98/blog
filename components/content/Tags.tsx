@@ -9,7 +9,7 @@ interface ContentTagsProps {
 
 const ContentTags: React.FC<ContentTagsProps> = ({ className, tags, onTagClick }) => {
   return (
-    <Text className="font-sans" mt={20}>
+    <Text className="font-sans font-thin">
       Category:{' '}
       {tags.map((category, index) => {
         const isLastIndex = index === tags.length - 1
