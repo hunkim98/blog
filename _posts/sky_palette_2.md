@@ -1,6 +1,6 @@
 ---
 title: 'Sky Palette Project: 2. Sky Images are Different'
-excerpt: 'Continuing on the sky palette project, I started to go deeper into how I can best capture the colors in the sky. I tested with various algorithms, but nothing seemed to work really well. Different from other images, the sky had small details in the image that made the color very comprehensive. If I could capture the very details, I thought the there would be progress'
+excerpt: 'In the second phase of the Sky Palette Project, I explored advanced techniques like PCA decomposition and SNIC segmentation to better capture the intricate details of sky colors, uncovering challenges and new possibilities in extracting harmonious palettes.'
 date: '2023-08-20'
 author:
   name: Kim Dong Hun

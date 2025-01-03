@@ -1,6 +1,6 @@
 ---
 title: 'Dotting GenAI: Pixel Art Editor With Generative AI'
-excerpt: 'Dotting GenAI is an experimental project that aims to incorporate generative AI into the realm of pixel art. Alongside software development, a user research was conducted in order to gain insights into how experienced designers perceive the collaborative potential with Generative AI.'
+excerpt: "Dotting GenAI explores the integration of generative AI into pixel art editing, offering tools for direct modification of AI-generated images. The project was tested with design experts and recognized as a top 16 project at Primer's 2023 Hackathon."
 startDate: '2023-03-22'
 date: '2023-04-11'
 author:

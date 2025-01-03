@@ -1,6 +1,6 @@
 ---
 title: 'Techstars Day1 - Spare just 1 hour and you can build trust within members'
-excerpt: 'No matter what kind of work the team members are doing, if the team has decided to embrace a new team member, everyone should take a leave for their work at least for 1 hour to openly talk with the newcomer and open themselves up to vulnerability. No excuses whatsoever. The newcomer is a priceless and thankful person to have decided to join the risky startup journey together with the team, and thus, the team should pay their utmost respect to the newcomer.'
+excerpt: 'Team dynamics play a crucial role in startup success. On the first day at Techstars, I learned about building trust through vulnerability, encouraging healthy conflicts, and avoiding harmful triangulation within teams.'
 date: '2023-01-19'
 author:
   name: Kim Dong Hun

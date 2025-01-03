@@ -1,6 +1,6 @@
 ---
 title: 'Persona Personality: Discover the personality masks of my friends!'
-excerpt: 'Persona Personality is an Enneagram-based personality test for figuring out the personality of my acquaintances. The personality results are returned as a form of a maks. While figuring out the personality of others, one can have a deeper understanding of their own personality by reviewing what type of people they hang out with.'
+excerpt: 'Persona Personality is an Enneagram-based personality test designed to explore the multifaceted personalities of acquaintances. It helps users understand others while challenging the notion of static personality definitions.'
 startDate: '2020-09-01'
 date: '2021-06-01'
 author:

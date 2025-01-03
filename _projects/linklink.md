@@ -1,6 +1,6 @@
 ---
 title: "Visualize my friend's social network"
-excerpt: 'LinkLink is a social networking application that is focused on reaching out to the acquaintances of my friends. By providing a visualized social network graph consisted of my friends and the friends of my friends, one can find their suitable companions easily.'
+excerpt: "LinkLink is a social networking app designed to simplify the 'friend of a friend' process. It visualizes connections and offers evaluation features to find reliable companions for specific purposes like startups."
 startDate: '2022-09-01'
 date: '2022-12-08'
 author:

@@ -1,6 +1,6 @@
 ---
 title: 'VAE the basics'
-excerpt: 'Ever since I got interested in generative art, I felt a need to understand the basics of multiple neural networks. In many dissertations, I always found some articles that referenced VAE for generative purposes. In this post, I go through a brief overview of how VAE works'
+excerpt: 'Variational Autoencoders (VAEs) extend traditional autoencoders by incorporating probabilistic elements, enabling better reconstruction and generative capabilities. This post provides an in-depth look at VAEs, from their architecture and reparameterization trick to the mathematics behind their loss functions.'
 date: '2024-03-02'
 author:
   name: Kim Dong Hun

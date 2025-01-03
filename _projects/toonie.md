@@ -1,6 +1,6 @@
 ---
 title: 'Toonie: Real-time Collaborative image review editor'
-excerpt: 'Toonie is a real-time CRDT-based collaborative image review editor where users can review on images uploaded to the service together. I developed software design appraoches for optimizing collaborative whiteboards.'
+excerpt: 'Toonie is a real-time CRDT-based collaborative image review editor designed for streamlined image feedback. It introduces optimized techniques for multiplayer whiteboards, separating real-time interactions from committed actions for enhanced performance.'
 startDate: '2022-06-27'
 date: '2022-08-19'
 author:

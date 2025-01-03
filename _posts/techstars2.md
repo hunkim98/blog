@@ -1,6 +1,6 @@
 ---
 title: 'Techstars Day2 ~ End - Building Networks, Defining Your Business'
-excerpt: 'For a startup, you have nothing you can give to the other person when you want to reach out to them. However when you seek advice from the other person, the story gets a little different, and there will be a deep connection between you and the mentor. We also had practices on pitching ourselves. To pitch ourselves, we had to know the product that we were selling. The product of a company is not what the company actually sells. The customers who have evolved thanks to your product are your real products.'
+excerpt: 'Building strong networks and defining your startup’s true value were key lessons at Techstars. From leveraging mentorship through genuine advice-seeking to understanding that your real product is the transformation of your customers, these insights highlight the essence of meaningful connections and impactful pitches.'
 date: '2023-02-25'
 author:
   name: Kim Dong Hun

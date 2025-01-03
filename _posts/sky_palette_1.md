@@ -1,6 +1,6 @@
 ---
 title: 'Sky Palette Project: 1. The Beginning of the Journey'
-excerpt: 'Sky Palette Project is a project that I started to extract colors from the sky. A professor once told me that the sky is the best color palette that a designer can use. The sky has a natural color gradient that is harmonious. I wanted to extract the colors of the sky and make it into a color palette. To begin that journey I first created a sky capturer for capturing the image of the skies'
+excerpt: 'The Sky Palette Project explores the extraction of harmonious color palettes directly from the sky, inspired by its natural gradients. This post details the journey from capturing sky images to applying K-Means clustering for initial color extraction.'
 date: '2023-08-19'
 author:
   name: Kim Dong Hun

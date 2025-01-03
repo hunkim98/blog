@@ -1,6 +1,6 @@
 ---
 title: 'Cryptogalaxy: Visualizing cypto markets'
-excerpt: 'CryptoGalaxy is an attempt to visualize the crypto market. It borrows its concept from the ‘space’ and connects galaxy components with several crypto market indicators. The main purpose of the project was to create a dynamic visualization that responds to the market in real time.'
+excerpt: 'CryptoGalaxy visualizes the crypto market through a dynamic, space-themed design. It connects galaxy components like the sun, planets, and spaceships to market indicators, providing an interactive, real-time representation of crypto trends.'
 startDate: '2022-09-01'
 date: '2022-12-11'
 author:

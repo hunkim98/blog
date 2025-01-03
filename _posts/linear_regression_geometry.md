@@ -1,6 +1,6 @@
 ---
 title: 'Linear Regression Model Selection (feat. Geomertry)'
-excerpt: 'Linear Regression Model is a powerful tool for modeling multiple variables and their relationships to the targeted output variable. However, having many predictors can overcomplicate the model and output poor results. We will understand linear regression model selection methods (Ridge, Lasso) in a geometric perspective.'
+excerpt: 'Linear regression models can struggle with too many predictors, leading to overfitting. This post delves into Ridge and Lasso regression, explaining their role in model selection through intuitive geometric perspectives.'
 date: '2024-10-10'
 author:
   name: Kim Dong Hun
