@@ -66,7 +66,7 @@ const Intro = () => {
             }}
           >
             <Text span className="font-tiempos font-medium">
-              Software Engineer + Data Analyst
+              Software Engineer + Machine Learning Engineer
             </Text>{' '}
             <Text span className="font-tiempos font-thin">
               professionally trained in building data management tools and conducting user behavior
