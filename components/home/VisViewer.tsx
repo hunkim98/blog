@@ -63,6 +63,7 @@ const VisViewer: React.FC<VisViewerProps> = ({
   return (
     <>
       <SelectVis selectedVis={selectedVis} setSelectedVis={setSelectedVis} />
+
       {/* <Box maw={400}> */}
       <ChartResizer maxWidth={350}>
         {selectedVis === VisViewerItems.SkillsMap && (

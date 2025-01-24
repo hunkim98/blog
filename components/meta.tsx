@@ -2,6 +2,12 @@ import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
 import Head from 'next/head'
 import React from 'react'
 
+interface MetaProps {
+  title?: string
+  description?: string
+  image?: string
+}
+
 const Meta = () => {
   return (
     <Head>
@@ -14,7 +20,7 @@ const Meta = () => {
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
-      <meta name="og:sitename" content={'Donghun Kim | Developer'} />
+      <meta name="og:sitename" content={'Donghun Kim'} />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta name="google-site-verification" content="l9pNikVAOmXekB00LXYnclf9f_nyVIIjDvu4s2DdYtQ" />
     </Head>

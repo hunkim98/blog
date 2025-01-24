@@ -2,8 +2,11 @@ import { useHomeViewContentContext } from 'context/ViewProjectContext'
 import { Box, Flex, Text, Title, Image, em } from '@mantine/core'
 import { useMantineMediaQuery } from 'lib/mantineMediaQuery'
 import SpiderChart from 'components/charts/SpiderChart'
+import LinkedInIcon from 'components/svgs/linkedInIcon'
 import GradientDivider from '../common/GradientDivider'
+import GithubIcon from 'components/svgs/githubIcon'
 import React, { useEffect, useRef } from 'react'
+import MailIcon from 'components/svgs/mailIcon'
 import { useMediaQuery } from '@mantine/hooks'
 import SocialIcon from '../social-icons'
 import { useRouter } from 'next/router'
@@ -15,6 +18,7 @@ const Intro = () => {
   const ref = useRef<HTMLDivElement>(null)
   const { setProjectTopMargin: setProjectTopDistance } = useHomeViewContentContext()
   const { isSmallerThanSm } = useMantineMediaQuery()
+  const router = useRouter()
 
   useEffect(() => {
     // get the size of the div
@@ -74,6 +78,28 @@ const Intro = () => {
               services. Creates data visualizations and 3D graphics as a hobby.
             </Text>
           </Text>
+          <Flex align={'center'} justify={'center'} mb={10} gap={'md'}>
+            <Link href={'https://github.com/hunkim98'}>
+              <Box w={25} h={25}>
+                <GithubIcon color="white" fill="rgba(255,255,255,0.3)" />
+              </Box>
+            </Link>
+            <Box
+              w={30}
+              h={30}
+              className="cursor-pointer"
+              onClick={() => {
+                router.push('mailto:hunkim98@gmail.com')
+              }}
+            >
+              <MailIcon color="white" fill="rgba(255,255,255,0.3)" />
+            </Box>
+            <Link href={'https://www.linkedin.com/in/donghun-kim-2b290a223/'}>
+              <Box w={25} h={25}>
+                <LinkedInIcon color="white" fill="rgba(255,255,255,0.3)" />
+              </Box>
+            </Link>
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
