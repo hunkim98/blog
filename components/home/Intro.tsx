@@ -73,9 +73,9 @@ const Intro = () => {
               Software Engineer + Machine Learning Engineer
             </Text>{' '}
             <Text span className="font-tiempos font-thin">
-              professionally trained in building data management tools and conducting user behavior
-              analysis. Proficient in rendering graphics on the web and implementing AI into web
-              services. Creates data visualizations and 3D graphics as a hobby.
+              professionally trained in building data management tools and web solutions. Proficient
+              in rendering graphics on the web and implementing light-weight AI into web services.
+              Creates data visualizations and 3D graphics as a hobby.
             </Text>
           </Text>
           <Flex align={'center'} justify={'center'} mb={10} gap={'md'}>
