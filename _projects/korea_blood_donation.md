@@ -38,7 +38,7 @@ After multiple experimentation, we found that balancer-looking shape was effecti
 ![Visualization Strategy](/assets/project/korea_blood_donation/tokenization.png)
 
 ### Findings
-
+  
 Through visualizing, we could discover that South Korea especially has a healthy ratio of blood donation and blood usage especially near May, and this seems to be due to the summer season and the frequency of promotional events held by the Red Cross. However, the ratio of blood donation and blood usage is not as healthy in the winter season. 
 
 Interestingly, after March 2020, the time when COVID-19 started to spread in Korea, the ratio of blood donation and blood usage has decreased significantly. From this, we can know that the COVID-19 pandemic has had a significant impact on the blood donation system in South Korea.
