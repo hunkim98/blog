@@ -61,6 +61,13 @@
         
         
         <url>
+            <loc>https://donghunkim.dev/projects/llm_procedural_generation</loc>
+            <lastmod>2025-01-26T00:00:00.000Z</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        
+        <url>
             <loc>https://donghunkim.dev/projects/korea_blood_donation</loc>
             <lastmod>2024-12-21T00:00:00.000Z</lastmod>
             <changefreq>monthly</changefreq>
