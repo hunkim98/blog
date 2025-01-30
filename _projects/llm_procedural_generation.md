@@ -60,10 +60,24 @@ The diagram describes the whole inpainting process in detail.
 
 I have experimented with multiple seed prompts for generating the images. Thanks to LLM, the generated game scenes were dynamic but also consistent with the seed prompt. For example, when the seed prompt was 'japan, samurai', the LLM would first generate a scene with traditional japanese architecture, but also generate a scene with Fuji mountain when the player went north. 
 
+
 ![Japan Scene](/assets/project/llm_procedural_generation/japan.png)
 
 Though the consistency of the connected images was not perfect, the consistency was significantly improved when the game scene was themed with a landscape city. Especially for a game scene generate with a seed prompt 'urban, city', the consistency was very high.
 
 ![City Scene](/assets/project/llm_procedural_generation/city.png)
 
+### Some noteworthy prompts
+
+Interesting enough, LLMs showed their creativity in generating text prompts. It especially did well when it was tasked to create landscape scenes. Here are some slides I used to show LLM showed its creativity in generating text prompts.
+
+![Slide 1](/assets/project/llm_procedural_generation/prompts1.png)
+
+In the example shown above, we can see that the LLM managed to expand the landscape to include a shopping mall to connect the urban residential commercial zones.
+
+![Slide 2](/assets/project/llm_procedural_generation/prompts2.png)
+
+In the above example, we can see that the LLM managed to create a bus terminal right next the the existing shopping mall, showing that it understands that many bus terminals are located next to shopping malls.
+
 The project was created using Unity C# as the game client and FastAPI as the game server. For more information on the project, please visit the [GitHub repository](https://github.com/hunkim98/LLM_procedural_terrain).
+
