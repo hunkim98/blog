@@ -8,6 +8,15 @@ interface ExperienceProps {}
 
 const ExperienceData: Array<ExperienceType> = [
   {
+    company: 'Gensler',
+    companyLink: 'https://www.gensler.com/',
+    position: 'Data Researcher',
+    description:
+      'Created a spatial analysis pipeline using Arcpy and Geopandas to calculate 38 urban metrics (e.g park accessibility)',
+    startDate: 'May 2025',
+    endDate: 'Aug 2025',
+  },
+  {
     company: 'Dalpha',
     companyLink: 'https://dalpha.so/',
     position: 'Software Engineer',
@@ -18,7 +27,7 @@ const ExperienceData: Array<ExperienceType> = [
   {
     company: 'Seoul National University',
     companyLink: 'http://hcil.snu.ac.kr/',
-    position: 'Research Assistant',
+    position: 'AI Research Assistant',
     description:
       'Created data visualization solutions for major tech companies and academic conferences.',
     startDate: 'Jul 2023',
@@ -33,15 +42,15 @@ const ExperienceData: Array<ExperienceType> = [
     startDate: 'Jun 2022',
     endDate: 'Dec 2022',
   },
-  {
-    company: 'Whoyaho',
-    companyLink: 'https://www.fidget.town/',
-    position: 'Software Engineer',
-    description:
-      'Built a 0 to 1 mobile app startup, whose app reached #1 in the App Store within 2 days of launch.',
-    startDate: 'Jun 2021',
-    endDate: 'Feb 2022',
-  },
+  // {
+  //   company: 'Whoyaho',
+  //   companyLink: 'https://www.fidget.town/',
+  //   position: 'Software Engineer',
+  //   description:
+  //     'Built a 0 to 1 mobile app startup, whose app reached #1 in the App Store within 2 days of launch.',
+  //   startDate: 'Jun 2021',
+  //   endDate: 'Feb 2022',
+  // },
 ]
 
 const Experience: React.FC<ExperienceProps> = () => {
