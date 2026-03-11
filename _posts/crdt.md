@@ -7,7 +7,7 @@ author:
 keyword: 'CRDT Basics'
 # Category must be either: Data Visualization, Machine Learning, Web Development, Product Design, Computer Graphics, Other
 categories: ['Web Development']
-WIP: true
+WIP: false
 thumbnail: '/assets/posts/crdt/thumbnail.png'
 ---
 
